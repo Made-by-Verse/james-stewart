@@ -25,7 +25,7 @@
           "type": "sticky_image_with_text",
           "settings": {
             "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup.png",
-            "text": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
+            "text": "<p>James Stewart blends world-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction. Blending a new generation of design, materials and making, alongside classic patterns and silhouettes, our collection is made for the discerning eye. </p>",
             "button_1_url": "https://www.google.com",
             "button_1_text": "Click me",
             "button_2_url": "https://www.google.com",
@@ -40,12 +40,8 @@
           }
         }
       },
-      "block_order": [
-        "16831234567891",
-        "16831234567890"
-      ],
-      "settings": {
-      }
+      "block_order": ["16831234567891", "16831234567890"],
+      "settings": {}
     },
     "collections_grid": {
       "type": "section-collections-grid",
@@ -55,9 +51,5 @@
       }
     }
   },
-  "order": [
-    "home_hero",
-    "two_column_content",
-    "collections_grid"
-  ]
+  "order": ["home_hero", "two_column_content", "collections_grid"]
 }

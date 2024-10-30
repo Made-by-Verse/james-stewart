@@ -3,8 +3,14 @@
     {% case block.type %}
       {% when 'image_block' %}
         {% if block.settings.image %}
-          <div class="relative overflow-hidden {% if block.settings.aspect_ratio == 'portrait' %}aspect-portrait{% elsif block.settings.aspect_ratio == 'landscape' %}aspect-landscape{% else %}aspect-square{% endif %}">
-            <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.text | escape }}" class="absolute inset-0 object-cover w-full h-full" />
+          <div class="relative overflow-hidden bg-gray-100 {% if block.settings.aspect_ratio == 'portrait' %}aspect-portrait{% elsif block.settings.aspect_ratio == 'landscape' %}aspect-landscape{% else %}aspect-square{% endif %}">
+            {% render 'responsive-image' with
+            image: block.settings.image,
+            wrapper_class: "",
+            image_class: "absolute inset-0 object-cover w-full h-full",
+            size: '1000x1000',
+            width: 1000,
+            height: 1000, %}
           </div>
         {% endif %}
       {% when 'text_block' %}
@@ -13,14 +19,30 @@
         {% endif %}
       {% when 'sticky_image_with_text' %}
         <div class="flex items-start max-w-lg">
-          <div class="sticky top-0 space-y-4 flex flex-col items-end w-full">
+          <div class="sticky top-12 space-y-4 flex flex-col items-end w-full">
             {% if block.settings.image %}
-              <div class="aspect-landscape relative overflow-hidden">
-                <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.text | escape }}" class="absolute inset-0 object-cover w-full h-full" />
+              <div class="aspect-landscape w-full relative overflow-hidden">
+                {% render 'responsive-image' with
+                image: block.settings.image,
+                wrapper_class: "",
+                image_class: "absolute inset-0 object-cover w-full h-full",
+                size: '1000x1000',
+                width: 1000,
+                height: 1000, %}
               </div>
             {% endif %}
             {% if block.settings.text %}
-              <div class="{% if block.settings.text_alignment == 'center' %}text-center{% elsif block.settings.text_alignment == 'right' %}text-right{% else %}text-left{% endif %} max-w-sm">{{ block.settings.text }}</div>
+              <div class="{% if block.settings.text_alignment == 'center' %}text-center{% elsif block.settings.text_alignment == 'right' %}text-right{% else %}text-left{% endif %} max-w-sm space-y-4">
+                {{ block.settings.text }}
+                <div class="flex gap-4">
+                  {% if block.settings.button_1_url %}
+                    <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-dark">{{ block.settings.button_1_text }}</a>
+                  {% endif %}
+                  {% if block.settings.button_2_url %}
+                    <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-dark">{{ block.settings.button_2_text }}</a>
+                  {% endif %}
+                </div>
+              </div>
             {% endif %}
           </div>
         </div>

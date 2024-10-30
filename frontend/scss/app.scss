@@ -3,3 +3,15 @@
 .wrapper {
   @apply mx-auto px-4 md:px-8;
 }
+
+.aspect-landscape {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-portrait {
+  aspect-ratio: 9 / 12;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
