@@ -12,6 +12,7 @@
     "home_hero": {
       "type": "section-home-hero",
       "settings": {
+        "hero_image": "shopify://shop_images/hero-image.png",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
         "hero_button_url": "https://www.google.com",
         "hero_button_text": "Click me"
@@ -20,20 +21,22 @@
     "two_column_content": {
       "type": "section-two-column-content",
       "blocks": {
-        "16831234567890": {
-          "type": "image_block",
-          "settings": {
-            "aspect_ratio": "portrait"
-          }
-        },
         "16831234567891": {
           "type": "sticky_image_with_text",
           "settings": {
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup.png",
             "text": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
             "button_1_url": "https://www.google.com",
             "button_1_text": "Click me",
             "button_2_url": "https://www.google.com",
             "button_2_text": "Click me"
+          }
+        },
+        "16831234567890": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_2.png",
+            "aspect_ratio": "portrait"
           }
         }
       },
@@ -46,23 +49,6 @@
     },
     "collections_grid": {
       "type": "section-collections-grid",
-      "blocks": {
-        "16831234567892": {
-          "type": "collection",
-          "settings": {
-          }
-        },
-        "16831234567893": {
-          "type": "collection",
-          "settings": {
-          }
-        },
-        "16831234567894": {
-          "type": "collection",
-          "settings": {
-          }
-        }
-      },
       "settings": {
         "title": "Collections",
         "button_text": "View all collections"
