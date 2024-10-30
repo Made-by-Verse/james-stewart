@@ -74,7 +74,16 @@
         "title": "Collections",
         "button_text": "View all collections"
       }
+    },
+    "featured_product": {
+      "type": "section-featured-product",
+      "settings": {}
     }
   },
-  "order": ["home_hero", "two_column_content", "collections_grid"]
+  "order": [
+    "home_hero",
+    "two_column_content",
+    "collections_grid",
+    "featured_product"
+  ]
 }
