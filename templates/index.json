@@ -76,10 +76,5 @@
       }
     }
   },
-  "order": [
-    "home_hero",
-    "two_column_content",
-    "collections_grid",
-    "featured_product"
-  ]
+  "order": ["home_hero", "two_column_content", "collections_grid"]
 }
