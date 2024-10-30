@@ -40,24 +40,49 @@
           }
         }
       },
-      "block_order": ["16831234567891", "16831234567890"],
-      "settings": {}
+      "block_order": [
+        "16831234567891",
+        "16831234567890"
+      ],
+      "settings": {
+      }
     },
     "collections_grid": {
       "type": "section-collections-grid",
+      "blocks": {
+        "collection_block_MQpJQt": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "sofas"
+          }
+        },
+        "collection_block_ebjgrP": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "collection_block_XznMm6": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "sofas"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_MQpJQt",
+        "collection_block_ebjgrP",
+        "collection_block_XznMm6"
+      ],
       "settings": {
         "title": "Collections",
         "button_text": "View all collections"
-      },
-      "blocks": {
-        "16831234567891": {
-          "type": "collection_block",
-          "settings": {
-            "collection": "shopify://collections/all"
-          }
-        }
       }
     }
   },
-  "order": ["home_hero", "two_column_content", "collections_grid"]
+  "order": [
+    "home_hero",
+    "two_column_content",
+    "collections_grid"
+  ]
 }
