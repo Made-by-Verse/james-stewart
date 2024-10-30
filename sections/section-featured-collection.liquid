@@ -1,0 +1,70 @@
+
+<div class="wrapper py-6 lg:py-12">
+  {%- if section.settings.collection != blank -%}
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div class="md:col-span-5">
+        <div class="md:sticky md:top-8">
+          {%- if section.settings.collection.image -%}
+            <div>
+              <img 
+                src="{{ section.settings.collection.image | img_url: 'master' }}"
+                alt="{{ section.settings.collection.image.alt | escape }}"
+                loading="lazy"
+                width="{{ section.settings.collection.image.width }}"
+                height="{{ section.settings.collection.image.height }}"
+                class="w-full h-auto block object-cover"
+              >
+            </div>
+          {%- endif -%}
+            
+          {%- if section.settings.collection.description != blank -%}
+            <div class="mt-6 prose">
+              {{ section.settings.collection.description }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="md:col-span-7">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+            <div>
+              {% render 'product-card',
+                product: product,
+                show_vendor: section.settings.show_vendor
+              %}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 12,
+      "step": 2,
+      "default": 6,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

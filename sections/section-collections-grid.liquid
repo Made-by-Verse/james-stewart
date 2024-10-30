@@ -9,7 +9,7 @@
       {% endif %}
     </div>
 
-    <div class="grid gap-6 lg:grid-cols-3">
+    <div class="grid gap-4 lg:grid-cols-3">
       {% for block in section.blocks %}
         {% assign collection = collections[block.settings.collection] %}
         {% if collection != blank %}

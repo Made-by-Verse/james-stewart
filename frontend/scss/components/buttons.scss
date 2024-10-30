@@ -3,10 +3,10 @@
   text-transform: uppercase;
 
   &--outline-light {
-    @apply border border-white text-white;
+    @apply border border-lines text-white;
   }
 
   &--outline-dark {
-    @apply border border-black text-black;
+    @apply border border-dark text-dark;
   }
 }

@@ -4,30 +4,24 @@
 
 
     <h2 class="text-center mb-4 uppercase">{{ product.title }}</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {%- comment -%} Product Images {%- endcomment -%}
-      <div class="">
-        {% if product.featured_media != blank %}
-          <img 
-            src="{{ product.featured_media | img_url: 'large' }}"
-            alt="{{ product.featured_media.alt | escape }}"
-            class="featured-product__image img-fluid"
-            loading="lazy"
-            width="{{ product.featured_media.width }}"
-            height="{{ product.featured_media.height }}"
-          >
-        {% endif %}
-      </div>
-
-      {%- comment -%} Product Details {%- endcomment -%}
-      <div class="">
-
-        {% if section.settings.show_button %}
-          <a href="{{ product.url }}" class="btn featured-product__button">
-            {{ section.settings.button_text }}
-          </a>
-        {% endif %}
-      </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {% if product.media.size > 0 %}
+        {% for media in product.media limit: 2 %}
+          {% if forloop.index == 1 %}
+            {% render 'responsive-image', image: media, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
+          {% else %}
+            <div class="relative">
+              {% render 'responsive-image', image: media, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
+              <div class="absolute inset-0 flex p-16 items-end justify-center text-center">
+                <div class="max-w-md">
+                  <p class="text-white">{{ product.description | truncate: 100 }}</p>
+                  <a href="{{ product.url }}" class="btn btn--outline-dark block">{{ section.settings.button_text }}</a>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
     </div>
   {% else %}
     <div class="text-center">
