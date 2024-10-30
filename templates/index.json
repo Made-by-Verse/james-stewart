@@ -48,6 +48,14 @@
       "settings": {
         "title": "Collections",
         "button_text": "View all collections"
+      },
+      "blocks": {
+        "16831234567891": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "shopify://collections/all"
+          }
+        }
       }
     }
   },
