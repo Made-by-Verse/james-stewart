@@ -1,0 +1,123 @@
+<div class="wrapper grid lg:grid-cols-2 gap-8 py-6 lg:py-12">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'image_block' %}
+        {% if block.settings.image %}
+          <div class="relative overflow-hidden {% if block.settings.aspect_ratio == 'portrait' %}aspect-portrait{% elsif block.settings.aspect_ratio == 'landscape' %}aspect-landscape{% else %}aspect-square{% endif %}">
+            <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.text | escape }}" class="absolute inset-0 object-cover w-full h-full" />
+          </div>
+        {% endif %}
+      {% when 'text_block' %}
+        {% if block.settings.text %}
+          <div class="{% if block.settings.text_alignment == 'center' %}text-center{% elsif block.settings.text_alignment == 'right' %}text-right{% else %}text-left{% endif %}">{{ block.settings.text }}</div>
+        {% endif %}
+      {% when 'sticky_image_with_text' %}
+        <div class="flex items-start max-w-lg">
+          <div class="sticky top-0 space-y-4 flex flex-col items-end w-full">
+            {% if block.settings.image %}
+              <div class="aspect-landscape relative overflow-hidden">
+                <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.text | escape }}" class="absolute inset-0 object-cover w-full h-full" />
+              </div>
+            {% endif %}
+            {% if block.settings.text %}
+              <div class="{% if block.settings.text_alignment == 'center' %}text-center{% elsif block.settings.text_alignment == 'right' %}text-right{% else %}text-left{% endif %} max-w-sm">{{ block.settings.text }}</div>
+            {% endif %}
+          </div>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Two Column Content",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Two Column Content",
+      "category": "Custom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "aspect_ratio",
+          "label": "Aspect Ratio",
+          "options": [
+            { "value": "portrait", "label": "Portrait" },
+            { "value": "landscape", "label": "Landscape" },
+            { "value": "square", "label": "Square" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text_block",
+      "name": "Rich Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sticky_image_with_text",
+      "name": "Sticky Image with Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "button_1_url",
+          "label": "Button 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "button_2_url",
+          "label": "Button 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2
+}
+{% endschema %}

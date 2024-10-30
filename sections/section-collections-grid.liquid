@@ -1,0 +1,93 @@
+
+  <div class="wrapper py-6 lg:py-12">
+    <div class="flex justify-between items-center py-4">
+      {% if section.settings.title != blank %}
+        <h2 class="">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.button_text != blank %}
+        <a href="{{ routes.collections_url }}" class="btn btn--outline-dark">{{ section.settings.button_text }}</a>
+      {% endif %}
+    </div>
+
+    <div class="grid gap-6 grid-cols-1 {% if section.settings.columns_mobile == '2' %}sm:grid-cols-2{% endif %} md:grid-cols-{{ section.settings.columns_desktop }}">
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+        {% if collection != blank %}
+          <div class="collection-card relative group" {{ block.shopify_attributes }}>
+            <a href="{{ collection.url }}" class="block aspect-square overflow-hidden">
+              {% if collection.image %}
+                {{ collection.image | image_url: width: 800 | image_tag:
+                  loading: 'lazy',
+                  class: 'w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
+                }}
+              {% else %}
+                {{ 'collection-1' | placeholder_svg_tag: 'w-full h-full object-cover bg-gray-100' }}
+              {% endif %}
+              
+              {% if block.settings.show_title %}
+                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                  <h3 class="text-white text-xl font-medium text-center px-4">
+                    {{ collection.title }}
+                  </h3>
+                </div>
+              {% endif %}
+            </a>
+
+            {% if block.settings.show_description and collection.description != blank %}
+              <div class="mt-4 text-sm text-gray-600">
+                {{ collection.description | strip_html | truncatewords: 15 }}
+              </div>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="collection-card bg-gray-100 aspect-square flex items-center justify-center" {{ block.shopify_attributes }}>
+            <p class="text-gray-500">
+              {{ 'sections.collection_grid.add_collection' | t }}
+            </p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Collections"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections Grid",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

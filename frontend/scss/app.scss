@@ -1,0 +1,5 @@
+@use "./components/buttons";
+
+.wrapper {
+  @apply mx-auto px-4 md:px-8;
+}

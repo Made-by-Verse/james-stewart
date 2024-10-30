@@ -1,0 +1,12 @@
+.btn {
+  padding: 14px;
+  text-transform: uppercase;
+
+  &--outline-light {
+    @apply border border-white text-white;
+  }
+
+  &--outline-dark {
+    @apply border border-black text-black;
+  }
+}
