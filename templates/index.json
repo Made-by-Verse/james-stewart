@@ -40,8 +40,12 @@
           }
         }
       },
-      "block_order": ["16831234567891", "16831234567890"],
-      "settings": {}
+      "block_order": [
+        "16831234567891",
+        "16831234567890"
+      ],
+      "settings": {
+      }
     },
     "collections_grid": {
       "type": "section-collections-grid",
@@ -77,7 +81,10 @@
     },
     "featured_product": {
       "type": "section-featured-product",
-      "settings": {}
+      "settings": {
+        "product": "royce",
+        "button_text": "View Product"
+      }
     }
   },
   "order": [
