@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "home_hero": {
@@ -14,14 +23,12 @@
         "16831234567890": {
           "type": "image_block",
           "settings": {
-            "image": "image.jpg",
             "aspect_ratio": "portrait"
           }
         },
         "16831234567891": {
           "type": "sticky_image_with_text",
           "settings": {
-            "image": "image.jpg",
             "text": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
             "button_1_url": "https://www.google.com",
             "button_1_text": "Click me",
@@ -30,35 +37,41 @@
           }
         }
       },
-      "block_order": ["16831234567891", "16831234567890"]
+      "block_order": [
+        "16831234567891",
+        "16831234567890"
+      ],
+      "settings": {
+      }
     },
     "collections_grid": {
       "type": "section-collections-grid",
-      "settings": {
-        "title": "Collections",
-        "button_text": "View all collections"
-      },
       "blocks": {
         "16831234567892": {
           "type": "collection",
           "settings": {
-            "collection": "1234567890"
           }
         },
         "16831234567893": {
           "type": "collection",
           "settings": {
-            "collection": "1234567891"
           }
         },
         "16831234567894": {
           "type": "collection",
           "settings": {
-            "collection": "1234567892"
           }
         }
+      },
+      "settings": {
+        "title": "Collections",
+        "button_text": "View all collections"
       }
     }
   },
-  "order": ["home_hero", "two_column_content", "collections_grid"]
+  "order": [
+    "home_hero",
+    "two_column_content",
+    "collections_grid"
+  ]
 }
