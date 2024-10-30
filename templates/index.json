@@ -40,12 +40,8 @@
           }
         }
       },
-      "block_order": [
-        "16831234567891",
-        "16831234567890"
-      ],
-      "settings": {
-      }
+      "block_order": ["16831234567891", "16831234567890"],
+      "settings": {}
     },
     "collections_grid": {
       "type": "section-collections-grid",
@@ -83,6 +79,7 @@
   "order": [
     "home_hero",
     "two_column_content",
-    "collections_grid"
+    "collections_grid",
+    "featured_product"
   ]
 }

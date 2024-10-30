@@ -1,0 +1,96 @@
+<div class="wrapper py-6 lg:py-12">
+  {% if section.settings.product != blank %}
+    {% assign product = all_products[section.settings.product] %}
+
+
+    <h2 class="text-center mb-4 uppercase">{{ product.title }}</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {%- comment -%} Product Images {%- endcomment -%}
+      <div class="">
+        {% if product.featured_media != blank %}
+          <img 
+            src="{{ product.featured_media | img_url: 'large' }}"
+            alt="{{ product.featured_media.alt | escape }}"
+            class="featured-product__image img-fluid"
+            loading="lazy"
+            width="{{ product.featured_media.width }}"
+            height="{{ product.featured_media.height }}"
+          >
+        {% endif %}
+      </div>
+
+      {%- comment -%} Product Details {%- endcomment -%}
+      <div class="">
+
+        {% if section.settings.show_button %}
+          <a href="{{ product.url }}" class="btn featured-product__button">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="text-center">
+      <p>{{ 'sections.featured_product.select_product' | t }}</p>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.featured-product-section {
+  padding: 4rem 0;
+}
+
+.featured-product__title {
+  margin-bottom: 1rem;
+}
+
+.featured-product__price {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.featured-product__description {
+  margin-bottom: 2rem;
+}
+
+.featured-product__button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.featured-product__button:hover {
+  background-color: #333;
+  color: #fff;
+}
+{% endstylesheet %}

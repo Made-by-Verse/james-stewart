@@ -5,9 +5,16 @@ export default {
     "./sections/*.liquid",
     "./snippets/*.liquid",
     "./templates/**/*.{json,liquid}",
+    "./layout/*.liquid",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        light: "#F6F5ED",
+        dark: "#241917",
+        lines: "#C3C2BC",
+      },
+    },
   },
   plugins: [],
 };
