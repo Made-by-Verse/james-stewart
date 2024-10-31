@@ -105,15 +105,9 @@
       "type": "video",
       "settings": {
         "heading": "Video",
-        "heading_size": "h1",
-        "enable_video_looping": false,
+        "text": "<p>The home is an expression of our inner world, reflecting our values, ideals and confirming our own personal rituals and way of living. These unique rituals evoke feelings of comfort in their consistency.</p>",
         "video_url": "https://www.youtube.com/watch?v=j7iAL9N8H7c",
-        "cover_image": "shopify://shop_images/Rectangle_576.png",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "cover_image": "shopify://shop_images/Rectangle_576.png"
       }
     }
   },
