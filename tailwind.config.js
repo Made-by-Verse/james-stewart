@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Dia", "sans-serif"],
+        serif: ["Frasa", "sans-serif"],
+      },
       colors: {
         primary: "var(--color-primary)",
         contrast: "var(--color-contrast)",

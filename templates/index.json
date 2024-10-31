@@ -16,7 +16,8 @@
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
         "hero_button_url": "https://www.google.com",
         "hero_button_text": "Explore Catalogue",
-        "color_scheme": ""
+        "color_scheme": "",
+        "show_logo": true
       }
     },
     "paragraph": {

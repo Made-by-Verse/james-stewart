@@ -1,0 +1,19 @@
+#js-header {
+  @apply bg-primary text-contrast transition-all duration-500;
+
+  .wrapper {
+    @apply border-b;
+  }
+
+  &.header--on-hero {
+    @apply bg-transparent text-primary;
+
+    .wrapper {
+      @apply border-0;
+    }
+
+    .home-page-logo {
+      @apply opacity-0;
+    }
+  }
+}

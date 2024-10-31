@@ -1,6 +1,7 @@
 .btn {
   padding: 14px;
-  text-transform: uppercase;
+
+  @apply uppercase font-sans tracking-wide;
 
   &--outline-primary {
     @apply border border-contrast text-contrast;
@@ -9,4 +10,8 @@
   &--outline-contrast {
     @apply border border-primary text-primary;
   }
+}
+
+.link {
+  @apply tracking-wide uppercase;
 }

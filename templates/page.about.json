@@ -16,7 +16,8 @@
         "hero_content": "",
         "hero_button_url": "",
         "hero_button_text": "",
-        "color_scheme": ""
+        "color_scheme": "",
+        "show_logo": false
       }
     },
     "section_paragraph_8mVbgR": {
@@ -50,10 +51,7 @@
           }
         }
       },
-      "block_order": [
-        "sticky_image_with_text_LKnjDg",
-        "image_block_YM6wq9"
-      ],
+      "block_order": ["sticky_image_with_text_LKnjDg", "image_block_YM6wq9"],
       "settings": {
         "color_scheme": ""
       }
