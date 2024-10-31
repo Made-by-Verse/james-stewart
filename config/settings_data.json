@@ -9,24 +9,41 @@
  */
 {
   "current": {
-    "color_schemes": {
-      "scheme-1": {
+    "social_facebook_link": "",
+    "social_instagram_link": "",
+    "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "social_twitter_link": "",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
+    "social_vimeo_link": "",
+    "sections": {
+      "header": {
+        "type": "header",
         "settings": {
-          "primary": "#F6F5ED",
-          "contrast": "#241917",
-          "accent": "#685F2C"
         }
       }
     },
-    "social_twitter_link": "",
-    "social_facebook_link": "",
-    "social_pinterest_link": "",
-    "social_instagram_link": "",
-    "social_tiktok_link": "",
-    "social_tumblr_link": "",
-    "social_snapchat_link": "",
-    "social_youtube_link": "",
-    "social_vimeo_link": ""
+    "content_for_index": [
+
+    ],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "primary": "#f6f5ed",
+          "contrast": "#241917",
+          "accent": "#685f2c"
+        }
+      },
+      "scheme-24987925-d937-4a31-8586-6d4eb4582dd5": {
+        "settings": {
+          "primary": "#685f2c",
+          "contrast": "#f6f5ed",
+          "accent": "#241917"
+        }
+      }
+    }
   },
   "presets": {
     "Default": {
