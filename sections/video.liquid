@@ -8,63 +8,52 @@
         <h2>{{ section.settings.heading }}</h2>
       </div>
     {%- endunless -%}
-  </div>
-  <deferred-media
-    data-media-id="{{ video_id }}"
-    {% if poster != null %}
-      style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+    {% if section.settings.text != blank %}
+      <div>{{ section.settings.text }}</div>
     {% endif %}
-  >
+  </div>
+  <div class="w-full relative mx-24">
     <button
-      id="Deferred-Poster-Modal-{{ video_id }}"
-      type="button"
+      id="video-play-button"
       aria-label="{{ alt }}"
+      class="w-full aspect-video absolute inset-0 flex items-center justify-center"
     >
-      {%- if poster != null -%}
-        {{
-          poster
-          | image_url: width: 3840
-          | image_tag: sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', alt: alt
-        }}
+      {%- if section.settings.cover_image != blank -%}
+        {% render 'responsive-image', image: section.settings.cover_image, width: 1100, height: 600, wrapper_class: 'w-full aspect-video relative', image_class: 'object-cover absolute inset-0 w-full h-full' %}
       {%- else -%}
         {{ 'hero-apparel-3' | placeholder_svg_tag: '' }}
       {%- endif -%}
-      <span>
-        <span>
-          {{- 'icon-play.svg' | inline_asset_content -}}
-        </span>
-      </span>
     </button>
-    <template>
-      {%- if section.settings.video == null and section.settings.video_url != null -%}
-        {%- if section.settings.video_url.type == 'youtube' -%}
-          <iframe
-            src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            title="{{ section.settings.description | escape }}"
-          ></iframe>
-        {%- else -%}
-          <iframe
-            src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            title="{{ section.settings.description | escape }}"
-          ></iframe>
-        {%- endif -%}
+    {%- if section.settings.video == null and section.settings.video_url != null -%}
+      {%- if section.settings.video_url.type == 'youtube' -%}
+        <iframe
+          src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="{{ section.settings.description | escape }}"
+          class="w-full aspect-video"
+        ></iframe>
       {%- else -%}
-        {{
-          section.settings.video
-          | video_tag:
-            image_size: '1100x',
-            autoplay: true,
-            loop: section.settings.enable_video_looping,
-            controls: true,
-            muted: false
-        }}
+        <iframe
+          src="https://player.vimeo.com/video/{{ video_id }}"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="{{ section.settings.description | escape }}"
+          class="w-full aspect-video"
+        ></iframe>
       {%- endif -%}
-    </template>
-  </deferred-media>
+    {%- else -%}
+      {{
+        section.settings.video
+        | video_tag:
+          image_size: '1100x',
+          autoplay: true,
+          loop: section.settings.enable_video_looping,
+          controls: true,
+          muted: false
+      }}
+    {%- endif -%}
+  </div>
 </div>
 
 {% schema %}
