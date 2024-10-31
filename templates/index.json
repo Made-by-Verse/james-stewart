@@ -15,7 +15,8 @@
         "hero_image": "shopify://shop_images/hero-image.png",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
         "hero_button_url": "https://www.google.com",
-        "hero_button_text": "Explore Catalogue"
+        "hero_button_text": "Explore Catalogue",
+        "color_scheme": ""
       }
     },
     "paragraph": {
@@ -23,7 +24,8 @@
       "settings": {
         "heading": "Paragraph Section",
         "text": "<p>World-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction.</p>",
-        "padding": true
+        "padding": true,
+        "color_scheme": ""
       }
     },
     "two_column_content": {
@@ -53,6 +55,7 @@
         "16831234567890"
       ],
       "settings": {
+        "color_scheme": "scheme-24987925-d937-4a31-8586-6d4eb4582dd5"
       }
     },
     "collections_grid": {
@@ -84,21 +87,24 @@
       ],
       "settings": {
         "title": "Collections",
-        "button_text": "View all collections"
+        "button_text": "View all collections",
+        "color_scheme": ""
       }
     },
     "featured_product": {
       "type": "section-featured-product",
       "settings": {
         "product": "royce",
-        "button_text": "Learn More"
+        "button_text": "Learn More",
+        "color_scheme": ""
       }
     },
     "featured_collection": {
       "type": "section-featured-collection",
       "settings": {
         "collection": "city-collection",
-        "products_to_show": 6
+        "products_to_show": 6,
+        "color_scheme": ""
       }
     },
     "video_qCGx76": {
