@@ -15,9 +15,53 @@
         "hero_image": "shopify://shop_images/Rectangle_612.png",
         "hero_content": "",
         "hero_button_url": "",
-        "hero_button_text": ""
+        "hero_button_text": "",
+        "color_scheme": ""
+      }
+    },
+    "section_paragraph_8mVbgR": {
+      "type": "section-paragraph",
+      "settings": {
+        "heading": "",
+        "text": "<p>With a love for enduring design and objects built to last, we cherish heritage pieces as much as we value fresh and innovative thinking.</p>",
+        "padding": false,
+        "color_scheme": ""
+      }
+    },
+    "section_two_column_content_e7jwnD": {
+      "type": "section-two-column-content",
+      "blocks": {
+        "sticky_image_with_text_LKnjDg": {
+          "type": "sticky_image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png",
+            "text": "<p>Our furniture designers explore new materials, rework favourite silhouettes, and bring a high level of detail and craft to our collection. We’re deeply inspired by the original James Stewart, a Scots-Australian haberdasher, importer and furniture maker, and our great, great uncle.</p>",
+            "button_1_url": "",
+            "button_1_text": "",
+            "button_2_url": "",
+            "button_2_text": ""
+          }
+        },
+        "image_block_YM6wq9": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup__3.png",
+            "aspect_ratio": "portrait"
+          }
+        }
+      },
+      "block_order": [
+        "sticky_image_with_text_LKnjDg",
+        "image_block_YM6wq9"
+      ],
+      "settings": {
+        "color_scheme": ""
       }
     }
   },
-  "order": ["section_home_hero_dbE6Hc"]
+  "order": [
+    "section_home_hero_dbE6Hc",
+    "section_paragraph_8mVbgR",
+    "section_two_column_content_e7jwnD"
+  ]
 }
