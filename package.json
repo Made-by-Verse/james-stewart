@@ -1,25 +1,22 @@
 {
-  "name": "preact-shopify",
-  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10",
+    "vite-plugin-shopify": "^3.0.1"
+  },
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
-  "devDependencies": {
-    "@preact/preset-vite": "^2.7.0",
-    "@types/preact-custom-element": "^4.0.1",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "sass": "^1.52.2",
-    "tailwindcss": "^3.4.14",
-    "vite": "^5.0.0",
-    "vite-plugin-shopify": "workspace:*"
+    "dev": "run-p -sr \"shopify:dev -- {@}\" \"vite:dev\" --",
+    "deploy": "run-s \"vite:build\" \"shopify:push -- {@}\" --",
+    "shopify:dev": "shopify theme dev",
+    "shopify:push": "shopify theme push",
+    "vite:dev": "vite",
+    "vite:build": "vite build"
   },
   "dependencies": {
-    "@preact/signals": "^1.1.3",
-    "preact": "^10.11.3",
-    "preact-custom-element": "^4.2.1",
-    "vite-plugin-page-reload": "^0.2.0"
+    "sass": "^1.80.5"
   }
 }
