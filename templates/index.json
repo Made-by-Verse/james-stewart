@@ -21,7 +21,9 @@
     "paragraph": {
       "type": "section-paragraph",
       "settings": {
-        "text": "<p>World-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction.</p>"
+        "heading": "Paragraph Section",
+        "text": "<p>World-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction.</p>",
+        "padding": true
       }
     },
     "two_column_content": {
@@ -46,8 +48,12 @@
           }
         }
       },
-      "block_order": ["16831234567891", "16831234567890"],
-      "settings": {}
+      "block_order": [
+        "16831234567891",
+        "16831234567890"
+      ],
+      "settings": {
+      }
     },
     "collections_grid": {
       "type": "section-collections-grid",
@@ -94,6 +100,21 @@
         "collection": "city-collection",
         "products_to_show": 6
       }
+    },
+    "video_qCGx76": {
+      "type": "video",
+      "settings": {
+        "heading": "Video",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=j7iAL9N8H7c",
+        "cover_image": "shopify://shop_images/Rectangle_576.png",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -102,6 +123,7 @@
     "two_column_content",
     "collections_grid",
     "featured_product",
-    "featured_collection"
+    "featured_collection",
+    "video_qCGx76"
   ]
 }
