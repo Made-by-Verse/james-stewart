@@ -15,9 +15,22 @@
         "hero_image": "shopify://shop_images/Rectangle_612.png",
         "hero_content": "",
         "hero_button_url": "",
-        "hero_button_text": ""
+        "hero_button_text": "",
+        "color_scheme": ""
+      }
+    },
+    "section_paragraph_8mVbgR": {
+      "type": "section-paragraph",
+      "settings": {
+        "heading": "",
+        "text": "<p>With a love for enduring design and objects built to last, we cherish heritage pieces as much as we value fresh and innovative thinking.</p>",
+        "padding": false,
+        "color_scheme": ""
       }
     }
   },
-  "order": ["section_home_hero_dbE6Hc"]
+  "order": [
+    "section_home_hero_dbE6Hc",
+    "section_paragraph_8mVbgR"
+  ]
 }
