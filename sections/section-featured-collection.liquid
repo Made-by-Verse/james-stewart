@@ -1,6 +1,14 @@
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
+
 <div class="wrapper py-6 lg:py-12">
   {%- if section.settings.collection != blank -%}
-    <h2 class="mb-8">{{ section.settings.collection.title }}</h2>
+    <h2 class="h3 mb-8">{{ section.settings.collection.title }}</h2>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
       <div class="lg:col-span-3 flex items-start">
         <div class="sticky top-12 max-w-4xl w-full space-y-6">

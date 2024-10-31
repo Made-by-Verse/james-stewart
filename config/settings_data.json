@@ -21,13 +21,10 @@
     "sections": {
       "header": {
         "type": "header",
-        "settings": {
-        }
+        "settings": {}
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -36,7 +33,7 @@
           "accent": "#685f2c"
         }
       },
-      "scheme-24987925-d937-4a31-8586-6d4eb4582dd5": {
+      "scheme-2": {
         "settings": {
           "primary": "#685f2c",
           "contrast": "#f6f5ed",

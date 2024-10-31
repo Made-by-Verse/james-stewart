@@ -1,9 +1,17 @@
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
+
 <div class="wrapper py-6 lg:py-12">
   {% if section.settings.product != blank %}
     {% assign product = all_products[section.settings.product] %}
 
 
-    <h2 class="text-center mb-4 uppercase">{{ product.title }}</h2>
+    <h2 class="h2 text-center mb-4 uppercase">{{ product.title }}</h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {% if product.media.size > 0 %}
         {% for media in product.media limit: 2 %}

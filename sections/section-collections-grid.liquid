@@ -1,22 +1,28 @@
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
 
-  <div class="wrapper py-6 lg:py-12">
-    <div class="flex justify-between items-center py-4 border-t border-lines">
-      {% if section.settings.title != blank %}
-        <h2 class="">{{ section.settings.title }}</h2>
-      {% endif %}
-      {% if section.settings.button_text != blank %}
-        <a href="{{ routes.collections_url }}" class="btn btn--outline-primary">{{ section.settings.button_text }}</a>
-      {% endif %}
-    </div>
+<div class="wrapper py-6 lg:py-12">
+  <div class="flex justify-between items-center py-4 border-t border-lines">
+    {% if section.settings.title != blank %}
+      <h2 class="h3">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.button_text != blank %}
+      <a href="{{ routes.collections_url }}" class="btn btn--outline-primary">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
 
-    <div class="grid gap-4 lg:grid-cols-3">
-      {% for block in section.blocks %}
-        {% assign collection = collections[block.settings.collection] %}
-        {% if collection != blank %}
-          {% render 'collection-tile', collection: collection %}
-        {% endif %}
-      {% endfor %}
-    </div>
+  <div class="grid gap-4 lg:grid-cols-3">
+    {% for block in section.blocks %}
+      {% assign collection = collections[block.settings.collection] %}
+      {% if collection != blank %}
+        {% render 'collection-tile', collection: collection %}
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 

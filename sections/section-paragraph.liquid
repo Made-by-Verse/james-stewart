@@ -1,3 +1,11 @@
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
+
 <div class="py-12">
   {% if section.settings.text != blank %}
     <div class="lg:ml-24 max-w-lg">

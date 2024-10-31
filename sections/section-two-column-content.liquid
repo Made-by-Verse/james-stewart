@@ -1,17 +1,17 @@
 {% style %}
   .color-{{ section.settings.color_scheme }} {
-    --color-primary: {{ scheme.settings.primary.rgb }};
-    --color-contrast: {{ scheme.settings.contrast.rgb }};
-    --color-accent: {{ scheme.settings.accent.rgb }};
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
   }
 {% endstyle %}
 
-<div class="wrapper grid lg:grid-cols-2 gap-8 py-6 lg:py-12 color-{{ section.settings.color_scheme }}">
+<div class="wrapper grid lg:grid-cols-2 gap-8 py-6 lg:py-12 color-{{ section.settings.color_scheme }} bg-primary text-contrast">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'image_block' %}
         {% if block.settings.image %}
-          <div class="relative overflow-hidden bg-gray-100 {% if block.settings.aspect_ratio == 'portrait' %}aspect-portrait{% elsif block.settings.aspect_ratio == 'landscape' %}aspect-landscape{% else %}aspect-square{% endif %}">
+          <div class="relative overflow-hidden bg-white {% if block.settings.aspect_ratio == 'portrait' %}aspect-portrait{% elsif block.settings.aspect_ratio == 'landscape' %}aspect-landscape{% else %}aspect-square{% endif %}">
             {% render 'responsive-image' with
             image: block.settings.image,
             wrapper_class: "",

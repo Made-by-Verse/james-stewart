@@ -12,7 +12,7 @@
       <div>{{ section.settings.text }}</div>
     {% endif %}
   </div>
-  <div class="w-full relative mx-24">
+  {% comment %} <div class="w-full relative mx-24">
     <button
       id="video-play-button"
       aria-label="{{ alt }}"
@@ -53,7 +53,7 @@
           muted: false
       }}
     {%- endif -%}
-  </div>
+  </div> {% endcomment %}
 </div>
 
 {% schema %}

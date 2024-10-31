@@ -50,12 +50,9 @@
           }
         }
       },
-      "block_order": [
-        "16831234567891",
-        "16831234567890"
-      ],
+      "block_order": ["16831234567891", "16831234567890"],
       "settings": {
-        "color_scheme": "scheme-24987925-d937-4a31-8586-6d4eb4582dd5"
+        "color_scheme": "scheme-1"
       }
     },
     "collections_grid": {
