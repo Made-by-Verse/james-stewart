@@ -5,7 +5,7 @@
         <h2 class="">{{ section.settings.title }}</h2>
       {% endif %}
       {% if section.settings.button_text != blank %}
-        <a href="{{ routes.collections_url }}" class="btn btn--outline-dark">{{ section.settings.button_text }}</a>
+        <a href="{{ routes.collections_url }}" class="btn btn--outline-primary">{{ section.settings.button_text }}</a>
       {% endif %}
     </div>
 
@@ -34,6 +34,12 @@
       "type": "text",
       "id": "button_text",
       "label": "Button Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
     }
   ],
   "blocks": [

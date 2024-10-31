@@ -2,11 +2,11 @@
   padding: 14px;
   text-transform: uppercase;
 
-  &--outline-light {
-    @apply border border-lines text-white;
+  &--outline-primary {
+    @apply border border-contrast text-contrast;
   }
 
-  &--outline-dark {
-    @apply border border-dark text-dark;
+  &--outline-contrast {
+    @apply border border-primary text-primary;
   }
 }

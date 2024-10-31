@@ -10,9 +10,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        light: "#F6F5ED",
-        dark: "#241917",
-        lines: "#C3C2BC",
+        primary: "var(--color-primary)",
+        contrast: "var(--color-contrast)",
+        accent: "var(--color-accent)",
       },
     },
   },

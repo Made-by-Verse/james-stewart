@@ -15,7 +15,7 @@
       <div class="text-center">{{ section.settings.hero_content }}</div>
     {% endif %}
     {% if section.settings.hero_button_url != blank %}
-      <a href="{{ section.settings.hero_button_url }}" class="btn btn--outline-light">{{ section.settings.hero_button_text }}</a>
+      <a href="{{ section.settings.hero_button_url }}" class="btn btn--outline-contrast">{{ section.settings.hero_button_text }}</a>
     {% endif %}
   </div>
 </div>
@@ -43,6 +43,12 @@
       "type": "text",
       "id": "hero_button_text",
       "label": "Hero Button Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
     }
   ],
   "presets": [

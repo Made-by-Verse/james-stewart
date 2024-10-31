@@ -1,4 +1,12 @@
-<div class="wrapper grid lg:grid-cols-2 gap-8 py-6 lg:py-12">
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ scheme.settings.primary.rgb }};
+    --color-contrast: {{ scheme.settings.contrast.rgb }};
+    --color-accent: {{ scheme.settings.accent.rgb }};
+  }
+{% endstyle %}
+
+<div class="wrapper grid lg:grid-cols-2 gap-8 py-6 lg:py-12 color-{{ section.settings.color_scheme }}">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'image_block' %}
@@ -36,10 +44,10 @@
                 {{ block.settings.text }}
                 <div class="flex gap-4">
                   {% if block.settings.button_1_url %}
-                    <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-dark">{{ block.settings.button_1_text }}</a>
+                    <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-primary">{{ block.settings.button_1_text }}</a>
                   {% endif %}
                   {% if block.settings.button_2_url %}
-                    <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-dark">{{ block.settings.button_2_text }}</a>
+                    <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-primary">{{ block.settings.button_2_text }}</a>
                   {% endif %}
                 </div>
               </div>
@@ -53,7 +61,14 @@
 {% schema %}
 {
   "name": "Two Column Content",
-  "settings": [],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
   "presets": [
     {
       "name": "Two Column Content",

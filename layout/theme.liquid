@@ -50,7 +50,7 @@
     {%- endif -%}
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="">
     <a class="sr-only" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -61,7 +61,7 @@
 
     {% section 'header' %}
 
-    <main id="MainContent" class="bg-light" role="main" tabindex="-1">
+    <main id="MainContent" class="bg-primary" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
