@@ -50,29 +50,29 @@
     "collections_grid": {
       "type": "section-collections-grid",
       "blocks": {
-        "collection_block_MQpJQt": {
+        "collection_block_TyNmCc": {
           "type": "collection_block",
           "settings": {
-            "collection": "sofas"
+            "collection": "city-collection"
           }
         },
-        "collection_block_ebjgrP": {
+        "collection_block_kxXEHk": {
           "type": "collection_block",
           "settings": {
-            "collection": "frontpage"
+            "collection": "city-collection"
           }
         },
-        "collection_block_XznMm6": {
+        "collection_block_6EFRzn": {
           "type": "collection_block",
           "settings": {
-            "collection": "sofas"
+            "collection": "city-collection"
           }
         }
       },
       "block_order": [
-        "collection_block_MQpJQt",
-        "collection_block_ebjgrP",
-        "collection_block_XznMm6"
+        "collection_block_TyNmCc",
+        "collection_block_kxXEHk",
+        "collection_block_6EFRzn"
       ],
       "settings": {
         "title": "Collections",
