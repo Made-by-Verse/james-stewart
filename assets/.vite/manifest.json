@@ -1,0 +1,21 @@
+{
+  "assets/Dia-Regular.woff2": {
+    "file": "Dia-Regular-ZKPmSgMY.woff2",
+    "src": "assets/Dia-Regular.woff2"
+  },
+  "assets/Frasa-Regular.woff2": {
+    "file": "Frasa-Regular-cOllc8Wq.woff2",
+    "src": "assets/Frasa-Regular.woff2"
+  },
+  "frontend/entrypoints/theme.js": {
+    "file": "theme-D_letCzY.js",
+    "name": "theme",
+    "src": "frontend/entrypoints/theme.js",
+    "isEntry": true
+  },
+  "frontend/entrypoints/theme.scss": {
+    "file": "theme-BDLxwxC9.css",
+    "src": "frontend/entrypoints/theme.scss",
+    "isEntry": true
+  }
+}
