@@ -17,8 +17,52 @@
       </a>
     </div>
     <div class="h-full flex items-center justify-end">
-      <a href="{{ routes.cart_url }}" class="link">cart
-      </a>
+      <button 
+        x-data
+        @click="$dispatch('toggle-cart-drawer')"
+        class="link"
+        type="button"
+      >
+        cart
+      </button>
+    </div>
+  </div>
+
+  <!-- Add the cart drawer markup -->
+  <div
+    x-data="{ open: false }"
+    @toggle-cart-drawer.window="open = !open"
+    @keydown.escape.window="open = false"
+  >
+    <!-- Backdrop -->
+    <div 
+      x-show="open"
+      class="fixed inset-0 bg-black bg-opacity-50"
+      @click="open = false"
+    ></div>
+
+    <!-- Drawer -->
+    <div
+      x-show="open"
+      x-transition:enter="transform transition ease-in-out duration-500"
+      x-transition:enter-start="translate-x-full"
+      x-transition:enter-end="translate-x-0"
+      x-transition:leave="transform transition ease-in-out duration-500"
+      x-transition:leave-start="translate-x-0"
+      x-transition:leave-end="translate-x-full"
+      class="fixed right-0 top-0 h-full w-96 bg-white shadow-lg"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="p-4">
+        <div class="flex justify-between items-center">
+          <h2 class="text-lg font-bold">Cart</h2>
+          <button @click="open = false" class="text-gray-500">&times;</button>
+        </div>
+        <div class="mt-4">
+          {% render 'cart-drawer' %}
+        </div>
+      </div>
     </div>
   </div>
 

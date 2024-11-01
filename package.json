@@ -17,6 +17,7 @@
     "vite:build": "vite build"
   },
   "dependencies": {
+    "alpinejs": "^3.14.3",
     "sass": "^1.80.5"
   }
 }

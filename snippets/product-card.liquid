@@ -1,7 +1,7 @@
 <div class="group relative">
   <a href="{{ product.url }}" class="block">
     {% if product.featured_image %}
-      {% render 'responsive-image', image: product.featured_image, width: 400, height: 400, image_class: 'absolute inset-0 w-full h-full object-cover', wrapper_class: 'relative aspect-landscape overflow-hidden' %}
+      {% render 'responsive-image', image: product.featured_image, width: 800, height: 800, image_class: 'absolute inset-0 w-full h-full object-cover', wrapper_class: 'relative aspect-landscape overflow-hidden' %}
     {% else %}
       {{ 'product-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full object-cover bg-gray-100' }}
     {% endif %}
