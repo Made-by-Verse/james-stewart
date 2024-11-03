@@ -23,9 +23,7 @@
     "paragraph": {
       "type": "section-paragraph",
       "settings": {
-        "heading": "Paragraph Section",
         "text": "<p>World-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction.</p>",
-        "padding": true,
         "color_scheme": ""
       }
     },
@@ -51,7 +49,10 @@
           }
         }
       },
-      "block_order": ["16831234567891", "16831234567890"],
+      "block_order": [
+        "16831234567891",
+        "16831234567890"
+      ],
       "settings": {
         "color_scheme": "scheme-1"
       }
@@ -105,20 +106,21 @@
         "color_scheme": ""
       }
     },
+    "sticky_text_image_banner": {
+      "type": "section-image-banner-with-sticky-text",
+      "settings": {
+        "title": "Goldie",
+        "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
+      }
+    },
     "video_qCGx76": {
       "type": "video",
       "settings": {
         "heading": "Video",
         "text": "<p>The home is an expression of our inner world, reflecting our values, ideals and confirming our own personal rituals and way of living. These unique rituals evoke feelings of comfort in their consistency.</p>",
+        "video": "shopify://files/videos/5644364-hd_1920_1080_25fps.mp4",
         "video_url": "https://www.youtube.com/watch?v=j7iAL9N8H7c",
-        "cover_image": "shopify://shop_images/Rectangle_576.png"
-      }
-    },
-    "sticky_text_image_banner": {
-      "type": "section-image-banner-with-sticky-text",
-      "settings": {
-        "title": "Goldie",
-        "image": "shopify://shop_images/Rectangle_576.png"
+        "cover_image": "shopify://shop_images/Rectangle_578.png"
       }
     }
   },
