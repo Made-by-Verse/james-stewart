@@ -113,6 +113,13 @@
         "video_url": "https://www.youtube.com/watch?v=j7iAL9N8H7c",
         "cover_image": "shopify://shop_images/Rectangle_576.png"
       }
+    },
+    "sticky_text_image_banner": {
+      "type": "section-image-banner-with-sticky-text",
+      "settings": {
+        "title": "Goldie",
+        "image": "shopify://shop_images/Rectangle_576.png"
+      }
     }
   },
   "order": [
@@ -122,6 +129,7 @@
     "collections_grid",
     "featured_product",
     "featured_collection",
+    "sticky_text_image_banner",
     "video_qCGx76"
   ]
 }

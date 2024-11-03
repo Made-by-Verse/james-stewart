@@ -10,11 +10,9 @@
   "type": "module",
   "scripts": {
     "dev": "run-p -sr \"shopify:dev -- {@}\" \"vite:dev\" --",
-    "deploy": "run-s \"vite:build\" \"shopify:push -- {@}\" --",
+    "build": "vite build",
     "shopify:dev": "shopify theme dev",
-    "shopify:push": "shopify theme push",
-    "vite:dev": "vite",
-    "vite:build": "vite build"
+    "vite:dev": "vite"
   },
   "dependencies": {
     "alpinejs": "^3.14.3",

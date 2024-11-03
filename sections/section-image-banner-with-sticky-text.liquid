@@ -1,0 +1,25 @@
+<div class='w-screen h-screen relative text-white'>
+  {% render 'responsive-image', image: section.settings.image, wrapper_class: 'absolute h-full w-full inset-0 object-cover', image_class: 'object-cover' %}
+  <div class='wrapper flex items-start h-full'>
+    <h2 class='sticky top-20 h1'>{{ section.settings.title }}</h2>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Sticky Text Image Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}
+
