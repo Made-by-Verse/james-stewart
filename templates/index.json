@@ -11,6 +11,31 @@
   "sections": {
     "home_hero": {
       "type": "section-home-hero",
+      "blocks": {
+        "image_block_M6HDqz": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/hero-image.png"
+          }
+        },
+        "image_block_G94jgb": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
+          }
+        },
+        "image_block_Vz9G7P": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_576.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_M6HDqz",
+        "image_block_G94jgb",
+        "image_block_Vz9G7P"
+      ],
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
