@@ -12,8 +12,6 @@ if (headerElement && heroSection) {
         } else {
           headerElement.classList.remove("header--on-hero");
         }
-
-        console.log(entry.isIntersecting);
       });
     },
     {

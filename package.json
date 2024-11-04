@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.14.3",
+    "lenis": "^1.1.14",
     "sass": "^1.80.5"
   }
 }
