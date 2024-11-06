@@ -19,7 +19,7 @@
           {%- if section.settings.collection.description != blank -%}
             <div class="grid lg:grid-cols-4 space-y-4">
               <div class="lg:col-span-3 max-w-sm lg:col-start-2">
-                {{ section.settings.collection.description }}
+                {{ section.settings.description }}
               </div>
               <div class="lg:col-start-2 flex">
                 <a href="{{ section.settings.collection.url }}" class="btn btn--outline-primary">Explore</a>
@@ -49,6 +49,11 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
     },
     {
       "type": "range",

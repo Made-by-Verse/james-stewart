@@ -23,7 +23,7 @@
               <div class="absolute inset-0 flex p-16 items-end justify-center text-center">
                 <div class="max-w-md">
                   <p class="text-white">{{ product.description | truncate: 100 }}</p>
-                  <a href="{{ product.url }}" class="btn btn--outline-primary block">{{ section.settings.button_text }}</a>
+                  <a href="{{ product.url | within: collection }}" class="btn btn--outline-primary block">{{ section.settings.button_text }}</a>
                 </div>
               </div>
             </div>

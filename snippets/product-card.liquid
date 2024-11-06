@@ -1,5 +1,5 @@
 <div class="group relative">
-  <a href="{{ product.url }}" class="block">
+  <a href="{{ product.url | within: collection }}" class="block">
     {% if product.featured_image %}
       {% render 'responsive-image', image: product.featured_image, width: 800, height: 800, image_class: 'absolute inset-0 w-full h-full object-cover', wrapper_class: 'relative aspect-landscape overflow-hidden' %}
     {% else %}
