@@ -118,7 +118,7 @@
     "featured_collection": {
       "type": "section-featured-collection",
       "settings": {
-        "collection": "city-collection",
+        "collection": "living-room",
         "products_to_show": 6,
         "color_scheme": ""
       }
