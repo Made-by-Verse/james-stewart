@@ -1,4 +1,4 @@
-<header id="js-header" class="fixed bg-primary w-screen z-50 h-16 font-sans">
+<header id="js-header" class="fixed bg-primary w-full z-50 h-16 font-sans">
   <div class="wrapper h-full grid lg:grid-cols-3 gap-4">
     <nav class="h-full">
       <ul class="flex gap-4 h-full items-center">
@@ -54,12 +54,12 @@
       role="dialog"
       aria-modal="true"
     >
-      <div class="p-4">
+      <div class="p-4 h-full">
         <div class="flex justify-between items-center">
           <h2 class="link">Cart</h2>
           <button @click="open = false" class="">&times;</button>
         </div>
-        <div class="mt-4">
+        <div class="mt-24 h-full flex flex-col justify-between w-full">
           {% render 'cart-drawer' %}
         </div>
       </div>

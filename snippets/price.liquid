@@ -45,6 +45,12 @@
     {%- if show_compare_at_price and compare_at_price -%}
       <span class="text-gray-500">{{ compare_at_price | money_without_trailing_zeros }}</span>
     {%- endif -%}
-    <span class="font-medium">{{ money_price | money_without_trailing_zeros }}</span>
+    <span class="font-medium">
+      {%- if product.price_varies -%}
+        from {{ money_price_min | money_without_trailing_zeros }}
+      {%- else -%}
+        {{ money_price | money_without_trailing_zeros }}
+      {%- endif -%}
+    </span>
   </div>
 {% endunless %}

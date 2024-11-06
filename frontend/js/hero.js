@@ -15,6 +15,7 @@ const heroSwiper = new Swiper(".hero-swiper", {
     delay: 3000,
     disableOnInteraction: false,
   },
+  allowTouchMove: false,
   speed: 1500,
   loop: true,
   pagination: {

@@ -1,9 +1,10 @@
 {% if cart.item_count > 0 %}
-  <div class="cart-items">
+  <div class="border-y border-lines divide-y divide-lines divide-opacity-50">
     {% for item in cart.items %}
-      <div class="cart-item flex gap-4 py-4 border-b">
-        <img src="{{ item.image | img_url: '100x' }}" alt="{{ item.title }}">
-        <div>
+      <div class="flex gap-4 py-4 border-b">
+        <img src="{{ item.image | img_url: '100x' }}" alt="{{ item.title }}" class="w-40 aspect-video object-cover flex-0">
+        <div class="flex flex-col justify-between h-full">
+          
           <h3>{{ item.title }}</h3>
           <p>{{ item.final_price | money }}</p>
           <p>Quantity: {{ item.quantity }}</p>

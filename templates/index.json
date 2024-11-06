@@ -11,6 +11,7 @@
   "sections": {
     "home_hero": {
       "type": "section-home-hero",
+      "class": "overflow-hidden",
       "blocks": {
         "image_block_M6HDqz": {
           "type": "image_block",
@@ -74,10 +75,7 @@
           }
         }
       },
-      "block_order": [
-        "16831234567891",
-        "16831234567890"
-      ],
+      "block_order": ["16831234567891", "16831234567890"],
       "settings": {
         "color_scheme": "scheme-1"
       }

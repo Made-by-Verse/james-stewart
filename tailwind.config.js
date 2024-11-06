@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     "./frontend/**/*.{js,jsx,ts,tsx}",
@@ -17,6 +18,7 @@ export default {
         primary: "var(--color-primary)",
         contrast: "var(--color-contrast)",
         accent: "var(--color-accent)",
+        lines: "#C3C2BC",
       },
     },
   },
