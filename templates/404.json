@@ -13,9 +13,38 @@
       "type": "main-404",
       "settings": {
       }
+    },
+    "section_home_hero_eBGYw6": {
+      "type": "section-home-hero",
+      "blocks": {
+        "image_block_kGBqzU": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
+          }
+        },
+        "image_block_qKzdLG": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/hero-image.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_kGBqzU",
+        "image_block_qKzdLG"
+      ],
+      "settings": {
+        "hero_content": "",
+        "hero_button_url": "",
+        "hero_button_text": "",
+        "color_scheme": "",
+        "show_logo": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "section_home_hero_eBGYw6"
   ]
 }
