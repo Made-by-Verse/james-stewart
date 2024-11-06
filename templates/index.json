@@ -23,17 +23,11 @@
           "settings": {
             "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
           }
-        },
-        "image_block_Vz9G7P": {
-          "type": "image_block",
-          "settings": {
-          }
         }
       },
       "block_order": [
         "image_block_M6HDqz",
-        "image_block_G94jgb",
-        "image_block_Vz9G7P"
+        "image_block_G94jgb"
       ],
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
@@ -116,7 +110,7 @@
     "featured_product": {
       "type": "section-featured-product",
       "settings": {
-        "product": "mason-executive-chair",
+        "product": "royce-chair",
         "button_text": "Learn More",
         "color_scheme": ""
       }
