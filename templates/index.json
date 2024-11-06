@@ -27,7 +27,6 @@
         "image_block_Vz9G7P": {
           "type": "image_block",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_576.png"
           }
         }
       },
@@ -58,7 +57,6 @@
         "16831234567891": {
           "type": "sticky_image_with_text",
           "settings": {
-            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup.png",
             "text": "<p>James Stewart blends world-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction. Blending a new generation of design, materials and making, alongside classic patterns and silhouettes, our collection is made for the discerning eye. </p>",
             "button_1_url": "https://www.google.com",
             "button_1_text": "Our Story",
@@ -69,7 +67,6 @@
         "16831234567890": {
           "type": "image_block",
           "settings": {
-            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_2.png",
             "aspect_ratio": "portrait"
           }
         }
@@ -78,6 +75,7 @@
         "16831234567891",
         "16831234567890"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1"
       }
@@ -88,19 +86,19 @@
         "collection_block_TyNmCc": {
           "type": "collection_block",
           "settings": {
-            "collection": "city-collection"
+            "collection": "executive-seating"
           }
         },
         "collection_block_kxXEHk": {
           "type": "collection_block",
           "settings": {
-            "collection": "city-collection"
+            "collection": "sofas"
           }
         },
         "collection_block_6EFRzn": {
           "type": "collection_block",
           "settings": {
-            "collection": "city-collection"
+            "collection": "accent-seating"
           }
         }
       },
@@ -118,7 +116,7 @@
     "featured_product": {
       "type": "section-featured-product",
       "settings": {
-        "product": "royce",
+        "product": "mason-executive-chair",
         "button_text": "Learn More",
         "color_scheme": ""
       }
@@ -143,8 +141,9 @@
       "settings": {
         "heading": "Video",
         "text": "<p>The home is an expression of our inner world, reflecting our values, ideals and confirming our own personal rituals and way of living. These unique rituals evoke feelings of comfort in their consistency.</p>",
-        "video_url": "https://www.youtube.com/watch?v=j7iAL9N8H7c",
-        "cover_image": "shopify://shop_images/Rectangle_578.png"
+        "video": "shopify://files/videos/5644364-hd_1920_1080_25fps.mp4",
+        "video_url": "",
+        "cover_image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png"
       }
     }
   },
