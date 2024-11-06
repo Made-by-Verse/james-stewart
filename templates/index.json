@@ -119,6 +119,7 @@
       "type": "section-featured-collection",
       "settings": {
         "collection": "living-room",
+        "description": "<p>James Stewart blends world-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction. Blending a new generation of design.</p>",
         "products_to_show": 6,
         "color_scheme": ""
       }
