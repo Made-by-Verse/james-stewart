@@ -14,7 +14,7 @@
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
-      <div class="w-full">
+      <div class="w-full border-t border-contrast">
         <label class="sr-only" for="Option-{{ section.id }}-{{ forloop.index0 }}">
           {{ option.name }}
         </label>

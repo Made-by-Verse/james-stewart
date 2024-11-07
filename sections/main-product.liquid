@@ -1,9 +1,37 @@
 <div
-  class='wrapper pt-20 pb-4 grid lg:grid-cols-6'
+  class='wrapper pt-20 pb-4 grid lg:grid-cols-6 gap-4'
 >
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-    <div class='lg:col-span-4'>
-      {% render 'product-media-gallery', variant_images: variant_images %}
+    <div class='lg:col-span-4 space-y-4'>
+      {% for media in product.media %}
+        {% assign modulo = forloop.index | modulo: 3 %}
+        
+        {% if modulo == 1 %}
+          {% render 'responsive-image',
+            image: media,
+            width: 1000,
+            wrapper_class: 'w-full',
+            image_class: 'w-full h-full object-cover'
+          %}
+        {% elsif modulo == 2 %}
+          <div class="grid lg:grid-cols-3 gap-4">
+            {% render 'responsive-image',
+              image: media,
+              width: 500,
+              wrapper_class: 'w-full',
+              image_class: 'w-full object-contain'
+            %}
+            {% if forloop.last != true %}
+              {% render 'responsive-image',
+                image: product.media[forloop.index],
+                width: 500,
+                wrapper_class: 'w-full lg:col-span-2',
+                image_class: 'w-full h-full object-contain'
+              %}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
     <div class='lg:col-span-2 h-product_details sticky top-20 flex items-center justify-center w-full'>
       <section
@@ -15,12 +43,14 @@
           <h1 class="h3 mb-8">
             {{ product.title | escape }}
           </h1>
-          <p
-            class="text-xs"
-            {{ block.shopify_attributes }}
-          >
-            {{- product.metafields.descriptors.subtitle -}}
-          </p>
+          {% if product.metafields.descriptors.subtitle != blank %}
+            <p
+              class="text-xs"
+              {{ block.shopify_attributes }}
+            >
+              {{- product.metafields.descriptors.subtitle -}}
+            </p>
+          {% endif %}
           <div id="price-{{ section.id }}" role="status">
             {%- render 'price',
               product: product,
@@ -35,52 +65,20 @@
             <p>{{- product.metafields.custom.dimensions -}}</p>
           </div>
           <div>
-            <div class="w-full border-t border-contrast">
-              {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
+            <div class="w-full">
+              {% if product.has_only_default_variant == false %}
+                {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
+              {% endif %}
               {%- render 'buy-buttons',
-              product: product,
-              product_form_id: product_form_id,
-              section_id: section.id,
-              show_pickup_availability: true
+                product: product,
+                product_form_id: product_form_id,
+                section_id: section.id,
               -%}
             </div>
           </div>
         </div>
       </section>
     </div>
-
-    {% render 'product-media-modal', variant_images: variant_images %}
-
-    {% assign popups = section.blocks | where: 'type', 'popup' %}
-    {%- for block in popups -%}
-      <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
-        <div
-          role="dialog"
-          aria-label="{{ block.settings.text }}"
-          aria-modal="true"
-          class="product-popup-modal__content"
-          tabindex="-1"
-        >
-          <button
-            id="ModalClose-{{ block.id }}"
-            type="button"
-            class="product-popup-modal__toggle"
-            aria-label="{{ 'accessibility.close' | t }}"
-          >
-            {{- 'icon-close.svg' | inline_asset_content -}}
-          </button>
-          <div class="product-popup-modal__content-info">
-            <h1 class="h2">{{ block.settings.page.title | escape }}</h1>
-            {{ block.settings.page.content }}
-          </div>
-        </div>
-      </modal-dialog>
-    {%- endfor -%}
-
-    {%- if product.media.size > 0 -%}
-      <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
-      <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
 
     {%- if first_3d_model -%}
       <script type="application/json" id="ProductJSON-{{ product.id }}">
