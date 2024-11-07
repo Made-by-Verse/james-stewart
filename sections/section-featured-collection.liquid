@@ -16,7 +16,7 @@
             {% render 'responsive-image', image: section.settings.collection.image, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 w-full h-full', wrapper_class: 'relative aspect-landscape' %}
           {%- endif -%}
 
-          {%- if section.settings.collection.description != blank -%}
+          {%- if section.settings.description != blank -%}
             <div class="grid lg:grid-cols-4 space-y-4">
               <div class="lg:col-span-3 max-w-sm lg:col-start-2">
                 {{ section.settings.description }}
