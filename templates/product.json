@@ -11,20 +11,39 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {}
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     },
     "section-image-banner-with-sticky-text": {
       "type": "section-image-banner-with-sticky-text",
-      "settings": {}
+      "settings": {
+        "title": "Arlie",
+        "image": "shopify://shop_images/Rectangle_631.png"
+      }
     },
     "related-products": {
       "type": "related-products",
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
@@ -34,5 +53,9 @@
       }
     }
   },
-  "order": ["main", "section-image-banner-with-sticky-text", "related-products"]
+  "order": [
+    "main",
+    "section-image-banner-with-sticky-text",
+    "related-products"
+  ]
 }
