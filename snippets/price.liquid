@@ -22,35 +22,27 @@
   endif
 
   assign compare_at_price = target.compare_at_price
-  assign price = target.price | default: 1999
-  assign price_min = product.price_min
-  assign price_max = product.price_max
+  assign price = target.price
+  assign price_min = product.price_min | default: price
+  assign price_max = product.price_max | default: price
   assign available = target.available | default: false
   assign money_price = price | money
   assign money_price_min = price_min | money
   assign money_price_max = price_max | money
-  if settings.currency_code_enabled
-    assign money_price = price | money_with_currency
-    assign money_price_min = price_min | money_with_currency
-    assign money_price_max = price_max | money_with_currency
-  endif
-
-  if target == product and product.price_varies
-    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
-  endif
 -%}
 
 {%- unless target == null and placeholder == null -%}
   <div class="flex gap-2 items-center">
-    {%- if show_compare_at_price and compare_at_price -%}
-      <span class="text-gray-500">{{ compare_at_price | money_without_trailing_zeros }}</span>
+    {%- if compare_at_price -%}
+      <span class="text-gray-500 line-through">{{ compare_at_price }}</span>
     {%- endif -%}
-    <span class="font-medium">
+    <span class="uppercase">
       {%- if product.price_varies -%}
-        from {{ money_price_min | money_without_trailing_zeros }}
+        <span class="text-xs">from</span> {{ money_price_min }}
       {%- else -%}
-        {{ money_price | money_without_trailing_zeros }}
+        {{ money_price }}
       {%- endif -%}
     </span>
   </div>
 {% endunless %}
+
