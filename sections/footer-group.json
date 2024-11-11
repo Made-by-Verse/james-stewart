@@ -14,9 +14,11 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-8d088116-7e45-46a2-98f7-0259ad9c3909"
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }
