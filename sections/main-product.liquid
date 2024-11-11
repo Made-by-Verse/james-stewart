@@ -43,12 +43,12 @@
           <h1 class="h3 mb-8">
             {{ product.title | escape }}
           </h1>
-          {% if product.metafields.descriptors.subtitle != blank %}
+          {% if product.metafields.custom.sofa_size != blank %}
             <p
-              class="text-xs"
+              class="text-xs uppercase"
               {{ block.shopify_attributes }}
             >
-              {{- product.metafields.descriptors.subtitle -}}
+              {{- product.metafields.custom.sofa_size -}}
             </p>
           {% endif %}
           <div id="price-{{ section.id }}" role="status">
@@ -79,13 +79,6 @@
         </div>
       </section>
     </div>
-
-    {%- if first_3d_model -%}
-      <script type="application/json" id="ProductJSON-{{ product.id }}">
-        {{ product.media | where: 'media_type', 'model' | json }}
-      </script>
-      <script src="{{ 'product-model.js' | asset_url }}" defer></script>
-    {%- endif -%}
 
     {%- liquid
       if product.selected_or_first_available_variant.featured_media

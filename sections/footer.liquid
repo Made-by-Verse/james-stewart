@@ -1,4 +1,12 @@
-<footer class="color-{{ section.settings.color_scheme }}">
+{% stylesheet %}
+    .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstylesheet %}
+
+<footer class="color-{{ section.settings.color_scheme }} bg-primary">
   <div class="wrapper grid lg:grid-cols-6 pt-12 gap-4">
     <ul class="space-y-1 lg:col-span-3 text-[24px] leading-none">
       {% for link in linklists.footer-menu-1-v2-0.links %}
@@ -65,6 +73,13 @@
 {% schema %}
 {
   "name": "t:sections.footer.name",
-  "settings": [],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
 }
 {% endschema %}
