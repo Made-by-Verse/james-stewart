@@ -28,7 +28,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "primary": "#f6f5ed",
+          "primary": "#F6F5ED",
           "contrast": "#241917",
           "accent": "#685f2c"
         }
@@ -40,9 +40,9 @@
           "accent": "#241917"
         }
       },
-      "scheme-8d088116-7e45-46a2-98f7-0259ad9c3909": {
+      "scheme-3": {
         "settings": {
-          "primary": "#e5d9c6",
+          "primary": "#E5D9C6",
           "contrast": "#241917",
           "accent": "#685f2c"
         }
@@ -63,7 +63,7 @@
       "social_twitter_link": "",
       "social_facebook_link": "",
       "social_pinterest_link": "",
-      "social_instagram_link": "",
+      "social_instagram_link": "https://www.instagram.com",
       "social_tiktok_link": "",
       "social_tumblr_link": "",
       "social_snapchat_link": "",

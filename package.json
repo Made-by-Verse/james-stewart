@@ -11,10 +11,11 @@
   "scripts": {
     "dev": "run-p -sr \"shopify:dev -- {@}\" \"vite:dev\" --",
     "build": "vite build",
-    "shopify:dev": "shopify theme dev",
+    "shopify:dev": "shopify theme dev --store https://james-stewart-furniture.myshopify.com",
     "vite:dev": "vite"
   },
   "dependencies": {
+    "@alpinejs/intersect": "^3.14.3",
     "alpinejs": "^3.14.3",
     "lenis": "^1.1.14",
     "sass": "^1.80.5",

@@ -1,85 +1,7 @@
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
-    {% comment %} {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
-      <facet-filters-form>
-        <form id="FacetSortForm">
-          <div>
-            <div>
-              <h2>
-                <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-              </h2>
-              <div>
-                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-                <select
-                  name="sort_by"
-                  class="facet-filters__sort select__select caption-large"
-                  id="SortBy"
-                  aria-describedby="a11y-refresh-page-message"
-                >
-                  {%- for option in collection.sort_options -%}
-                    <option
-                      value="{{ option.value | escape }}"
-                      {% if option.value == sort_by %}
-                        selected="selected"
-                      {% endif %}
-                    >
-                      {{ option.name | escape }}
-                    </option>
-                  {%- endfor -%}
-                </select>
-                <span class="svg-wrapper">
-                  {{- 'icon-caret.svg' | inline_asset_content -}}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-count-vertical light" role="status">
-            <h2 class="product-count__text text-body">
-              <span id="ProductCountDesktop">
-                {%- if collection.results_count -%}
-                  {{
-                    'templates.search.results_with_count'
-                    | t: terms: collection.terms, count: collection.results_count
-                  }}
-                {%- elsif collection.products_count == collection.all_products_count -%}
-                  {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
-                {%- else -%}
-                  {{
-                    'products.facets.product_count'
-                    | t: product_count: collection.products_count, count: collection.all_products_count
-                  }}
-                {%- endif -%}
-              </span>
-            </h2>
-            {%- render 'loading-spinner' -%}
-          </div>
-        </form>
-      </facet-filters-form>
-    {%- endif -%} {% endcomment %}
-
-    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
-      {% comment %} {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
-        <aside
-          aria-labelledby="verticalTitle"
-          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
-          id="main-collection-filters"
-          data-id="{{ section.id }}"
-        >
-          {% render 'facets',
-            results: collection,
-            enable_filtering: section.settings.enable_filtering,
-            enable_sorting: section.settings.enable_sorting,
-            filter_type: section.settings.filter_type,
-            paginate: paginate
-          %}
-        </aside>
-      {%- endif -%} {% endcomment %}
-
-      <div>
         {%- if collection.products.size == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
-            <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
               <h2 class="title title--primary">
                 {{ 'sections.collection_template.empty' | t -}}
@@ -93,9 +15,57 @@
           </div>
         {%- else -%}
           <div
-            class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+            class="collection {% if section.settings.filter_type != 'vertical' %}page-width{% endif %}"
           >
-            <div class="loading-overlay gradient"></div>
+            <div class="collection__filters wrapper py-12" x-data="{ open: false }">
+              <button 
+                class="btn btn--outline-primary mb-4"
+                x-data
+                @click="$dispatch('toggle-filter-drawer')"
+              >
+                Filter Products
+                <span x-text="open ? '-' : '+'"></span>
+              </button>
+
+              <div
+                x-data="{ open: false }"
+                class='z-[9999] relative'
+                @toggle-filter-drawer.window="open = !open"
+                @keydown.escape.window="open = false"
+              >
+                <!-- Backdrop -->
+                <div 
+                  x-show="open"
+                  class="fixed inset-0 bg-black bg-opacity-50"
+                  @click="open = false"
+                ></div>
+
+                <!-- Drawer -->
+                <div
+                  x-show="open"
+                  x-transition:enter="transform transition ease-in-out duration-500"
+                  x-transition:enter-start="-translate-x-full"
+                  x-transition:enter-end="translate-x-0"
+                  x-transition:leave="transform transition ease-in-out duration-500"
+                  x-transition:leave-start="translate-x-0"
+                  x-transition:leave-end="-translate-x-full"
+                  class="fixed left-0 top-0 h-full max-w-lg w-full bg-primary text-contrast shadow-lg"
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <div class="p-4 h-full flex flex-col w-full">
+                    <div class="flex justify-between items-center">
+                      <h2 class="font-sans">Filters</h2>
+                      <button @click="open = false" class="">&times;</button>
+                    </div>
+                    <div class="flex flex-col justify-between w-full flex-1">
+                      {% render 'facets', results: collection, pre paginate: paginate %}
+                    </div>
+                  </div>
+                </div>
+              </div>  
+              {% comment %}  {% endcomment %}
+            </div>
             <ul
               id="product-grid"
               data-id="{{ section.id }}"
@@ -107,7 +77,6 @@
                     product: product
                   %}
                 </li>
-                {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
             </ul>
 
@@ -119,9 +88,6 @@
       </div>
     </div>
   {%- endpaginate -%}
-  {% if section.settings.image_shape == 'arch' %}
-    {{ 'mask-arch.svg' | inline_asset_content }}
-  {%- endif -%}
 </div>
 
 {% schema %}

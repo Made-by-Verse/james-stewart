@@ -1,13 +1,13 @@
-{% stylesheet %}
+{% style %}
     .color-{{ section.settings.color_scheme }} {
     --color-primary: {{ section.settings.color_scheme.settings.primary }};
     --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
     --color-accent: {{ section.settings.color_scheme.settings.accent }};
   }
-{% endstylesheet %}
+{% endstyle %}
 
 <footer class="color-{{ section.settings.color_scheme }} bg-primary">
-  <div class="wrapper grid lg:grid-cols-6 pt-12 gap-4">
+  <div class="wrapper grid lg:grid-cols-6 pt-12 gap-4 mb-24">
     <ul class="space-y-1 lg:col-span-3 text-[24px] leading-none">
       {% for link in linklists.footer-menu-1-v2-0.links %}
         <li class="">
@@ -35,7 +35,7 @@
         </li>
       {% endfor %}
     </ul>
-    <ul class="space-y-1 leading-none text-base">
+    <ul class="space-y-1 leading-none text-base col-start-4">
       {%- if settings.social_twitter_link != blank -%}
         <li>
           <a href="{{ settings.social_twitter_link }}" class="">Twitter</a>
@@ -49,6 +49,10 @@
       {%- if settings.social_instagram_link != blank -%}
         <li>
           <a href="{{ settings.social_instagram_link }}" class="">Instagram</a>
+        </li>
+      {%- else -%}
+        <li>
+          <a href="" class="">Instagram Isn't here</a>
         </li>
       {%- endif -%}
       {%- if settings.social_tiktok_link != blank -%}
@@ -67,6 +71,12 @@
         </li>
       {%- endif -%}
     </ul>
+  </div>
+  <div class="wrapper font-sans">
+    <div class="flex justify-between border-t border-contrast py-2">
+      <p>© {{ 'now' | date: '%Y' }} James Stewart</p>
+      <p>Site by <a href="https://www.joshuabrown.com.au" target="_blank">Joshua Brown</a></p>
+    </div>
   </div>
 </footer>
 

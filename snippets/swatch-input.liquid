@@ -11,7 +11,6 @@
   - disabled: {Boolean} default disabled status (optional)
   - visually_disabled: {Boolean} style the swatch as disabled, but leave the input enabled (optional)
   - shape: {String} swatch shape. Accepts 'square', defaults to circle (optional)
-  - help_text: {String} additional content to render inside the label (optional)
   - additional_props: {String} (optional) additional properties to attach to the input
 
   Usage:
@@ -31,22 +30,19 @@
   name="{{ name }}"
   value="{{ value }}"
   form="{{ product_form_id }}"
-  class="swatch-input__input{% if visually_disabled %} visually-disabled{% endif %}"
+  class="peer appearance-none"
   {% if checked %}
     checked
   {% endif %}
   {% if disabled %}
     disabled
   {% endif %}
-  {% if additional_props %}
-    {{ additional_props }}
-  {% endif %}
 >
 <label
   for="{{ id }}"
   title="{{ value }}"
-  class="swatch-input__label{% if shape == 'square' %} swatch-input__label--square{% endif %}"
+  class="peer-checked:bg-black/10 block p-1 transition-all duration-300"
 >
-  {% render 'swatch', swatch: swatch, shape: shape %}
-  {{ help_text }}
+  {% render 'swatch', swatch: swatch %}
+  {{ text_value }}
 </label>

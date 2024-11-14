@@ -1,5 +1,6 @@
 .btn {
   padding: 14px;
+  text-align: center;
 
   @apply uppercase font-sans tracking-wide;
 
@@ -10,8 +11,30 @@
   &--outline-contrast {
     @apply border border-primary text-primary;
   }
+
+  &--primary {
+    @apply bg-contrast text-primary;
+  }
 }
 
 .link {
   @apply tracking-wide uppercase;
+}
+
+.filter-clear-all {
+  @apply text-sm uppercase font-sans flex w-full justify-center;
+
+  span {
+    @apply relative;
+    &:before {
+      content: "";
+      @apply w-full absolute top-full left-0 h-[1px] bg-contrast transition-all duration-300;
+    }
+
+    &:hover {
+      &:before {
+        @apply w-0;
+      }
+    }
+  }
 }

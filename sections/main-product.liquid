@@ -40,7 +40,7 @@
       >
         <div class="w-full h-2/3 flex flex-col items-center justify-center">
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
-          <h1 class="h3 mb-8">
+          <h1 class="h3 mb-8 text-center">
             {{ product.title | escape }}
           </h1>
           {% if product.metafields.custom.sofa_size != blank %}
@@ -61,8 +61,128 @@
           </div>
         </div>
         <div class="w-full h-1/3 flex flex-col justify-end">
-          <div>
-            <p>{{- product.metafields.custom.dimensions -}}</p>
+          <div class="flex-1 grid grid-cols-3 gap-4 p-4">
+            <ul class='font-sans space-y-1 leading-none text-sm' x-data="{ activeDrawer: null }">
+              <li>
+                <button
+                  class="text-left uppercase"
+                  @click="$dispatch('toggle-drawer', { drawer: 'specifications' })"
+                  :aria-expanded="activeDrawer === 'specifications'"
+                >
+                  Specifications
+                </button>
+              </li>
+              <li>
+                <button
+                  class="text-left uppercase"
+                  @click="$dispatch('toggle-drawer', { drawer: 'product-care' })"
+                  :aria-expanded="activeDrawer === 'product-care'"
+                >
+                  Product Care
+                </button>
+              </li>
+              <li>
+                <button
+                  class="text-left uppercase"
+                  @click="$dispatch('toggle-drawer', { drawer: 'shipping' })"
+                  :aria-expanded="activeDrawer === 'shipping'"
+                >
+                  Shipping
+                </button>
+              </li>
+            </ul>
+
+            <!-- Multiple drawers -->
+            <div
+              class='drawer fixed z-[9999]'
+              x-data="{ activeDrawer: null }"
+              @toggle-drawer.window="activeDrawer = $event.detail.drawer === activeDrawer ? null : $event.detail.drawer"
+              @keydown.escape.window="activeDrawer = null"
+            >
+              <!-- Backdrop -->
+              <div 
+                x-show="activeDrawer !== null"
+                class="fixed inset-0 bg-black bg-opacity-50 z-[99999]"
+                @click="activeDrawer = null"
+              ></div>
+
+              <!-- Specifications Drawer -->
+              <div
+                x-show="activeDrawer === 'specifications'"
+                x-transition:enter="transform transition ease-in-out duration-500"
+                x-transition:enter-start="translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transform transition ease-in-out duration-500"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-full"
+                class="fixed right-0 top-0 h-full w-96 bg-primary text-contrast shadow-lg z-[99999]"
+                role="dialog"
+                aria-modal="true"
+              >
+                <div class="p-4 h-full">
+                  <div class="flex justify-between items-center">
+                    <h2 class="link">Specifications</h2>
+                    <button @click="activeDrawer = null" class="text-2xl">&times;</button>
+                  </div>
+                  <div class="mt-8">
+                    {{ product.metafields.custom.specifications }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product Care Drawer -->
+              <div
+                x-show="activeDrawer === 'product-care'"
+                x-transition:enter="transform transition ease-in-out duration-500"
+                x-transition:enter-start="translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transform transition ease-in-out duration-500"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-full"
+                class="fixed right-0 top-0 h-full w-96 bg-primary text-contrast shadow-lg"
+                role="dialog"
+                aria-modal="true"
+              >
+                <div class="p-4 h-full">
+                  <div class="flex justify-between items-center">
+                    <h2 class="link">Product Care</h2>
+                    <button @click="activeDrawer = null" class="text-2xl">&times;</button>
+                  </div>
+                  <div class="mt-8">
+                    {{ product.metafields.custom.product_care }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipping Drawer -->
+              <div
+                x-show="activeDrawer === 'shipping'"
+                x-transition:enter="transform transition ease-in-out duration-500"
+                x-transition:enter-start="translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transform transition ease-in-out duration-500"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-full"
+                class="fixed right-0 top-0 h-full w-96 bg-primary text-contrast shadow-lg"
+                role="dialog"
+                aria-modal="true"
+              >
+                <div class="p-4 h-full">
+                  <div class="flex justify-between items-center">
+                    <h2 class="link">Shipping</h2>
+                    <button @click="activeDrawer = null" class="text-2xl">&times;</button>
+                  </div>
+                  <div class="mt-8">
+                    {{ product.metafields.custom.shipping }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-2 text-xs">
+              <p class="mb-2">{{- product.metafields.custom.dimensions -}}</p>
+              <p>{{- product.description -}}</p>
+            </div>
           </div>
           <div>
             <div class="w-full">
