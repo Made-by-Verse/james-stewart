@@ -1,0 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "section-contact",
+      "settings": {
+        "heading": "Contact Us",
+        "text": "<p>If you’d like to find out more about our design collection or have product inquiries, please get in touch with our team.</p>",
+        "image": "shopify://shop_images/Rectangle_612.png"
+      },
+      "blocks": {
+        "block_general_inquiries": {
+          "type": "contact-info",
+          "settings": {
+            "title": "General Inquiries",
+            "phone": "02 9999 9999",
+            "email": "hello@example.com"
+          }
+        },
+        "block_press_inquiries": {
+          "type": "contact-info",
+          "settings": {
+            "title": "Press Inquiries",
+            "phone": "02 9999 9999",
+            "email": "hello@example.com"
+          }
+        },
+        "block_customer_service": {
+          "type": "contact-info",
+          "settings": {
+            "title": "Customer Service",
+            "phone": "02 9999 9999",
+            "email": "hello@example.com"
+          }
+        }
+      },
+      "block_order": [
+        "block_general_inquiries",
+        "block_press_inquiries",
+        "block_customer_service"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
