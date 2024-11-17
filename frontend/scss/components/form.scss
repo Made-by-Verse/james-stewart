@@ -1,0 +1,12 @@
+.contact-form {
+  @apply space-y-4 font-sans text-contrast;
+
+  input:not([type="radio"]),
+  textarea {
+    @apply bg-transparent border-b border-gray-200 py-4 w-full placeholder:text-contrast focus:ring-0 appearance-none;
+  }
+
+  input[type="radio"] {
+    @apply appearance-none w-4 h-4 rounded border border-gray-200;
+  }
+}

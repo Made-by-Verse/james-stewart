@@ -38,3 +38,11 @@ p {
 .lead {
   @apply text-[20px] lg:text-[26px];
 }
+
+.max-w-p {
+  max-width: 320px;
+}
+
+.max-w-p-lg {
+  max-width: 450px;
+}

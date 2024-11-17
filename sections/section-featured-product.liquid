@@ -9,26 +9,32 @@
 <div class="wrapper py-6 lg:py-12">
   {% if section.settings.product != blank %}
     {% assign product = all_products[section.settings.product] %}
-
-
     <h2 class="h2 text-center mb-4 uppercase">{{ product.title }}</h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {% if product.media.size > 0 %}
-        {% for media in product.media limit: 2 %}
-          {% if forloop.index == 1 %}
-            {% render 'responsive-image', image: media, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
-          {% else %}
-            <div class="relative">
-              {% render 'responsive-image', image: media, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
-              <div class="absolute inset-0 flex p-16 items-end justify-center text-center">
-                <div class="max-w-md">
-                  <p class="text-white">{{ product.description | truncate: 100 }}</p>
-                  <a href="{{ product.url | within: collection }}" class="btn btn--outline-primary block">{{ section.settings.button_text }}</a>
+        <div class="swiper featured-product-swiper aspect-portrait fade-swiper w-full">
+          <div class="swiper-wrapper">
+            {% for media in product.media limit: 4 %}
+              {% if forloop.index !=  1 %}
+                <div class="swiper-slide">
+                  {% render 'responsive-image', image: media, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
                 </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if product.media[0] %}
+          <div class="relative">
+            {% render 'responsive-image', image: product.media[0], width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
+            <div class="absolute inset-0 flex p-16 items-end justify-center text-center">
+              <div class="max-w-md">
+                <p class="text-white">{{ product.description | truncate: 100 }}</p>
+                <a href="{{ product.url | within: collection }}" class="btn btn--outline-primary block">{{ section.settings.button_text }}</a>
               </div>
             </div>
-          {% endif %}
-        {% endfor %}
+          </div>
+        {% endif %}
       {% endif %}
     </div>
   {% else %}
@@ -58,6 +64,19 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
     }
   ],
   "presets": [

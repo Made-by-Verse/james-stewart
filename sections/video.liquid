@@ -1,23 +1,23 @@
-<div class="wrapper py-6 lg:py-12">
-  <div
-    {% if section.settings.full_width %}
-    {% endif %}
-  >
+<div class="wrapper py-6 lg:py-12 relative">
+  <div class='relative'>
     {%- unless section.settings.heading == blank -%}
-      <div>
-        <h2>{{ section.settings.heading }}</h2>
-      </div>
+        <h2 class='absolute top-0 left-0 font-sans'>{{ section.settings.heading }}</h2>
     {%- endunless -%}
-    {% if section.settings.text != blank %}
-      <div>{{ section.settings.text }}</div>
-    {% endif %}
+   
   </div>
-  <div class="relative wrapper wrapper--small">
-    <button
-      id="video-play-button"
-      aria-label="{{ alt }}"
-      class="w-full aspect-video absolute inset-0 flex items-center justify-center"
-    >
+  <div 
+    class="wrapper wrapper--small" 
+  >
+    {% if section.settings.text != blank %}
+      <div class='max-w-p mb-12'>{{ section.settings.text }}</div>
+    {% endif %}
+    <div class='relative' data-video-container>
+      <button
+        id="video-play-button"
+        aria-label="{{ alt }}"
+        class="w-full aspect-video absolute inset-0 flex items-center justify-center transform transition-transform duration-500 z-10"
+        data-video-button
+      >
       {%- if section.settings.cover_image != blank -%}
         {% render 'responsive-image', image: section.settings.cover_image, width: 1100, height: 600, wrapper_class: 'w-full aspect-video relative', image_class: 'object-cover absolute inset-0 w-full h-full' %}
       {%- else -%}
@@ -32,11 +32,12 @@
     {%- if section.settings.video == null and section.settings.video_url != null -%}
       {%- if section.settings.video_url.type == 'youtube' -%}
         <iframe
+          data-video-frame
           src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1"
           allow="autoplay; encrypted-media"
           allowfullscreen
           title="{{ section.settings.description | escape }}"
-          class="w-full aspect-video"
+          class="w-full aspect-video transform transition-transform duration-500"
         ></iframe>
       {%- else -%}
         <iframe
@@ -48,15 +49,17 @@
         ></iframe>
       {%- endif -%}
     {%- else -%}
-      {{
-        section.settings.video
-        | video_tag:
-          image_size: '1100x',
-          autoplay: true,
-          loop: section.settings.enable_video_looping,
-          controls: true,
-          muted: false
-      }}
+      <div data-video-frame>
+        {{
+          section.settings.video
+          | video_tag:
+            image_size: '1100x',
+            autoplay: true,
+            loop: section.settings.enable_video_looping,
+            controls: true,
+            muted: false
+        }}
+      </div>
     {%- endif -%}
   </div>
 </div>

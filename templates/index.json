@@ -117,19 +117,22 @@
         "collection_block_TyNmCc": {
           "type": "collection_block",
           "settings": {
-            "collection": "executive-seating"
+            "collection": "executive-seating",
+            "hover_image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
           }
         },
         "collection_block_kxXEHk": {
           "type": "collection_block",
           "settings": {
-            "collection": "sofas"
+            "collection": "sofas",
+            "hover_image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
           }
         },
         "collection_block_6EFRzn": {
           "type": "collection_block",
           "settings": {
-            "collection": "accent-seating"
+            "collection": "accent-seating",
+            "hover_image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
           }
         }
       },

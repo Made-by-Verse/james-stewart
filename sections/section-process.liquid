@@ -6,7 +6,7 @@
   }
 {% endstyle %}
 
-<div class="wrapper grid lg:grid-cols-2 gap-8 py-6 lg:py-12 color-{{ section.settings.color_scheme }} bg-primary text-contrast"
+<div class="wrapper grid md:grid-cols-2 gap-8 py-6 lg:py-12 color-{{ section.settings.color_scheme }} bg-primary text-contrast"
   x-data="{ activeStep: 1 }">
   <div class="flex items-start max-w-lg">
     <div class="sticky top-20 space-y-4 flex flex-col items-end w-full">
@@ -20,7 +20,7 @@
           height: 1000
         %}
       {% endif %}
-      <div class="relative max-w-sm w-full">
+      <div class="relative max-w-p w-full">
         {% for block in section.blocks %}
           {% case block.type %}
           {% when 'process-step' %}
@@ -51,7 +51,7 @@
       </div>
     </div>
   </div>
-  <div class="">
+  <div class="hidden md:block">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'process-step' %}
@@ -73,23 +73,6 @@
     {% endfor %}
   </div>
 </div>
-{% comment %} 
-<script>
-  document.addEventListener('alpine:init', () => {
-    document.addEventListener('show-text', (e) => {
-      const index = e.detail.index;
-      // Hide all text blocks
-      document.querySelectorAll('[id^="text-"]').forEach(el => {
-        el.__x.$data.visible = false;
-      });
-      // Show the corresponding text block
-      const textEl = document.querySelector(`#text-${index}`);
-      if (textEl) {
-        textEl.__x.$data.visible = true;
-      }
-    });
-  });
-</script> {% endcomment %}
 
 
 {% schema %}

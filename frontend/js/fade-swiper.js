@@ -6,7 +6,7 @@ import "swiper/css/effect-fade";
 
 Swiper.use([Autoplay, EffectFade]);
 
-const heroSwiper = new Swiper(".hero-swiper", {
+const heroSwiper = new Swiper(".fade-swiper", {
   effect: "fade",
   fadeEffect: {
     crossFade: true,

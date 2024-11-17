@@ -41,4 +41,34 @@ function initVideoSection() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initVideoSection);
+document.addEventListener("DOMContentLoaded", () => {
+  initVideoSection();
+
+  const videoContainer = document.querySelector("[data-video-container]");
+  const videoButton = document.querySelector("[data-video-button]");
+  const videoFrame = document.querySelector("[data-video-frame]");
+
+  console.log(videoFrame);
+
+  const scaleElements = [videoButton, videoFrame].filter(Boolean);
+
+  function handleScroll() {
+    if (!videoContainer) return;
+
+    const rect = videoContainer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    // Calculate progress based on halfway point (multiply by 2 to reach full scale at 50% viewport)
+    const progress = (1 - rect.top / viewportHeight) * 2;
+
+    // Limit the scale between 0.8 and 1
+    const scale = Math.max(0.3, Math.min(1, 0.3 + progress * 0.7));
+
+    scaleElements.forEach((element) => {
+      element.style.transform = `scale(${scale})`;
+    });
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
+});

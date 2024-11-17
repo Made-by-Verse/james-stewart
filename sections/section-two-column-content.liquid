@@ -25,35 +25,6 @@
         {% if block.settings.text %}
           <div class="{% if block.settings.text_alignment == 'center' %}text-center{% elsif block.settings.text_alignment == 'right' %}text-right{% else %}text-left{% endif %}">{{ block.settings.text }}</div>
         {% endif %}
-      {% when 'sticky_image_with_text' %}
-        <div class="flex items-start max-w-lg">
-          <div class="sticky top-20 space-y-4 flex flex-col items-end w-full">
-            {% if block.settings.image %}
-              <div class="aspect-landscape w-full relative overflow-hidden">
-                {% render 'responsive-image' with
-                image: block.settings.image,
-                wrapper_class: "",
-                image_class: "absolute inset-0 object-cover w-full h-full",
-                size: '1000x1000',
-                width: 1000,
-                height: 1000, %}
-              </div>
-            {% endif %}
-            {% if block.settings.text %}
-              <div class="{% if block.settings.text_alignment == 'center' %}text-center{% elsif block.settings.text_alignment == 'right' %}text-right{% else %}text-left{% endif %} max-w-sm space-y-4">
-                {{ block.settings.text }}
-                <div class="flex gap-4">
-                  {% if block.settings.button_1_url %}
-                    <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-primary">{{ block.settings.button_1_text }}</a>
-                  {% endif %}
-                  {% if block.settings.button_2_url %}
-                    <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-primary">{{ block.settings.button_2_text }}</a>
-                  {% endif %}
-                </div>
-              </div>
-            {% endif %}
-          </div>
-        </div>
     {% endcase %}
   {% endfor %}
 </div>
@@ -118,42 +89,7 @@
         }
       ]
     },
-    {
-      "type": "sticky_image_with_text",
-      "name": "Sticky Image with Text",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text"
-        },
-        {
-          "type": "url",
-          "id": "button_1_url",
-          "label": "Button 1 URL"
-        },
-        {
-          "type": "text",
-          "id": "button_1_text",
-          "label": "Button 1 Text"
-        },
-        {
-          "type": "url",
-          "id": "button_2_url",
-          "label": "Button 2 URL"
-        },
-        {
-          "type": "text",
-          "id": "button_2_text",
-          "label": "Button 2 Text"
-        }
-      ]
-    }
+
   ],
   "max_blocks": 2
 }

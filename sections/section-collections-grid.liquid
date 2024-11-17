@@ -19,8 +19,9 @@
   <div class="grid gap-4 lg:grid-cols-3">
     {% for block in section.blocks %}
       {% assign collection = collections[block.settings.collection] %}
+      {% assign hover_image = block.settings.hover_image %}
       {% if collection != blank %}
-        {% render 'collection-tile', collection: collection %}
+        {% render 'collection-tile', collection: collection, hover_image: hover_image %}
       {% endif %}
     {% endfor %}
   </div>
@@ -57,6 +58,11 @@
           "type": "collection",
           "id": "collection",
           "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Hover Image"
         }
       ]
     }
