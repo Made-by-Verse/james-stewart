@@ -9,47 +9,65 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "section-contact",
-      "settings": {
-        "heading": "Contact Us",
-        "text": "<p>If you’d like to find out more about our design collection or have product inquiries, please get in touch with our team.</p>",
-        "image": "shopify://shop_images/Rectangle_612.png"
-      },
+    "section_home_hero_VpHyzW": {
+      "type": "section-home-hero",
       "blocks": {
-        "block_general_inquiries": {
-          "type": "contact-info",
+        "image_block_PGwndK": {
+          "type": "image_block",
           "settings": {
-            "title": "General Inquiries",
-            "phone": "02 9999 9999",
-            "email": "hello@example.com"
-          }
-        },
-        "block_press_inquiries": {
-          "type": "contact-info",
-          "settings": {
-            "title": "Press Inquiries",
-            "phone": "02 9999 9999",
-            "email": "hello@example.com"
-          }
-        },
-        "block_customer_service": {
-          "type": "contact-info",
-          "settings": {
-            "title": "Customer Service",
-            "phone": "02 9999 9999",
-            "email": "hello@example.com"
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png"
           }
         }
       },
       "block_order": [
-        "block_general_inquiries",
-        "block_press_inquiries",
-        "block_customer_service"
-      ]
+        "image_block_PGwndK"
+      ],
+      "settings": {
+        "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
+        "hero_button_url": "",
+        "hero_button_text": "",
+        "color_scheme": "",
+        "show_logo": false
+      }
+    },
+    "main": {
+      "type": "section-contact",
+      "disabled": true,
+      "settings": {
+        "heading": "Contact Us",
+        "text": "<p>If you’d like to find out more about our design collection or have product inquiries, please get in touch with our team.</p>"
+      }
+    },
+    "section_two_column_content_bDUXjP": {
+      "type": "section-two-column-content",
+      "blocks": {
+        "text_block_DhhUja": {
+          "type": "text_block",
+          "settings": {
+            "text": "<p>James Stewart works exclusively with designers, developers and boutique retailers around Australia.</p>",
+            "text_alignment": "left"
+          }
+        },
+        "image_block_icU89p": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup.png",
+            "aspect_ratio": "portrait"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_DhhUja",
+        "image_block_icU89p"
+      ],
+      "settings": {
+        "color_scheme": ""
+      }
     }
   },
   "order": [
-    "main"
+    "section_home_hero_VpHyzW",
+    "main",
+    "section_two_column_content_bDUXjP"
   ]
 }
