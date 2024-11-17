@@ -63,11 +63,18 @@
       "settings": {
         "color_scheme": ""
       }
+    },
+    "section_two_column_content_gk8x3Q": {
+      "type": "section-two-column-content",
+      "settings": {
+        "color_scheme": ""
+      }
     }
   },
   "order": [
     "section_home_hero_VpHyzW",
     "main",
-    "section_two_column_content_bDUXjP"
+    "section_two_column_content_bDUXjP",
+    "section_two_column_content_gk8x3Q"
   ]
 }
