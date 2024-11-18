@@ -6,26 +6,31 @@
   }
 {% endstyle %}
 
-<div class='color-{{ section.settings.color_scheme }}'>
+<div class='color-{{ section.settings.color_scheme }} bg-primary'>
   <div class="wrapper relative grid lg:grid-cols-2 gap-8 py-6 lg:py-12">
-    <div class="vertical-carousel__content">
-      {% if section.settings.heading != blank %}
-        <h2>{{ section.settings.heading }}</h2>
-      {% endif %}
+    <div class="flex justify-center items-center">
+      <div>
+        {% if section.settings.heading != blank %}
+          <h2 class="text-contrast">{{ section.settings.heading }}</h2>
+        {% endif %}
+        
+        {% if section.settings.text != blank %}
+          <div class="text-contrast">{{ section.settings.text }}</div>
+        {% endif %}
+        
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <div class="mt-4 flex items-center">
+            <a href="{{ section.settings.button_link }}" class="btn btn--outline-primary">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
       
-      {% if section.settings.text != blank %}
-        <div class="rte">{{ section.settings.text }}</div>
-      {% endif %}
-      
-      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-        <a href="{{ section.settings.button_link }}" class="button">
-          {{ section.settings.button_label }}
-        </a>
-      {% endif %}
     </div>
 
     <div class="vertical-carousel__slider" id="vertical-carousel-{{ section.id }}">
-      <div class="vertical-carousel-swiper swiper" style="">
+      <div class="vertical-carousel-swiper">
         <div class="swiper-wrapper">
           {%- for block in section.blocks -%}
             <div class="swiper-slide" {{ block.shopify_attributes }}>

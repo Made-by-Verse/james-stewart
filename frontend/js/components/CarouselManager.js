@@ -3,6 +3,7 @@ import Swiper from "swiper";
 import { Autoplay, EffectFade, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import { SWIPER_CONFIG } from "../core/constants";
 
 export class CarouselManager extends Base {
   constructor() {
@@ -22,20 +23,7 @@ export class CarouselManager extends Base {
     const heroSwiper = document.querySelector(".hero-swiper");
     if (!heroSwiper) return;
 
-    this.swipers.set(
-      "hero",
-      new Swiper(".hero-swiper", {
-        effect: "fade",
-        fadeEffect: { crossFade: true },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        allowTouchMove: false,
-        speed: 1500,
-        loop: true,
-      })
-    );
+    this.swipers.set("hero", new Swiper(".hero-swiper", SWIPER_CONFIG.fade));
   }
 
   initFeaturedProductSwiper() {
@@ -46,17 +34,7 @@ export class CarouselManager extends Base {
 
     this.swipers.set(
       "featured-product",
-      new Swiper(".featured-product-swiper", {
-        effect: "fade",
-        fadeEffect: { crossFade: true },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        allowTouchMove: false,
-        speed: 1500,
-        loop: true,
-      })
+      new Swiper(".featured-product-swiper", SWIPER_CONFIG.fade)
     );
   }
 
@@ -67,17 +45,10 @@ export class CarouselManager extends Base {
     carousels.forEach((carousel) => {
       this.swipers.set(
         carousel.id,
-        new Swiper(`#${carousel.id} .vertical-carousel-swiper`, {
-          direction: "vertical",
-          slidesPerView: "auto",
-          loop: true,
-          allowTouchMove: false,
-          autoplay: {
-            delay: 1,
-            disableOnInteraction: false,
-          },
-          speed: 5000,
-        })
+        new Swiper(
+          `#${carousel.id} .vertical-carousel-swiper`,
+          SWIPER_CONFIG.vertical
+        )
       );
     });
   }

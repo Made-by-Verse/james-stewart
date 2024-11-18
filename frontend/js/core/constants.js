@@ -1,17 +1,3 @@
-export const SELECTORS = {
-  header: "#js-header",
-  heroSection: ".home-hero",
-  videoPlayButton: "#video-play-button",
-  recommendations: ".product-recommendations",
-  verticalCarousel: '[id^="vertical-carousel-"]',
-  fadeSwiper: ".fade-swiper",
-};
-
-export const CLASSES = {
-  isHidden: "is-hidden",
-  headerOnHero: "header--on-hero",
-};
-
 export const SWIPER_CONFIG = {
   fade: {
     effect: "fade",
@@ -30,14 +16,14 @@ export const SWIPER_CONFIG = {
   },
   vertical: {
     direction: "vertical",
-    slidesPerView: 1,
-    spaceBetween: 30,
+    slidesPerView: "auto",
     loop: true,
+    allowTouchMove: false,
     autoplay: {
       delay: 1,
       disableOnInteraction: false,
     },
-    speed: 1000,
+    speed: 5000,
   },
   recommendations: {
     slidesPerView: 1,

@@ -3,29 +3,105 @@ import Base from "../core/Base";
 export class VideoSection extends Base {
   constructor() {
     super();
-    this.playButton = document.getElementById("video-play-button");
+    this.container = document.querySelector("[data-video-container]");
+    this.playButton = document.querySelector("[data-video-button]");
+    this.videoElement = document.querySelector("[data-video-frame]");
+    this.observer = null;
+
+    // Elements to scale
+    this.scaleElements = [this.playButton, this.videoElement].filter(Boolean);
+
+    // Bind methods to maintain context
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   init() {
     super.init();
-    if (!this.playButton) return;
+    if (!this.container) return;
 
-    this.videoElement = this.playButton.nextElementSibling;
-    this.bindEvents();
+    // Initialize scroll handling
+    window.addEventListener("scroll", this.handleScroll);
+    this.handleScroll();
+
+    // Initialize video functionality
+    if (this.playButton) {
+      this.initIntersectionObserver();
+      this.bindEvents();
+    }
+  }
+
+  handleScroll() {
+    if (!this.container) return;
+
+    const rect = this.container.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    // Calculate progress based on halfway point
+    const progress = (1 - rect.top / viewportHeight) * 2;
+
+    // Limit the scale between 0.3 and 1
+    const scale = Math.max(0.3, Math.min(1, 0.3 + progress * 0.7));
+
+    this.scaleElements.forEach((element) => {
+      element.style.transform = `scale(${scale})`;
+    });
+  }
+
+  initIntersectionObserver() {
+    this.observer = new IntersectionObserver(
+      (entries) => this.handleIntersection(entries),
+      {
+        threshold: 0.5,
+      }
+    );
+
+    const videoContainer = this.playButton.closest(".video-section");
+    if (videoContainer) {
+      this.observer.observe(videoContainer);
+    }
+  }
+
+  handleIntersection(entries) {
+    entries.forEach((entry) => {
+      if (
+        !entry.isIntersecting &&
+        !this.playButton.classList.contains("is-hidden")
+      ) {
+        // If video section is not in view and play button is visible, pause the video
+        if (this.videoElement.src.includes("youtube")) {
+          // Send pause command to YouTube iframe
+          this.videoElement.contentWindow?.postMessage(
+            '{"event":"command","func":"pauseVideo","args":""}',
+            "*"
+          );
+        } else if (this.videoElement.src.includes("vimeo")) {
+          // Pause Vimeo video
+          const player = new Vimeo.Player(this.videoElement);
+          player.pause();
+        } else if (this.videoElement.pause) {
+          // Pause native video
+          this.videoElement.pause();
+        }
+      }
+    });
   }
 
   bindEvents() {
-    this.playButton.addEventListener("click", () => this.handlePlay());
+    this.playButton.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default button behavior
+      this.handlePlay();
+    });
   }
 
   handlePlay() {
     this.playButton.classList.add("is-hidden");
 
-    if (this.videoElement.src.includes("youtube")) {
+    if (this.videoElement.src?.includes("youtube")) {
       this.handleYouTube();
-    } else if (this.videoElement.src.includes("vimeo")) {
+    } else if (this.videoElement.src?.includes("vimeo")) {
       this.handleVimeo();
-    } else if (this.videoElement.play) {
+    } else {
+      // Handle native video - simplified condition
       this.handleNativeVideo();
     }
   }
@@ -49,13 +125,23 @@ export class VideoSection extends Base {
   }
 
   handleNativeVideo() {
-    this.videoElement.play();
+    if (this.videoElement.querySelector("video")) {
+      const video = this.videoElement.querySelector("video");
+      video.play();
 
-    this.videoElement.addEventListener("pause", () =>
-      this.playButton.classList.remove("is-hidden")
-    );
-    this.videoElement.addEventListener("ended", () =>
-      this.playButton.classList.remove("is-hidden")
-    );
+      video.addEventListener("pause", () =>
+        this.playButton.classList.remove("is-hidden")
+      );
+      video.addEventListener("ended", () =>
+        this.playButton.classList.remove("is-hidden")
+      );
+    }
+  }
+
+  destroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+    super.destroy();
   }
 }

@@ -1,3 +1,16 @@
+{% style %}
+  [data-video-container] {
+    opacity: 1;
+    will-change: transform;
+  }
+  
+  [data-video-button],
+  [data-video-frame] {
+    transform: scale(0.3);
+    will-change: transform;
+  }
+{% endstyle %}
+
 <div class="wrapper py-6 lg:py-12 relative">
   <div class='relative'>
     {%- unless section.settings.heading == blank -%}
@@ -54,7 +67,7 @@
           section.settings.video
           | video_tag:
             image_size: '1100x',
-            autoplay: true,
+            autoplay: false,
             loop: section.settings.enable_video_looping,
             controls: true,
             muted: false
