@@ -1,47 +1,58 @@
-<div class='wrapper pt-32 pb-12'>
-  <div class='grid lg:grid-cols-7 gap-4'>
-    <div class='lg:col-span-5 '>
-      <div class='grid grid-cols-3 gap-4 mb-12'>
-        <h1 class='h3'>{{ section.settings.heading }}</h1>
-        {% if section.settings.text != blank %}
-        <div class='max-w-p col-span-2 max-w-p'>{{ section.settings.text }}</div>
-      {% endif %}
-      </div>
-      {% if section.settings.image != blank %}
-        {% render 'responsive-image', image: section.settings.image, width: 1100, height: 600, wrapper_class: 'w-full aspect-square relative', image_class: 'object-cover absolute inset-0 w-full h-full' %}
-      {% endif %}
-    </div>
-    <div class='lg:col-span-2'>
-      <div class='space-y-4 lg:space-y-6 mb-8'>
-        {% for block in section.blocks %}
-          <div class='leading-none'>
-        <h3 class='mb-2 text-sm'>{{ block.settings.title }}</h3>
-        <ul>
-        {% if block.settings.phone != blank %}
-          <li class='grid grid-cols-6 gap-4'>
-            <span class=''>Call:</span>
-            <span class='col-span-5'>{{ block.settings.phone }}</span>
-          </li>
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
+
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
+  <div class='wrapper pt-32 pb-12'>
+    <div class='grid lg:grid-cols-7 gap-4'>
+      <div class='lg:col-span-5 '>
+        <div class='grid grid-cols-3 gap-4 mb-12'>
+          <h1 class='h3'>{{ section.settings.heading }}</h1>
+          {% if section.settings.text != blank %}
+          <div class='max-w-p col-span-2 max-w-p'>{{ section.settings.text }}</div>
         {% endif %}
-        {% if block.settings.email != blank %}
-          <li class='grid grid-cols-6 gap-4'>
-            <span class=''>Email:</span>
-            <span class='col-span-5'>{{ block.settings.email }}</span>
-          </li>
-        {% endif %}
-        {% if block.settings.address != blank %}
-          <li class='grid grid-cols-6 gap-4'>
-            <span class=''>Address:</span>
-            <span class='col-span-5'>{{ block.settings.address }}</span>
-          </li>
-        {% endif %}
-          </ul>
         </div>
-      {% endfor %}
+        {% if section.settings.image != blank %}
+          {% render 'responsive-image', image: section.settings.image, width: 1100, height: 600, wrapper_class: 'w-full aspect-square relative', image_class: 'object-cover absolute inset-0 w-full h-full' %}
+        {% endif %}
+      </div>
+      <div class='lg:col-span-2'>
+        <div class='space-y-4 lg:space-y-6 mb-8'>
+          {% for block in section.blocks %}
+            <div class='leading-none'>
+          <h3 class='mb-2 text-sm'>{{ block.settings.title }}</h3>
+          <ul>
+          {% if block.settings.phone != blank %}
+            <li class='grid grid-cols-6 gap-4'>
+              <span class=''>Call:</span>
+              <span class='col-span-5'>{{ block.settings.phone }}</span>
+            </li>
+          {% endif %}
+          {% if block.settings.email != blank %}
+            <li class='grid grid-cols-6 gap-4'>
+              <span class=''>Email:</span>
+              <span class='col-span-5'>{{ block.settings.email }}</span>
+            </li>
+          {% endif %}
+          {% if block.settings.address != blank %}
+            <li class='grid grid-cols-6 gap-4'>
+              <span class=''>Address:</span>
+              <span class='col-span-5'>{{ block.settings.address }}</span>
+            </li>
+          {% endif %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+      {% render 'contact-form' %}
     </div>
-    {% render 'contact-form' %}
   </div>
 </div>
+
 {% schema %}
   {
     "name": "Contact",

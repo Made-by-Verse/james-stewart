@@ -6,38 +6,40 @@
   }
 {% endstyle %}
 
-<div class="wrapper py-6 lg:py-12">
-  {%- if section.settings.collection != blank -%}
-    <h2 class="h3 mb-8">{{ section.settings.collection.title }}</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-      <div class="lg:col-span-3 flex items-start">
-        <div class="sticky top-20 max-w-[840px] w-full space-y-6">
-          {%- if section.settings.collection.image -%}
-            {% render 'responsive-image', image: section.settings.collection.image, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 w-full h-full', wrapper_class: 'relative aspect-landscape' %}
-          {%- endif -%}
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
+  <div class="wrapper py-6 lg:py-12">
+    {%- if section.settings.collection != blank -%}
+      <h2 class="h3 mb-8">{{ section.settings.collection.title }}</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div class="lg:col-span-3 flex items-start">
+          <div class="sticky top-20 max-w-[840px] w-full space-y-6">
+            {%- if section.settings.collection.image -%}
+              {% render 'responsive-image', image: section.settings.collection.image, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 w-full h-full', wrapper_class: 'relative aspect-landscape' %}
+            {%- endif -%}
 
-          {%- if section.settings.description != blank -%}
-            <div class="grid lg:grid-cols-4 space-y-4">
-              <div class="lg:col-span-3 max-w-sm lg:col-start-2">
-                {{ section.settings.description }}
+            {%- if section.settings.description != blank -%}
+              <div class="grid lg:grid-cols-4 space-y-4">
+                <div class="lg:col-span-3 max-w-sm lg:col-start-2">
+                  {{ section.settings.description }}
+                </div>
+                <div class="lg:col-start-2 flex">
+                  <a href="{{ section.settings.collection.url }}" class="btn btn--outline-primary">Explore</a>
+                </div>
               </div>
-              <div class="lg:col-start-2 flex">
-                <a href="{{ section.settings.collection.url }}" class="btn btn--outline-primary">Explore</a>
-              </div>
-            </div>
-          {%- endif -%}
+            {%- endif -%}
+          </div>
         </div>
-      </div>
 
-      <div class="lg:col-span-2 flex justify-end">
-        <div class="space-y-4 lg:space-y-8 max-w-[340px] w-full">
-          {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-            {% render 'product-card',
-            product: product
-          %}
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
+        <div class="lg:col-span-2 flex justify-end">
+          <div class="space-y-4 lg:space-y-8 max-w-[340px] w-full">
+            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+              {% render 'product-card',
+              product: product
+            %}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
   </div>
 </div>
 

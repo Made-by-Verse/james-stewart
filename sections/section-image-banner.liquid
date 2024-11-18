@@ -1,0 +1,66 @@
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
+
+{% liquid
+  assign aspect_ratio = section.settings.aspect_ratio
+  assign aspect_ratio_class = 'aspect-landscape'
+  if aspect_ratio == 'portrait'
+    assign aspect_ratio_class = 'aspect-portrait'
+  elsif aspect_ratio == 'landscape'
+    assign aspect_ratio_class = 'aspect-landscape'
+  elsif aspect_ratio == 'square'
+    assign aspect_ratio_class = 'aspect-square'
+  elsif aspect_ratio == 'video'
+    assign aspect_ratio_class = 'aspect-video'
+  endif
+%}
+
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
+  {% render 'responsive-image', 
+    image: section.settings.image, 
+    wrapper_class: 'w-full {{ aspect_ratio_class }}',
+    image_class: 'object-cover' %}
+  <div class='wrapper flex items-start h-full'>
+    <h2 class='sticky top-16 h1'>{{ section.settings.title }}</h2>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Sticky Text Image Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color Scheme"
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "options": [
+          { "value": "portrait", "label": "Portrait" },
+          { "value": "square", "label": "Square" },
+          { "value": "landscape", "label": "Landscape" },
+          { "value": "video", "label": "Video" }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

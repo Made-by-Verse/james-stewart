@@ -20,7 +20,7 @@ export const SWIPER_CONFIG = {
     loop: true,
     allowTouchMove: false,
     autoplay: {
-      delay: 1,
+      delay: 0,
       disableOnInteraction: false,
     },
     speed: 5000,
