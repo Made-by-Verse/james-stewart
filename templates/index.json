@@ -191,11 +191,39 @@
           "settings": {
             "image": "shopify://shop_images/Rectangle_616.png"
           }
+        },
+        "slide_EyEkW6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_631.png"
+          }
+        },
+        "slide_AxjfrU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-image.png"
+          }
+        },
+        "slide_RHLhrW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_616.png"
+          }
+        },
+        "slide_tUXMDP": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png"
+          }
         }
       },
       "block_order": [
         "slide_EhX7Cm",
-        "slide_pPnGBp"
+        "slide_pPnGBp",
+        "slide_EyEkW6",
+        "slide_AxjfrU",
+        "slide_RHLhrW",
+        "slide_tUXMDP"
       ],
       "settings": {
         "heading": "How to buy",
