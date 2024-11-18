@@ -8,7 +8,7 @@
     "src": "assets/Frasa-Regular.woff2"
   },
   "frontend/entrypoints/theme.js": {
-    "file": "theme-Bh9MtxY0.js",
+    "file": "theme-LbuDlkDF.js",
     "name": "theme",
     "src": "frontend/entrypoints/theme.js",
     "isEntry": true,
@@ -17,7 +17,7 @@
     ]
   },
   "frontend/entrypoints/theme.scss": {
-    "file": "theme-CwMrWY1z.css",
+    "file": "theme-JkRhlf9e.css",
     "src": "frontend/entrypoints/theme.scss",
     "isEntry": true
   }
