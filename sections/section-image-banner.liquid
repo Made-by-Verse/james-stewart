@@ -20,24 +20,25 @@
   endif
 %}
 
-<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
-  {% render 'responsive-image', 
-    image: section.settings.image, 
-    wrapper_class: 'w-full {{ aspect_ratio_class }}',
-    image_class: 'object-cover' %}
-  <div class='wrapper wrapper--small flex items-start h-full'>
-    <h2 class='sticky top-16 h1'>{{ section.settings.title }}</h2>
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast py-6 lg:py-12'>
+  <div class='wrapper wrapper--small items-start h-full'>
+    {% render 'responsive-image', 
+      image: section.settings.image, 
+      wrapper_class: 'w-full {{ aspect_ratio_class }} relative',
+      image_class: 'object-cover inset-0 w-full h-full'
+    %}
+    <h2 class=''>{{ section.settings.title }}</h2>
   </div>
 </div>
 
 {% schema %}
   {
-    "name": "Sticky Text Image Banner",
+    "name": "Image Banner",
     "tag": "section",
-  "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
     "settings": [
       {
         "type": "text",
