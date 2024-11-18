@@ -25,10 +25,7 @@
           }
         }
       },
-      "block_order": [
-        "image_block_M6HDqz",
-        "image_block_G94jgb"
-      ],
+      "block_order": ["image_block_M6HDqz", "image_block_G94jgb"],
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
@@ -82,11 +79,7 @@
           }
         }
       },
-      "block_order": [
-        "process-step_1",
-        "process-step_2",
-        "process-step_3"
-      ],
+      "block_order": ["process-step_1", "process-step_2", "process-step_3"],
       "settings": {
         "color_scheme": "scheme-1",
         "left-image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
@@ -102,9 +95,7 @@
           }
         }
       },
-      "block_order": [
-        "16831234567890"
-      ],
+      "block_order": ["16831234567890"],
       "disabled": true,
       "settings": {
         "color_scheme": "scheme-1"
@@ -192,23 +183,38 @@
             "image": "shopify://shop_images/Rectangle_616.png"
           }
         },
-        "slide_gbPYLg": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-image.png"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-image.png"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/hero-image.png"
+          }
+        },
+        "slide_4": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/hero-image.png"
           }
         }
       },
-      "block_order": [
-        "slide_EhX7Cm",
-        "slide_pPnGBp",
-        "slide_gbPYLg"
-      ],
+      "block_order": ["slide_EhX7Cm", "slide_pPnGBp", "slide_gbPYLg"],
       "settings": {
         "heading": "Vertical Carousel",
         "text": "<p>Add your content here</p>",
         "button_label": "",
-        "button_link": ""
+        "button_link": "",
+        "color_scheme": ""
       }
     }
   },

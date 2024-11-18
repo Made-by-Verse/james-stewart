@@ -12,7 +12,7 @@
     <h2 class="h2 text-center mb-4 uppercase">{{ product.title }}</h2>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {% if product.media.size > 0 %}
-        <div class="swiper featured-product-swiper aspect-portrait fade-swiper w-full">
+        <div class="swiper featured-product-swiper aspect-portrait w-full h-full">
           <div class="swiper-wrapper">
             {% for media in product.media limit: 4 %}
               {% if forloop.index !=  1 %}

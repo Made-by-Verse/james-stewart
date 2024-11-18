@@ -1,0 +1,8 @@
+.vertical-carousel-swiper {
+  @apply overflow-hidden aspect-portrait w-full;
+
+  .swiper-slide {
+    display: flex;
+    height: auto;
+  }
+}

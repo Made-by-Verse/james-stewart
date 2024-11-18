@@ -1,6 +1,6 @@
-import "./header";
-import "./alpine";
-import "./lenis";
-import "./video-section";
-import "./fade-swiper";
-import "./recommendations";
+import App from "./core/App";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const app = new App();
+  app.init();
+});

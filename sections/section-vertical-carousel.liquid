@@ -1,5 +1,13 @@
-<div class="wrapper relative grid lg:grid-cols-2 gap-8 py-6 lg:py-12">
-  <div class="vertical-carousel__container">
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
+
+<div class='color-{{ section.settings.color_scheme }}'>
+  <div class="wrapper relative grid lg:grid-cols-2 gap-8 py-6 lg:py-12">
     <div class="vertical-carousel__content">
       {% if section.settings.heading != blank %}
         <h2>{{ section.settings.heading }}</h2>
@@ -16,13 +24,13 @@
       {% endif %}
     </div>
 
-    <div class="vertical-carousel__slider">
-      <div class="swiper vertical-carousel-swiper">
+    <div class="vertical-carousel__slider" id="vertical-carousel-{{ section.id }}">
+      <div class="vertical-carousel-swiper swiper" style="">
         <div class="swiper-wrapper">
           {%- for block in section.blocks -%}
             <div class="swiper-slide" {{ block.shopify_attributes }}>
               {%- if block.settings.image != blank -%}
-                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.image.alt }}
+                {% render 'responsive-image', image: block.settings.image, image_class: 'w-full select-none pointer-events-none' %}
               {%- else -%}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
               {%- endif -%}
@@ -59,6 +67,12 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "accent"
     }
   ],
   "blocks": [
