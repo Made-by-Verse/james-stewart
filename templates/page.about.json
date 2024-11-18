@@ -19,9 +19,7 @@
           }
         }
       },
-      "block_order": [
-        "image_block_MrfiQy"
-      ],
+      "block_order": ["image_block_MrfiQy"],
       "settings": {
         "hero_content": "<p>We’re driven by a love for design, natural materials and ethical products. Founded on the best traditions in furniture making, we’re designing furniture fit for Australian architectural interiors and our local way of life.</p>",
         "hero_button_url": "",
@@ -36,10 +34,15 @@
         "text": "<p>With a love for enduring design and objects built to last, we cherish heritage pieces as much as we value fresh and innovative thinking.</p>",
         "color_scheme": ""
       }
+    },
+    "section_process_4ashkjl": {
+      "type": "section-process",
+      "settings": {}
     }
   },
   "order": [
     "section_home_hero_dbE6Hc",
-    "section_paragraph_8mVbgR"
+    "section_paragraph_8mVbgR",
+    "section_process_4ashkjl"
   ]
 }
