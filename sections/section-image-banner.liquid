@@ -4,27 +4,17 @@
     --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
     --color-accent: {{ section.settings.color_scheme.settings.accent }};
   }
-{% endstyle %}
 
-{% liquid
-  assign aspect_ratio = section.settings.aspect_ratio
-  assign aspect_ratio_class = 'aspect-landscape'
-  if aspect_ratio == 'portrait'
-    assign aspect_ratio_class = 'aspect-portrait'
-  elsif aspect_ratio == 'landscape'
-    assign aspect_ratio_class = 'aspect-landscape'
-  elsif aspect_ratio == 'square'
-    assign aspect_ratio_class = 'aspect-square'
-  elsif aspect_ratio == 'video'
-    assign aspect_ratio_class = 'aspect-video'
-  endif
-%}
+  .image-banner-aspect-ratio {
+    aspect-ratio: {{ section.settings.aspect_ratio }};
+  }
+{% endstyle %}
 
 <div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast py-6 lg:py-12'>
   <div class='wrapper wrapper--small items-start h-full'>
     {% render 'responsive-image', 
       image: section.settings.image, 
-      wrapper_class: 'w-full {{ aspect_ratio_class }} relative',
+      wrapper_class: 'w-full image-banner-aspect-ratio relative',
       image_class: 'object-cover inset-0 w-full h-full'
     %}
     <h2 class=''>{{ section.settings.title }}</h2>
@@ -60,10 +50,10 @@
         "id": "aspect_ratio",
         "label": "Aspect Ratio",
         "options": [
-          { "value": "portrait", "label": "Portrait" },
-          { "value": "square", "label": "Square" },
-          { "value": "landscape", "label": "Landscape" },
-          { "value": "video", "label": "Video" }
+          { "value": "9/16", "label": "Portrait" },
+          { "value": "1/1", "label": "Square" },
+          { "value": "4/3", "label": "Landscape" },
+          { "value": "16/9", "label": "Video" }
         ]
       }
     ]

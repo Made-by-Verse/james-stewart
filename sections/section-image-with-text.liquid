@@ -1,0 +1,121 @@
+{%- style -%}
+  .color-{{ section.settings.section_color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+
+  .image-with-text__image {
+    aspect-ratio: {{ section.settings.aspect_ratio }};
+    max-width: {{ section.settings.image_width }};
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.section_color_scheme }} bg-primary text-contrast py-6 lg:py-12">
+  <div class="wrapper flex flex-col items-center gap-8 lg:gap-16">
+    {% if section.settings.title %}
+      <h2 class="h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.image %}
+      {% render 'responsive-image' with
+        image: section.settings.image,
+        wrapper_class: "relative w-full image-with-text__image",
+        image_class: "object-cover absolute inset-0 w-full h-full",
+        size: '1000x1000',
+        width: 1000,
+        height: 1000
+      %}
+    {% endif %}
+    {% if section.settings.text %}
+      <div class="richtext max-w-p-lg text-center">{{ section.settings.text }}</div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image-with-text.name",
+  "class": "section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "options": [
+        {
+          "value": "3/4",
+          "label": "Portrait"
+        },
+        {
+          "value": "1/1",
+          "label": "Square"
+        },
+        {
+          "value": "4/3",
+          "label": "Landscape"
+        },
+        {
+          "value": "16/9",
+          "label": "Video"
+        }
+      ],
+      "default": "3/4",
+      "label": "Aspect ratio"
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "options": [
+        {
+          "value": "320px",
+          "label": "Small"
+        },
+        {
+          "value": "448px",
+          "label": "Medium"
+        },
+        {
+          "value": "576px",
+          "label": "Large"
+        }
+      ],
+      "default": "448px",
+      "label": "Image width",
+      "info": "The maximum width of the image"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "title": "Image with text",
+        "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+      }
+    }
+  ]
+}
+{% endschema %}
