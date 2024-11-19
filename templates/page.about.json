@@ -19,7 +19,9 @@
           }
         }
       },
-      "block_order": ["image_block_cDNiMY"],
+      "block_order": [
+        "image_block_cDNiMY"
+      ],
       "settings": {
         "hero_content": "<p>We’re driven by a love for design, natural materials and ethical products. Founded on the best traditions in furniture making, we’re designing furniture fit for Australian architectural interiors and our local way of life.</p>",
         "hero_button_url": "",
@@ -61,7 +63,10 @@
           }
         }
       },
-      "block_order": ["process_step_ridXEb", "process_step_UpETM3"],
+      "block_order": [
+        "process_step_ridXEb",
+        "process_step_UpETM3"
+      ],
       "settings": {
         "color_scheme": "",
         "left-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png"
@@ -102,7 +107,10 @@
           }
         }
       },
-      "block_order": ["process_step_ridXEb", "process_step_UpETM3"],
+      "block_order": [
+        "process_step_ridXEb",
+        "process_step_UpETM3"
+      ],
       "settings": {
         "color_scheme": ""
       }
@@ -115,7 +123,7 @@
         "aspect_ratio": "3/4",
         "image_width": "320px",
         "text": "<p>We believe in natural products – they are better to work with, better to live with, better to upcycle, and naturally compostable. We also believe in timeless design – furniture that is treasured and cared for holds its value for future generations.</p><p>To extend their lifespan, all our furniture pieces come with material tags, so leathers and fabrics can be colour-matched for repairs or recovered in a similar fabric. Having the material tags allows us to match any repairs (your puppy may chew a pillow, for example) as closely as possible to the original if not the original batch. We research sustainable upholstery and frame materials, increasingly finding better ways to make things.</p>",
-        "section_color_scheme": "scheme-3"
+        "section_color_scheme": "scheme-b7d1bd86-9b68-491c-8473-772dd461a807"
       }
     },
     "section_process_as424ghg": {
@@ -124,8 +132,8 @@
         "process_step_ridXEb": {
           "type": "process-step",
           "settings": {
-            "step-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png",
-            "step-text": "<h3>From source to site  – we manage it all</h3><p>We’re unique in the way we manage every step of the product journey – from design development to sourcing materials to our small-run manufacturing partner, right through to logistics and deliveries managed closely by our team. This vertical integration has built close relationships with our leather tanners, makers and upholsterers – an innovative new generation of leather workers based in Shanghai. We know the providence of our leather, and we speak to the artisans who do all the hand-finishing. We believe these relationships create better social and environmental outcomes for them and us. </p>",
+            "step-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_43.png",
+            "step-text": "<h2>Innovation through remastering</h2><p>Building on the haberdashery and furniture-making lineage of James Stewart’s 1800s business, our designers also obsess over the details – the buttons, seams, corners and edging of our sofas, seating and chairs. How a piece is made is as important as how it looks. Reworking our archive of patterns and designing entirely new profiles, we’re always building on function and evolving style. By partnering with niche, innovative makers, we can customise materials for project design requirements.</p>",
             "button_1_url": "",
             "button_1_text": "",
             "button_2_url": "",
@@ -135,8 +143,8 @@
         "process_step_UpETM3": {
           "type": "process-step",
           "settings": {
-            "step-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup3.png",
-            "step-text": "<h2>Made for the Australian climate</h2><p>Long-term collaboration with our Australian designer partners has established a collection with character. And we’ve even defined some new classics. With an absolute love for hand-finished leather, we’ve created a style based on authenticity and tactility. Aniline leather is a product better suited to the Australian climate and way of life than the more formal European and North American leather finishes. Fit for purpose and fit for place, the James Stewart collection brings originality, comfort and ease to architectural interiors.</p>",
+            "step-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_123.png",
+            "step-text": "<h2>The James Stewart brand was first established in Queensland in 1862 when our great, great uncle opened his first store in Rockhampton.</h2><p>A Scottish haberdasher, he imported some of the finest materials from around the world. Hand-spun silks from Japan, bentwood furniture from Austria, and glassware from Sweden. With his catalogue and range expanding, he soon started manufacturing locally – including his own furniture range.With no children to join the business, his nephew Robert Macfarlane emigrated from Calander in Scotland to grow the business, and the stores were managed by generations of the Macfarlane family up until the 1980s. In 2017, Ian Macfarlane and his partner Susie Wall launched a new furniture company inspired by their entrepreneurial ancestor. Today, the reborn James Stewart brand is known for enduring, collectible furniture, driven by the belief that good design should be made to last.</p>",
             "button_1_url": "",
             "button_1_text": "",
             "button_2_url": "",
@@ -144,7 +152,10 @@
           }
         }
       },
-      "block_order": ["process_step_ridXEb", "process_step_UpETM3"],
+      "block_order": [
+        "process_step_ridXEb",
+        "process_step_UpETM3"
+      ],
       "settings": {
         "color_scheme": ""
       }
