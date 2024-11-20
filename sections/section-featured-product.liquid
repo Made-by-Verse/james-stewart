@@ -30,7 +30,11 @@
               {% render 'responsive-image', image: product.media[0], width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
               <div class="absolute inset-0 flex p-16 items-end justify-center text-center">
                 <div class="max-w-md">
-                  <p class="text-white">{{ product.description | truncate: 100 }}</p>
+                  <ul class="space-y-2 mb-6">
+                    {% for variant in product.variants %}
+                      <li>{% if forloop.first %}<span class="italic">in </span>{% endif %}{{ variant.title }}{% unless forloop.last %},{% endunless %}</li>
+                    {% endfor %}
+                  </ul>
                   <a href="{{ product.url | within: collection }}" class="btn btn--outline-primary block">{{ section.settings.button_text }}</a>
                 </div>
               </div>

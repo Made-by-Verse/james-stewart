@@ -1,0 +1,41 @@
+<div class="flex gap-4 py-4 border-b">
+  {% render 'responsive-image' with
+    image: item.image,
+    wrapper_class: "w-[160px] aspect-landscape object-cover flex-none",
+    size: '160x114',
+    width: 160,
+    height: 114
+  %}
+  <div class="flex flex-col justify-between h-full flex-grow">
+    <div class="flex w-full justify-between">
+      <h3 class="font-serif max-w-[150px] text-sm leading-none">
+        {{ item.product.title }}
+        <span class="block text-sm">{{ item.variant.title }}</span>
+      </h3>
+      <p>{{ item.final_price | money_without_trailing_zeros }}</p>
+    </div>
+    <div class='flex w-full justify-between'>
+      <div class="flex items-center gap-2">
+        <button 
+          class="quantity-btn minus" 
+          data-item-id="{{ item.key }}" 
+          data-action="decrease"
+          aria-label="{{ 'products.product.quantity.decrease' | t: product: item.title | escape }}"
+        >-</button>
+        <span 
+          class="quantity-display leading-none text-center" 
+          data-item-id="{{ item.key }}"
+          role="status"
+          aria-label="{{ 'products.product.quantity.input_label' | t: product: item.title | escape }}"
+        >{{ item.quantity }}</span>
+        <button 
+          class="quantity-btn plus" 
+          data-item-id="{{ item.key }}" 
+          data-action="increase"
+          aria-label="{{ 'products.product.quantity.increase' | t: product: item.title | escape }}"
+        >+</button>
+      </div>
+      <button class="uppercase text-sm opacity-70 hover:opacity-100 transition-opacity duration-500 font-sans" data-item-id="{{ item.key }}" data-action="remove">Remove</button>
+    </div>
+  </div>
+</div> 

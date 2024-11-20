@@ -23,6 +23,17 @@ export class CartQuantityHandler {
 
       this.updateQuantity(itemId, newQty);
     });
+
+    document.addEventListener("change", (e) => {
+      const quantityInput = e.target.closest('input[name="updates[]"]');
+      if (!quantityInput) return;
+
+      const variantId = quantityInput.dataset.variantId;
+      const newQty = parseInt(quantityInput.value);
+      if (newQty >= 0) {
+        this.updateQuantity(variantId, newQty);
+      }
+    });
   }
 
   initRemoveButtons() {
@@ -95,16 +106,18 @@ export class CartQuantityHandler {
   }
 
   updateCartTotal(total) {
-    const totalElement = document.querySelector(".cart-footer .total");
+    const totalElement = document.querySelector(".total-text .total");
     if (totalElement) {
-      totalElement.textContent = `Total: ${this.formatMoney(total)}`;
+      totalElement.textContent = this.formatMoney(total);
     }
   }
 
   formatMoney(cents) {
-    return (cents / 100).toLocaleString("en-US", {
+    return (cents / 100).toLocaleString("en-AU", {
       style: "currency",
-      currency: "USD",
+      currency: "AUD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
     });
   }
 }

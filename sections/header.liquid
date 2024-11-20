@@ -89,12 +89,12 @@
       role="dialog"
       aria-modal="true"
     >
-      <div class="p-4 h-full">
+      <div class="p-4 h-full flex flex-col">
         <div class="flex justify-between items-center">
           <h2 class="link">Cart</h2>
           <button @click="open = false" class="">&times;</button>
         </div>
-        <div class="mt-24 h-full flex flex-col justify-between w-full">
+        <div class="mt-24 flex flex-col justify-between w-full flex-grow">
           {% render 'cart-drawer' %}
         </div>
       </div>
