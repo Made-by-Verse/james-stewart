@@ -5,6 +5,14 @@
     @apply border-b;
   }
 
+  .hamburger {
+    @apply flex flex-col gap-1;
+
+    .line {
+      @apply w-8 h-px bg-contrast;
+    }
+  }
+
   &.header--on-hero {
     @apply bg-transparent text-primary;
 
@@ -14,6 +22,12 @@
 
     .home-page-logo {
       @apply opacity-0;
+    }
+
+    .hamburger {
+      .line {
+        @apply bg-primary;
+      }
     }
   }
 }

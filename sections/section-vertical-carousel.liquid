@@ -8,14 +8,14 @@
 
 <div class='color-{{ section.settings.color_scheme }} bg-primary'>
   <div class="wrapper relative grid lg:grid-cols-2 gap-8 py-6 lg:py-12">
-    <div class="flex justify-center items-center">
-      <div>
+    <div class="relative flex justify-center items-center ">
+      <div class=''>
         {% if section.settings.heading != blank %}
-          <h2 class="text-contrast">{{ section.settings.heading }}</h2>
+          <h2 class="absolute top-0 left-0 text-contrast font-sans uppercase tracking-normal">{{ section.settings.heading }}</h2>
         {% endif %}
         
         {% if section.settings.text != blank %}
-          <div class="text-contrast">{{ section.settings.text }}</div>
+          <div class="text-contrast lead max-w-p-lg">{{ section.settings.text }}</div>
         {% endif %}
         
         {% if section.settings.button_label != blank and section.settings.button_link != blank %}

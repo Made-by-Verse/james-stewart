@@ -6,74 +6,77 @@
   }
 {% endstyle %}
 
-<div class="wrapper grid md:grid-cols-2 gap-8 py-6 lg:py-12 color-{{ section.settings.color_scheme }} bg-primary text-contrast"
-  x-data="{ activeStep: 1 }">
-  <div class="flex items-start max-w-lg">
-    <div class="sticky top-20 space-y-4 flex flex-col items-end w-full">
-      {% if section.settings.left-image %}
-        {% render 'responsive-image' with
-          image: section.settings.left-image,
-          wrapper_class: "aspect-landscape w-full relative",
-          image_class: "absolute inset-0 object-cover w-full h-full",
-          size: '1000x1000',
-          width: 1000,
-          height: 1000
-        %}
-      {% endif %}
-      <div class="relative max-w-p w-full">
-        {% for block in section.blocks %}
-          {% case block.type %}
-          {% when 'process-step' %}
-            {% if block.settings.step-text %}
-              <div 
-                x-show="activeStep === {{ forloop.index }}"
-                x-transition:enter="transition ease-in duration-1000"
-                x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100"
-                {% comment %} x-transition:leave="transition ease-out duration-1000"
-                x-transition:leave-start="opacity-100"
-                x-transition:leave-end="opacity-0" {% endcomment %}
-                class="max-w-sm space-y-4"
-              >
-                {{ block.settings.step-text }}
-                  <div class="flex gap-4">
-                    {% if block.settings.button_1_url %}
-                      <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-primary">{{ block.settings.button_1_text }}</a>
-                    {% endif %}
-                    {% if block.settings.button_2_url %}
-                      <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-primary">{{ block.settings.button_2_text }}</a>
-                    {% endif %}
+<div class='color-{{section.settings.color_scheme}} bg-primary text-contrast'>
+  <div 
+    class="wrapper grid md:grid-cols-2 gap-8 py-6 lg:py-12"
+    x-data="{ activeStep: 1 }"
+  >
+    <div class="flex items-start max-w-lg">
+      <div class="sticky top-20 space-y-4 flex flex-col items-end w-full">
+        {% if section.settings.left-image %}
+          {% render 'responsive-image' with
+            image: section.settings.left-image,
+            wrapper_class: "aspect-landscape w-full relative",
+            image_class: "absolute inset-0 object-cover w-full h-full",
+            size: '1000x1000',
+            width: 1000,
+            height: 1000
+          %}
+        {% endif %}
+        <div class="relative max-w-p w-full">
+          {% for block in section.blocks %}
+            {% case block.type %}
+            {% when 'process-step' %}
+              {% if block.settings.step-text %}
+                <div 
+                  x-show="activeStep === {{ forloop.index }}"
+                  x-transition:enter="transition ease-in duration-1000"
+                  x-transition:enter-start="opacity-0"
+                  x-transition:enter-end="opacity-100"
+                  {% comment %} x-transition:leave="transition ease-out duration-1000"
+                  x-transition:leave-start="opacity-100"
+                  x-transition:leave-end="opacity-0" {% endcomment %}
+                  class="max-w-sm space-y-4 process-text"
+                >
+                  {{ block.settings.step-text }}
+                    <div class="flex gap-4">
+                      {% if block.settings.button_1_url %}
+                        <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-primary">{{ block.settings.button_1_text }}</a>
+                      {% endif %}
+                      {% if block.settings.button_2_url %}
+                        <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-primary">{{ block.settings.button_2_text }}</a>
+                      {% endif %}
+                    </div>
                   </div>
-                </div>
-              {% endif %}
-          {% endcase %}
-        {% endfor %}
+                {% endif %}
+            {% endcase %}
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="hidden md:block">
-    {% for block in section.blocks %}
-      {% case block.type %}
-        {% when 'process-step' %}
-          <div
-            x-intersect.threshold.50="activeStep = {{ forloop.index }}"
-            x-intersect:leave.threshold.50="activeStep = {{ forloop.index | minus: 1 }}"
-            class="scroll-mt-20 sticky top-20"
-          >
-            {% render 'responsive-image' with
-              image: block.settings.step-image,
-              wrapper_class: "aspect-portrait w-full relative",
-              image_class: "absolute inset-0 object-cover w-full h-full",
-              size: '1000x1000',
-              width: 1000,
-              height: 1000
-            %}
-          </div>
-      {% endcase %}
-    {% endfor %}
+    <div class="hidden md:block">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'process-step' %}
+            <div
+              x-intersect.threshold.50="activeStep = {{ forloop.index }}"
+              x-intersect:leave.threshold.50="activeStep = {{ forloop.index | minus: 1 }}"
+              class="scroll-mt-20 sticky top-20"
+            >
+              {% render 'responsive-image' with
+                image: block.settings.step-image,
+                wrapper_class: "aspect-portrait w-full relative",
+                image_class: "absolute inset-0 object-cover w-full h-full",
+                size: '1000x1000',
+                width: 1000,
+                height: 1000
+              %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
   </div>
 </div>
-
 
 {% schema %}
 {

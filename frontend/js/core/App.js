@@ -5,6 +5,7 @@ import { VideoSection } from "../components/VideoSection";
 import { HeaderManager } from "../components/HeaderManager";
 import { CarouselManager } from "../components/CarouselManager";
 import { RecommendationsManager } from "../components/RecommendationsManager";
+import { CartQuantityHandler } from "../components/cart";
 
 export default class App {
   constructor() {
@@ -36,6 +37,7 @@ export default class App {
     this.components.set("video", new VideoSection());
     this.components.set("carousels", new CarouselManager());
     this.components.set("recommendations", new RecommendationsManager());
+    this.components.set("cart", new CartQuantityHandler());
 
     // Initialize all components
     for (const component of this.components.values()) {

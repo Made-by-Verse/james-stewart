@@ -52,3 +52,29 @@ p {
     @apply mb-4;
   }
 }
+
+.process-text {
+  :not(:last-child) {
+    @apply mb-4;
+  }
+
+  h1 {
+    @apply text-[48px] lg:text-[110px];
+  }
+
+  h2 {
+    @apply text-[48px] lg:text-[85px];
+  }
+
+  h3 {
+    @apply text-[24px] normal-case tracking-normal;
+  }
+
+  h4 {
+    @apply text-base;
+  }
+
+  p {
+    @apply leading-tight;
+  }
+}

@@ -1,6 +1,6 @@
 <header id="js-header" class="fixed bg-primary w-full z-50 h-16 font-sans">
-  <div class="wrapper h-full grid lg:grid-cols-3 gap-4">
-    <nav class="h-full">
+  <div class="wrapper h-full grid grid-cols-3 gap-4">
+    <nav class="hidden lg:block h-full">
       <ul class="flex gap-4 h-full items-center">
         {%- for link in linklists.revamped-menu.links -%}
           <li class="">
@@ -11,7 +11,15 @@
         {%- endfor -%}
       </ul>
     </nav>
-    <div class=" flex justify-center items-center">
+    <button x-data @click="$dispatch('toggle-menu-drawer')" class="lg:hidden">
+      <span class="sr-only">Menu</span>
+      <span class="hamburger">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </span>
+    </button>
+    <div class="flex justify-center items-center">
       <a href="{{ routes.root_url }}" class="{% if template == 'index' %}home-page-logo{% endif %}">
         {% render 'header-logo' %}
       </a>
@@ -25,6 +33,33 @@
       >
         cart
       </button>
+    </div>
+  </div>
+
+  <div x-data="{ menuOpen: false }" @toggle-menu-drawer.window="menuOpen = !menuOpen">
+    <div x-show="menuOpen" class="fixed inset-0 bg-black bg-opacity-50" @click="menuOpen = false"></div>
+
+    <div
+      x-show="menuOpen"
+      x-transition:enter="transform transition ease-in-out duration-500"
+      x-transition:enter-start="-translate-x-full"
+      x-transition:enter-end="translate-x-0"
+      x-transition:leave="transform transition ease-in-out duration-500"
+      x-transition:leave-start="translate-x-0"
+      x-transition:leave-end="-translate-x-full"
+      class="fixed left-0 top-0 h-full w-full max-w-[446px] bg-primary text-contrast shadow-lg"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="p-4 h-full">
+        <div class="flex justify-between items-center">
+          <h2 class="link">Menu</h2>
+          <button @click="menuOpen = false" class="">&times;</button>
+        </div>
+        <div class="mt-24 h-full flex flex-col justify-between w-full">
+          {% render 'mobile-menu' %}
+        </div>
+      </div>
     </div>
   </div>
 
@@ -50,7 +85,7 @@
       x-transition:leave="transform transition ease-in-out duration-500"
       x-transition:leave-start="translate-x-0"
       x-transition:leave-end="translate-x-full"
-      class="fixed right-0 top-0 h-full w-96 bg-primary text-contrast shadow-lg"
+      class="fixed right-0 top-0 h-full max-w-[446px] w-full bg-primary text-contrast shadow-lg"
       role="dialog"
       aria-modal="true"
     >
