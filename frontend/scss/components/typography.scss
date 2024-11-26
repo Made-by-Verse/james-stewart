@@ -47,6 +47,10 @@ p {
   max-width: 450px;
 }
 
+.max-w-p-xl {
+  max-width: 550px;
+}
+
 .richtext {
   :not(:last-child) {
     @apply mb-4;

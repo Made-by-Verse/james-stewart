@@ -27,7 +27,8 @@
         "hero_button_url": "",
         "hero_button_text": "",
         "color_scheme": "",
-        "show_logo": false
+        "show_logo": false,
+        "hero_heading": "How to Buy"
       }
     },
     "main": {

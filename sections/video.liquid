@@ -12,19 +12,16 @@
 {% endstyle %}
 
 <div class="wrapper py-6 lg:py-12 relative">
-  <div class='relative'>
-    {%- unless section.settings.heading == blank -%}
-        <h2 class='absolute top-0 left-0 font-sans'>{{ section.settings.heading }}</h2>
-    {%- endunless -%}
-   
-  </div>
   <div 
-    class="wrapper wrapper--small" 
+    class="wrapper grid lg:grid-cols-8 gap-4" 
   >
+    {%- unless section.settings.heading == blank -%}
+      <h2 class='font-sans'>{{ section.settings.heading }}</h2>
+    {%- endunless -%}
     {% if section.settings.text != blank %}
-      <div class='max-w-p mb-12'>{{ section.settings.text }}</div>
+      <div class='max-w-p mb-12 lg:col-span-4'>{{ section.settings.text }}</div>
     {% endif %}
-    <div class='relative' data-video-container>
+    <div class='relative lg:col-span-6 lg:col-start-2' data-video-container>
       <button
         id="video-play-button"
         aria-label="{{ alt }}"

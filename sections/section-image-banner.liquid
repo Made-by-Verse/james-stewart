@@ -11,13 +11,15 @@
 {% endstyle %}
 
 <div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast py-6 lg:py-12'>
-  <div class='wrapper wrapper--small items-start h-full'>
-    {% render 'responsive-image', 
-      image: section.settings.image, 
-      wrapper_class: 'w-full image-banner-aspect-ratio relative',
-      image_class: 'object-cover inset-0 w-full h-full'
-    %}
-    <h2 class=''>{{ section.settings.title }}</h2>
+  <div class='wrapper grid lg:grid-cols-8 gap-4 items-start h-full'>
+    <div class='lg:col-span-6 lg:col-start-2'>
+      {% render 'responsive-image', 
+        image: section.settings.image, 
+        wrapper_class: 'w-full image-banner-aspect-ratio relative',
+        image_class: 'object-cover inset-0 w-full h-full'
+      %}
+      <h2 class=''>{{ section.settings.title }}</h2>
+    </div>
   </div>
 </div>
 

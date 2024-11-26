@@ -11,8 +11,8 @@
     class="wrapper grid md:grid-cols-2 gap-8 py-6 lg:py-12"
     x-data="{ activeStep: 0 }"
   >
-    <div class="flex items-start max-w-lg">
-      <div class="sticky top-20 space-y-4 flex flex-col items-end w-full">
+    <div class="flex items-start {% if section.settings.left-image %}max-w-lg{% endif %}">
+      <div class="sticky top-20 space-y-4 {% if section.settings.left-image %}flex flex-col items-end{% endif %} w-full">
         {% if section.settings.left-image %}
           {% render 'responsive-image' with
             image: section.settings.left-image,
@@ -23,7 +23,7 @@
             height: 1000
           %}
         {% endif %}
-        <div class="relative max-w-p w-full">
+        <div class="relative w-full {% if section.settings.left-image %}max-w-p{% endif %}">
           {% for block in section.blocks %}
             {% case block.type %}
             {% when 'process-step' %}
@@ -36,9 +36,14 @@
                   {% comment %} x-transition:leave="transition ease-out duration-1000"
                   x-transition:leave-start="opacity-100"
                   x-transition:leave-end="opacity-0" {% endcomment %}
-                  class="max-w-sm space-y-4 process-text"
+                  class="process-text {% unless section.settings.left-image %}grid lg:grid-cols-4 gap-4 w-full{% endunless %} {% if section.settings.left-image %}space-y-4{% endif %}"
                 >
-                  {{ block.settings.step-text }}
+                  {% unless section.settings.left-image %}
+                    <h2 class="link !text-base">{{ block.settings.heading }}</h2>
+                  {% endunless %}
+                  <div class="{% unless section.settings.left-image %}lg:col-span-3 max-w-p{% endunless %}">
+                    {{ block.settings.step-text }}
+                  </div>
                     <div class="flex gap-4 items-start">
                       {% if block.settings.button_1_url %}
                         <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-primary">{{ block.settings.button_1_text }}</a>
@@ -103,6 +108,11 @@
       "type": "process-step",
       "name": "Process Step",
       "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
         {
           "type": "image_picker",
           "id": "step-image",
