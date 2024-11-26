@@ -9,7 +9,7 @@
 <div class='color-{{section.settings.color_scheme}} bg-primary text-contrast'>
   <div 
     class="wrapper grid md:grid-cols-2 gap-8 py-6 lg:py-12"
-    x-data="{ activeStep: 1 }"
+    x-data="{ activeStep: 0 }"
   >
     <div class="flex items-start max-w-lg">
       <div class="sticky top-20 space-y-4 flex flex-col items-end w-full">
@@ -59,9 +59,8 @@
         {% case block.type %}
           {% when 'process-step' %}
             <div
-              x-intersect.threshold.50="activeStep = {{ forloop.index }}"
-              x-intersect:leave.threshold.50="activeStep = {{ forloop.index | minus: 1 }}"
-              class="scroll-mt-20 sticky top-20"
+              x-intersect:enter.threshold.50="activeStep = {{ forloop.index }}"
+              class="scroll-mt-20"
             >
               {% render 'responsive-image' with
                 image: block.settings.step-image,

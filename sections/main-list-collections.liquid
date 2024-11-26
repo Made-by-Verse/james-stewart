@@ -1,9 +1,18 @@
-<div>
-  <h1 class='h3'>
-    {{ section.settings.title }}
-  </h1>
-  {%- liquid
-    case section.settings.sort
+{% style %}
+  .color-{{ section.settings.color_scheme }} {
+    --color-primary: {{ section.settings.color_scheme.settings.primary }};
+    --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
+    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+  }
+{% endstyle %}
+
+<div class="color-{{ section.settings.color_scheme }} bg-primary text-contrast min-h-screen">
+  <div class="wrapper pt-48 pb-12 py-8">
+    <h1 class='h3 mb-8'>
+      {{ section.settings.title }}
+    </h1>
+    {%- liquid
+      case section.settings.sort
       when 'products_high', 'products_low'
         assign collections = collections | sort: 'all_products_count'
       when 'date', 'date_reversed'
@@ -21,7 +30,7 @@
     endif
   -%}
   {%- paginate collections by paginate_by -%}
-    <ul role="list" class='wrapper grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+    <ul role="list" class='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
       {%- for collection in collections -%}
         <li>
           {% render 'collection-tile', collection: collection %}
@@ -30,6 +39,7 @@
     </ul>
     {% render 'pagination', paginate: paginate %}
   {%- endpaginate -%}
+  </div>
 </div>
 {% schema %}
 {
@@ -123,6 +133,12 @@
       ],
       "default": "2",
       "label": "t:sections.main-list-collections.settings.columns_mobile.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
     }
   ]
 }

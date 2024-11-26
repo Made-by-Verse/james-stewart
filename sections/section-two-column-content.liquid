@@ -22,9 +22,22 @@
           </div>
         {% endif %}
       {% when 'text_block' %}
-        {% if block.settings.text %}
-          <div class="{% if block.settings.text_alignment == 'center' %}text-center{% elsif block.settings.text_alignment == 'right' %}text-right{% else %}text-left{% endif %}">{{ block.settings.text }}</div>
+        {% if block.settings.sticky_text or block.settings.static_text %}
+          <div class="flex flex-col gap-8">
+            {% if block.settings.sticky_text %}
+              <div class="relative flex-1">
+                <div class="sticky top-20 max-w-p lead">{{ block.settings.sticky_text }}</div>
+              </div>
+            {% endif %}
+            {% if block.settings.static_text %}
+              <div class="max-w-p">{{ block.settings.static_text }}</div>
+            {% endif %}
+          </div>
         {% endif %}
+      {% when 'stockist_cta' %}
+        {% render 'stockist-cta' with block: block %}
+      {% when 'wholesale_cta' %}
+        {% render 'wholesale-cta' with block: block %}
     {% endcase %}
   {% endfor %}
 </div>
@@ -79,22 +92,83 @@
       "settings": [
         {
           "type": "richtext",
+          "id": "sticky_text",
+          "label": "Sticky Text"
+        },
+        {
+          "type": "richtext",
+          "id": "static_text",
+          "label": "Static Text"
+        }
+      ]
+    },
+    {
+      "type": "stockist_cta",
+      "name": "Stockist CTA",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
           "id": "text",
           "label": "Text"
         },
         {
-          "type": "select",
-          "id": "text_alignment",
-          "label": "Text Alignment",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ]
+          "type": "text",
+          "id": "drawer_button_text",
+          "label": "Drawer Button Text"
+        },
+        {
+          "type": "text",
+          "id": "drawer_heading",
+          "label": "Drawer Heading"
         }
       ]
     },
-
+    {
+      "type": "wholesale_cta",
+      "name": "Wholesale CTA",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text"
+        },
+        {
+          "type": "text",
+          "id": "button_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text"
+        }
+      ]
+    }
   ],
   "max_blocks": 2
 }

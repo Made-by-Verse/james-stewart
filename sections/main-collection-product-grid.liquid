@@ -17,14 +17,13 @@
           <div
             class="collection {% if section.settings.filter_type != 'vertical' %}page-width{% endif %}"
           >
-            <div class="collection__filters wrapper py-12" x-data="{ open: false }">
+            <div class="collection__filters wrapper py-2 sticky top-16 bg-primary z-10 flex w-full justify-between" x-data="{ open: false }">
               <button 
-                class="btn btn--outline-primary mb-4"
+                class="font-sans uppercase"
                 x-data
                 @click="$dispatch('toggle-filter-drawer')"
               >
-                Filter Products
-                <span x-text="open ? '-' : '+'"></span>
+                Filter Products +
               </button>
 
               <div
@@ -64,7 +63,6 @@
                   </div>
                 </div>
               </div>  
-              {% comment %}  {% endcomment %}
             </div>
             <ul
               id="product-grid"

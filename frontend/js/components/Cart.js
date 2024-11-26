@@ -65,21 +65,31 @@ export class CartQuantityHandler {
       const cart = await response.json();
 
       if (newQty === 0) {
-        const itemElement = document
-          .querySelector(`[data-item-id="${itemId}"]`)
-          .closest(".flex.gap-4.py-4.border-b");
-        if (itemElement) {
-          itemElement.remove();
-        }
-      } else {
-        const quantityDisplay = document.querySelector(
-          `.quantity-display[data-item-id="${itemId}"]`
+        const itemElements = document.querySelectorAll(
+          `[data-item-id="${itemId}"]`
         );
-        if (quantityDisplay) {
-          const cartItem = cart.items.find((item) => item.key === itemId);
-          if (cartItem) {
-            quantityDisplay.textContent = cartItem.quantity;
+        itemElements.forEach((element) => {
+          const container = element.closest(".flex.gap-4.py-4.border-b");
+          if (container) {
+            container.remove();
           }
+        });
+      } else {
+        const cartItem = cart.items.find((item) => item.key === itemId);
+        if (cartItem) {
+          const quantityDisplays = document.querySelectorAll(
+            `.quantity-display[data-item-id="${itemId}"]`
+          );
+          quantityDisplays.forEach((display) => {
+            display.textContent = cartItem.quantity;
+          });
+
+          const buttons = document.querySelectorAll(
+            `.quantity-btn[data-item-id="${itemId}"]`
+          );
+          buttons.forEach((button) => {
+            button.dataset.quantity = cartItem.quantity;
+          });
         }
       }
 
