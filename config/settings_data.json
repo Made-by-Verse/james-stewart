@@ -26,8 +26,8 @@
             "type": "mega_menu",
             "settings": {
               "mega_menu_trigger": "CATALOG",
-              "mega_menu_header": "Shop All",
-              "title": "",
+              "left_text": "Sofas",
+              "right_text": "Shop Now",
               "link": "shopify://collections/sofas",
               "image": "shopify://shop_images/Rectangle_604.png"
             }
