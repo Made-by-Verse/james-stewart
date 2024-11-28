@@ -34,13 +34,15 @@ export class VideoSection extends Base {
     if (!this.container) return;
 
     const rect = this.container.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
+    const navHeight = 64; // h-16 equals 64px (4rem)
+    const windowHeight = window.innerHeight;
 
-    // Calculate progress based on halfway point
-    const progress = (1 - rect.top / viewportHeight) * 2;
+    // Calculate progress based on element entering viewport to nav height position
+    const totalDistance = windowHeight - navHeight;
+    const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / totalDistance));
 
-    // Limit the scale between 0.3 and 1
-    const scale = Math.max(0.3, Math.min(1, 0.3 + progress * 0.7));
+    // Scale from 0.3 to 1 based on progress
+    const scale = 0.3 + progress * 0.7;
 
     this.scaleElements.forEach((element) => {
       element.style.transform = `scale(${scale})`;
