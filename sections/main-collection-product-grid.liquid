@@ -1,9 +1,9 @@
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
         {%- if collection.products.size == 0 -%}
-          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
-            <div class="title-wrapper center">
-              <h2 class="title title--primary">
+          <div class="" id="" data-id="{{ section.id }}">
+            <div class="">
+              <h2 class="">
                 {{ 'sections.collection_template.empty' | t -}}
                 <br>
                 {{
@@ -15,59 +15,67 @@
           </div>
         {%- else -%}
           <div
-            class="collection {% if section.settings.filter_type != 'vertical' %}page-width{% endif %}"
+            class=""
+            x-data="{ large: false }"
           >
-            <div class="collection__filters wrapper py-2 sticky top-16 bg-primary z-10 flex w-full justify-between" x-data="{ open: false }">
-              <button 
-                class="font-sans uppercase"
-                x-data
-                @click="$dispatch('toggle-filter-drawer')"
-              >
-                Filter Products +
-              </button>
-
-              <div
-                x-data="{ open: false }"
-                class='z-[9999] relative'
-                @toggle-filter-drawer.window="open = !open"
-                @keydown.escape.window="open = false"
-              >
-                <!-- Backdrop -->
-                <div 
-                  x-show="open"
-                  class="fixed inset-0 bg-black bg-opacity-50"
-                  @click="open = false"
-                ></div>
-
-                <!-- Drawer -->
-                <div
-                  x-show="open"
-                  x-transition:enter="transform transition ease-in-out duration-500"
-                  x-transition:enter-start="-translate-x-full"
-                  x-transition:enter-end="translate-x-0"
-                  x-transition:leave="transform transition ease-in-out duration-500"
-                  x-transition:leave-start="translate-x-0"
-                  x-transition:leave-end="-translate-x-full"
-                  class="fixed left-0 top-0 h-full max-w-lg w-full bg-primary text-contrast shadow-lg"
-                  role="dialog"
-                  aria-modal="true"
+            <div class="wrapper py-2 sticky top-16 bg-primary z-10 flex w-full justify-between mb-8" x-data="{ open: false }">
+              <div class="flex items-center gap-2">
+                <button 
+                  class="font-sans uppercase"
+                  x-data
+                  @click="$dispatch('toggle-filter-drawer')"
                 >
-                  <div class="p-4 h-full flex flex-col w-full">
-                    <div class="flex justify-between items-center">
-                      <h2 class="font-sans">Filters</h2>
-                      <button @click="open = false" class="">&times;</button>
-                    </div>
-                    <div class="flex flex-col justify-between w-full flex-1">
-                      {% render 'facets', results: collection, pre paginate: paginate %}
+                  Filter +
+                </button>
+                <div
+                  x-data="{ open: false }"
+                  class='z-[9999] relative'
+                  @toggle-filter-drawer.window="open = !open"
+                  @keydown.escape.window="open = false"
+                >
+                  <!-- Backdrop -->
+                  <div 
+                    x-show="open"
+                    class="fixed inset-0 bg-black bg-opacity-50"
+                    @click="open = false"
+                  ></div>
+
+                  <!-- Drawer -->
+                  <div
+                    x-show="open"
+                    x-transition:enter="transform transition ease-in-out duration-500"
+                    x-transition:enter-start="-translate-x-full"
+                    x-transition:enter-end="translate-x-0"
+                    x-transition:leave="transform transition ease-in-out duration-500"
+                    x-transition:leave-start="translate-x-0"
+                    x-transition:leave-end="-translate-x-full"
+                    class="fixed left-0 top-0 h-full max-w-lg w-full bg-primary text-contrast shadow-lg"
+                    role="dialog"
+                    aria-modal="true"
+                  >
+                    <div class="p-4 h-full flex flex-col w-full">
+                      <div class="flex justify-between items-center">
+                        <h2 class="font-sans">Filters</h2>
+                        <button @click="open = false" class="">&times;</button>
+                      </div>
+                      <div class="flex flex-col justify-between w-full flex-1">
+                        {% render 'facets', results: collection, pre paginate: paginate %}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>  
+              </div>
+
+              <div class="flex items-center gap-6">
+                <button class="font-sans uppercase transition-opacity duration-500" @click="large = false" :class='large && "opacity-50"'>Small</button>
+                <button class="font-sans uppercase transition-opacity duration-500" @click="large = true" :class='!large && "opacity-50"'>Large</button>
+              </div> 
             </div>
             <ul
               id="product-grid"
               data-id="{{ section.id }}"
-              class="wrapper grid md:grid-cols-2 gap-4"
+              class="wrapper grid gap-4"
+              :class="large ? 'lg:grid-cols-2' : 'lg:grid-cols-3'"
             >
               {%- for product in collection.products -%}
                 <li>
