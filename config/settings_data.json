@@ -21,6 +21,21 @@
     "sections": {
       "header": {
         "type": "header",
+        "blocks": {
+          "mega_menu_RGyBW6": {
+            "type": "mega_menu",
+            "settings": {
+              "mega_menu_trigger": "CATALOG",
+              "mega_menu_header": "Shop All",
+              "title": "",
+              "link": "shopify://collections/sofas",
+              "image": "shopify://shop_images/Rectangle_604.png"
+            }
+          }
+        },
+        "block_order": [
+          "mega_menu_RGyBW6"
+        ],
         "settings": {}
       }
     },
