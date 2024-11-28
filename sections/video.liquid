@@ -11,7 +11,7 @@
   }
 {% endstyle %}
 
-<div class="wrapper py-6 lg:py-12 relative">
+<div class="py-6 lg:py-12 relative">
   <div 
     class="wrapper grid lg:grid-cols-8 gap-4" 
   >
@@ -21,7 +21,8 @@
     {% if section.settings.text != blank %}
       <div class='max-w-p mb-12 lg:col-span-4'>{{ section.settings.text }}</div>
     {% endif %}
-    <div class='relative lg:col-span-6 lg:col-start-2' data-video-container>
+  </div>
+  <div class='relative' data-video-container>
       <button
         id="video-play-button"
         aria-label="{{ alt }}"
@@ -71,7 +72,6 @@
         }}
       </div>
     {%- endif -%}
-  </div>
 </div>
 
 {% schema %}
