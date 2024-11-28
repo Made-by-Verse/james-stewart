@@ -112,5 +112,25 @@
         "placeholder": "t:settings_schema.social-media.settings.social_vimeo_link.info"
       }
     ]
+  },
+  {
+    "name": "Color swatches",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Add swatch image files to your store's [files area](\/admin\/settings\/files). Make sure the file names match the names of your color variants, replacing spaces and special characters with hyphens. For example, a variant called Burly Wood would need a file named 'burly-wood.png'."
+      },
+      {
+        "type": "paragraph",
+        "content": "[Learn more about color swatches.](https:\/\/documentation.fuelthemes.net\/kb\/how-do-i-set-up-product-variant-swatches\/)"
+      },
+      {
+        "type": "textarea",
+        "id": "color_swatches",
+        "label": "Custom colors",
+        "placeholder": "Black: #000000\nWhite: #F3F3F3\nBlue: blue.png",
+        "info": "Follow the format: <Color>: <HEX Color>. Example: Purple: #7000AA. Each custom color must be on a new line."
+      }
+    ]
   }
 ]

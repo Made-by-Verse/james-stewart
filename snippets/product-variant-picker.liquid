@@ -11,23 +11,64 @@
   <variant-selects
     id="variant-selects-{{ section.id }}"
     data-section="{{ section.id }}"
+    data-url="{{ product.url }}"
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign custom_colors = settings.color_swatches | newline_to_br | split: '<br />'
+        assign key_array = ''
+        assign val_array = ''
+
+        for color in custom_colors
+          assign key = color | split: ':' | first | rstrip
+          assign value = color | split: ':' | last | lstrip
+          assign key_array = key_array | append: ',' | append: key
+          assign val_array = val_array | append: ',' | append: value
+        endfor
+
+        assign key_array = key_array | remove_first: ',' | strip_newlines | downcase | split: ','
+        assign val_array = val_array | remove_first: ',' | split: ','
+      -%}
       <div class="w-full border-t border-contrast">
         <label class="sr-only" for="Option-{{ section.id }}-{{ forloop.index0 }}">
           {{ option.name }}
         </label>
-        <div class="w-full relative">
+        {%- liquid
+          assign selected_color = option.selected_value | downcase | escape
+          assign selected_style = ''
+          
+          for custom_color in key_array
+            if custom_color == selected_color
+              assign selected_color = val_array[forloop.index0]
+            endif
+          endfor
+
+          if selected_color contains '.'
+            assign selected_bg = selected_color | file_url
+            assign selected_style = 'background-image: url(' | append: selected_bg | append: ')'
+          else
+            assign selected_style = 'background-color: ' | append: selected_color
+          endif
+        -%}
+        <!-- Debug output -->
+        <!-- Selected Value: {{ option.selected_value }} -->
+        <!-- Selected Color: {{ selected_color }} -->
+        <!-- Selected Style: {{ selected_style }} -->
+        
+        <div x-data="{ 
+          open: false, 
+          selectedValue: '{{ option.selected_value }}', 
+          selectedStyle: '{{ selected_style | escape_once }}'
+        }">
           <select
             id="Option-{{ section.id }}-{{ forloop.index0 }}"
-            class="appearance-none w-full bg-transparent p-2"
-            name="options[{{ option.name | escape }}]"
-            form="{{ product_form_id }}"
-            data-option-index="{{ forloop.index0 }}"
+            class="hidden"
+            name="options[{{ option.name }}]"
+            x-ref="variantSelect"
           >
             {%- for value in option.values -%}
-              <option 
+              <option
                 value="{{ value | escape }}"
                 {% if option.selected_value == value %}selected="selected"{% endif %}
               >
@@ -35,15 +76,99 @@
               </option>
             {%- endfor -%}
           </select>
-          <span class="w-4 h-4 block absolute right-2 top-1/2 -translate-y-1/2">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
-          </span>
+
+          <div class="w-full relative">
+            <button 
+              type="button"
+              class="w-full bg-transparent p-2 text-left flex items-center"
+              @click="open = !open"
+              :aria-expanded="open"
+            >
+              <span 
+                class="w-6 h-4 mr-2" 
+                :style="selectedStyle || '{% if selected_style %}{{ selected_style | escape_once }}{% endif %}'"
+              ></span>
+              <span x-text="selectedValue"></span>
+              <span class="w-4 h-4 block absolute right-2" :class="{ 'rotate-180': open }">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </button>
+            
+            <div 
+              class="absolute left-0 right-0 bottom-0 bg-primary drop-shadow-md border z-10"
+              x-show="open"
+              @click.outside="open = false"
+              x-transition
+            >
+              {%- for value in option.values -%}
+              {%- liquid
+                assign color_value = value | downcase | escape
+
+                for custom_color in key_array
+                  if custom_color == color_value
+                    assign color_value = val_array[forloop.index0]
+                  endif
+                endfor
+
+                if color_value contains '.'
+                  assign bg_value = color_value | file_url
+                  assign color_value = 'var(--bg-body)'
+                endif
+              -%}
+                <button
+                  type="button"
+                  class="w-full p-2 text-left flex items-center hover:bg-contrast/10"
+                  data-value="{{ value | escape }}"
+                  data-option-index="{{ forloop.index0 }}"
+                  @click="
+                    selectedValue = '{{ value | escape }}'; 
+                    selectedStyle = {% if bg_value %}'background-image: url({{ bg_value }})'{% else %}'background-color: {{ color_value }}'{% endif %};
+                    open = false;
+                    if ($refs.variantSelect) {
+                      $refs.variantSelect.value = '{{ value | escape }}';
+                      const event = new Event('change', { bubbles: true, cancelable: true });
+                      $refs.variantSelect.dispatchEvent(event);
+                      
+                      const variantSelects = $el.closest('variant-selects');
+                      if (variantSelects) {
+                        variantSelects.dispatchEvent(
+                          new CustomEvent('variant:change', {
+                            detail: { 
+                              variant: '{{ value | escape }}',
+                              optionIndex: {{ forloop.index0 }}
+                            },
+                            bubbles: true
+                          })
+                        );
+                      }
+                    }
+                    $dispatch('variant-change', { 
+                      index: {{ forloop.index0 }}, 
+                      value: '{{ value | escape }}',
+                      style: {% if bg_value %}'background-image: url({{ bg_value }})'{% else %}'background-color: {{ color_value }}'{% endif %}
+                    })
+                  "
+                  :aria-selected="selectedValue === '{{ value | escape }}'"
+                >
+                  <span 
+                    class="w-6 h-4 mr-2" 
+                    style="{% if bg_value %}background-image: url({{ bg_value }}){% else %}background-color: {{ color_value }}{% endif %}"
+                  ></span>
+                  <span>{{ value }}</span>
+                </button>
+              {%- endfor -%}
+            </div>
+          </div>
         </div>
       </div>
     {%- endfor -%}
 
     <script type="application/json" data-selected-variant>
       {{ product.selected_or_first_available_variant | json }}
+    </script>
+
+    <script type="application/json" data-variants>
+      {{ product.variants | json }}
     </script>
   </variant-selects>
 {%- endunless -%}
