@@ -3,7 +3,7 @@
   <div class='wrapper flex items-start h-full pb-4'>
     <div class='sticky top-16 w-full'>
       {% assign words = section.settings.title | split: ' ' %}
-      <div class='h1 flex w-full justify-between'>
+      <div class='h1 flex flex-wrap w-full justify-between'>
       {% for word in words %}
         <span>{{ word }}</span>
       {% endfor %}

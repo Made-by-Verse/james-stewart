@@ -5,15 +5,15 @@
   @apply uppercase font-sans tracking-wide p-2 lg:p-[14px];
 
   &--outline-primary {
-    @apply border border-contrast text-contrast;
+    @apply border border-lines text-contrast hover:border-contrast transition-all duration-500;
   }
 
   &--outline-contrast {
-    @apply border border-primary text-primary;
+    @apply border border-white text-white hover:text-contrast hover:bg-white transition-all duration-500;
   }
 
   &--primary {
-    @apply bg-contrast text-primary;
+    @apply bg-contrast text-primary hover:opacity-70;
   }
 }
 

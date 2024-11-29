@@ -7,8 +7,8 @@
 {% endstyle %}
 
 <footer class="color-{{ section.settings.color_scheme }} bg-primary">
-  <div class="wrapper grid lg:grid-cols-6 pt-12 gap-4 mb-24">
-    <ul class="space-y-1 lg:col-span-3 text-[24px] leading-none">
+  <div class="wrapper grid md:grid-cols-2 pt-12 gap-4 mb-24">
+    <ul class="space-y-1 text-[24px] leading-none">
       {% for link in linklists.footer-menu-1-v2-0.links %}
         <li class="">
           <a href="{{ link.url }}" class="">
@@ -26,7 +26,7 @@
         </li>
       {% endfor %}
     </ul>
-      <ul class="space-y-1 leading-none text-base">
+      <ul class="space-y-1 md:col-start-2 leading-none text-base">
       {% for link in linklists.footer-menu-3-v2-0.links %}
         <li class="">
           <a href="{{ link.url }}" class="">
@@ -35,44 +35,50 @@
         </li>
       {% endfor %}
     </ul>
-    <ul class="space-y-1 leading-none text-base col-start-4">
-      {%- if settings.social_twitter_link != blank -%}
-        <li>
-          <a href="{{ settings.social_twitter_link }}" class="">Twitter</a>
-        </li>
-      {%- endif -%}
-      {%- if settings.social_facebook_link != blank -%}
-        <li>
-          <a href="{{ settings.social_facebook_link }}" class="">Facebook</a>
-        </li>
-      {%- endif -%}
-      {%- if settings.social_instagram_link != blank -%}
-        <li>
-          <a href="{{ settings.social_instagram_link }}" class="">Instagram</a>
-        </li>
-      {%- else -%}
-        <li>
-          <a href="" class="">Instagram Isn't here</a>
-        </li>
-      {%- endif -%}
-      {%- if settings.social_tiktok_link != blank -%}
-        <li>
-          <a href="{{ settings.social_tiktok_link }}" class="">TikTok</a>
-        </li>
-      {%- endif -%}
-      {%- if settings.social_pinterest_link != blank -%}
-        <li>
-          <a href="{{ settings.social_pinterest_link }}" class="">Pinterest</a>
-        </li>
-      {%- endif -%}
-      {%- if settings.social_youtube_link != blank -%}
-        <li>
-          <a href="{{ settings.social_youtube_link }}" class="">YouTube</a>
-        </li>
-      {%- endif -%}
-    </ul>
   </div>
   <div class="wrapper font-sans">
+    <div class='grid md:grid-cols-2 gap-4'>
+      <ul class='flex w-full border-t border-contrast py-2 uppercase text-sm gap-2'>
+        {% if settings.social_facebook_link != blank %}
+          <li><a href="{{ settings.social_facebook_link }}">Facebook</a></li>
+        {% endif %}
+        {% if settings.social_instagram_link != blank %}
+          <li><a href="{{ settings.social_instagram_link }}">Instagram</a></li>
+        {% endif %}
+        {% if settings.social_youtube_link != blank %}
+          <li><a href="{{ settings.social_youtube_link }}">YouTube</a></li>
+        {% endif %}
+        {% if settings.social_tiktok_link != blank %}
+          <li><a href="{{ settings.social_tiktok_link }}">TikTok</a></li>
+        {% endif %}
+        {% if settings.social_twitter_link != blank %}
+          <li><a href="{{ settings.social_twitter_link }}">Twitter</a></li>
+        {% endif %}
+        {% if settings.social_pinterest_link != blank %}
+          <li><a href="{{ settings.social_pinterest_link }}">Pinterest</a></li>
+        {% endif %}
+      </ul>
+      
+      <div class="border-t border-contrast py-2">
+        {% form 'customer', class: 'flex gap-2' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <label for='contact[email]' class='uppercase hidden md:block'>Subscribe</label>
+          <input
+            type="email"
+            name="contact[email]"
+            class="flex-1 bg-transparent appearance-none focus:ring-0 placeholder:uppercase"
+            placeholder="Email address"
+            required
+          >
+          <button type="submit" class="uppercase text-sm flex items-center gap-2 group">
+            <span class='w-3 block transform -rotate-90 group-hover:translate-x-1 transition-transform duration-500'>
+              {{ 'icon-down-arrow.svg' | inline_asset_content }}
+            </span>
+            <span>Subscribe</span>
+          </button>
+        {% endform %}
+      </div>
+    </div>
     <div class="flex justify-between border-t border-contrast py-2">
       <p>© {{ 'now' | date: '%Y' }} James Stewart</p>
     </div>

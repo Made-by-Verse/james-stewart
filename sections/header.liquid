@@ -1,4 +1,4 @@
-<header id="js-header" class="fixed bg-primary w-full z-50 h-16 font-sans">
+<header id="js-header" class="fixed bg-primary w-full max-w-[100vw] z-50 h-16 font-sans">
   <div class="wrapper h-full grid grid-cols-3 gap-4">
     <nav class="hidden lg:block h-full">
       <ul class="flex gap-6 h-full items-center">
@@ -68,7 +68,7 @@
       x-transition:leave="transform transition ease-in-out duration-500"
       x-transition:leave-start="translate-x-0"
       x-transition:leave-end="-translate-x-full"
-      class="fixed left-0 top-0 h-full w-full max-w-[446px] bg-primary text-contrast shadow-lg"
+      class="fixed left-0 top-0 h-full w-full max-x-[390px] lg:max-w-[446px] bg-primary text-contrast shadow-lg"
       role="dialog"
       aria-modal="true"
     >
@@ -87,14 +87,20 @@
   <!-- Add the cart drawer markup -->
   <div
     x-data="{ open: false }"
-    @toggle-cart-drawer.window="open = !open"
-    @keydown.escape.window="open = false"
+    @toggle-cart-drawer.window="
+      open = !open;
+    "
+    @keydown.escape.window="
+      open = false;
+    "
   >
     <!-- Backdrop -->
     <div 
       x-show="open"
       class="drawer-backdrop"
-      @click="open = false"
+      @click="
+        open = false;
+      "
       x-cloak
     ></div>
 
@@ -108,7 +114,7 @@
       x-transition:leave="transform transition ease-in-out duration-500"
       x-transition:leave-start="translate-x-0"
       x-transition:leave-end="translate-x-full"
-      class="fixed right-0 top-0 h-full max-w-[446px] w-full bg-primary text-contrast shadow-lg"
+      class="fixed right-0 top-0 h-full max-w-[390px] lg:max-w-[446px] w-full bg-primary text-contrast shadow-lg"
       role="dialog"
       aria-modal="true"
     >
@@ -117,7 +123,7 @@
           <h2 class="link">Cart</h2>
           <button @click="open = false" class="">&times;</button>
         </div>
-        <div class="mt-24 flex flex-col justify-between w-full flex-grow">
+        <div class="mt-24 flex flex-col justify-between w-full flex-1 overflow-hidden">
           {% render 'cart-drawer' %}
         </div>
       </div>
