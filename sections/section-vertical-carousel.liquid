@@ -4,6 +4,10 @@
     --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
     --color-accent: {{ section.settings.color_scheme.settings.accent }};
   }
+
+  #vertical-carousel-{{ section.id }} .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
 {% endstyle %}
 
 <div class='color-{{ section.settings.color_scheme }} bg-primary'>

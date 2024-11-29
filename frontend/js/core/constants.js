@@ -23,7 +23,18 @@ export const SWIPER_CONFIG = {
       delay: 0,
       disableOnInteraction: false,
     },
-    speed: 5000,
+    speed: 15000,
+    freeMode: {
+      enabled: true,
+      momentum: false
+    },
+    cssMode: false,
+    watchSlidesProgress: true,
+    effect: 'slide',
+    touchRatio: 0,
+    touchAngle: 0,
+    longSwipes: false,
+    shortSwipes: false,
   },
   recommendations: {
     slidesPerView: 1,
