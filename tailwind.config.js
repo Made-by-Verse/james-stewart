@@ -18,6 +18,8 @@ export default {
         primary: "var(--color-primary)",
         contrast: "var(--color-contrast)",
         accent: "var(--color-accent)",
+        dark: '#241917',
+        "btn--dark-hover": "#443F3E",
         lines: "#C3C2BC",
       },
     },

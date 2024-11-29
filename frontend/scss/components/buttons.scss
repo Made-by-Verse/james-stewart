@@ -9,11 +9,11 @@
   }
 
   &--outline-contrast {
-    @apply border border-white text-white hover:text-contrast hover:bg-white transition-all duration-500;
+    @apply border border-white text-white hover:text-dark hover:bg-white transition-all duration-500;
   }
 
   &--primary {
-    @apply bg-contrast text-primary hover:opacity-70;
+    @apply bg-contrast text-primary hover:bg-btn--dark-hover transition-all duration-500;
   }
 }
 
