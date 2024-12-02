@@ -32,10 +32,11 @@
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
-        "hero_button_url": "https://www.google.com",
+        "hero_button_url": "shopify://collections",
         "hero_button_text": "Explore Catalogue",
         "color_scheme": "",
-        "show_logo": true
+        "show_logo": true,
+        "hero_heading": "Welcome to Our Store"
       }
     },
     "paragraph": {
@@ -51,6 +52,7 @@
         "process-step_1": {
           "type": "process-step",
           "settings": {
+            "heading": "",
             "step-image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png",
             "step-text": "<p>James Stewart blends world-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction. Blending a new generation of design, materials and making, alongside classic patterns and silhouettes, our collection is made for the discerning eye. </p>",
             "button_1_url": "https://www.google.com",
@@ -62,6 +64,7 @@
         "process-step_2": {
           "type": "process-step",
           "settings": {
+            "heading": "",
             "step-image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png",
             "step-text": "<p>Lorem Ipsum Dolor Sit Amet. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
             "button_1_url": "https://www.google.com",
@@ -73,6 +76,7 @@
         "process-step_3": {
           "type": "process-step",
           "settings": {
+            "heading": "",
             "step-image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png",
             "step-text": "<p>Lorem Ipsum Dolor Sit Amet. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>",
             "button_1_url": "https://www.google.com",
@@ -165,9 +169,9 @@
       "settings": {
         "title": "Goldie Chair",
         "richtext": "<p>Modular luxury born from the 1970'S The Redford Sofa draws inspiration from iconic designs and styling emanating from Italy and the United States in the 1970s. </p>",
-        "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png",
         "button_text": "Explore",
-        "button_link": "https://www.google.com"
+        "button_link": "https://www.google.com",
+        "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
       }
     },
     "video_qCGx76": {
