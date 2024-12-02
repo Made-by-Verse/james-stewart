@@ -9,11 +9,9 @@
 <div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
   <div class="wrapper py-6 lg:py-12">
     <div class="flex gap-4 flex-col md:flex-row justify-between items-center py-4 border-t border-lines">
-      {% if section.settings.title != blank %}
-        <h2 class="h3">{{ section.settings.title }}</h2>
-      {% endif %}
+      <a href="{{ routes.collections_url }}" class="text-contrast font-sans uppercase text-sm">{{ section.settings.all_collections_link_text }}</a>
       {% if section.settings.button_text != blank %}
-        <a href="{{ routes.collections_url }}" class="btn btn--outline-primary">{{ section.settings.button_text }}</a>
+        <a href="{{ section.settings.button_link }}" class="btn btn--outline-primary">{{ section.settings.button_text }}</a>
       {% endif %}
     </div>
 
@@ -40,15 +38,20 @@
   "settings": [
     {
       "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Featured Collections"
+      "id": "all_collections_link_text",
+      "label": "All Collections Link Text",
+      "default": "View All"
     },
     {
       "type": "text",
       "id": "button_text",
       "label": "Button Text",
       "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
     },
     {
       "type": "color_scheme",

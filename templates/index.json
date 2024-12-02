@@ -142,8 +142,9 @@
         "collection_block_6EFRzn"
       ],
       "settings": {
-        "title": "Collections",
-        "button_text": "View all collections",
+        "all_collections_link_text": "Explore All",
+        "button_text": "How to buy",
+        "button_link": "shopify://pages/how-to-buy",
         "color_scheme": ""
       }
     },
