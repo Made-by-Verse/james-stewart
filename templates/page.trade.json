@@ -9,12 +9,34 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "section-home-hero",
-      "settings": {}
+    "section_two_column_content_ALEkY3": {
+      "type": "section-two-column-content",
+      "blocks": {
+        "text_block_yMWQpt": {
+          "type": "text_block",
+          "settings": {
+            "sticky_text": "",
+            "static_text": ""
+          }
+        },
+        "image_block_adKqgP": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_d757c26a-9ae6-432b-97b5-4cf82e37aa10.png",
+            "aspect_ratio": "portrait"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_yMWQpt",
+        "image_block_adKqgP"
+      ],
+      "settings": {
+        "color_scheme": "scheme-fb547323-c0cb-4a49-a864-c809f1149213"
+      }
     }
   },
   "order": [
-    "hero"
+    "section_two_column_content_ALEkY3"
   ]
 }
