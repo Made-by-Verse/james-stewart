@@ -1,4 +1,9 @@
-<header id="js-header" class="fixed bg-primary w-full max-w-[100vw] z-50 h-16 font-sans">
+<header 
+  id="js-header" 
+  x-data="{ anyMegaMenuOpen: false }"
+  :class="anyMegaMenuOpen && 'mega-menu-open'"
+  class="fixed w-full max-w-[100vw] z-50 h-16 font-sans"
+>
   <div class="wrapper h-full">
     <div class='grid grid-cols-3 gap-4 h-full border-b wrapper-inner'>
       <nav class="hidden lg:block h-full">
@@ -6,8 +11,8 @@
           {%- for link in linklists.revamped-menu.links -%}
             <li class=""
               x-data="{ megaMenuOpen: false }"
-              @mouseenter="megaMenuOpen = true"
-              @mouseleave="megaMenuOpen = false"
+              @mouseenter="megaMenuOpen = {% if link.links.size > 0 %}true; anyMegaMenuOpen = true{% else %}false{% endif %}"
+              @mouseleave="megaMenuOpen = false; anyMegaMenuOpen = false"
             >
               <a href="{{ link.url }}" class="link">
                 {{ link.title }}

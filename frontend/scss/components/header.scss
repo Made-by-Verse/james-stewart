@@ -30,4 +30,8 @@
       }
     }
   }
+
+  &.mega-menu-open {
+    @apply bg-primary text-contrast;
+  }
 }
