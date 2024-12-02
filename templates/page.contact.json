@@ -15,10 +15,10 @@
         "block_general_inquiries": {
           "type": "contact-info",
           "settings": {
-            "title": "General Inquiries",
-            "phone": "02 9999 9999",
-            "email": "hello@example.com",
-            "address": "123 Store Street, City, Country"
+            "title": "James Stewart",
+            "phone": "1300 160 162",
+            "email": "sales@jamesstewart.com.au",
+            "address": ""
           }
         },
         "block_press_inquiries": {
