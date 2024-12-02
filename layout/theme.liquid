@@ -32,13 +32,8 @@
       render 'vite-tag' with 'theme.scss'
       render 'vite-tag' with 'theme.js'
     -%}
-    {{ content_for_header }}
 
-    {%- liquid
-      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
-    %}
+    {{ content_for_header }}
 
     {%- if settings.predictive_search_enabled -%}
       <link
@@ -55,10 +50,6 @@
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 
-    {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'cart-drawer' -%}
-    {%- endif -%}
-
     {% section 'header' %}
 
     <main id="MainContent" class="bg-primary" role="main" tabindex="-1">
@@ -68,6 +59,10 @@
     {% sections 'footer-group' %}
     {% if template contains 'product' %}
       {% render 'product-drawers', product: product %}
+    {% endif %}
+
+    {% if template contains 'collection' %}
+      {% render 'filter-drawer' %}
     {% endif %}
 
     <ul hidden>

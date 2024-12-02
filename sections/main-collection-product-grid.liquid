@@ -1,4 +1,4 @@
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+<div class="">
   {%- paginate collection.products by section.settings.products_per_page -%}
         {%- if collection.products.size == 0 -%}
           <div class="" id="" data-id="{{ section.id }}">
@@ -27,46 +27,9 @@
                 >
                   Filter +
                 </button>
-                <div
-                  x-data="{ open: false }"
-                  class='z-[9999] relative'
-                  @toggle-filter-drawer.window="open = !open"
-                  @keydown.escape.window="open = false"
-                >
-                  <!-- Backdrop -->
-                  <div 
-                    x-show="open"
-                    class="fixed inset-0 bg-black bg-opacity-50"
-                    @click="open = false"
-                  ></div>
-
-                  <!-- Drawer -->
-                  <div
-                    x-show="open"
-                    x-transition:enter="transform transition ease-in-out duration-500"
-                    x-transition:enter-start="-translate-x-full"
-                    x-transition:enter-end="translate-x-0"
-                    x-transition:leave="transform transition ease-in-out duration-500"
-                    x-transition:leave-start="translate-x-0"
-                    x-transition:leave-end="-translate-x-full"
-                    class="fixed left-0 top-0 h-full max-w-lg w-full bg-primary text-contrast shadow-lg"
-                    role="dialog"
-                    aria-modal="true"
-                  >
-                    <div class="p-4 h-full flex flex-col w-full">
-                      <div class="flex justify-between items-center">
-                        <h2 class="font-sans">Filters</h2>
-                        <button @click="open = false" class="">&times;</button>
-                      </div>
-                      <div class="flex flex-col justify-between w-full flex-1">
-                        {% render 'facets', results: collection, pre paginate: paginate %}
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
 
-              <div class="flex items-center gap-6">
+              <div class="hidden lg:flex items-center gap-6">
                 <button class="font-sans uppercase transition-opacity duration-500" @click="large = false" :class='large && "opacity-50"'>Small</button>
                 <button class="font-sans uppercase transition-opacity duration-500" @click="large = true" :class='!large && "opacity-50"'>Large</button>
               </div> 
