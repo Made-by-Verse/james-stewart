@@ -21,7 +21,7 @@
             height: 1000, %}
           </div>
         {% endif %}
-      {% when 'text_block' %}
+      {% when 'text_between' %}
         {% if block.settings.sticky_text or block.settings.static_text %}
           <div class="flex flex-col gap-8">
             {% if block.settings.sticky_text %}
@@ -138,6 +138,89 @@
             }
           ],
           "default": "portrait"
+        }
+      ]
+    },
+    {
+      "type": "text_between",
+      "name": "Text Between",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "stockist_cta",
+      "name": "Stockist CTA",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "drawer_button_text",
+          "label": "Drawer Button Text"
+        }
+      ]
+    },
+    {
+      "type": "wholesale_cta",
+      "name": "Wholesale CTA",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "button_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "button_2_link",
+          "label": "Button 2 Link"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text"
         }
       ]
     }

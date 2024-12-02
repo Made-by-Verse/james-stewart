@@ -19,6 +19,11 @@ export default class App {
   initializeAlpine() {
     Alpine.plugin(intersect);
     window.Alpine = Alpine;
+
+    Alpine.data("megaMenu", () => ({
+      open: false,
+    }));
+
     Alpine.start();
   }
 

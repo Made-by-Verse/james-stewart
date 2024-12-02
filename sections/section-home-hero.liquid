@@ -19,7 +19,7 @@
       {% render "logo" %}
     </div>
   {% else %}
-    <h2 class="h1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[2] text-white">{{ section.settings.hero_heading }}</h2>
+    <h2 class="h1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[2] text-white text-center text-nowrap">{{ section.settings.hero_heading }}</h2>
   {% endif %}
   <div class="flex flex-col items-center space-y-4 text-white max-w-md relative z-[1]">
     {% if section.settings.hero_content != blank %}

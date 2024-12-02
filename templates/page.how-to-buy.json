@@ -43,7 +43,7 @@
       "type": "section-two-column-content",
       "blocks": {
         "text_block_DhhUja": {
-          "type": "text_block",
+          "type": "text_between",
           "settings": {
             "sticky_text": "<p>James Stewart works exclusively with designers, developers and boutique retailers around Australia.</p>",
             "static_text": "<p>We’re the first Australian furniture company to establish an aniline leather stock programme of in-house designs. With our background in retail, we know how to simplify procurement for design studio retailers, designers and architects. You deal directly with us, not an agent or reseller, which speeds up the ordering and delivery process and ensures more accuracy with timeframes.</p>"
@@ -71,20 +71,21 @@
         "wholesale_cta_block_1": {
           "type": "wholesale_cta",
           "settings": {
-            "title": "Wholesale",
+            "heading": "Wholesale",
             "image": "shopify://shop_images/James_Stewart_LB_201973230_TobyScott.png",
             "text": "<p>Designers, architects and specifiers are invited to apply for an account to access trade pricing, full design and specification support. Designers can customise elements of each product, according to project scale and also book our Brisbane showroom for client consultations. Examples of the collection can be seen in boutique furniture stores and tradeshows, contact us for locations.</p>",
             "button_1_text": "Apply for a trade account",
             "button_1_link": "/pages/wholesale-registration-form",
-            "button_2_text": "Contact Us"
+            "button_2_text": "Contact Us",
+            "button_2_link": "/pages/contact"
           }
         },
         "stockist_cta_block_1": {
           "type": "stockist_cta",
           "settings": {
-            "title": "Retail Customers",
+            "heading": "Retail Customers",
             "image": "shopify://shop_images/James_Stewart_LB_201973230_TobyScott_2.png",
-            "text": "<p>The James Stewart collection is represented by selected retailers around Australia. To find out where you can purchase and view samples, please complete the form below and we’ll email you our list of stockists.</p>",
+            "text": "<p>The James Stewart collection is represented by selected retailers around Australia. To find out where you can purchase and view samples, please complete the form below and we'll email you our list of stockists.</p>",
             "drawer_button_text": "Find a retailer in your area",
             "drawer_heading": "Request a list of stockists"
           }
