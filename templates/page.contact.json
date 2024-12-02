@@ -24,10 +24,10 @@
         "block_press_inquiries": {
           "type": "contact-info",
           "settings": {
-            "title": "Press Inquiries",
-            "phone": "02 9999 9999",
-            "email": "hello@example.com",
-            "address": "123 Store Street, City, Country"
+            "title": "Agency — Rosa Brown Agency WA",
+            "phone": "(08) 9388 1581",
+            "email": "rosa@rosabrownagency.com.au",
+            "address": "80 Jersey Street, Jolimont WA 6014"
           }
         },
         "block_customer_service": {
