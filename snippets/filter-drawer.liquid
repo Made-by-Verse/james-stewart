@@ -9,10 +9,12 @@
     x-show="filtersOpen"
     class="drawer-backdrop"
     @click="filtersOpen = false"
+    x-cloak
   ></div>
 
   <!-- Drawer -->
   <div
+    x-cloak
     x-show="filtersOpen"
     x-transition:enter="transform transition ease-in-out duration-500"
     x-transition:enter-start="-translate-x-full"
