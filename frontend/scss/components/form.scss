@@ -20,3 +20,18 @@
 input {
   @apply focus:outline-none;
 }
+
+
+
+/* For Chrome/Safari/Edge */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  background: #fff;
+  /* Add custom styling here */
+}
+
+/* For Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
