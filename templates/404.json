@@ -17,7 +17,7 @@
           "settings": {
             "label": "Home",
             "url": "/",
-            "image": "shopify://shop_images/hero-image.png"
+            "image": "shopify://shop_images/Rectangle_619.png"
           }
         },
         "link-2": {
@@ -25,7 +25,7 @@
           "settings": {
             "label": "Shop",
             "url": "/collections/all",
-            "image": "shopify://shop_images/hero-image.png"
+            "image": "shopify://shop_images/Rectangle_592.png"
           }
         },
         "link-3": {
@@ -33,7 +33,7 @@
           "settings": {
             "label": "Contact",
             "url": "/contact",
-            "image": "shopify://shop_images/hero-image.png"
+            "image": "shopify://shop_images/Rectangle_5922.png"
           }
         }
       },
