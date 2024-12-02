@@ -17,7 +17,7 @@
     @apply bg-transparent text-primary;
 
     .wrapper-inner {
-      @apply border-0;
+      @apply border-b-0;
     }
 
     .home-page-logo {
@@ -27,6 +27,14 @@
     .hamburger {
       .line {
         @apply bg-primary;
+      }
+    }
+  }
+
+  &.not-home {
+    &.header--on-hero {
+    .wrapper-inner {
+      @apply border-white border-b;
       }
     }
   }
