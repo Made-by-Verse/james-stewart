@@ -17,19 +17,19 @@
           {
             "type": "color",
             "id": "primary",
-            "label": "t:settings_schema.colors.settings.background.label",
+            "label": "Primary",
             "default": "#F6F5ED"
           },
           {
             "type": "color",
             "id": "contrast",
-            "label": "t:settings_schema.colors.settings.contrast.label",
+            "label": "Contrast",
             "default": "#241917"
           },
           {
             "type": "color",
-            "id": "accent",
-            "label": "t:settings_schema.colors.settings.accent.label",
+            "id": "lines",
+            "label": "Lines",
             "default": "#685F2C"
           }
         ],
@@ -38,78 +38,78 @@
           "background": {
             "solid": "primary"
           },
-          "links": "accent",
+          "links": "lines",
           "icons": "contrast",
-          "primary_button": "accent",
+          "primary_button": "lines",
           "on_primary_button": "contrast",
-          "primary_button_border": "accent",
+          "primary_button_border": "lines",
           "secondary_button": "primary",
-          "on_secondary_button": "accent",
-          "secondary_button_border": "accent"
+          "on_secondary_button": "lines",
+          "secondary_button_border": "lines"
         }
       }
     ]
   },
   {
-    "name": "t:settings_schema.social-media.name",
+    "name": "Social media",
     "settings": [
       {
         "type": "header",
-        "content": "t:settings_schema.social-media.settings.header.content"
+        "content": "Social media"
       },
       {
         "type": "text",
         "id": "social_facebook_link",
-        "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_facebook_link.info"
+        "label": "Facebook",
+        "placeholder": "https://www.facebook.com/your-page"
       },
       {
         "type": "text",
         "id": "social_instagram_link",
-        "label": "t:settings_schema.social-media.settings.social_instagram_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_instagram_link.info"
+        "label": "Instagram",
+        "placeholder": "https://www.instagram.com/your-page"
       },
       {
         "type": "text",
         "id": "social_youtube_link",
-        "label": "t:settings_schema.social-media.settings.social_youtube_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_youtube_link.info"
+        "label": "YouTube",
+        "placeholder": "https://www.youtube.com/your-page"
       },
       {
         "type": "text",
         "id": "social_tiktok_link",
-        "label": "t:settings_schema.social-media.settings.social_tiktok_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_tiktok_link.info"
+        "label": "TikTok",
+        "placeholder": "https://www.tiktok.com/your-page"
       },
       {
         "type": "text",
         "id": "social_twitter_link",
-        "label": "t:settings_schema.social-media.settings.social_twitter_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_twitter_link.info"
+        "label": "Twitter",
+        "placeholder": "https://www.twitter.com/your-page"
       },
       {
         "type": "text",
         "id": "social_snapchat_link",
-        "label": "t:settings_schema.social-media.settings.social_snapchat_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_snapchat_link.info"
+        "label": "Snapchat",
+        "placeholder": "https://www.snapchat.com/your-page"
       },
       {
         "type": "text",
         "id": "social_pinterest_link",
-        "label": "t:settings_schema.social-media.settings.social_pinterest_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_pinterest_link.info"
+        "label": "Pinterest",
+        "placeholder": "https://www.pinterest.com/your-page"
       },
       {
         "type": "text",
         "id": "social_tumblr_link",
-        "label": "t:settings_schema.social-media.settings.social_tumblr_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_tumblr_link.info"
+        "label": "Tumblr",
+        "placeholder": "https://www.tumblr.com/your-page"
       },
       {
         "type": "text",
         "id": "social_vimeo_link",
-        "label": "t:settings_schema.social-media.settings.social_vimeo_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_vimeo_link.info"
+        "label": "Vimeo",
+        "placeholder": "https://www.vimeo.com/your-page"
       }
     ]
   },

@@ -2,7 +2,7 @@
   .color-{{ section.settings.color_scheme }} {
     --color-primary: {{ section.settings.color_scheme.settings.primary }};
     --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
-    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+    --color-lines: {{ section.settings.color_scheme.settings.lines }};
   }
 {% endstyle %}
 
@@ -80,7 +80,7 @@
         <h2 class="h3 mb-4">{{ 'customer.login_page.title' | t }}</h2>
         
         {%- if recover_success == true -%}
-          <div class="bg-accent/10 p-4 rounded-sm mb-6 flex items-center gap-2">
+          <div class="bg-lines/10 p-4 rounded-sm mb-6 flex items-center gap-2">
             <span class="svg-wrapper">
               {{- 'icon-success.svg' | inline_asset_content -}}
             </span>
@@ -92,7 +92,7 @@
       <div>
         {%- form 'customer_login', novalidate: 'novalidate', class: 'space-y-4' -%}
           {%- if form.errors -%}
-            <div class="p-4 rounded-sm mb-6 flex items-center gap-2 bg-accent/10 border border-accent">
+            <div class="p-4 rounded-sm mb-6 flex items-center gap-2 bg-lines/10 border border-lines">
               <span class="svg-wrapper">
                 {{- 'icon-error.svg' | inline_asset_content -}}
               </span>

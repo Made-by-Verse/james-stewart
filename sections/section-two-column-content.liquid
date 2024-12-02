@@ -2,7 +2,7 @@
   .color-{{ section.settings.color_scheme }} {
     --color-primary: {{ section.settings.color_scheme.settings.primary }};
     --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
-    --color-accent: {{ section.settings.color_scheme.settings.accent }};
+    --color-lines: {{ section.settings.color_scheme.settings.lines }};
   }
 {% endstyle %}
 
@@ -35,15 +35,19 @@
           </div>
         {% endif %}
       {% when 'text_beside' %}
-        <div class="grid lg:grid-cols-3 gap-4">
-          <h3 class="text-lg font-bold">{{ block.settings.heading }}</h3>
-          <div class="lg:col-span-2">
-            <div class="max-w-p">
-              {{ block.settings.text }}
+        <div class="flex w-full h-full items-center">
+          <div class="grid md:grid-cols-3 gap-4">
+            <h3 class="h3">{{ block.settings.heading }}</h3>
+            <div class="md:col-span-2">
+              <div class="max-w-p richtext">
+                {{ block.settings.text }}
+              </div>
+              <div class="flex mt-4">
+                {% if block.settings.button_text %}
+                  <a href="{{ block.settings.button_link }}" class="btn btn--outline-primary flex">{{ block.settings.button_text }}</a>
+                {% endif %}
+              </div>
             </div>
-            {% if block.settings.button_text and block.settings.button_link %}
-              <a href="{{ block.settings.button_link }}" class="button">{{ block.settings.button_text }}</a>
-            {% endif %}
           </div>
         </div>
       {% when 'stockist_cta' %}

@@ -1,8 +1,8 @@
 #js-header {
   @apply bg-primary text-contrast transition-all duration-500;
 
-  .wrapper {
-    @apply border-b;
+  .wrapper-inner {
+    @apply border-b border-lines;
   }
 
   .hamburger {
@@ -16,9 +16,10 @@
   &.header--on-hero {
     @apply bg-transparent text-primary;
 
-    .wrapper {
+    .wrapper-inner {
       @apply border-0;
     }
+
 
     .home-page-logo {
       @apply opacity-0;
