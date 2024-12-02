@@ -12,11 +12,13 @@
     "section_two_column_content_ALEkY3": {
       "type": "section-two-column-content",
       "blocks": {
-        "text_block_yMWQpt": {
-          "type": "text_block",
+        "text_beside_AXtnXL": {
+          "type": "text_beside",
           "settings": {
-            "sticky_text": "",
-            "static_text": ""
+            "heading": "TRADE portal",
+            "text": "<p>For designers, retailers and developers, our trade portal gives you access to our full catalogue and pricing, offering a simple way to place and track orders.</p><p>We have an exceptional trade service, working with designers and boutique retail studios to supply quality, Australian-designed furniture to discerning clients. We assist by providing design and specification support and project customisation. The James Stewart team manages every step of your order to ensure deliveries arrive on time and to specification.</p>",
+            "button_text": "Apply for a trade account",
+            "button_link": ""
           }
         },
         "image_block_adKqgP": {
@@ -28,7 +30,7 @@
         }
       },
       "block_order": [
-        "text_block_yMWQpt",
+        "text_beside_AXtnXL",
         "image_block_adKqgP"
       ],
       "settings": {
