@@ -5,3 +5,9 @@
     @apply opacity-0 pointer-events-none;
   }
 }
+
+[data-video-frame] {
+  video {
+    @apply w-full h-full;
+  }
+}
