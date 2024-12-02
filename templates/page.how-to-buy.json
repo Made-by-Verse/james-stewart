@@ -45,8 +45,8 @@
         "text_block_DhhUja": {
           "type": "text_between",
           "settings": {
-            "heading": "James Stewart works exclusively with designers, developers and boutique retailers around Australia.",
-            "text": "<p>We’re the first Australian furniture company to establish an aniline leather stock programme of in-house designs. With our background in retail, we know how to simplify procurement for design studio retailers, designers and architects. You deal directly with us, not an agent or reseller, which speeds up the ordering and delivery process and ensures more accuracy with timeframes.</p>"
+            "sticky_text": "<p>James Stewart works exclusively with designers, developers and boutique retailers around Australia.</p>",
+            "static_text": "<p>We’re the first Australian furniture company to establish an aniline leather stock programme of in-house designs. With our background in retail, we know how to simplify procurement for design studio retailers, designers and architects. You deal directly with us, not an agent or reseller, which speeds up the ordering and delivery process and ensures more accuracy with timeframes.</p>"
           }
         },
         "image_block_icU89p": {
