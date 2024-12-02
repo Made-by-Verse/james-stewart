@@ -69,6 +69,13 @@
           "contrast": "#241917",
           "accent": "#685f2c"
         }
+      },
+      "scheme-fb547323-c0cb-4a49-a864-c809f1149213": {
+        "settings": {
+          "primary": "#d1b293",
+          "contrast": "#241917",
+          "accent": "#685f2c"
+        }
       }
     }
   },
