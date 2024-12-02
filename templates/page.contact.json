@@ -11,18 +11,14 @@
   "sections": {
     "main": {
       "type": "section-contact",
-      "settings": {
-        "heading": "Contact Us",
-        "text": "<p>If you’d like to find out more about our design collection or have product inquiries, please get in touch with our team.</p>",
-        "image": "shopify://shop_images/Rectangle_612.png"
-      },
       "blocks": {
         "block_general_inquiries": {
           "type": "contact-info",
           "settings": {
             "title": "General Inquiries",
             "phone": "02 9999 9999",
-            "email": "hello@example.com"
+            "email": "hello@example.com",
+            "address": "123 Store Street, City, Country"
           }
         },
         "block_press_inquiries": {
@@ -30,15 +26,17 @@
           "settings": {
             "title": "Press Inquiries",
             "phone": "02 9999 9999",
-            "email": "hello@example.com"
+            "email": "hello@example.com",
+            "address": "123 Store Street, City, Country"
           }
         },
         "block_customer_service": {
           "type": "contact-info",
           "settings": {
             "title": "Customer Service",
-            "phone": "02 9999 9999",
-            "email": "hello@example.com"
+            "phone": "0455 688 881",
+            "email": "David@dlagencies.com",
+            "address": ""
           }
         }
       },
@@ -46,8 +44,15 @@
         "block_general_inquiries",
         "block_press_inquiries",
         "block_customer_service"
-      ]
+      ],
+      "settings": {
+        "heading": "Contact Us",
+        "text": "<p>If you’d like to find out more about our design collection or have product inquiries, please get in touch with our team.</p>",
+        "image": "shopify://shop_images/jsf-contact-image_b5f6b7ec-2280-408a-9c8d-d7507dfca36f.jpg"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
