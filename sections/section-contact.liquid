@@ -71,22 +71,26 @@
           {
             "type": "text",
             "id": "title",
-            "label": "Title"
+            "label": "Title",
+            "default": "Get in Touch"
           },
           {
             "type": "text",
             "id": "phone",
-            "label": "Phone"
+            "label": "Phone",
+            "default": "+1 (555) 123-4567"
           },
           {
             "type": "text",
             "id": "email",
-            "label": "Email"
+            "label": "Email",
+            "default": "hello@example.com"
           },
           {
             "type": "text",
             "id": "address",
-            "label": "Address"
+            "label": "Address",
+            "default": "123 Store Street, City, Country"
           }
         ]
       }
@@ -95,17 +99,29 @@
       {
         "type": "text",
         "id": "heading",
-        "label": "Heading"
+        "label": "Heading",
+        "default": "Contact Us"
       },
       {
         "type": "richtext",
         "id": "text",
-        "label": "Text"
+        "label": "Text",
+        "default": "<p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>"
       },
       {
         "type": "image_picker",
         "id": "image",
         "label": "Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Contact",
+        "blocks": [
+          {
+            "type": "contact-info"
+          }
+        ]
       }
     ]
   }

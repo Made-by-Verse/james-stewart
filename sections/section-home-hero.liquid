@@ -61,7 +61,8 @@
     {
       "type": "richtext",
       "id": "hero_content",
-      "label": "Hero Content"
+      "label": "Hero Content",
+      "default": "<p>Welcome to our store. Discover our unique collection of products.</p>"
     },
     {
       "type": "url",
@@ -71,7 +72,8 @@
     {
       "type": "text",
       "id": "hero_button_text",
-      "label": "Hero Button Text"
+      "label": "Hero Button Text",
+      "default": "Shop Now"
     },
     {
       "type": "color_scheme",
@@ -88,12 +90,18 @@
     {
       "type": "text",
       "id": "hero_heading",
-      "label": "Hero Heading"
+      "label": "Hero Heading",
+      "default": "Welcome to Our Store"
     }
   ],
   "presets": [
     {
-      "name": "Home Hero"
+      "name": "Home Hero",
+      "settings": {
+        "hero_content": "<p>Welcome to our store. Discover our unique collection of products.</p>",
+        "hero_button_text": "Shop Now",
+        "hero_heading": "Welcome to Our Store"
+      }
     }
   ]
 }

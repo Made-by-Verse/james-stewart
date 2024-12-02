@@ -60,7 +60,8 @@
     {
       "type": "richtext",
       "id": "description",
-      "label": "Description"
+      "label": "Description",
+      "default": "<p>Showcase your best products with a curated collection display. Add a compelling description to draw customers in.</p>"
     },
     {
       "type": "range",
@@ -81,7 +82,11 @@
   "presets": [
     {
       "name": "Featured Collection",
-      "category": "Collection"
+      "category": "Collection",
+      "settings": {
+        "description": "<p>Showcase your best products with a curated collection display.</p>",
+        "products_to_show": 6
+      }
     }
   ]
 }

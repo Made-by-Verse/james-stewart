@@ -41,18 +41,20 @@
       {
         "type": "text",
         "id": "title",
-        "label": "Title"
+        "label": "Title",
+        "default": "Page Not Found"
       },
       {
         "type": "richtext",
         "id": "richtext",
-        "label": "Rich Text"
+        "label": "Rich Text",
+        "default": "<p>The page you are looking for does not exist. It may have been moved or removed altogether. Please try searching for some other page, or return to the website's homepage to find what you're looking for.</p>"
       },
       {
         "type": "color_scheme",
         "id": "color_scheme",
         "label": "Color Scheme",
-        "default": "primary"
+        "default": "scheme-1"
       }
     ],
     "blocks": [
@@ -64,7 +66,8 @@
           {
             "type": "text",
             "id": "label",
-            "label": "Label"
+            "label": "Label",
+            "default": "Continue Shopping"
           },
           {
             "type": "url",
@@ -75,6 +78,16 @@
             "type": "image_picker",
             "id": "image",
             "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "404",
+        "blocks": [
+          {
+            "type": "link"
           }
         ]
       }

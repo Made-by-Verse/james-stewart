@@ -35,7 +35,8 @@
       {
         "type": "text",
         "id": "title",
-        "label": "Title"
+        "label": "Title",
+        "default": "Image Banner"
       },
       {
         "type": "image_picker",
@@ -45,7 +46,8 @@
       {
         "type": "color_scheme",
         "id": "color_scheme",
-        "label": "Color Scheme"
+        "label": "Color Scheme",
+        "default": "scheme-1"
       },
       {
         "type": "select",
@@ -56,7 +58,17 @@
           { "value": "1/1", "label": "Square" },
           { "value": "4/3", "label": "Landscape" },
           { "value": "16/9", "label": "Video" }
-        ]
+        ],
+        "default": "16/9"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Banner",
+        "settings": {
+          "title": "Image Banner",
+          "aspect_ratio": "16/9"
+        }
       }
     ]
   }

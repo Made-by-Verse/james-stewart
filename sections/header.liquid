@@ -139,41 +139,54 @@
   "class": "section-header",
   "blocks": [
     {
-			"type": "mega_menu",
-			"name": "Mega Menu Card",
-			"settings": [
-				{
-					"type": "text",
-					"id": "mega_menu_trigger",
-					"label": "Trigger",
-					"info": "The text that will trigger the mega menu"
-				},
-				{
-					"type": "header",
-					"content": "Card"
-				},
-				{
-					"type": "text",
-					"id": "left_text",
-					"label": "Left Text"
-				},
+      "type": "mega_menu",
+      "name": "Mega Menu Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "mega_menu_trigger",
+          "label": "Trigger",
+          "info": "The text that will trigger the mega menu",
+          "default": "Shop"
+        },
+        {
+          "type": "header",
+          "content": "Card"
+        },
+        {
+          "type": "text",
+          "id": "left_text",
+          "label": "Left Text",
+          "default": "Collection"
+        },
         {
           "type": "text",
           "id": "right_text",
-          "label": "Right Text"
+          "label": "Right Text",
+          "default": "Shop Now"
         },
-				{
-					"type": "url",
-					"id": "link",
-					"label": "Link"
-				},
-				{
-					"type": "image_picker",
-					"id": "image",
-					"label": "Image"
-				}
-			]
-		}
-	]
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        {
+          "type": "mega_menu"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
