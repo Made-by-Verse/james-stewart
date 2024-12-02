@@ -33,7 +33,7 @@
         "block_customer_service": {
           "type": "contact-info",
           "settings": {
-            "title": "Customer Service",
+            "title": "DL Agencies",
             "phone": "0455 688 881",
             "email": "David@dlagencies.com",
             "address": ""
