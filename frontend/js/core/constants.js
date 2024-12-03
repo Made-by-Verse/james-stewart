@@ -23,7 +23,7 @@ export const SWIPER_CONFIG = {
       delay: 0,
       disableOnInteraction: false,
     },
-    speed: 15000,
+    speed: 10000,
     freeMode: {
       enabled: true,
       momentum: false
