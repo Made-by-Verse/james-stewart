@@ -93,7 +93,7 @@
         {% case block.type %}
           {% when 'process-step' %}
             <div
-              x-intersect:enter.threshold.50="activeStep = {{ forloop.index }}"
+              x-intersect:enter.threshold.75="activeStep = {{ forloop.index }}"
               class="scroll-mt-20"
             >
               {% render 'responsive-image' with
