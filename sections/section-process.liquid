@@ -6,9 +6,38 @@
   }
 {% endstyle %}
 
-<div class='color-{{section.settings.color_scheme}} bg-primary text-contrast'>
+{% liquid
+  assign padding_top = section.settings.padding_top | default: 'md'
+  assign padding_bottom = section.settings.padding_bottom | default: 'md'
+
+  if padding_top == 'none'
+    assign padding_top = 'pt-0'
+  elsif padding_top == 'sm'
+    assign padding_top = 'pt-6'
+  elsif padding_top == 'md'
+    assign padding_top = 'pt-6 lg:pt-12'
+  elsif padding_top == 'lg'
+    assign padding_top = 'pt-12 lg:pt-24'
+  elsif padding_top == 'xl'
+    assign padding_top = 'pt-24 lg:pt-48'
+  endif
+
+  if padding_bottom == 'none'
+    assign padding_bottom = 'pb-0'
+  elsif padding_bottom == 'sm'
+    assign padding_bottom = 'pb-6'
+  elsif padding_bottom == 'md'
+    assign padding_bottom = 'pb-6 lg:pb-12'
+  elsif padding_bottom == 'lg'
+    assign padding_bottom = 'pb-12 lg:pb-24'
+  elsif padding_bottom == 'xl'
+    assign padding_bottom = 'pb-24 lg:pb-48'
+  endif
+%}
+
+<div class='color-{{section.settings.color_scheme}} bg-primary text-contrast {{ padding_top }} {{ padding_bottom }}'>
   <div 
-    class="wrapper grid md:grid-cols-2 gap-8 py-6 lg:py-12"
+    class="wrapper grid md:grid-cols-2 gap-8"
     x-data="{ activeStep: 0 }"
   >
     <div class="flex items-start {% if section.settings.left-image %}max-w-lg{% endif %}">
@@ -101,6 +130,34 @@
       "type": "image_picker",
       "id": "left-image",
       "label": "Left Image"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "XLarge" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "XLarge" }
+      ]
     }
   ],
   "blocks": [
@@ -144,6 +201,15 @@
           "label": "Button 2 Text"
         }
       ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process",
+      "settings": {
+        "padding_top": "md",
+        "padding_bottom": "md"
+      }
     }
   ]
 }

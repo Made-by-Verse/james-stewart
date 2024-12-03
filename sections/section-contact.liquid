@@ -6,8 +6,37 @@
   }
 {% endstyle %}
 
-<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
-  <div class='wrapper pt-32 pb-12'>
+{% liquid
+  assign padding_top = section.settings.padding_top | default: 'md'
+  assign padding_bottom = section.settings.padding_bottom | default: 'md'
+
+  if padding_top == 'none'
+    assign padding_top = 'pt-0'
+  elsif padding_top == 'sm'
+    assign padding_top = 'pt-6'
+  elsif padding_top == 'md'
+    assign padding_top = 'pt-6 lg:pt-12'
+  elsif padding_top == 'lg'
+    assign padding_top = 'pt-12 lg:pt-24'
+  elsif padding_top == 'xl'
+    assign padding_top = 'pt-24 lg:pt-48'
+  endif
+
+  if padding_bottom == 'none'
+    assign padding_bottom = 'pb-0'
+  elsif padding_bottom == 'sm'
+    assign padding_bottom = 'pb-6'
+  elsif padding_bottom == 'md'
+    assign padding_bottom = 'pb-6 lg:pb-12'
+  elsif padding_bottom == 'lg'
+    assign padding_bottom = 'pb-12 lg:pb-24'
+  elsif padding_bottom == 'xl'
+    assign padding_bottom = 'pb-24 lg:pb-48'
+  endif
+%}
+
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast {{ padding_top }} {{ padding_bottom }}'>
+  <div class='wrapper'>
     <div class='grid lg:grid-cols-7 gap-4'>
       <div class='lg:col-span-5 '>
         <div class='grid grid-cols-3 gap-4 mb-12 lg:mb-32'>
@@ -114,19 +143,39 @@
         "label": "Image"
       },
       {
-        "type": "form",
-        "id": "contact_form",
-        "label": "Contact Form"
+      "type": "select",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "XLarge" }
+      ]
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "XLarge" }
+        ]
       }
     ],
     "presets": [
       {
         "name": "Contact",
-        "blocks": [
-          {
-            "type": "contact-info"
-          }
-        ]
+        "settings": {
+          "heading": "Contact Us",
+          "padding_top": "md",
+          "padding_bottom": "md",
+          "text": "<p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>"
+        }
       }
     ]
   }

@@ -33,7 +33,9 @@
       "type": "section-paragraph",
       "settings": {
         "text": "<p>With a love for enduring design and objects built to last, we cherish heritage pieces as much as we value fresh and innovative thinking.</p>",
-        "color_scheme": ""
+        "color_scheme": "",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "section_process_4ashkjl": {
@@ -65,7 +67,9 @@
       "block_order": ["process_step_ridXEb", "process_step_UpETM3"],
       "settings": {
         "color_scheme": "",
-        "left-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png"
+        "left-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "image-banner_123asd": {
@@ -74,7 +78,9 @@
         "title": "Image Banner",
         "image": "shopify://shop_images/Rectangle_596.png",
         "color_scheme": "",
-        "aspect_ratio": "landscape"
+        "aspect_ratio": "landscape",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "section_process_as424gha": {
@@ -107,7 +113,9 @@
       },
       "block_order": ["process_step_ridXEb", "process_step_UpETM3"],
       "settings": {
-        "color_scheme": ""
+        "color_scheme": "",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "section_image_with_text_123asd": {
@@ -118,7 +126,9 @@
         "aspect_ratio": "3/4",
         "image_width": "320px",
         "text": "<p>We believe in natural products – they are better to work with, better to live with, better to upcycle, and naturally compostable. We also believe in timeless design – furniture that is treasured and cared for holds its value for future generations.</p><p>To extend their lifespan, all our furniture pieces come with material tags, so leathers and fabrics can be colour-matched for repairs or recovered in a similar fabric. Having the material tags allows us to match any repairs (your puppy may chew a pillow, for example) as closely as possible to the original if not the original batch. We research sustainable upholstery and frame materials, increasingly finding better ways to make things.</p>",
-        "section_color_scheme": "scheme-3"
+        "section_color_scheme": "scheme-3",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "section_process_as424ghg": {
@@ -151,7 +161,9 @@
       },
       "block_order": ["process_step_ridXEb", "process_step_UpETM3"],
       "settings": {
-        "color_scheme": ""
+        "color_scheme": "",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "section_vertical_carousel_84yyR4": {
@@ -207,7 +219,9 @@
         "text": "<p>We simplify procurement for design studio retailers, designers and architects. You deal directly with us, which speeds up the ordering and delivery process and ensures more accuracy with timeframes.</p>",
         "button_label": "How to buy",
         "button_link": "shopify://pages/how-to-buy",
-        "color_scheme": "scheme-2"
+        "color_scheme": "scheme-2",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     }
   },

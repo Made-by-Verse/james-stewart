@@ -34,7 +34,9 @@
         "image_block_adKqgP"
       ],
       "settings": {
-        "color_scheme": "scheme-fb547323-c0cb-4a49-a864-c809f1149213"
+        "color_scheme": "scheme-fb547323-c0cb-4a49-a864-c809f1149213",
+        "padding_top": "xl",
+        "padding_bottom": "md"
       }
     }
   },

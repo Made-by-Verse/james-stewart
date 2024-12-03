@@ -6,8 +6,37 @@
   }
 {% endstyle %}
 
-<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
-  <div class="wrapper py-6 lg:py-12">
+{% liquid
+  assign padding_top = section.settings.padding_top | default: 'md'
+  assign padding_bottom = section.settings.padding_bottom | default: 'md'
+
+  if padding_top == 'none'
+    assign padding_top = 'pt-0'
+  elsif padding_top == 'sm'
+    assign padding_top = 'pt-6'
+  elsif padding_top == 'md'
+    assign padding_top = 'pt-6 lg:pt-12'
+  elsif padding_top == 'lg'
+    assign padding_top = 'pt-12 lg:pt-24'
+  elsif padding_top == 'xl'
+    assign padding_top = 'pt-24 lg:pt-48'
+  endif
+
+  if padding_bottom == 'none'
+    assign padding_bottom = 'pb-0'
+  elsif padding_bottom == 'sm'
+    assign padding_bottom = 'pb-6'
+  elsif padding_bottom == 'md'
+    assign padding_bottom = 'pb-6 lg:pb-12'
+  elsif padding_bottom == 'lg'
+    assign padding_bottom = 'pb-12 lg:pb-24'
+  elsif padding_bottom == 'xl'
+    assign padding_bottom = 'pb-24 lg:pb-48'
+  endif
+%}
+
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast {{ padding_top }} {{ padding_bottom }}'>
+  <div class="wrapper">
     {%- if section.settings.collection != blank -%}
       <h2 class="h3 mb-8">{{ section.settings.collection.title }}</h2>
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -77,6 +106,34 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "XLarge" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "xl", "label": "XLarge" }
+      ]
     }
   ],
   "presets": [
@@ -85,7 +142,9 @@
       "category": "Collection",
       "settings": {
         "description": "<p>Showcase your best products with a curated collection display.</p>",
-        "products_to_show": 6
+        "products_to_show": 6,
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     }
   ]

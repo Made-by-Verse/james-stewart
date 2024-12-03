@@ -28,7 +28,9 @@
         "hero_button_text": "",
         "color_scheme": "",
         "show_logo": false,
-        "hero_heading": "How to Buy"
+        "hero_heading": "How to Buy",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "main": {
@@ -36,7 +38,9 @@
       "disabled": true,
       "settings": {
         "heading": "Contact Us",
-        "text": "<p>If you’d like to find out more about our design collection or have product inquiries, please get in touch with our team.</p>"
+        "text": "<p>If you’d like to find out more about our design collection or have product inquiries, please get in touch with our team.</p>",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "section_two_column_content_bDUXjP": {
@@ -62,7 +66,9 @@
         "image_block_icU89p"
       ],
       "settings": {
-        "color_scheme": ""
+        "color_scheme": "",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     },
     "section_two_column_content_gk8x3Q": {
@@ -95,7 +101,9 @@
         "stockist_cta_block_1"
       ],
       "settings": {
-        "color_scheme": ""
+        "color_scheme": "",
+        "padding_top": "md",
+        "padding_bottom": "md"
       }
     }
   },
