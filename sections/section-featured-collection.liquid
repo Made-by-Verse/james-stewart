@@ -60,7 +60,7 @@
         </div>
 
         <div class="lg:col-span-2 flex justify-end">
-          <div class="space-y-4 lg:space-y-8 max-w-[340px] w-full">
+          <div class="space-y-4 lg:space-y-8 lg:max-w-[340px] w-full">
             {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
               {% render 'product-card',
               product: product
