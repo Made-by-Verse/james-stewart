@@ -42,15 +42,25 @@ export class CarouselManager extends Base {
     const carousels = document.querySelectorAll('[id^="vertical-carousel-"]');
     if (!carousels.length) return;
 
-    carousels.forEach((carousel) => {
-      this.swipers.set(
-        carousel.id,
-        new Swiper(
-          `#${carousel.id} .vertical-carousel-swiper`,
-          SWIPER_CONFIG.vertical
-        )
-      );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !this.swipers.has(entry.target.id)) {
+          console.log("Initializing carousel", entry.target.id);
+          this.swipers.set(
+            entry.target.id,
+            new Swiper(
+              `#${entry.target.id} .vertical-carousel-swiper`,
+              SWIPER_CONFIG.vertical
+            )
+          );
+          // Unobserve after initialization
+          observer.unobserve(entry.target);
+        }
+      });
     });
+
+    // Observe each carousel
+    carousels.forEach((carousel) => observer.observe(carousel));
   }
 
   destroy() {
