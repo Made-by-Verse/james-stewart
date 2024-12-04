@@ -28,9 +28,7 @@
         "hero_button_text": "",
         "color_scheme": "",
         "show_logo": false,
-        "hero_heading": "How to Buy",
-        "padding_top": "md",
-        "padding_bottom": "md"
+        "hero_heading": "How to Buy"
       }
     },
     "main": {
@@ -105,12 +103,22 @@
         "padding_top": "md",
         "padding_bottom": "md"
       }
+    },
+    "section_paragraph_8HcbjM": {
+      "type": "section-paragraph",
+      "settings": {
+        "text": "",
+        "color_scheme": "",
+        "padding_top": "md",
+        "padding_bottom": "sm"
+      }
     }
   },
   "order": [
     "section_home_hero_VpHyzW",
     "main",
     "section_two_column_content_bDUXjP",
-    "section_two_column_content_gk8x3Q"
+    "section_two_column_content_gk8x3Q",
+    "section_paragraph_8HcbjM"
   ]
 }
