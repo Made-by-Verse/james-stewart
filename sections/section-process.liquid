@@ -62,9 +62,6 @@
                   x-transition:enter="transition ease-in duration-1000"
                   x-transition:enter-start="opacity-0"
                   x-transition:enter-end="opacity-100"
-                  {% comment %} x-transition:leave="transition ease-out duration-1000"
-                  x-transition:leave-start="opacity-100"
-                  x-transition:leave-end="opacity-0" {% endcomment %}
                   class="process-text {% unless section.settings.left-image %}grid lg:grid-cols-4 gap-4 w-full{% endunless %} {% if section.settings.left-image %}space-y-4{% endif %}"
                 >
                   {% unless section.settings.left-image %}

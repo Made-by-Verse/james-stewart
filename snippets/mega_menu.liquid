@@ -20,7 +20,7 @@
       {% assign trigger = block.settings.mega_menu_trigger | downcase %}
       {% assign title = link.title | downcase %}
       {% if block.type == 'mega_menu' and trigger == title %}
-        <a class="block col-span-4 col-start-9" {{ block.shopify_attributes }}>
+        <a href="{{ link.url }}" class="block col-span-4 col-start-9" {{ block.shopify_attributes }}>
           {% if block.settings.image %}
             {% render 'responsive-image', image: block.settings.image, wrapper_class: 'w-full aspect-landscape', image_class: 'object-cover' %}
           {% endif %}
