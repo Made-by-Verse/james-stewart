@@ -1,30 +1,32 @@
 <div class="color-{{ section.settings.color_scheme }} py-12 md:py-24 lg:py-32 overflow-hidden">
   <div
-    class="product-recommendations wrapper overflow-visible border-t"
+    class="product-recommendations wrapper overflow-visible"
     data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
   >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="font-sans text-base py-2">
-        {{ section.settings.heading }}
-      </h2>
-      <div class="swiper !overflow-visible">
-        <div class="swiper-wrapper overflow-visible">
-          {% for recommendation in recommendations.products %}
-            <div class="swiper-slide">
-              {% render 'product-card',
-                product: recommendation,
-                media_aspect_ratio: section.settings.image_ratio,
-                image_shape: section.settings.image_shape,
-                show_secondary_image: section.settings.show_secondary_image,
-                show_vendor: section.settings.show_vendor,
-                show_rating: section.settings.show_rating,
-                skip_styles: skip_card_product_styles
-              %}
-            </div>
-          {% endfor %}
+    <div class='border-t border-lines'>
+      {% if recommendations.performed and recommendations.products_count > 0 %}
+        <h2 class="font-sans text-base py-4">
+          {{ section.settings.heading }}
+        </h2>
+        <div class="swiper !overflow-visible">
+          <div class="swiper-wrapper overflow-visible">
+            {% for recommendation in recommendations.products %}
+              <div class="swiper-slide">
+                {% render 'product-card',
+                  product: recommendation,
+                  media_aspect_ratio: section.settings.image_ratio,
+                  image_shape: section.settings.image_shape,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  skip_styles: skip_card_product_styles
+                %}
+              </div>
+            {% endfor %}
+          </div>
         </div>
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
   </div>
 </div>
 

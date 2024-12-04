@@ -16,10 +16,9 @@
     <nav role="navigation" class='flex justify-between items-center' aria-label="{{ 'general.pagination.label' | t }}">
       <a
         href="{{ paginate.previous.url }}{{ anchor }}"
-        class="btn btn--outline-primary flex"
+        class="btn btn--outline-primary flex {% unless paginate.previous.is_link %}invisible{% endunless %}"
+        {% unless paginate.previous.is_link %}disabled{% endunless %}
         aria-label="{{ 'general.pagination.previous' | t }}"
-        disabled="{{ paginate.previous.is_link | default: false }}"
-        class="disabled:invisible"
       >
         previous
       </a>
@@ -32,9 +31,9 @@
 
       <a
         href="{{ paginate.next.url }}{{ anchor }}"
-        class="btn btn--outline-primary flex"
+        class="btn btn--outline-primary flex {% unless paginate.next.is_link %}invisible{% endunless %}"
+        {% unless paginate.next.is_link %}disabled{% endunless %}
         aria-label="{{ 'general.pagination.next' | t }}"
-        disabled="{{ paginate.next.is_link | default: false }}"
       >
         next
       </a>

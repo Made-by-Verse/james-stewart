@@ -17,7 +17,7 @@ export class HeaderManager extends Base {
   initializeObserver() {
     const headerObserver = new IntersectionObserver(
       (entries) => this.handleIntersection(entries),
-      { threshold: 0.5 }
+      { threshold: 0 }
     );
 
     headerObserver.observe(this.heroSection);
