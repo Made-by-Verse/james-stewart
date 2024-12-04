@@ -184,7 +184,8 @@
       "settings": {
         "heading": "Video Gallery",
         "text": "<p>Share your brand story, showcase products in action, or demonstrate features with engaging video content.</p>",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video": "shopify://files/videos/5644364-hd_1920_1080_25fps.mp4",
+        "video_url": "",
         "cover_image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png",
         "color_scheme": "",
         "padding_top": "md",
