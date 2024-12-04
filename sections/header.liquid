@@ -50,10 +50,10 @@
           {% render 'header-logo' %}
         </a>
       </div>
-      <div class="h-full flex items-center justify-end gap-6">
+      <div class="h-full flex items-center justify-end gap-4 lg:gap-6">
         <a 
           href="{{ routes.account_url }}" 
-          class="link"
+          class="link hidden lg:block"
         >
           account
         </a>
@@ -63,7 +63,10 @@
           class="link"
           type="button"
         >
-          cart
+          <span class="hidden lg:block">Cart</span>
+          <span class="lg:hidden w-8 h-8 block">
+            {{ 'icon-cart.svg' | inline_asset_content }}
+          </span>
         </button>
       </div>
     </div>
