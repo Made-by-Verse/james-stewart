@@ -103,10 +103,10 @@
     "collections_grid": {
       "type": "section-collections-grid",
       "blocks": {
-        "collection_block_TyNmCc": {
+        "collection_block_6EFRzn": {
           "type": "collection_block",
           "settings": {
-            "collection": "executive-seating"
+            "collection": "accent-seating"
           }
         },
         "collection_block_kxXEHk": {
@@ -115,17 +115,17 @@
             "collection": "sofas"
           }
         },
-        "collection_block_6EFRzn": {
+        "collection_block_TyNmCc": {
           "type": "collection_block",
           "settings": {
-            "collection": "accent-seating"
+            "collection": "executive-seating"
           }
         }
       },
       "block_order": [
-        "collection_block_TyNmCc",
+        "collection_block_6EFRzn",
         "collection_block_kxXEHk",
-        "collection_block_6EFRzn"
+        "collection_block_TyNmCc"
       ],
       "settings": {
         "all_collections_link_text": "Explore All",
