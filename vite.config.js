@@ -1,7 +1,5 @@
 import { defineConfig } from 'vite'
 import shopify from 'vite-plugin-shopify'
-import fs from 'fs'
-import path from 'path'
 
 // // Custom cleanup plugin to remove theme files
 // const cleanupPlugin = {
@@ -22,7 +20,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [
-    shopify()
+    shopify(),
   ],
   build: {
     emptyOutDir: false

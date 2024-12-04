@@ -22,6 +22,11 @@ export default {
         "btn--dark-hover": "#443F3E",
         lines: "#C3C2BC",
       },
+      transitionDuration: {
+        1500: '1500ms',
+        2000: '2000ms',
+        2500: '2500ms'
+      }
     },
   },
   plugins: [],

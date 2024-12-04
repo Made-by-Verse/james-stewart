@@ -37,7 +37,13 @@
 
 <div class="color-{{ section.settings.color_scheme }} {{ padding_top }} {{ padding_bottom }} wrapper grid lg:grid-cols-8 gap-4">
   {% if section.settings.text != blank %}
-    <div class="max-w-p-xl lg:col-start-2 lg:col-span-6 lead">
+    <div 
+      x-data="{ shown: false }" 
+      x-intersect:enter="shown = true" 
+      x-intersect:leave="shown = false"
+      :class="shown ? 'opacity-100' : 'opacity-0'" 
+      class="max-w-p-xl lg:col-start-2 lg:col-span-6 lead transition-opacity duration-2500 ease-in-out"
+    >
       {{ section.settings.text }}
     </div>
   {% endif %}
