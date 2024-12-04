@@ -1,5 +1,5 @@
 {%- form 'contact', id: '265148', class: 'contact-form flex flex-col gap-4 justify-between flex-1' -%}
-<div>
+<div class="text-sm">
   <h3 class="h3 mb-4 font-serif normal-case">{{ heading }}</h3>
   {%- if form.posted_successfully? -%}
     <div class="bg-green-50 text-green-800 p-4 rounded">
@@ -21,7 +21,7 @@
       name="contact[name]"
       value="{% if form.name %}{{ form.name }}{% endif %}"
       placeholder="Name*"
-      class=""
+      class="placeholder:uppercase"
       required
     >
   </div>
@@ -34,7 +34,7 @@
       name="contact[email]"
       value="{% if form.email %}{{ form.email }}{% endif %}"
       placeholder="Email*"
-      class=""
+      class="placeholder:uppercase"
       required
     >
   </div>
@@ -47,6 +47,7 @@
       name="contact[interested-in]"
       value="{% if form.interested-in %}{{ form.interested-in }}{% endif %}"
       placeholder="Products that you are interested in"
+      class="placeholder:uppercase"
     >
   </div>
 
@@ -58,6 +59,7 @@
       name="contact[postcode]"
       value="{% if form.postcode %}{{ form.postcode }}{% endif %}"
       placeholder="Postcode"
+      class="placeholder:uppercase"
     >
   </div>
 
@@ -69,6 +71,7 @@
       name="contact[suburb]"
       value="{% if form.suburb %}{{ form.suburb }}{% endif %}"
       placeholder="Suburb"
+      class="placeholder:uppercase"
     >
   </div>
 </div> 
