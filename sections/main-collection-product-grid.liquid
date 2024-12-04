@@ -1,17 +1,16 @@
 <div class="">
   {%- paginate collection.products by section.settings.products_per_page -%}
         {%- if collection.products.size == 0 -%}
-          <div class="" id="" data-id="{{ section.id }}">
-            <div class="">
-              <h2 class="">
-                {{ 'sections.collection_template.empty' | t -}}
-                <br>
-                {{
-                  'sections.collection_template.use_fewer_filters_html'
-                  | t: link: collection.url, class: 'underlined-link link'
-                }}
-              </h2>
-            </div>
+          <div class='py-12 wrapper text-center'>
+            <h3 class="h3 mb-4">No products found</h3>
+            <p>
+              {{ 'sections.collection_template.empty' | t -}}
+              <br>
+              {{
+                'sections.collection_template.use_fewer_filters_html'
+                | t: link: collection.url, class: 'underlined-link link'
+              }}
+            </p>
           </div>
         {%- else -%}
           <div
