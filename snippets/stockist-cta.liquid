@@ -16,7 +16,7 @@
       <div x-data="{ open: false }">
         <button @click="open = !open" class="btn btn--outline-primary">{{ block.settings.drawer_button_text }}</button>
         <div>
-          <div x-cloak x-show="open" class="drawer-backdrop" @click="open = false"></div>
+          <div x-cloak x-show="open" class="drawer-backdrop" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="open = false"></div>
 
           <div
             x-cloak
