@@ -104,6 +104,9 @@
         "padding_bottom": "md"
       }
     },
+    "stockist_form_drawer_1": {
+      "type": "stockist-form-drawer"
+    },
     "section_paragraph_8HcbjM": {
       "type": "section-paragraph",
       "settings": {
