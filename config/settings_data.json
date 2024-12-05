@@ -10,7 +10,7 @@
 {
   "current": {
     "social_facebook_link": "",
-    "social_instagram_link": "https://www.instagram.com",
+    "social_instagram_link": "https://www.instagram.com/james.stewart.furniture/",
     "social_youtube_link": "",
     "social_tiktok_link": "",
     "social_twitter_link": "",
@@ -45,31 +45,36 @@
       "scheme-1": {
         "settings": {
           "primary": "#f6f5ed",
-          "contrast": "#241917"
+          "contrast": "#241917",
+          "lines": "#685F2C"
         }
       },
       "scheme-2": {
         "settings": {
           "primary": "#685f2c",
-          "contrast": "#f6f5ed"
+          "contrast": "#f6f5ed",
+          "lines": "#685F2C"
         }
       },
       "scheme-3": {
         "settings": {
           "primary": "#e5d9c6",
-          "contrast": "#241917"
+          "contrast": "#241917",
+          "lines": "#685F2C"
         }
       },
       "scheme-b7d1bd86-9b68-491c-8473-772dd461a807": {
         "settings": {
           "primary": "#c5b38a",
-          "contrast": "#241917"
+          "contrast": "#241917",
+          "lines": "#685F2C"
         }
       },
       "scheme-fb547323-c0cb-4a49-a864-c809f1149213": {
         "settings": {
           "primary": "#d1b293",
-          "contrast": "#241917"
+          "contrast": "#241917",
+          "lines": "#685F2C"
         }
       }
     }
