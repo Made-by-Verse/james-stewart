@@ -53,33 +53,38 @@
         <div class='sticky top-20'>
           <div class='space-y-4 lg:space-y-6 mb-8'>
             {% for block in section.blocks %}
-              <div class='leading-none'>
-            <h3 class='mb-2 text-sm'>{{ block.settings.title }}</h3>
-            <ul>
-            {% if block.settings.phone != blank %}
-              <li class='grid grid-cols-6 gap-4'>
-                <span class=''>Call:</span>
-                <span class='col-span-5'>{{ block.settings.phone }}</span>
-              </li>
-            {% endif %}
-            {% if block.settings.email != blank %}
-              <li class='grid grid-cols-6 gap-4'>
-                <span class=''>Email:</span>
-                <span class='col-span-5'>{{ block.settings.email }}</span>
-              </li>
-            {% endif %}
-            {% if block.settings.address != blank %}
-              <li class='grid grid-cols-6 gap-4'>
-                <span class=''>Address:</span>
-                <span class='col-span-5'>{{ block.settings.address }}</span>
-              </li>
-            {% endif %}
-              </ul>
-            </div>
-          {% endfor %}
+              {% case block.type %}
+                {% when '@app' %}
+                  {% render block %}
+                {% when 'contact-info' %}
+                  <div class='leading-none'>
+                <h3 class='mb-2 text-sm'>{{ block.settings.title }}</h3>
+                <ul>
+                {% if block.settings.phone != blank %}
+                  <li class='grid grid-cols-6 gap-4'>
+                    <span class=''>Call:</span>
+                    <span class='col-span-5'>{{ block.settings.phone }}</span>
+                  </li>
+                {% endif %}
+                {% if block.settings.email != blank %}
+                  <li class='grid grid-cols-6 gap-4'>
+                    <span class=''>Email:</span>
+                    <span class='col-span-5'>{{ block.settings.email }}</span>
+                  </li>
+                {% endif %}
+                {% if block.settings.address != blank %}
+                  <li class='grid grid-cols-6 gap-4'>
+                    <span class=''>Address:</span>
+                    <span class='col-span-5'>{{ block.settings.address }}</span>
+                  </li>
+                {% endif %}
+                  </ul>
+                </div>
+              {% endcase %}
+            {% endfor %}
         </div>
         {% render 'contact-form' %}
-        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -122,6 +127,9 @@
             "default": "123 Store Street, City, Country"
           }
         ]
+      },
+      {
+        "type": "@app"
       }
     ],
     "settings": [

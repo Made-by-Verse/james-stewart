@@ -40,15 +40,6 @@ export default class App {
     }
 
     requestAnimationFrame(raf.bind(this));
-
-    // // Add event listener for toggling Lenis
-    // document.addEventListener('toggle-lenis', (e) => {
-    //   if (e.detail.enabled) {
-    //     this.lenis.start();
-    //   } else {
-    //     this.lenis.stop();
-    //   }
-    // });
   }
 
   async init() {

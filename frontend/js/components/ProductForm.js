@@ -18,6 +18,7 @@ export class ProductForm {
   }
 
   onSubmitHandler(evt) {
+    console.log("submit");
     evt.preventDefault();
     if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
 
@@ -54,7 +55,7 @@ export class ProductForm {
             }
           }));
         } else {
-          window.location.href = window.routes.cart_url;
+          
         }
       })
       .catch((error) => {
