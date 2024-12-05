@@ -9,9 +9,23 @@ export class HeaderManager extends Base {
 
   init() {
     super.init();
-    if (!this.header || !this.heroSection) return;
+    if (!this.header) return;
+    this.handleScroll();
 
+    if (!this.heroSection) return;
     this.initializeObserver();
+  }
+
+  handleScroll() {
+    this.scrollHandler = () => {
+      if (window.scrollY < 50) {
+        this.header.classList.add('header--not-scrolled');
+      } else {
+        this.header.classList.remove('header--not-scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', this.scrollHandler);
   }
 
   initializeObserver() {
@@ -31,5 +45,12 @@ export class HeaderManager extends Base {
         this.header.classList.remove("header--on-hero");
       }
     });
+  }
+
+  destroy() {
+    if (this.scrollHandler) {
+      window.removeEventListener('scroll', this.scrollHandler);
+    }
+    super.destroy?.();
   }
 }

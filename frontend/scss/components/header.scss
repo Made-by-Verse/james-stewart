@@ -13,6 +13,10 @@
     }
   }
 
+  &.header--not-scrolled {
+    @apply bg-transparent text-contrast;
+  }
+
   &.header--on-hero {
     @apply bg-transparent text-primary;
 
