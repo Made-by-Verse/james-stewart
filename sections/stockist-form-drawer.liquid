@@ -1,9 +1,15 @@
-<div class='fixed'>
-  <div x-cloak x-show="open" class="drawer-backdrop" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="open = false"></div>
+<div
+  class='fixed'
+  x-data="{ formDrawerOpen: false }"
+  @toggle-form-drawer.window="formDrawerOpen = !formDrawerOpen; console.log('toggle');"
+  @close-form-drawer.window="formDrawerOpen = false"
+  @keydown.escape.winow="formDrawerOpen = false"
+>
+  <div x-cloak x-show="formDrawerOpen" class="drawer-backdrop" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="$dispatch('close-form-drawer')"></div>
 
   <div
     x-cloak
-    x-show="open"
+    x-show="formDrawerOpen"
     x-transition:enter="transform transition ease-in-out duration-500"
     x-transition:enter-start="-translate-x-full"
     x-transition:enter-end="translate-x-0"
@@ -17,10 +23,12 @@
     <div class="p-4 h-full flex w-full flex-col">
       <div class="flex justify-between items-center">
         <h2 class="link">Retail Customers</h2>
-        <button @click="open = false" class="">&times;</button>
+        <button @click="$dispatch('close-form-drawer')" class="">&times;</button>
       </div>
       <div class="mt-24 flex-1 flex flex-col justify-between w-full">
-        {% render 'stockist-drawer' with heading: block.settings.drawer_heading %}
+        {% for block in section.blocks %}
+          {% render block %}
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -29,6 +37,7 @@
 {% schema %}
 {
   "name": "Stockist Form Drawer",
+  
   "blocks": [
     {
       "type": "@app"

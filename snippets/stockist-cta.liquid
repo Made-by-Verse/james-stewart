@@ -13,8 +13,8 @@
   <div class="z-10 relative space-y-4">
     <div class="max-w-p">{{ block.settings.text }}</div>
     {% if block.settings.drawer_button_text %}
-      <div x-data="{ open: false }">
-        <button @click="open = !open" class="btn btn--outline-primary">{{ block.settings.drawer_button_text }}</button>
+      <div>
+        <button x-data @click="$dispatch('toggle-form-drawer')" class="btn btn--outline-primary">{{ block.settings.drawer_button_text }}</button>
       </div>
     {% endif %}
   </div>

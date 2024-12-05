@@ -114,11 +114,9 @@
     x-data="{ open: false }"
     @toggle-cart-drawer.window="
       open = !open;
-      $dispatch('toggle-lenis', { enabled: !open });
     "
     @keydown.escape.window="
       open = false;
-      $dispatch('toggle-lenis', { enabled: true });
     "
   >
     <!-- Backdrop -->
@@ -131,7 +129,6 @@
       x-transition:leave-end="opacity-0"
       @click="
         open = false;
-        $dispatch('toggle-lenis', { enabled: true });
       "
       x-cloak
     ></div>
@@ -153,7 +150,7 @@
       <div class="p-4 h-full flex flex-col">
         <div class="flex justify-between items-center">
           <h2 class="link">Cart</h2>
-          <button @click="open = false; $dispatch('toggle-lenis', { enabled: true });" class="">&times;</button>
+          <button @click="open = false" class="">&times;</button>
         </div>
         <div class="mt-24 flex flex-col justify-between w-full flex-1 overflow-hidden">
           {% render 'cart-drawer' %}
