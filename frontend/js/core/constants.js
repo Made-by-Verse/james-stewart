@@ -46,3 +46,5 @@ export const SWIPER_CONFIG = {
     },
   },
 };
+
+export const SCROLL_PREVENT = ['cart-items', 'FacetFiltersForm', 'drawer-content'];

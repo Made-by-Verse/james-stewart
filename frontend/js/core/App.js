@@ -8,6 +8,7 @@ import { RecommendationsManager } from "../components/RecommendationsManager";
 import { CartQuantityHandler } from "../components/Cart";
 import { VariantSelects } from "../components/VariantSelects";
 import { ProductForm } from "../components/ProductForm";
+import { SCROLL_PREVENT } from "./constants";
 
 export default class App {
   constructor() {
@@ -30,7 +31,7 @@ export default class App {
 
   initializeLenis() {
     this.lenis = new Lenis({
-      prevent: (node) => node.id === 'cart-items' || node.id === 'FacetFiltersForm',
+      prevent: (node) => SCROLL_PREVENT.includes(node.id),
     })
 
     function raf(time) {

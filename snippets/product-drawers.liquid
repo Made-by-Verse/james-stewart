@@ -32,12 +32,12 @@
     role="dialog"
     aria-modal="true"
   >
-    <div class="p-4 h-full">
+    <div class="p-4 h-full flex flex-col w-full">
       <div class="flex justify-between items-center">
         <h2 class="link" x-text="activeDrawer?.charAt(0).toUpperCase() + activeDrawer?.slice(1)"></h2>
         <button @click="activeDrawer = null" class="text-2xl">&times;</button>
       </div>
-      <div class="mt-8">
+      <div id="drawer-content" class="mt-8 flex-1 richtext overflow-y-auto">
         <div x-show="activeDrawer === 'specifications'">
           {% render 'drawer-specifications', product: product %}
         </div>
