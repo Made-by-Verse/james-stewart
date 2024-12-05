@@ -22,7 +22,7 @@
                 <button 
                   class="font-sans uppercase"
                   x-data
-                  @click="$dispatch('toggle-filter-drawer')"
+                  @click="$dispatch('toggle-filter-drawer'); $dispatch('toggle-lenis', { enabled: false })"
                 >
                   Filter +
                 </button>

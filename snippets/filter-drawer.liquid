@@ -12,7 +12,7 @@
     x-transition:enter-end="opacity-100"
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0"
-    @click="filtersOpen = false"
+    @click="filtersOpen = false; $dispatch('toggle-lenis', { enabled: true })"
     x-cloak
   ></div>
 
@@ -33,9 +33,9 @@
     <div class="p-4 h-full flex flex-col w-full">
       <div class="flex justify-between items-center">
         <h2 class="font-sans">Filters</h2>
-        <button @click="filtersOpen = false" class="">&times;</button>
+        <button @click="filtersOpen = false; $dispatch('toggle-lenis', { enabled: true })" class="">&times;</button>
       </div>
-      <div class="flex flex-col justify-between w-full flex-1 mt-12 lg:mt-24">
+      <div class="mt-24 flex flex-col justify-between w-full flex-1 overflow-hidden">
         {% render 'facets', results: collection, pre paginate: paginate %}
       </div>
     </div>

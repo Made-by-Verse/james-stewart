@@ -1,3 +1,5 @@
-.h-product_details {
-  height: calc(100vh - 80px);
+@media (min-width: 992px) {
+  .h-product_details {
+    height: calc(100vh - 80px);
+  }
 }

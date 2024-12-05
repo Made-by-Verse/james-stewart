@@ -1,7 +1,7 @@
 {% if cart.item_count > 0 %}
 <div class='h-full flex flex-col'>
   <div class="flex-1 overflow-hidden flex flex-col">
-    <div class="border-y border-lines divide-y divide-lines divide-opacity-50 overflow-y-auto flex-1">
+    <div id="cart-items" class="border-y border-lines divide-y divide-lines divide-opacity-50 overflow-y-scroll flex-1" data-lenis-prevent>
       {% for item in cart.items %}
         {% render 'cart-item', item: item %}
       {% endfor %}

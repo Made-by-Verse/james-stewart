@@ -12,6 +12,7 @@ import { ProductForm } from "../components/ProductForm";
 export default class App {
   constructor() {
     this.initializeAlpine();
+    this.lenis = null;
     this.initializeLenis();
     this.components = new Map();
   }
@@ -28,14 +29,25 @@ export default class App {
   }
 
   initializeLenis() {
-    const lenis = new Lenis();
+    this.lenis = new Lenis({
+      prevent: (node) => node.id === 'cart-items' || node.id === 'FacetFiltersForm',
+    })
 
     function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      this.lenis?.raf(time);
+      requestAnimationFrame(raf.bind(this));
     }
 
-    requestAnimationFrame(raf);
+    requestAnimationFrame(raf.bind(this));
+
+    // // Add event listener for toggling Lenis
+    // document.addEventListener('toggle-lenis', (e) => {
+    //   if (e.detail.enabled) {
+    //     this.lenis.start();
+    //   } else {
+    //     this.lenis.stop();
+    //   }
+    // });
   }
 
   async init() {

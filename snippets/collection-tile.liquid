@@ -5,6 +5,7 @@
         {% render 'responsive-image' with
           image: collection.image,
           wrapper_class: 'w-full h-full object-cover',
+          image_class: 'absolute inset-0 w-full h-full object-cover',
           size: '800x800',
           width: 800,
           height: 800
@@ -16,6 +17,7 @@
         {% render 'responsive-image' with
           image: collection.metafields.custom.hover_image,
           wrapper_class: 'absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:opacity-100',
+          image_class: 'absolute inset-0 w-full h-full object-cover',
           size: '800x800',
           width: 800,
           height: 800

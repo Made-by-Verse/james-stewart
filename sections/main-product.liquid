@@ -10,7 +10,7 @@
           {% render 'responsive-image',
             image: media,
             width: 1000,
-            wrapper_class: 'w-full',
+            wrapper_class: 'w-full hidden lg:block',
             image_class: 'w-full h-full object-cover'
           %}
         {% elsif modulo == 2 %}
@@ -33,11 +33,17 @@
         {% endif %}
       {% endfor %}
     </div>
-    <div class='lg:col-span-2 h-product_details sticky top-20 flex items-center justify-center w-full'>
+    <div class='lg:col-span-2 h-product_details lg:sticky top-20 flex items-center justify-center w-full order-first lg:order-last'>
       <section
         id="ProductInfo-{{ section.id }}"
-        class='flex w-full h-full flex-col items-center py-4'
+        class='flex w-full lg:h-full flex-col items-center py-4'
       >
+        {% render 'responsive-image',
+          image: product.featured_image,
+          width: 1000,
+          wrapper_class: 'lg:hidden w-full h-full relative aspect-landscape mb-4',
+          image_class: 'w-full h-full object-cover absolute inset-0'
+        %}
         <div class="w-full h-2/3 flex flex-col items-center justify-center">
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
           <h1 class="h3 mb-8 text-center">
@@ -102,11 +108,15 @@
               {% if product.has_only_default_variant == false %}
                 {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
               {% endif %}
-              {%- render 'buy-buttons',
-                product: product,
-                product_form_id: product_form_id,
-                section_id: section.id,
-              -%}
+              {% if customer %}
+                {%- render 'buy-buttons',
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                -%}
+              {% else %}
+                <a href="/pages/contact" class="btn btn--primary flex justify-center w-full">ENQUIRE</a>
+              {% endif %}
             </div>
           </div>
         </div>
