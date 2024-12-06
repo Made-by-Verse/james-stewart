@@ -241,10 +241,10 @@
         "slide_tUXMDP"
       ],
       "settings": {
-        "heading": "How to buy",
-        "text": "<p>We simplify procurement for design studio retailers, designers and architects. You deal directly with us, which speeds up the ordering and delivery process and ensures more accuracy with timeframes.</p>",
-        "button_label": "How to buy",
-        "button_link": "shopify://pages/how-to-buy",
+        "heading": "FIND OUT MORE",
+        "text": "<p>To learn more about our products and project support, get in touch with our friendly team.</p>",
+        "button_label": "GET IN TOUCH",
+        "button_link": "shopify://pages/contact",
         "color_scheme": "scheme-2",
         "padding_top": "md",
         "padding_bottom": "md"
