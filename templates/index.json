@@ -31,7 +31,7 @@
       ],
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
-        "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
+        "hero_content": "<p>Australian-designed furniture that reimagines the best kind in design, materials and craftsmanship.</p>",
         "hero_button_url": "shopify://collections",
         "hero_button_text": "Explore Catalogue",
         "color_scheme": "",
