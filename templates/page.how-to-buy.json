@@ -47,8 +47,8 @@
         "text_block_DhhUja": {
           "type": "text_between",
           "settings": {
-            "sticky_text": "<p>James Stewart works exclusively with designers, developers and boutique retailers around Australia.</p>",
-            "static_text": "<p>We’re the first Australian furniture company to establish an aniline leather stock programme of in-house designs. With our background in retail, we know how to simplify procurement for design studio retailers, designers and architects. You deal directly with us, not an agent or reseller, which speeds up the ordering and delivery process and ensures more accuracy with timeframes.</p>"
+            "sticky_text": "<p>James Stewart works exclusively with designers, developers and boutique retailers across Australia.</p>",
+            "static_text": "<p>We’re the first Australian furniture company to establish an in-house aniline leather stock programme. With our extensive retail background, we know how to simplify procurement for design studio retailers, designers and architects. </p><p>By dealing directly with us, not an agent or reseller, we speed up the ordering and delivery process ensuring greater accuracy with timeframes.</p>"
           }
         },
         "image_block_icU89p": {
@@ -75,8 +75,8 @@
         "wholesale_cta_block_1": {
           "type": "wholesale_cta",
           "settings": {
-            "heading": "Wholesale",
-            "text": "<p>Designers, architects and specifiers are invited to apply for an account to access trade pricing, full design and specification support. Designers can customise elements of each product, according to project scale and also book our Brisbane showroom for client consultations. Examples of the collection can be seen in boutique furniture stores and tradeshows, contact us for locations.</p>",
+            "heading": "Trade customers",
+            "text": "<p>Designers, architects and specifiers are invited to apply for an account to access trade pricing, full design and specification support. Customisation of product elements is available to suit project scale, our Brisbane showroom can be booked for client consultations. Examples of our collection can be found in boutique furniture stores and tradeshows —contact us for locations.</p>",
             "image": "shopify://shop_images/James_Stewart_LB_201973230_TobyScott.png",
             "button_1_link": "/pages/wholesale-registration-form",
             "button_1_text": "Apply for a trade account",
@@ -88,7 +88,7 @@
           "type": "stockist_cta",
           "settings": {
             "heading": "Retail Customers",
-            "text": "<p>The James Stewart collection is represented by selected retailers around Australia. To find out where you can purchase and view samples, please complete the form below and we'll email you our list of stockists.</p>",
+            "text": "<p>The James Stewart collection is represented by selected retailers across Australia. To find out where you can view samples and purchase our products, please complete the form below and we’ll email you our list of stockists. </p>",
             "image": "shopify://shop_images/James_Stewart_LB_201973230_TobyScott_2.png",
             "drawer_button_text": "Find a retailer in your area"
           }
@@ -122,9 +122,9 @@
             "form_id": "265148",
             "text_color": "#202020",
             "button_background_color": "#202020",
-            "button_label_color": "#FFFFFF",
-            "links_color": "#1878B9",
-            "errors_color": "#E02229",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
             "text_alignment": "center",
             "form_alignment": "center",
             "padding_top": 0,
