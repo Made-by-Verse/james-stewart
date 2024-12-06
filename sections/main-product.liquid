@@ -37,6 +37,14 @@
       <section
         id="ProductInfo-{{ section.id }}"
         class='flex w-full lg:h-full flex-col items-center py-4'
+        x-data="{ 
+          selectedVariant: {{ product.selected_or_first_available_variant.id | default: product.selected_variant.id | json }},
+        }"
+        @variant-change.window="
+          const { id } = $event.detail;
+          console.log($event.detail);
+          selectedVariant = id;
+        "
       >
         {% render 'responsive-image',
           image: product.featured_image,
@@ -108,15 +116,15 @@
               {% if product.has_only_default_variant == false %}
                 {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
               {% endif %}
-              {% if customer %}
+              {% comment %}{% if customer %} {% endcomment %}
                 {%- render 'buy-buttons',
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
                 -%}
-              {% else %}
+              {% comment %} {% else %}
                 <a href="/pages/contact" class="btn btn--primary flex justify-center w-full">ENQUIRE</a>
-              {% endif %}
+              {% endif %} {% endcomment %}
             </div>
           </div>
         </div>

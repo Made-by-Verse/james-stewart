@@ -37,7 +37,7 @@
           {%- endfor -%}
         </ul>
       </nav>
-      <button x-data @click="$dispatch('toggle-menu-drawer'); $dispatch('toggle-lenis', { enabled: false })" class="lg:hidden">
+      <button x-data @click="$dispatch('toggle-menu-drawer')" class="lg:hidden">
         <span class="sr-only">Menu</span>
         <span class="hamburger">
           <span class="line"></span>
@@ -59,7 +59,7 @@
         </a>
         <button 
           x-data
-          @click="$dispatch('toggle-cart-drawer'); $dispatch('toggle-lenis', { enabled: false });"
+          @click="$dispatch('open-cart-drawer')"
           class="link"
           type="button"
         >
@@ -112,8 +112,8 @@
   <!-- Add the cart drawer markup -->
   <div
     x-data="{ open: false }"
-    @toggle-cart-drawer.window="
-      open = !open;
+    @open-cart-drawer.window="
+      open = true;
     "
     @keydown.escape.window="
       open = false;

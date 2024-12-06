@@ -7,6 +7,19 @@
   {% render 'loading-spinner' %}
 {% endcomment %}
 
-<div class="{% if class %}{{ class }}{% else %}loading__spinner hidden{% endif %}">
-  {{ 'loading-spinner.svg' | inline_asset_content }}
+<div class="loading-spinner">
+  <svg xmlns="http://www.w3.org/2000/svg" class="spinner" viewBox="0 0 66 66">
+    <circle 
+      stroke-width="6" 
+      cx="33" 
+      cy="33" 
+      r="30" 
+      fill="none" 
+      class="path" 
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-dasharray="180,180"
+      stroke-dashoffset="0"
+    />
+  </svg>
 </div>

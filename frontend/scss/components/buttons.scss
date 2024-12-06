@@ -38,3 +38,36 @@
     }
   }
 }
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+  @apply w-4 h-4 text-primary;
+}
+
+.loading-spinner circle {
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 180;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 130, 180;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 130, 180;
+    stroke-dashoffset: -124;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -10,8 +10,6 @@
 {%- unless product.has_only_default_variant -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
-    data-section="{{ section.id }}"
-    data-url="{{ product.url }}"
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
@@ -59,9 +57,9 @@
         <div x-data="{ 
           open: false, 
           selectedValue: '{{ option.selected_value }}', 
-          selectedStyle: '{{ selected_style | escape_once }}'
+          selectedStyle: '{{ selected_style | escape_once }}',
         }">
-          <select
+          {% comment %} <select
             id="Option-{{ section.id }}-{{ forloop.index0 }}"
             class="hidden"
             name="options[{{ option.name }}]"
@@ -75,7 +73,7 @@
                 {{ value }}
               </option>
             {%- endfor -%}
-          </select>
+          </select> {% endcomment %}
 
           <div class="w-full relative">
             <button 
@@ -118,34 +116,14 @@
                 <button
                   type="button"
                   class="w-full p-2 text-left flex items-center hover:bg-contrast/10"
-                  data-value="{{ value | escape }}"
-                  data-option-index="{{ forloop.index0 }}"
                   @click="
                     selectedValue = '{{ value | escape }}'; 
                     selectedStyle = {% if bg_value %}'background-image: url({{ bg_value }})'{% else %}'background-color: {{ color_value }}'{% endif %};
                     open = false;
-                    if ($refs.variantSelect) {
-                      $refs.variantSelect.value = '{{ value | escape }}';
-                      const event = new Event('change', { bubbles: true, cancelable: true });
-                      $refs.variantSelect.dispatchEvent(event);
-                      
-                      const variantSelects = $el.closest('variant-selects');
-                      if (variantSelects) {
-                        variantSelects.dispatchEvent(
-                          new CustomEvent('variant:change', {
-                            detail: { 
-                              variant: '{{ value | escape }}',
-                              optionIndex: {{ forloop.index0 }}
-                            },
-                            bubbles: true
-                          })
-                        );
-                      }
-                    }
                     $dispatch('variant-change', { 
                       index: {{ forloop.index0 }}, 
                       value: '{{ value | escape }}',
-                      style: {% if bg_value %}'background-image: url({{ bg_value }})'{% else %}'background-color: {{ color_value }}'{% endif %}
+                      id: {{value.variant.id}}
                     })
                   "
                   :aria-selected="selectedValue === '{{ value | escape }}'"
