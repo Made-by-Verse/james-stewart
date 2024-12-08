@@ -31,7 +31,7 @@
       ],
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
-        "hero_content": "<p>Australian-designed furniture that reimagines the best kind in design, materials and craftsmanship.</p>",
+        "hero_content": "",
         "hero_button_url": "shopify://collections",
         "hero_button_text": "Explore Catalogue",
         "color_scheme": "",
@@ -42,7 +42,7 @@
     "paragraph": {
       "type": "section-paragraph",
       "settings": {
-        "text": "<p>World-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction.</p>",
+        "text": "<p>Australian-designed furniture that reimagines the best kind in design, materials and craftsmanship.</p>",
         "color_scheme": "scheme-1",
         "padding_top": "lg",
         "padding_bottom": "lg"
