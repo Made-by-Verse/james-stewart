@@ -12,7 +12,7 @@
     {% endif %}
     <div class="px-5 py-2.5 gap-4 flex justify-between items-center h4 uppercase">
       <h3 class="flex-1">{{ product.title }}</h3>
-      <span class="leading-none">
+      <span class="wsgColPrice leading-none">
         {% if product.price_varies %}
           From {{ product.price_min | money_without_trailing_zeros }}
         {% else %}
