@@ -36,7 +36,7 @@
     {%- if compare_at_price -%}
       <span class="text-gray-500 line-through">{{ compare_at_price }}</span>
     {%- endif -%}
-    <span class="uppercase">
+    <span class="wsgProdPrice uppercase">
       {%- if product.price_varies -%}
         <span class="text-xs">from</span> {{ money_price_min }}
       {%- else -%}
