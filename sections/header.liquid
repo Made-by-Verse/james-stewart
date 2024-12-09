@@ -51,23 +51,29 @@
         </a>
       </div>
       <div class="h-full flex items-center justify-end gap-4 lg:gap-6">
-        <a 
-          href="{{ routes.account_url }}" 
-          class="link hidden lg:block"
-        >
-          account
-        </a>
-        <button 
-          x-data
-          @click="$dispatch('open-cart-drawer')"
-          class="link"
-          type="button"
-        >
-          <span class="hidden lg:block">Cart</span>
-          <span class="lg:hidden w-8 h-8 block">
-            {{ 'icon-cart.svg' | inline_asset_content }}
-          </span>
-        </button>
+        {% if customer %}
+          <a 
+            href="{{ routes.account_url }}" 
+            class="link hidden lg:block"
+          >
+            account
+          </a>
+          <button 
+            x-data
+            @click="$dispatch('open-cart-drawer')"
+            class="link"
+            type="button"
+          >
+            <span class="hidden lg:block">Cart</span>
+            <span class="lg:hidden w-8 h-8 block">
+              {{ 'icon-cart.svg' | inline_asset_content }}
+            </span>
+          </button>
+        {% else %}
+          <a href="{{ routes.account_login_url }}" class="link hidden lg:block">
+            Trade Login
+          </a>
+        {% endif %}
       </div>
     </div>
   </div>

@@ -11,11 +11,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "stockist_form_drawer_1": {
-      "type": "stockist-form-drawer",
-      "disabled": true,
-      "settings": {}
-    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -46,7 +41,6 @@
     }
   },
   "order": [
-    "stockist_form_drawer_1",
     "footer"
   ]
 }

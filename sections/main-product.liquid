@@ -116,15 +116,15 @@
               {% if product.has_only_default_variant == false %}
                 {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
               {% endif %}
-              {% comment %}{% if customer %} {% endcomment %}
+              {% if customer %}
                 {%- render 'buy-buttons',
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
                 -%}
-              {% comment %} {% else %}
+              {% else %}
                 <a href="/pages/contact" class="btn btn--primary flex justify-center w-full">ENQUIRE</a>
-              {% endif %} {% endcomment %}
+              {% endif %}
             </div>
           </div>
         </div>
