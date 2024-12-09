@@ -52,18 +52,23 @@
             height: 1000
           %}
         {% endif %}
-        <div class="relative w-full {% if section.settings.left-image %}max-w-p{% endif %}">
+        <div class="relative w-full min-h-48 {% if section.settings.left-image %}max-w-p{% endif %}">
           {% for block in section.blocks %}
             {% case block.type %}
             {% when 'process-step' %}
               {% if block.settings.step-text %}
                 <div 
-                  x-show="activeStep === {{ forloop.index }}"
-                  x-transition:enter="transition ease-in duration-1000"
-                  x-transition:enter-start="opacity-0"
-                  x-transition:enter-end="opacity-100"
-                  class="process-text {% unless section.settings.left-image %}grid lg:grid-cols-4 gap-4 w-full{% endunless %} {% if section.settings.left-image %}space-y-4{% endif %}"
+                  class="process-text md:absolute inset-0 transition-opacity duration-500 {% unless section.settings.left-image %}grid lg:grid-cols-4 gap-4 w-full{% endunless %} {% if section.settings.left-image %}space-y-4{% endif %}"
+                  :class="activeStep === {{ forloop.index }} ? 'opacity-100' : 'md:opacity-0'"
                 >
+                  {% render 'responsive-image' with
+                    image: block.settings.step-image,
+                    wrapper_class: "aspect-portrait w-full relative md:hidden",
+                    image_class: "absolute inset-0 object-cover w-full h-full",
+                    size: '1000x1000',
+                    width: 1000,
+                    height: 1000
+                  %}
                   {% unless section.settings.left-image %}
                     <h2 class="link !text-base">{{ block.settings.heading }}</h2>
                   {% endunless %}
