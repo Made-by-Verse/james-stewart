@@ -45,6 +45,18 @@ export const SWIPER_CONFIG = {
       },
     },
   },
+  grid: {
+    slidesPerView: 1.125,
+    spaceBetween: 20,
+    breakpoints: {
+      640: {
+        slidesPerView: 2.2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  },
 };
 
 export const SCROLL_PREVENT = ['cart-items', 'FacetFiltersForm', 'drawer-content'];

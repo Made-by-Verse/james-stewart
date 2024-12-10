@@ -38,6 +38,18 @@ export class CarouselManager extends Base {
     );
   }
 
+  initFeaturedProductSwiper() {
+    const featuredProductSwiper = document.querySelector(
+      ".collection-grid-swiper"
+    );
+    if (!featuredProductSwiper) return;
+
+    this.swipers.set(
+      "collection-grid",
+      new Swiper(".collection-grid-swiper", SWIPER_CONFIG.grid)
+    );
+  }
+
   initVerticalCarousels() {
     const carousels = document.querySelectorAll('[id^="vertical-carousel-"]');
     if (!carousels.length) return;

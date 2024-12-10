@@ -35,7 +35,7 @@
   endif
 %}
 
-<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast'>
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast overflow-hidden'>
   <div class="wrapper {{ padding_top }} {{ padding_bottom }}">
     <div class="flex gap-4 justify-between items-center py-4 border-t border-lines">
       <a href="{{ routes.collections_url }}" class="text-contrast font-sans uppercase text-sm">{{ section.settings.all_collections_link_text }}</a>
@@ -44,14 +44,19 @@
       {% endif %}
     </div>
 
-    <div class="grid gap-4 lg:grid-cols-3">
+    <div class="collection-grid-swiper swiper !overflow-visible">
+      <div class="swiper-wrapper overflow-visible">
       {% for block in section.blocks %}
+        <div class="swiper-slide">
         {% assign collection = collections[block.settings.collection] %}
         {% assign hover_image = block.settings.hover_image %}
         {% if collection != blank %}
           {% render 'collection-tile', collection: collection, hover_image: hover_image %}
         {% endif %}
-      {% endfor %}
+      </div>
+        {% endfor %}
+      </div>
+
     </div>
   </div>
 </div>
