@@ -41,16 +41,22 @@
     x-data="{ 
       activeStep: 0,
       updateHeight() {
-        const texts = this.$el.querySelectorAll('.process-text');
-        let maxHeight = 0;
-        texts.forEach(text => {
-          text.style.position = 'static';
-          text.style.opacity = '1';
-          maxHeight = Math.max(maxHeight, text.offsetHeight);
-          text.style.position = '';
-          text.style.opacity = '';
-        });
-        this.$refs.contentContainer.style.height = `${maxHeight}px`;
+        if (window.innerWidth < 768) {
+          // On mobile, let content flow naturally
+          this.$refs.contentContainer.style.height = 'auto';
+        } else {
+          // Desktop behavior remains the same
+          const texts = this.$el.querySelectorAll('.process-text');
+          let maxHeight = 0;
+          texts.forEach(text => {
+            text.style.position = 'static';
+            text.style.opacity = '1';
+            maxHeight = Math.max(maxHeight, text.offsetHeight);
+            text.style.position = '';
+            text.style.opacity = '';
+          });
+          this.$refs.contentContainer.style.height = `${maxHeight}px`;
+        }
       }
     }"
     x-init="updateHeight(); window.addEventListener('resize', () => updateHeight())"

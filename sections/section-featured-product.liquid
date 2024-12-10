@@ -57,7 +57,7 @@
           {% if product.media[0] %}
             <div class="relative">
               {% render 'responsive-image', image: product.media[0], width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 h-full w-full', wrapper_class: 'aspect-portrait relative' %}
-              <div class="absolute inset-0 flex p-16 items-end justify-center text-center">
+              <div class="hidden md:flex absolute inset-0  p-16 items-end justify-center text-center">
                 <div class="max-w-md">
                   <ul class="space-y-2 mb-6">
                     {% for variant in product.variants %}
@@ -69,11 +69,21 @@
               </div>
             </div>
           {% endif %}
+          <div class="block md:hidden p-8 items-end justify-center text-center">
+            <div class="max-w-md">
+              <ul class="space-y-2 mb-6">
+                {% for variant in product.variants %}
+                  <li>{% if forloop.first %}<span class="italic">in </span>{% endif %}{{ variant.title }}{% unless forloop.last %},{% endunless %}</li>
+                {% endfor %}
+              </ul>
+              <a href="{{ product.url | within: collection }}" class="btn btn--outline-primary">{{ section.settings.button_text }}</a>
+            </div>
+          </div>
         {% endif %}
       </div>
     {% else %}
       <div class="text-center">
-        <p>{{ 'sections.featured_product.select_product' | t }}</p>
+        <p>{{ 'sections.featured_product.select_product' }}</p>
       </div>
     {% endif %}
   </div>

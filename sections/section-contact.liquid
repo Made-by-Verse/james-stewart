@@ -61,21 +61,21 @@
                 <h3 class='mb-2 text-sm'>{{ block.settings.title }}</h3>
                 <ul>
                 {% if block.settings.phone != blank %}
-                  <li class='grid grid-cols-6 gap-4'>
+                  <li class='grid grid-cols-3 gap-4'>
                     <span class=''>Call:</span>
-                    <span class='col-span-5'>{{ block.settings.phone }}</span>
+                    <span class='col-span-2'>{{ block.settings.phone }}</span>
                   </li>
                 {% endif %}
                 {% if block.settings.email != blank %}
-                  <li class='grid grid-cols-6 gap-4'>
+                  <li class='grid grid-cols-3 gap-4'>
                     <span class=''>Email:</span>
-                    <span class='col-span-5'>{{ block.settings.email }}</span>
+                    <span class='col-span-2'>{{ block.settings.email }}</span>
                   </li>
                 {% endif %}
                 {% if block.settings.address != blank %}
-                  <li class='grid grid-cols-6 gap-4'>
+                  <li class='grid grid-cols-3 gap-4'>
                     <span class=''>Address:</span>
-                    <span class='col-span-5'>{{ block.settings.address }}</span>
+                    <span class='col-span-2'>{{ block.settings.address }}</span>
                   </li>
                 {% endif %}
                   </ul>
@@ -88,7 +88,7 @@
     </div>
   </div>
 </div>
-
+  
 {% schema %}
   {
     "name": "Contact",
