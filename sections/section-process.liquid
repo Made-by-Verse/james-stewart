@@ -38,7 +38,22 @@
 <div class='color-{{section.settings.color_scheme}} bg-primary text-contrast {{ padding_top }} {{ padding_bottom }}'>
   <div 
     class="wrapper grid md:grid-cols-2 gap-8"
-    x-data="{ activeStep: 0 }"
+    x-data="{ 
+      activeStep: 0,
+      updateHeight() {
+        const texts = this.$el.querySelectorAll('.process-text');
+        let maxHeight = 0;
+        texts.forEach(text => {
+          text.style.position = 'static';
+          text.style.opacity = '1';
+          maxHeight = Math.max(maxHeight, text.offsetHeight);
+          text.style.position = '';
+          text.style.opacity = '';
+        });
+        this.$refs.contentContainer.style.height = `${maxHeight}px`;
+      }
+    }"
+    x-init="updateHeight(); window.addEventListener('resize', () => updateHeight())"
   >
     <div class="flex items-start {% if section.settings.left-image %}max-w-lg{% endif %}">
       <div class="sticky top-20 space-y-4 {% if section.settings.left-image %}flex flex-col items-end{% endif %} w-full">
@@ -52,7 +67,10 @@
             height: 1000
           %}
         {% endif %}
-        <div class="relative w-full min-h-48 {% if section.settings.left-image %}max-w-p{% endif %}">
+        <div 
+          x-ref="contentContainer"
+          class="relative w-full {% if section.settings.left-image %}max-w-p{% endif %}"
+        >
           {% for block in section.blocks %}
             {% case block.type %}
             {% when 'process-step' %}
