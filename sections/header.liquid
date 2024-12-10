@@ -9,7 +9,7 @@
       <nav class="hidden lg:block h-full">
         <ul class="flex gap-6 h-full items-center">
           {%- for link in linklists.revamped-menu.links -%}
-            <li class=""
+            <li class="h-full flex items-center"
               x-data="{ megaMenuOpen: false }"
               @mouseenter="megaMenuOpen = {% if link.links.size > 0 %}true; anyMegaMenuOpen = true{% else %}false{% endif %}"
               @mouseleave="megaMenuOpen = false; anyMegaMenuOpen = false"
@@ -23,10 +23,10 @@
                   class="absolute left-0 right-0 top-16 bg-primary drop-shadow-lg"
                   x-cloak
                   x-show="megaMenuOpen"
-                  x-transition:enter="transition ease-out duration-500"
+                  x-transition:enter="transition ease-in-out duration-700"
                   x-transition:enter-start="opacity-0"
                   x-transition:enter-end="opacity-100"
-                  x-transition:leave="transition ease-in duration-200"
+                  x-transition:leave="transition ease-in-out duration-700"
                   x-transition:leave-start="opacity-100"
                   x-transition:leave-end="opacity-0"
                 >

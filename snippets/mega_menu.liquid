@@ -4,10 +4,10 @@
       <div class="col-start-2 col-span-4 grid grid-cols-2 gap-4">
         <h3 class="mb-4">{{ childlink.title }}</h3>
         {% if childlink.links.size > 0 %}
-          <ul class="space-y-2 [&:has(a:hover)_a:not(:hover)]:opacity-50 transition-opacity duration-300">
+          <ul class="space-y-2 [&:has(a:hover)_a:not(:hover)]:opacity-50 transition-opacity duration-700">
             {% for grandchildlink in childlink.links %}
               <li>
-                <a href="{{ grandchildlink.url }}" class="link transition-opacity duration-200">
+                <a href="{{ grandchildlink.url }}" class="link transition-opacity duration-700">
                   {{ grandchildlink.title }}
                 </a>
               </li>

@@ -1,5 +1,5 @@
 #js-header {
-  @apply bg-primary text-contrast transition-all duration-500;
+  @apply bg-primary text-contrast duration-700 ease-in-out;
 
   .wrapper-inner {
     @apply border-b border-lines;
@@ -48,6 +48,6 @@
   }
 
   &.mega-menu-open {
-    @apply bg-primary text-contrast;
+    @apply bg-primary text-contrast duration-500;
   }
 }
