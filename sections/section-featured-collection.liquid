@@ -35,10 +35,10 @@
   endif
 %}
 
-<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast {{ padding_top }} {{ padding_bottom }}'>
-  <div class="wrapper">
+<div class='color-{{ section.settings.color_scheme }} bg-primary text-contrast {{ padding_top }} {{ padding_bottom }} '>
+  <div class="">
     {%- if section.settings.collection != blank -%}
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      <div class="wrapper grid grid-cols-1 lg:grid-cols-5 gap-8">
         <div class="lg:col-span-3 flex items-start">
           <div class="sticky top-20 lg:max-w-[840px] w-full space-y-6">
             <h2 class="h3 transition-opacity duration-2500 ease-in-out lg:h-16" x-data="{ shown: false }" x-intersect:enter="shown = true" x-intersect:leave="shown = false" :class="shown ? 'opacity-100' : 'opacity-0'">{{ section.settings.collection.title }}</h2>
@@ -59,16 +59,34 @@
           </div>
         </div>
 
-        <div class="lg:col-span-2 flex justify-end lg:mt-[88px]">
+        <div class="lg:col-span-2 hidden lg:flex justify-end lg:mt-[88px]">
           <div class="space-y-4 lg:space-y-8 lg:max-w-[340px] w-full">
             {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
               {% render 'product-card',
-              product: product
-            %}
-          {%- endfor -%}
+                product: product
+              %}
+            {%- endfor -%}
+          </div>
         </div>
-      {%- endif -%}
-    </div>
+      </div>
+      <div class="overflow-hidden">
+        <div class="block lg:hidden wrapper !overflow-visible mt-8">
+          <h3 class="font-sans pb-4">In this collection</h3>
+        <div class="collection-grid-swiper swiper !overflow-visible">
+          <div class="swiper-wrapper overflow-visible">
+            
+            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+              <div class="swiper-slide">
+                {% render 'product-card',
+                  product: product
+                %}
+              </div>
+            {%- endfor -%}
+          </div>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -139,7 +157,6 @@
   "presets": [
     {
       "name": "Featured Collection",
-      "category": "Collection",
       "settings": {
         "description": "<p>Showcase your best products with a curated collection display.</p>",
         "products_to_show": 6,
