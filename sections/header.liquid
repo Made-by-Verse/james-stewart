@@ -2,7 +2,7 @@
   id="js-header" 
   x-data="{ anyMegaMenuOpen: false }"
   :class="anyMegaMenuOpen && 'mega-menu-open'"
-  class="fixed w-full max-w-[100vw] z-50 h-16 font-sans {% unless template == 'index' %}not-home{% endunless %} header--not-scrolled"
+  class="fixed w-full max-w-[100vw] z-50 h-16 font-sans {% unless template == 'index' %}not-home{% endunless %} header--not-scrolled  {% if template == 'product' %}header--product-page{% endif %} "
 >
   <div class="wrapper h-full">
     <div class='grid grid-cols-3 gap-4 h-full border-b wrapper-inner'>

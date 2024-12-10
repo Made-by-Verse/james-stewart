@@ -17,6 +17,10 @@
     @apply bg-transparent text-contrast;
   }
 
+  &.header--product-page {
+    @apply bg-primary text-contrast;
+  }
+
   &.header--on-hero {
     @apply bg-transparent text-primary;
 

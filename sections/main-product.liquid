@@ -76,7 +76,7 @@
         </div>
         <div class="w-full h-1/3 flex flex-col justify-end">
           <div class="flex-1 grid grid-cols-3 gap-4 p-4">
-            <ul class='font-sans space-y-1 leading-none text-sm' x-data="{ activeDrawer: null }">
+            <ul class='font-sans space-y-1 leading-none text-sm mt-0.5' x-data="{ activeDrawer: null }">
               <li>
                 <button
                   class="text-left uppercase"
@@ -105,7 +105,7 @@
                 </button>
               </li>
             </ul>
-            <div class='col-span-2'>
+            <div class='col-span-2 space-y-4'>
               {% if product.description != blank %}
                 {{ product.description }}
               {% endif %}
@@ -123,7 +123,7 @@
                   section_id: section.id,
                 -%}
               {% else %}
-                <a href="/pages/contact" class="btn btn--primary flex justify-center w-full">ENQUIRE</a>
+                <a href="/pages/contact" class="btn btn--outline-primary flex justify-center w-full">ENQUIRE</a>
               {% endif %}
             </div>
           </div>
