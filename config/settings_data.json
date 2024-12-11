@@ -20,6 +20,128 @@
     "social_vimeo_link": "",
     "color_swatches": "Angelina Syrup: Angelina_Syrup.jpg\nCamargue Dune: Camargue_Dune.jpg\nCasanova Camel:Resize_Casanova_Camel.jpg\nCommonwealth Cork:Commonwealth_Cork_Legacy.jpg\nCommonwealth Pewter: Commonwealth_Pewter.jpg\nCommonwealth Stone: Resize_Commonwealth_Stone.jpg\nCone Denim: Cone_Denim.jpg\nCopenhagen Hamlet: Copenhagen_Hamlet.jpg\nCheckmate Pawn:Resize_Checkmate_Pawn.jpg\nMemento Medal:Resize_Memento_Medal.jpg\nTen Gallon Hat Hoss: Ten_Gallon_Hat_Hoss.png\nDolomiti Bluff: Dolomiti_Bluff.png\nEl Arish - Natural: El_Arish.jpg\nHuntington Camden: Huntington_Camden.jpg\nIsadora Ocean: Isadora_Ocean.jpg\nOld Saddle Nut: Old_Saddle_Nut.jpg\nOld Saddle Black: Old_Saddle_Black.jpg\nQuiet Time Oak: Quiet_Time_Oak.jpg\nVenerando Bisque: Venerando_Bisque.png\nVenerando Honey: Venerando_Honey.jpg\nVenerando Umber: Venerando_Umber.png\nVenerando Juniper:Resize_Venerando_Juniper.jpg\nJuniper:Resize_Venerando_Juniper.jpg\nVida Evergreen: Vida_Evergreen.jpg\nVida Penny: Vida_Penny.jpg\nSeafoam:Agora_Seafoam.jpg\nClassic Havana: Classic_Havana_Legacy.jpg\nClassic Barley: Classic_Barley_Legacy.jpg\nNature Chamois: Nature_Chamois_Heritage.jpg\nNature Umber: Nature_Umber_Heritage.jpg\nNature Camel: Nature_Camel_Heritage.jpg\nNature Chocolate: Nature_Chocolate_heritage.jpg\nKelso Tanami: Kelso_Tanami_Fabric.jpg\nArgyll Rye: Argyll_Rye_Fabric.jpg\nField Tirari: Field_Tirari_Fabric.jpg \nHelm Darling: Helm_Darling_Fabric.jpg\nDunbar Spinifex: Dunbar_Spinifex_Fabric.jpg",
     "sections": {
+      "wsg-registration-settings": {
+        "type": "wsg-registration-settings",
+        "settings": {
+          "page-title": "Trade Applictation",
+          "description": "<p>Enter your details below to apply for a trade account.</p>",
+          "image": "shopify://shop_images/image_1.jpg",
+          "custom-html": ""
+        }
+      },
+      "wsg-custom-fields": {
+        "type": "wsg-custom-fields",
+        "blocks": {
+          "phone_block_dKa3cA": {
+            "type": "phone_block",
+            "settings": {
+              "phone_text_input": "Phone (required)",
+              "isRequired": true
+            }
+          },
+          "company_block_PhHe6e": {
+            "type": "company_block",
+            "settings": {
+              "company": "Trading name (required)",
+              "isRequired": true
+            }
+          },
+          "text_block_4tqFy3": {
+            "type": "text_block",
+            "settings": {
+              "text_input": "Entity Name",
+              "isRequired": false
+            }
+          },
+          "text_block_nNdxb3": {
+            "type": "text_block",
+            "settings": {
+              "text_input": "ABN (required)",
+              "isRequired": true
+            }
+          },
+          "text_block_zjTiBt": {
+            "type": "text_block",
+            "settings": {
+              "text_input": "Website (required)",
+              "isRequired": false
+            }
+          },
+          "text_block_MH9HjV": {
+            "type": "text_block",
+            "settings": {
+              "text_input": "Year business stablished (required)",
+              "isRequired": true
+            }
+          },
+          "dropdown_block_kFpDNz": {
+            "type": "dropdown_block",
+            "settings": {
+              "dropdown_label": "Approximately how much do you spend on furniture per year? (required)",
+              "dropdown_option_1": "$0 - $9,999",
+              "dropdown_option_2": "$10,000 - $29,999",
+              "dropdown_option_3": "$30,000 +",
+              "dropdown_option_4": "",
+              "dropdown_option_5": "",
+              "dropdown_option_6": "",
+              "dropdown_option_7": "",
+              "dropdown_option_8": "",
+              "dropdown_option_9": ""
+            }
+          },
+          "dropdown_block_7UwDxr": {
+            "type": "dropdown_block",
+            "settings": {
+              "dropdown_label": "Primary business type (required)",
+              "dropdown_option_1": "Interior Designer",
+              "dropdown_option_2": "Property Developer",
+              "dropdown_option_3": "Architects",
+              "dropdown_option_4": "Property Styling",
+              "dropdown_option_5": "Decorator",
+              "dropdown_option_6": "Accomodation/Hospitality",
+              "dropdown_option_7": "Furniture Retailer",
+              "dropdown_option_8": "Gift Homewares Retailer",
+              "dropdown_option_9": "Online Retailer"
+            }
+          },
+          "text_block_6VmFKM": {
+            "type": "text_block",
+            "settings": {
+              "text_input": "Instagram handle",
+              "isRequired": false
+            }
+          },
+          "text_block_iEp6hB": {
+            "type": "text_block",
+            "settings": {
+              "text_input": "Facebook Username",
+              "isRequired": false
+            }
+          },
+          "textarea_block_Qw94AJ": {
+            "type": "textarea_block",
+            "settings": {
+              "textarea_label": "How did you discover James Stewart Furniture?",
+              "textarea_placeholder": "",
+              "isRequired": false
+            }
+          }
+        },
+        "block_order": [
+          "phone_block_dKa3cA",
+          "company_block_PhHe6e",
+          "text_block_4tqFy3",
+          "text_block_nNdxb3",
+          "text_block_zjTiBt",
+          "text_block_MH9HjV",
+          "dropdown_block_kFpDNz",
+          "dropdown_block_7UwDxr",
+          "text_block_6VmFKM",
+          "text_block_iEp6hB",
+          "textarea_block_Qw94AJ"
+        ],
+        "settings": {}
+      },
       "header": {
         "type": "header",
         "blocks": {
