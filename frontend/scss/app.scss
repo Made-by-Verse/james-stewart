@@ -23,3 +23,7 @@
 [x-cloak] {
   display: none !important;
 }
+
+.wsg-proxy-container {
+  @apply py-32 pb-16;
+}
