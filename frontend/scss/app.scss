@@ -35,7 +35,7 @@
     @apply text-3xl mb-4;
   }
 
-  h1 {
+  h2 {
     @apply text-xl mb-4;
   }
   hr {
@@ -48,5 +48,13 @@
     a {
       @apply underline;
     }
+  }
+
+  .btn {
+    padding: 14px;
+  text-align: center;
+
+  @apply uppercase font-sans tracking-wide p-2 lg:p-[14px] text-sm border border-lines text-contrast hover:border-contrast transition-all duration-500;
+
   }
 }
