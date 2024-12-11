@@ -27,3 +27,20 @@
 .wsg-proxy-container {
   @apply py-32 pb-16;
 }
+
+.wsg-signup-link {
+  @apply text-base my-8;
+
+  a {
+    @apply underline;
+  }
+}
+
+.shopify-section-wsg-registration-settings {
+  h1 {
+    @apply text-2xl mb-4;
+  }
+  hr {
+    @apply mt-4;
+  } 
+}
