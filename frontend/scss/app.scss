@@ -38,9 +38,10 @@
 
 .shopify-section-wsg-registration-settings {
   h1 {
-    @apply text-2xl mb-4;
+    font-size: 24px!important;
+    margin-bottom: 16px!important;
   }
   hr {
-    @apply mt-4;
+    margin-top: 16px!important;
   } 
 }
