@@ -36,10 +36,9 @@
   }
 }
 
-.shopify-section-wsg-registration-settings {
+.wsg-proxy-container {
   h1 {
-    font-size: 24px!important;
-    margin-bottom: 16px!important;
+    @apply text-2xl mb-4;
   }
   hr {
     margin-top: 16px!important;
