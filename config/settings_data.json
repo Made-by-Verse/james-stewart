@@ -25,7 +25,6 @@
         "settings": {
           "page-title": "Trade Applictation",
           "description": "<p>Enter your details below to apply for a trade account.</p>",
-          "image": "shopify://shop_images/image_1.jpg",
           "custom-html": ""
         }
       },
@@ -74,7 +73,6 @@
               "isRequired": true
             }
           },
-          
           "dropdown_block_7UwDxr": {
             "type": "dropdown_block",
             "settings": {
@@ -85,9 +83,7 @@
               "dropdown_option_4": "Property Styling",
               "dropdown_option_5": "Decorator",
               "dropdown_option_6": "Accomodation/Hospitality",
-              "dropdown_option_7": "Furniture Retailer",
-              "dropdown_option_8": "Gift Homewares Retailer",
-              "dropdown_option_9": "Online Retailer"
+              "dropdown_option_7": "Furniture Retailer"
             }
           },
           "text_block_6VmFKM": {
@@ -120,32 +116,12 @@
           "text_block_nNdxb3",
           "text_block_zjTiBt",
           "text_block_MH9HjV",
-          "dropdown_block_kFpDNz",
           "dropdown_block_7UwDxr",
           "text_block_6VmFKM",
           "text_block_iEp6hB",
           "textarea_block_Qw94AJ"
         ],
         "settings": {}
-      },
-      "wsg-custom-template-header": {
-        "type": "wsg-custom-template-header",
-        "settings": {
-          "full_width": true,
-          "overlay_opacity": 30,
-          "display_description": false,
-          "heading": "Trade",
-          "button_url": "shopify://pages/ws-account-login",
-          "button_text": "Already a member? Login here",
-          "bg_image": "shopify://shop_images/image_5_1.jpg"
-        }
-      },
-      "wg-other-extra": {
-        "type": "wg-other-extra",
-        "settings": {
-          "heading": "Need and Account?",
-          "description": "<p><a href=\"/pages/wholesale-registration-form\" title=\"Wholesale Registration Form\">Sign up</a> for a Trade/Wholesale account to access discounts of RRP*</p>"
-        }
       },
       "header": {
         "type": "header",
