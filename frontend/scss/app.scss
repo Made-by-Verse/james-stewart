@@ -28,19 +28,25 @@
   @apply py-32 pb-16;
 }
 
-.wsg-signup-link {
-  @apply text-base my-8;
 
-  a {
-    @apply underline;
-  }
-}
 
 .wsg-proxy-container {
   h1 {
-    @apply text-2xl mb-4;
+    @apply text-3xl mb-4;
+  }
+
+  h1 {
+    @apply text-xl mb-4;
   }
   hr {
     margin-top: 16px!important;
   } 
+
+  .wsg-signup-link {
+    @apply text-base my-8;
+  
+    a {
+      @apply underline;
+    }
+  }
 }
