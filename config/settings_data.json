@@ -140,7 +140,11 @@
         "block_order": [
           "mega_menu_RGyBW6"
         ],
-        "settings": {}
+        "settings": {
+          "menu_trade": "trade-menu",
+          "menu_public": "public-menu",
+          "menu_logged_out": "logged-out-menu"
+        }
       }
     },
     "content_for_index": [],
