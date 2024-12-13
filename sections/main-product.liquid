@@ -110,7 +110,15 @@
                 {{ product.description }}
               {% endif %}
             </div>
-          </div>
+          </div>{% comment %}
+          {% if customer %}
+           {% endcomment %}
+            <div>
+              <span class="product-stock-info" data-variant-stock></span>
+            </div>
+            {% comment %}
+          {% endif %}
+           {% endcomment %}
           <div>
             <div class="w-full">
               {% if product.has_only_default_variant == false %}
@@ -142,6 +150,79 @@
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}';
+    const stockInfoContainer = document.querySelector('[data-variant-stock]');
+    const productId = '{{ product.id }}';
+    let productVariants = [];
+    
+    if (stockInfoContainer) {
+      axios
+          .get(`https://jsf-po-eta.gadget.app/product?id=${productId}`,{
+            mode: 'cors'
+          })
+          .then(({ data }) => {
+            
+            productVariants = data.data;
+            
+            const selectedVariantValues = findVariantByID(shopifyCurrentVariantID);
+            renderStockInformation(selectedVariantValues);
+          })
+          .catch((error) => console.error('Error:', error));
+
+      function formatDate(date) {
+        return new Date(date).toLocaleDateString('en-US', {
+          month: 'long',
+          day: '2-digit',
+          year: 'numeric',
+        });
+      }
+
+      function renderStockInformation(data) {
+        if (!data) {
+          console.error('No data provided');
+          return;
+        }
+
+        let content = '';
+        const stockText = data.inStock === true ? 'IN STOCK' : '';
+
+        if (data.eta && data.eta.length > 0 && data.inStock === false) {
+          const etaDate = new Date(data.eta[data.eta.length - 1]); // get the latest order
+          const currentDate = new Date();
+
+          if (isNaN(etaDate.getTime())) {
+            console.error('Invalid ETA date');
+          } else if (currentDate < etaDate) {
+            const formattedDate = formatDate(etaDate);
+            content = `<strong>ETA: ${formattedDate}</strong>`;
+          } // Implicitly handles if currentDate is not before etaDate by not setting etaText
+        }
+
+        if (!content && stockText) {
+          content = `<strong>${stockText}</strong>`;
+        }
+
+        stockInfoContainer.innerHTML = content;
+      }
+
+      document.addEventListener('product:variant-change', (evt) => {
+        const selectedVariantValues = findVariantByID(evt.detail.variant.id);
+        renderStockInformation(selectedVariantValues);
+      });
+    }
+
+    function findVariantByID(variantID) {
+      return productVariants.find((variant) => variant.id.includes(variantID));
+    }
+  });
+</script>
+
 
 {% schema %}
 {
