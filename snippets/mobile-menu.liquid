@@ -1,5 +1,8 @@
+
+
+
 <nav class="py-8" x-data="{ activeItem: null }">
-  {%- for link in linklists.revamped-menu.links -%}
+  {%- for link in menu -%}
     <div class="border-b">
       {% assign linkId = link.title | handleize %}
       

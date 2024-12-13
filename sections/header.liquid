@@ -1,3 +1,16 @@
+{% liquid 
+  assign menu_trade = linklists[section.settings.menu_trade].links
+  assign menu_public = linklists[section.settings.menu_public].links
+  assign menu_logged_out = linklists[section.settings.menu_logged_out].links
+
+  if customer
+    assign menu = menu_trade
+  else
+    assign menu = menu_logged_out
+  endif
+%}
+
+
 <header 
   id="js-header" 
   x-data="{ anyMegaMenuOpen: false }"
@@ -8,7 +21,7 @@
     <div class='grid grid-cols-3 gap-4 h-full border-b wrapper-inner'>
       <nav class="hidden lg:block h-full">
         <ul class="flex gap-6 h-full items-center">
-          {%- for link in linklists.revamped-menu.links -%}
+          {%- for link in menu -%}
             <li class="h-full flex items-center"
               x-data="{ megaMenuOpen: false }"
               @mouseenter="megaMenuOpen = {% if link.links.size > 0 %}true; anyMegaMenuOpen = true{% else %}false{% endif %}"
@@ -47,20 +60,24 @@
       </button>
       <div class="flex justify-center items-center">
         <a href="{{ routes.root_url }}" class="{% if template == 'index' %}home-page-logo{% endif %}">
-          {% render 'header-logo' %}
+          {% render 'header-logo', menu: menu %}
         </a>
       </div>
       <div class="h-full flex items-center justify-end gap-4 lg:gap-6">
-        {% if customer %}
-          <a 
-            href="{{ routes.account_url }}" 
+        <ul class="flex gap-4 lg:gap-6">
+          {% if customer %}
+            <li>
+              <a 
+                href="{{ routes.account_url }}" 
             class="link hidden lg:block"
           >
-            account
+            Account
           </a>
+        </li>
+        <li>
           <button 
             x-data
-            @click="$dispatch('open-cart-drawer')"
+              @click="$dispatch('open-cart-drawer')"
             class="link"
             type="button"
           >
@@ -68,12 +85,18 @@
             <span class="lg:hidden w-8 h-8 block">
               {{ 'icon-cart.svg' | inline_asset_content }}
             </span>
-          </button>
+            </button>
+          </li>
         {% else %}
-          <a href="{{ routes.account_login_url }}" class="link hidden lg:block">
-            Trade Login
-          </a>
+          {%- for link in menu_logged_out -%}
+            <li>
+              <a href="{{ link.url }}" class="link hidden lg:block">
+                {{ link.title }}
+            </a>
+            </li>
+          {%- endfor -%}
         {% endif %}
+        </ul>
       </div>
     </div>
   </div>
@@ -170,6 +193,23 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu_trade",
+      "label": "Trade Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_public",
+      "label": "Public Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_logged_out",
+      "label": "Logged Out Menu"
+    }
+  ],
   "blocks": [
     {
       "type": "mega_menu",
