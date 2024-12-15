@@ -35,14 +35,7 @@
 
     {{ content_for_header }}
 
-    {%- if settings.predictive_search_enabled -%}
-      <link
-        rel="stylesheet"
-        href="{{ 'component-predictive-search.css' | asset_url }}"
-        media="print"
-        onload="this.media='all'"
-      >
-    {%- endif -%}
+
   {% render 'wsg-custom' %}
 </head>
 
@@ -53,9 +46,15 @@
 
     {% section 'header' %}
 
-    <main id="MainContent" class="bg-primary" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+    
+      <main id="MainContent" class="bg-primary" role="main" tabindex="-1">
+        {% if request.path contains '/policies/' %}
+          {% section 'policy-page' %}
+        {% else %}
+          {{ content_for_layout }}
+        {% endif %}
+      </main>
+    
 
     {% sections 'footer-group' %}
     {% if template contains 'product' %}
@@ -116,8 +115,6 @@
       };
     </script>
 
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+   
   </body>
 </html>
