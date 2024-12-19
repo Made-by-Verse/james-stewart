@@ -14,11 +14,7 @@
       "settings": {}
     },
     "section-image-banner-with-sticky-text": {
-      "type": "section-image-banner-with-sticky-text",
-      "settings": {
-        "title": "Arlie",
-        "image": "shopify://shop_images/Rectangle_631.png"
-      }
+      "type": "product-image-banner-with-sticky-text",
     },
     "related-products": {
       "type": "related-products",
