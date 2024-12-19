@@ -110,15 +110,12 @@
                 {{ product.description }}
               {% endif %}
             </div>
-          </div>{% comment %}
+          </div>
           {% if customer %}
-           {% endcomment %}
             <div>
               <span class="product-stock-info" data-variant-stock></span>
             </div>
-            {% comment %}
           {% endif %}
-           {% endcomment %}
           <div>
             <div class="w-full">
               {% if product.has_only_default_variant == false %}

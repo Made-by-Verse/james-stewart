@@ -1,1 +1,75 @@
-{"sections":{"template-header":{"type":"template-header","settings":{"full_width":true,"overlay_opacity":30,"display_description":false,"heading":"","bg_image":"shopify:\/\/shop_images\/account-page-banner.jpg"}},"main":{"type":"dealer-account","settings":{"cta_text_1":"Account Info","cta_link_1":"https:\/\/jamesstewart.com.au\/account","cta_link_1_newtab":false,"cta_text_2":"Past Orders","cta_link_2":"https:\/\/jamesstewart.com.au\/account","cta_link_2_newtab":false,"cta_text_3":"Catalogues","cta_link_3":"https:\/\/cdn.shopify.com\/s\/files\/1\/0729\/6113\/0776\/files\/JS_City_Country_Collection_Catalogue.pdf?v=1714130934","cta_link_3_newtab":true,"image":"shopify:\/\/shop_images\/image_2.jpg","image_ratio":"adapt","title":"Our Style Catalogue","text":"","button_text":"Download now","button_url":"https:\/\/cdn.shopify.com\/s\/files\/1\/0729\/6113\/0776\/files\/JS_City_Country_Collection_Catalogue.pdf?v=1714130934"}},"collection_list_rgR3pH":{"type":"collection-list","settings":{"heading":"Order Now","description":"","collection_list":["sofas","accent-seating","executive-seating","alboo-outdoor","living-room"],"image_ratio":"square","layout":"grid","style":"style2","content_alignment":"text-center","columns_desktop":4,"collection_description":true,"overlay_opacity":30,"carousel_dots":true,"mobile_swipe":true,"disable_top_spacing":true,"disable_bottom_spacing":false}}},"order":["template-header","main","collection_list_rgR3pH"]}
+{
+    "sections": {
+        "main": {
+            "type": "dealer-account",
+            "settings": {
+                "cta_text_1": "Account Info",
+                "cta_link_1": "https:\/\/jamesstewart.com.au\/account",
+                "cta_link_1_newtab": false,
+                "cta_text_2": "Past Orders",
+                "cta_link_2": "https:\/\/jamesstewart.com.au\/account",
+                "cta_link_2_newtab": false,
+                "cta_text_3": "Catalogues",
+                "cta_link_3": "https:\/\/cdn.shopify.com\/s\/files\/1\/0729\/6113\/0776\/files\/JS_City_Country_Collection_Catalogue.pdf?v=1714130934",
+                "cta_link_3_newtab": true,
+                "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup3.png",
+                "text": "",
+                "title": "Our Style Catalogue",
+                "button_text": "Download now",
+                "button_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0729\/6113\/0776\/files\/JS_City_Country_Collection_Catalogue.pdf?v=1714130934"
+            }
+        },
+        "collections_grid": {
+            "type": "section-collections-grid",
+            "blocks": {
+                "collection_block_1": {
+                    "type": "collection_block",
+                    "settings": {
+                        "collection": "accent-seating"
+                    }
+                },
+                "collection_block_2": {
+                    "type": "collection_block",
+                    "settings": {
+                        "collection": "sofas"
+                    }
+                },
+                "collection_block_3": {
+                    "type": "collection_block",
+                    "settings": {
+                        "collection": "alboo-outdoor"
+                    }
+                },
+                "collection_block_4": {
+                    "type": "collection_block",
+                    "settings": {
+                        "collection": "living-room"
+                    }
+                },
+                "collection_block_5": {
+                    "type": "collection_block",
+                    "settings": {
+                        "collection": "executive-seating"
+                    }
+                }
+            },
+            "block_order": [
+                "collection_block_1",
+                "collection_block_2",
+                "collection_block_3",
+                "collection_block_4",
+                "collection_block_5"
+            ],
+            "settings": {
+                "all_collections_link_text": "Order Now",
+                "color_scheme": "",
+                "padding_top": "md",
+                "padding_bottom": "md"
+            }
+        },
+    },
+    "order": [
+        "main",
+        "collections_grid"
+    ]
+}

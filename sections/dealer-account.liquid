@@ -1,95 +1,97 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
-{{ 'page-header.css' | asset_url | stylesheet_tag }}
 
-{% liquid
-  assign catalogue_image = blank
-  assign media_aspect_ratio = blank
 
-  if section.settings.image_ratio != blank
-    assign media_aspect_ratio = section.settings.image_ratio
-  endif
 
-  if section.settings.image != blank
-    assign catalogue_image = section.settings.image
-  endif
 
-  assign sizes = '320x320,640x640'
-  assign media_aspect_percentage = 100 | append: '%'
-  if media_aspect_ratio == 'portrait'
-    assign sizes = '320x400,640x800'
-  elsif media_aspect_ratio == 'adapt'
-    assign sizes = '320x0,640x0'
-    assign media_aspect_percentage = 100 | divided_by: catalogue_image.aspect_ratio | append: '%'
-  endif
-%}
-<div class="row myaccount-content-wrapper">
+<div class="pt-56 pb-32">
   {% if customer %}
-    <div class="small-12 large-offset-1 large-5 columns myaccount-content">
-      <h4>{{ customer.first_name  }} {{ customer.last_name  }}</h4>
+    <div class="grid md:grid-cols-12 wrapper">
+      <div class="md:col-span-2"><h1 class="text-3xl">Dealer Account</h1></div>
+      <div class="md:col-start-4 md:col-span-3">
+        <h2 class="normal-case tracking-normal">{{ customer.first_name  }} {{ customer.last_name  }}</h2>
       
-      <div class="myaccount-sidebar">
+      <div>
+        <ul class="space-y-2 py-4">
         {% if section.settings.cta_text_1 %}
+          <li>
           <a 
             href="{{ section.settings.cta_link_1 | default: '#' }}" 
             {% if section.settings.cta_link_3_newtab %}
               target="_blank"
             {% endif %}
+            class="block btn btn--outline-primary"
           >
-            {% render 'svg-icons' with 'myaccount-circle' %}
             {{ section.settings.cta_text_1 }}
           </a>
+        </li>
         {% endif %}
         {% if section.settings.cta_text_2 %}
+          <li>
           <a 
             href="{{ section.settings.cta_link_2 | default: '#' }}"
             {% if section.settings.cta_link_2_newtab %}
               target="_blank"
             {% endif %}
+            class="block btn btn--outline-primary"
           >
-            {% render 'svg-icons' with 'past-orders' %}
             {{ section.settings.cta_text_2 }}
           </a>
+        </li>
         {% endif %}
         {% if section.settings.cta_text_3 %}
+          <li>
           <a 
             href="{{ section.settings.cta_link_3 | default: '#' }}"
             {% if section.settings.cta_link_3_newtab %}
               target="_blank"
             {% endif %}
+            class="block btn btn--outline-primary"
           >
-            {% render 'svg-icons' with 'catalogue' %}
             {{ section.settings.cta_text_3 }}
-          </a>
+            </a>
+          </li>
         {% endif %}
+      </ul>
+      <a href="{{ routes.account_logout_url }}"  class="underline">
+        Log out
+      </a>
       </div>
 
-      <a href="{{ routes.account_logout_url }}" title="{{ 'customer.account.log_out' | t | escape }}" class="myaccount-link">
-        {{ 'customer.account.log_out' | t }}
-      </a>
-    </div>
-    <div class="small-12 large-5 columns myaccount-image">
-      {% if catalogue_image != blank %}
+      
+      </div>
+      
+    
+    <div class="md:col-span-4 md:col-start-9">
         <div class="myaccount-image--inner">
-          <div class="myaccount-image__wrapper media-aspect-{{ media_aspect_ratio }}" style="--var-media-aspect-ratio: {{ media_aspect_percentage }}">
-            {% if catalogue_image != blank %}
-              {%- render 'responsive-image', image: catalogue_image | image_url, sizes: sizes -%}
+          
+            {% if section.settings.image != blank %}
+              <div class="relative aspect-square">
+              {%- render 'responsive-image', image: section.settings.image | image_url, wrapper_class: 'absolute inset-0 w-full h-full object-cover',
+                image_class: 'absolute inset-0 w-full h-full object-cover',
+                size: '800x800',
+                width: 800,
+                height: 800 -%}
+                 </div>
             {% endif %}
-          </div>
+         
           <div class="myaccount-image__content">
-            <div>
-              <h4>{{ section.settings.title }}</h4>
-              <p>{{ section.settings.text }}</p>
+            <div class="space-y-4 py-4">
+              {% if section.settings.title != blank %}
+                <h4 class="normal-case tracking-normal">{{ section.settings.title }}</h4>
+              {% endif %}
+              {% if section.settings.text != blank %}
+                <p>{{ section.settings.text }}</p>
+              {% endif %}
               {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-                <a href="{{ section.settings.button_url }}" target="_blank" class="button">{{ 'customer.account.download_now' | t }}</a>
+                <a href="{{ section.settings.button_url }}" target="_blank" class="inline-block btn btn--outline-primary">{{ section.settings.button_text }}</a>
               {% endif %}
             </div>
           </div>
         </div>
-      {% endif %}
     </div>
+  </div>
   {% else %}
-    <div class="small-12 columns rte dealer-account">
-      <h4 class="text-center">Please <a href="/pages/ws-account-login">login</a> to view your dealer account</h4>
+    <div class="dealer-account">
+      <h4 class="text-center">Please <a href="/pages/ws-account-login" class="underline">login</a> to view your dealer account</h4>
     </div>
   {% endif %}
 </div>
@@ -159,27 +161,7 @@
       "id": "image",
       "label": "Catalogue image"
     },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "Adapt to image"
-        },
-        {
-          "value": "portrait",
-          "label": "Portrait"
-        },
-        {
-          "value": "square",
-          "label": "Square"
-        }
-      ],
-      "default": "portrait",
-      "label": "Image ratio",
-      "info": "Add images by editing your collections. [Learn more](https://help.shopify.com/en/manual/products/collections)"
-    },
+   
     {
       "type": "header",
       "content": "Catalogue"
