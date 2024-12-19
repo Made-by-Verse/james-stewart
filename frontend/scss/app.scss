@@ -29,7 +29,7 @@
 
 .wsg-proxy-container {
   @apply min-h-screen py-32 pb-16;
-  > .wsg-proxy-container { @apply py-0 pb-0;
+  > .wsg-proxy-container { @apply min-h-0 py-0 pb-0;
   }
   h1 {
     @apply text-3xl mb-4;
