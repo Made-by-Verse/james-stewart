@@ -24,14 +24,11 @@
   display: none !important;
 }
 
-.wsg-proxy-container {
-  @apply py-32 pb-16;
-}
 
 
 
 #wsg-proxy-container {
-  @apply min-h-screen;
+  @apply min-h-screen py-32 pb-16;
   h1 {
     @apply text-3xl mb-4;
   }
@@ -57,6 +54,14 @@
 
   @apply uppercase font-sans tracking-wide p-2 lg:p-[14px] text-sm border border-lines text-contrast hover:border-contrast transition-all duration-500;
 
+  }
+
+  .wsg-btn-primary {
+    @apply bg-contrast text-primary hover:bg-btn--dark-hover transition-all duration-500;
+  }
+
+  .wsg-btn-secondary {
+    @apply border border-lines text-contrast hover:border-contrast transition-all duration-500;
   }
 
   .hidden-label {
