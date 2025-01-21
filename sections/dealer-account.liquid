@@ -11,7 +11,7 @@
       
       <div>
         <ul class="space-y-2 py-4">
-        {% if section.settings.cta_text_1 %}
+        {% if section.settings.cta_text_1 and section.settings.cta_link_1 %}
           <li>
           <a 
             href="{{ section.settings.cta_link_1 | default: '#' }}" 
@@ -24,7 +24,7 @@
           </a>
         </li>
         {% endif %}
-        {% if section.settings.cta_text_2 %}
+        {% if section.settings.cta_text_2 and section.settings.cta_link_2 %}
           <li>
           <a 
             href="{{ section.settings.cta_link_2 | default: '#' }}"
