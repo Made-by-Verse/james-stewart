@@ -1,75 +1,86 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "dealer-account",
-            "settings": {
-                "cta_text_1": "Account Info",
-                "cta_link_1": "https:\/\/jamesstewart.com.au\/account",
-                "cta_link_1_newtab": false,
-                "cta_text_2": "Past Orders",
-                "cta_link_2": "https:\/\/jamesstewart.com.au\/account",
-                "cta_link_2_newtab": false,
-                "cta_text_3": "Catalogues",
-                "cta_link_3": "https:\/\/cdn.shopify.com\/s\/files\/1\/0729\/6113\/0776\/files\/JS_City_Country_Collection_Catalogue.pdf?v=1714130934",
-                "cta_link_3_newtab": true,
-                "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup3.png",
-                "text": "",
-                "title": "Our Style Catalogue",
-                "button_text": "Download now",
-                "button_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0729\/6113\/0776\/files\/JS_City_Country_Collection_Catalogue.pdf?v=1714130934"
-            }
-        },
-        "collections_grid": {
-            "type": "section-collections-grid",
-            "blocks": {
-                "collection_block_1": {
-                    "type": "collection_block",
-                    "settings": {
-                        "collection": "accent-seating"
-                    }
-                },
-                "collection_block_2": {
-                    "type": "collection_block",
-                    "settings": {
-                        "collection": "sofas"
-                    }
-                },
-                "collection_block_3": {
-                    "type": "collection_block",
-                    "settings": {
-                        "collection": "alboo-outdoor"
-                    }
-                },
-                "collection_block_4": {
-                    "type": "collection_block",
-                    "settings": {
-                        "collection": "living-room"
-                    }
-                },
-                "collection_block_5": {
-                    "type": "collection_block",
-                    "settings": {
-                        "collection": "executive-seating"
-                    }
-                }
-            },
-            "block_order": [
-                "collection_block_1",
-                "collection_block_2",
-                "collection_block_3",
-                "collection_block_4",
-                "collection_block_5"
-            ],
-            "settings": {
-                "all_collections_link_text": "Order Now",
-                "color_scheme": "",
-                "padding_top": "md",
-                "padding_bottom": "md"
-            }
-        },
+  "sections": {
+    "main": {
+      "type": "dealer-account",
+      "settings": {
+        "cta_text_1": "Account Info",
+        "cta_link_1": "https://jamesstewart.com.au/account",
+        "cta_link_1_newtab": false,
+        "cta_text_2": "Past Orders",
+        "cta_link_2": "https://jamesstewart.com.au/account",
+        "cta_link_2_newtab": false,
+        "cta_text_3": "",
+        "cta_link_3": "",
+        "cta_link_3_newtab": false,
+        "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup3.png",
+        "title": "Our Style Catalogue",
+        "text": "",
+        "button_text": "Download now",
+        "button_url": "https://cdn.shopify.com/s/files/1/0729/6113/0776/files/JS_City_Country_Collection_Catalogue.pdf?v=1714130934"
+      }
     },
-    "order": [
-        "main",
-        "collections_grid"
-    ]
+    "collections_grid": {
+      "type": "section-collections-grid",
+      "blocks": {
+        "collection_block_1": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "accent-seating"
+          }
+        },
+        "collection_block_2": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "sofas"
+          }
+        },
+        "collection_block_3": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "alboo-outdoor"
+          }
+        },
+        "collection_block_4": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "living-room"
+          }
+        },
+        "collection_block_5": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "executive-seating"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_1",
+        "collection_block_2",
+        "collection_block_3",
+        "collection_block_4",
+        "collection_block_5"
+      ],
+      "settings": {
+        "all_collections_link_text": "Order Now",
+        "button_text": "View All",
+        "button_link": "",
+        "color_scheme": "",
+        "padding_top": "md",
+        "padding_bottom": "md"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collections_grid"
+  ]
 }
