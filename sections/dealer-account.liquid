@@ -37,7 +37,7 @@
           </a>
         </li>
         {% endif %}
-        {% if section.settings.cta_text_3 %}
+        {% if section.settings.cta_text_3 and section.settings.cta_link_3 %}
           <li>
           <a 
             href="{{ section.settings.cta_link_3 | default: '#' }}"
