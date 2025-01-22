@@ -13,7 +13,7 @@
       "type": "dealer-account",
       "settings": {
         "cta_text_1": "Account Info",
-        "cta_link_1": "https://jamesstewart.com.au/account/profile",
+        "cta_link_1": "https://jamesstewart.com.au/account",
         "cta_link_1_newtab": false,
         "cta_text_2": "Past Orders",
         "cta_link_2": "https://jamesstewart.com.au/account",
