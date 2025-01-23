@@ -119,15 +119,39 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const REDIRECT_URL = '/pages/dealer-account';
-        const selector = '#customer_login, form[action$="/account/login"][method="post"]';
-        const form = document.querySelector(selector);
         
-        if (form) {
-          const redirectInput = document.createElement('input');
-          redirectInput.type = 'hidden';
-          redirectInput.name = 'return_to';
-          redirectInput.value = REDIRECT_URL;
-          form.appendChild(redirectInput);
+        // Function to add redirect input to a form
+        function addRedirectToForm(form) {
+          if (!form.querySelector('input[name="return_to"]')) {
+            const redirectInput = document.createElement('input');
+            redirectInput.type = 'hidden';
+            redirectInput.name = 'return_to';
+            redirectInput.value = REDIRECT_URL;
+            form.appendChild(redirectInput);
+          }
+        }
+
+        // Watch for dynamically added forms using MutationObserver
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1) { // Element node
+                const form = node.matches('#customer_login') ? node : node.querySelector('#customer_login');
+                if (form) {
+                  addRedirectToForm(form);
+                }
+              }
+            });
+          });
+        });
+
+        // Start observing the document body for added nodes
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Handle any forms that already exist on the page
+        const existingForm = document.querySelector('#customer_login');
+        if (existingForm) {
+          addRedirectToForm(existingForm);
         }
       });
     </script>
