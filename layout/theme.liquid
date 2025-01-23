@@ -124,7 +124,7 @@
         function addRedirectToForm(form) {
           if (!form.querySelector('input[name="return_to"]')) {
             const redirectInput = document.createElement('input');
-            //redirectInput.type = 'hidden';
+            redirectInput.type = 'hidden';
             redirectInput.name = 'return_to';
             redirectInput.value = REDIRECT_URL;
             form.appendChild(redirectInput);
