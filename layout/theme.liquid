@@ -115,6 +115,23 @@
       };
     </script>
 
+
+    <script>
+      (function() {
+        var REDIRECT_URL = '/pages/dealer-account';
+        var selector = '#customer_login, form[action$="/account"][method="post"]',
+         $form = document.querySelector(selector);
+        if ($form) {
+          $redirect = document.createElement('input');
+          $redirect.type = 'hidden';
+          $redirect.name = 'return_to';
+          $redirect.value = REDIRECT_URL;
+          $form.appendChild($redirect);
+        }
+
+      })();
+    </script>
+
    
   </body>
 </html>
