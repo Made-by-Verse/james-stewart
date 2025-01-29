@@ -44,8 +44,8 @@
       "settings": {
         "text": "<p>Australian-designed furniture that reimagines the best kind in design, materials and craftsmanship.</p>",
         "color_scheme": "scheme-1",
-        "padding_top": "lg",
-        "padding_bottom": "lg"
+        "padding_top": "xl",
+        "padding_bottom": "xl"
       }
     },
     "process": {
