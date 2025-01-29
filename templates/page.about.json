@@ -47,7 +47,7 @@
           "type": "process-step",
           "settings": {
             "heading": "",
-            "step-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup.png",
+            "step-image": "shopify://shop_images/B_W_DESIGNPROCESS_WORKGROUP_03.jpg",
             "step-text": "<p>Our furniture designers explore new materials, reimagine favourite silhouettes, and bring a high level of detail and craftsmanship to our collection.</p>",
             "button_1_url": "",
             "button_1_text": "",
@@ -74,7 +74,7 @@
       ],
       "settings": {
         "color_scheme": "",
-        "left-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png",
+        "left-image": "shopify://shop_images/Royce_ClassicHavana_2.jpg",
         "padding_top": "md",
         "padding_bottom": "md"
       }
