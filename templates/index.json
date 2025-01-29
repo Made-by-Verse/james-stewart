@@ -96,7 +96,7 @@
       "settings": {
         "color_scheme": "scheme-1",
         "left-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_c25258bc-3f82-4d8a-bb33-ab972434db3d.jpg",
-        "padding_top": "md",
+        "padding_top": "none",
         "padding_bottom": "md"
       }
     },
