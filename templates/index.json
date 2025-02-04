@@ -25,14 +25,18 @@
           }
         }
       },
-      "block_order": ["image_block_M6HDqz", "image_block_G94jgb"],
+      "block_order": [
+        "image_block_M6HDqz",
+        "image_block_G94jgb"
+      ],
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
         "hero_button_url": "shopify://collections/all",
         "hero_button_text": "Explore Catalogue",
         "color_scheme": "",
-        "show_logo": true
+        "show_logo": true,
+        "hero_heading": ""
       }
     },
     "paragraph": {
@@ -72,7 +76,10 @@
           }
         }
       },
-      "block_order": ["process-step_1", "process-step_2"],
+      "block_order": [
+        "process-step_1",
+        "process-step_2"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "left-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_c25258bc-3f82-4d8a-bb33-ab972434db3d.jpg",
@@ -113,7 +120,7 @@
         "button_link": "shopify://pages/how-to-buy",
         "color_scheme": "",
         "padding_top": "md",
-        "padding_bottom": "md"
+        "padding_bottom": "none"
       }
     },
     "featured_product": {
@@ -122,7 +129,7 @@
         "product": "royce-chair",
         "button_text": "Learn More",
         "color_scheme": "",
-        "padding_top": "md",
+        "padding_top": "xl",
         "padding_bottom": "md"
       }
     },
