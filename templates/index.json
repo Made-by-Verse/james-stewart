@@ -136,7 +136,7 @@
     "featured_collection": {
       "type": "section-featured-collection",
       "settings": {
-        "collection": "living-room",
+        "collection": "hand-tufted",
         "description": "<p>James Stewart blends world-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction. Blending a new generation of design.</p>",
         "products_to_show": 6,
         "color_scheme": "",
@@ -148,7 +148,7 @@
       "type": "section-image-banner-with-sticky-text",
       "settings": {
         "title": "Redford Sofa",
-        "richtext": "<p>Modular luxury born from the 1970'S The Redford Sofa draws inspiration from iconic designs and styling emanating from Italy and the United States in the 1970s. </p>",
+        "richtext": "<p>Modular luxury born from the 1970's. The Redford Sofa draws inspiration from iconic designs and styling emanating from Italy and the United States in the 1970s. </p>",
         "button_text": "Explore",
         "button_link": "shopify://products/redford-3-seat-sofa",
         "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
