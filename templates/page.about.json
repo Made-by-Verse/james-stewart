@@ -48,7 +48,7 @@
           "settings": {
             "heading": "",
             "step-image": "shopify://shop_images/B_W_DESIGNPROCESS_WORKGROUP_03.jpg",
-            "step-text": "<p>Our furniture designers explore new materials, reimagine favourite silhouettes, and bring a high level of detail and craftsmanship to our collection.</p>",
+            "step-text": "<p>Our furniture designers explore new materials, reimagine favourite silhouettes, and bring a high level of detail and craftsmanship to our collection. We’re deeply inspired by the original James Stewart, a Scots-Australian haberdasher, importer and furniture maker, and our great, great uncle.</p>",
             "button_1_url": "",
             "button_1_text": "",
             "button_2_url": "",
@@ -83,7 +83,7 @@
       "type": "section-image-banner",
       "settings": {
         "title": "Image Banner",
-        "image": "shopify://shop_images/Rectangle_596.png",
+        "image": "shopify://shop_images/COLOUR_FACTORYSHOTS_WORKGROUP_01.jpg",
         "color_scheme": "",
         "aspect_ratio": "landscape",
         "padding_top": "md",
