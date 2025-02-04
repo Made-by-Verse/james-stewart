@@ -15,7 +15,7 @@
         "image_block_M6HDqz": {
           "type": "image_block",
           "settings": {
-            "image": "shopify://shop_images/hero-image.png"
+            "image": "shopify://shop_images/James_Stewart_Styled_202130031_TobyScott.jpg"
           }
         },
         "image_block_G94jgb": {
@@ -30,7 +30,7 @@
         "image_block_G94jgb"
       ],
       "settings": {
-        "hero_image": "shopify://shop_images/hero-image.png",
+        "hero_image": "shopify://shop_images/James_Stewart_Styled_202130031_TobyScott.jpg",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
         "hero_button_url": "shopify://collections/all",
         "hero_button_text": "Explore Catalogue",
