@@ -76,7 +76,7 @@
         "color_scheme": "",
         "left-image": "shopify://shop_images/Royce_ClassicHavana_2.jpg",
         "padding_top": "md",
-        "padding_bottom": "md"
+        "padding_bottom": "xl"
       }
     },
     "image-banner_123asd": {
@@ -124,8 +124,8 @@
       ],
       "settings": {
         "color_scheme": "",
-        "padding_top": "md",
-        "padding_bottom": "md"
+        "padding_top": "lg",
+        "padding_bottom": "lg"
       }
     },
     "section_image_with_text_123asd": {
