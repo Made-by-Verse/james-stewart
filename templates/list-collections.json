@@ -13,8 +13,11 @@
       "type": "main-list-collections",
       "settings": {
         "title": "Collections",
-        "sort": "alphabetical",
-        "image_ratio": "square"
+        "sort": "date",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "color_scheme": ""
       }
     }
   },
