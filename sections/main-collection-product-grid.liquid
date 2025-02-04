@@ -1,4 +1,4 @@
-<div class="">
+<div class="pb-[160px]">
   {%- paginate collection.products by section.settings.products_per_page -%}
         {%- if collection.products.size == 0 -%}
           <div class='py-12 wrapper text-center'>
@@ -14,10 +14,13 @@
           </div>
         {%- else -%}
           <div
-            class=""
-            x-data="{ large: false }"
+            {% if collection.url == '/collections/all' %}
+              x-data="{ large: false }"
+            {% else %}
+              x-data="{ large: true }"
+            {% endif %}
           >
-            <div class="wrapper py-2 sticky top-16 bg-primary z-10 flex w-full justify-between mb-8" x-data="{ open: false }">
+            <div id="filter-bar" class="wrapper h-12 sticky bg-primary z-10 flex w-full items-center justify-between mb-8" x-data="{ open: false }">
               <div class="flex items-center gap-2">
                 <button 
                   class="font-sans uppercase"
@@ -36,13 +39,14 @@
             <ul
               id="product-grid"
               data-id="{{ section.id }}"
-              class="wrapper grid gap-4"
-              :class="large ? 'lg:grid-cols-2' : 'lg:grid-cols-3'"
+              class="wrapper grid gap-4 {% if pagination.pages == 0 %}mb-12{% endif %}"
+              :class="large ? 'lg:grid-cols-2 gap-y-16 large-grid' : 'lg:grid-cols-3'"
             >
               {%- for product in collection.products -%}
                 <li>
                   {% render 'product-card',
-                    product: product
+                    product: product,
+                    class_names: 'grid-tile'
                   %}
                 </li>
               {%- endfor -%}
@@ -68,18 +72,8 @@
       "id": "products_per_page",
       "min": 8,
       "max": 36,
-      "step": 4,
       "default": 16,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 4,
-      "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
     },
     {
       "type": "color_scheme",

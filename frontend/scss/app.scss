@@ -1,4 +1,5 @@
 @use "./components";
+@use "variables.scss";
 
 .wrapper {
   @apply mx-auto px-4 max-w-[1440px];
@@ -20,16 +21,18 @@
   aspect-ratio: 1 / 1;
 }
 
+.aspect-collection {
+  aspect-ratio: 6 / 7;
+}
+
 [x-cloak] {
   display: none !important;
 }
 
-
-
-
 .wsg-proxy-container {
   @apply min-h-screen py-32 pb-16;
-  > .wsg-proxy-container { @apply min-h-0 py-0 pb-0;
+  > .wsg-proxy-container {
+    @apply min-h-0 py-0 pb-0;
   }
   h1 {
     @apply text-3xl mb-4;
@@ -39,12 +42,13 @@
     @apply text-xl mb-4;
   }
   hr {
-    margin-top: 16px!important;
-  } 
+    margin-top: 16px !important;
+  }
 
-  .wsg-signup-link, #wsg-signup-link {
+  .wsg-signup-link,
+  #wsg-signup-link {
     @apply text-base my-8;
-  
+
     a {
       @apply underline;
     }
@@ -52,10 +56,9 @@
 
   .btn {
     padding: 14px;
-  text-align: center;
+    text-align: center;
 
-  @apply uppercase font-sans tracking-wide p-2 lg:p-[14px] text-sm border border-lines text-contrast hover:border-contrast transition-all duration-500;
-
+    @apply uppercase font-sans tracking-wide p-2 lg:p-[14px] text-sm border border-lines text-contrast hover:border-contrast transition-all duration-500;
   }
 
   .wsg-btn-primary {

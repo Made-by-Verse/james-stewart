@@ -1,21 +1,18 @@
 import App from "./core/App";
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  const formContainer = document.querySelector('#app-embed');
+  const formContainer = document.querySelector("#app-embed");
 
   const observer = new MutationObserver((mutationsList, observer) => {
-    const form = document.querySelector('form-embed');
+    const form = document.querySelector("form-embed");
 
     if (form) {
-      console.log('form found');
-      
       observer.disconnect();
       const shadow = form.shadowRoot;
 
       // Clear existing adopted stylesheets
       shadow.adoptedStyleSheets = [];
-      
+
       const sheet = new CSSStyleSheet();
 
       // CSS Reset for form elements
@@ -169,14 +166,12 @@ document.addEventListener("DOMContentLoaded", () => {
           cursor: pointer !important;
           transition: all 0.5s ease-in-out !important;
         }
-        `)
-        sheet.insertRule(`
+        `);
+      sheet.insertRule(`
           button:not([class*='_selectToggle']):hover {
             border: 1px solid rgba(36, 25, 23, 1) !important;
           }
-          `)
-
-
+          `);
 
       sheet.insertRule(`
         fieldset {
@@ -245,19 +240,18 @@ document.addEventListener("DOMContentLoaded", () => {
           min-width: 50px !important;
           gap: 0.5rem !important;
         }
-        `)
-        sheet.insertRule(`
+        `);
+      sheet.insertRule(`
           button:hover {
             border: 1px solid rgba(36, 25, 23, 1) !important;
           }
-          `)
+          `);
 
-          sheet.insertRule(`
+      sheet.insertRule(`
             span[class*='_selectToggleText'] {
               width: 16px !important;
             }
           `);
-
 
       sheet.insertRule(`
         div[class*='_selectContainer'] {
@@ -280,8 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       `);
 
-
-        // Errors
+      // Errors
       sheet.insertRule(`
         output[role=alert] {
           color: red !important;
@@ -290,14 +283,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       `);
 
-     
-
       shadow.adoptedStyleSheets.push(sheet);
 
-      formContainer.classList.add('loaded');
+      formContainer.classList.add("loaded");
     }
   });
-  
+
   observer.observe(document.body, { childList: true, subtree: true });
 
   const app = new App();

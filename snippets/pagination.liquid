@@ -12,7 +12,7 @@
 {% endcomment %}
 
 {%- if paginate.parts.size > 0 -%}
-  <div class="wrapper py-12">
+  <div class="wrapper">
     <nav role="navigation" class='flex justify-between items-center' aria-label="{{ 'general.pagination.label' | t }}">
       <a
         href="{{ paginate.previous.url }}{{ anchor }}"
@@ -24,7 +24,7 @@
       </a>
 
       <div class="flex items-center">
-        <span class="pagination__item">
+        <span class="pagination__item btn">
           Page {{ paginate.current_page }} of {{ paginate.pages }}
         </span>
       </div>

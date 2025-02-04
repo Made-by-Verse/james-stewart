@@ -1,5 +1,5 @@
 <div
-  class='wrapper pt-20 pb-4 grid lg:grid-cols-6 gap-4'
+  class='wrapper pt-20 pb-[160px] grid lg:grid-cols-6 gap-4'
 >
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
     <div class='lg:col-span-4 space-y-4'>
@@ -36,13 +36,12 @@
     <div class='lg:col-span-2 h-product_details lg:sticky top-20 flex items-center justify-center w-full order-first lg:order-last'>
       <section
         id="ProductInfo-{{ section.id }}"
-        class='flex w-full lg:h-full flex-col items-center py-4'
+        class='flex w-full lg:h-full flex-col items-center'
         x-data="{ 
           selectedVariant: {{ product.selected_or_first_available_variant.id | default: product.selected_variant.id | json }},
         }"
         @variant-change.window="
           const { id } = $event.detail;
-          console.log($event.detail);
           selectedVariant = id;
         "
       >
@@ -52,7 +51,7 @@
           wrapper_class: 'lg:hidden w-full h-full relative aspect-landscape mb-4',
           image_class: 'w-full h-full object-cover absolute inset-0'
         %}
-        <div class="w-full h-2/3 flex flex-col items-center justify-center">
+        <div class="w-full flex-1 flex flex-col items-center justify-center">
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
           <h1 class="h3 mb-8 text-center">
             {{ product.title | escape }}
@@ -74,9 +73,9 @@
             -%}
           </div>
         </div>
-        <div class="w-full h-1/3 flex flex-col justify-end">
-          <div class="flex-1 grid grid-cols-3 gap-4 p-4">
-            <ul class='font-sans space-y-1 leading-none text-sm mt-0.5' x-data="{ activeDrawer: null }">
+        <div class="w-full h-[336px] flex flex-col justify-end">
+          <div class="flex-1 grid grid-cols-3 gap-4">
+            <ul class='font-sans space-y-[7px] leading-none text-sm mt-0.5' x-data="{ activeDrawer: null }">
               <li>
                 <button
                   class="text-left uppercase"
@@ -105,7 +104,7 @@
                 </button>
               </li>
             </ul>
-            <div class='col-span-2 space-y-4'>
+            <div class='col-span-2 space-y-2 text-[13px]'>
               {% if product.description != blank %}
                 {{ product.description }}
               {% endif %}

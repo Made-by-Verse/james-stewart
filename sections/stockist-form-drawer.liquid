@@ -1,7 +1,7 @@
 <div
   class='fixed z-[9999]'
   x-data="{ formDrawerOpen: false }"
-  @toggle-form-drawer.window="formDrawerOpen = !formDrawerOpen; console.log('toggle');"
+  @toggle-form-drawer.window="formDrawerOpen = !formDrawerOpen;"
   @close-form-drawer.window="formDrawerOpen = false"
   @keydown.escape.winow="formDrawerOpen = false"
 >

@@ -78,17 +78,21 @@
           <div class="w-full relative">
             <button 
               type="button"
-              class="w-full bg-transparent p-2 text-left flex items-center"
+              class="w-full bg-transparent py-4 text-left flex items-center justify-between text-sm"
               @click="open = !open"
               :aria-expanded="open"
             >
-              <span 
-                class="w-6 h-4 mr-2" 
+              <div class="flex items-center gap-2">
+                <span 
+                class="w-[28px] h-[13px] block" 
                 :style="selectedStyle || '{% if selected_style %}{{ selected_style | escape_once }}{% endif %}'"
-              ></span>
-              <span x-text="selectedValue"></span>
-              <span class="w-4 h-4 block absolute right-2" :class="{ 'rotate-180': open }">
-                {{- 'icon-caret.svg' | inline_asset_content -}}
+                ></span>
+                <span x-text="selectedValue"></span>
+              </div>
+              <span
+                class="w-3 block" 
+              >
+                {{ 'icon-down-arrow.svg' | inline_asset_content }}
               </span>
             </button>
             
@@ -129,7 +133,7 @@
                   :aria-selected="selectedValue === '{{ value | escape }}'"
                 >
                   <span 
-                    class="w-6 h-4 mr-2" 
+                    class="w-[28px] h-[13px] mr-2" 
                     style="{% if bg_value %}background-image: url({{ bg_value }}){% else %}background-color: {{ color_value }}{% endif %}"
                   ></span>
                   <span>{{ value }}</span>

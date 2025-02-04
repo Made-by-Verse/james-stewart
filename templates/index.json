@@ -25,18 +25,14 @@
           }
         }
       },
-      "block_order": [
-        "image_block_M6HDqz",
-        "image_block_G94jgb"
-      ],
+      "block_order": ["image_block_M6HDqz", "image_block_G94jgb"],
       "settings": {
         "hero_image": "shopify://shop_images/hero-image.png",
         "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
         "hero_button_url": "shopify://collections/all",
         "hero_button_text": "Explore Catalogue",
         "color_scheme": "",
-        "show_logo": true,
-        "hero_heading": "Welcome to Our Store"
+        "show_logo": true
       }
     },
     "paragraph": {
@@ -74,25 +70,9 @@
             "button_2_url": "shopify://pages/how-to-buy",
             "button_2_text": "How To Buy"
           }
-        },
-        "process-step_3": {
-          "type": "process-step",
-          "settings": {
-            "heading": "",
-            "step-image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png",
-            "step-text": "<p>Made for the discerning eye, each piece embodies a commitment to detail and enduring design.</p>",
-            "button_1_url": "shopify://pages/craft-innovation",
-            "button_1_text": "Our Story",
-            "button_2_url": "shopify://pages/how-to-buy",
-            "button_2_text": "How to Buy"
-          }
         }
       },
-      "block_order": [
-        "process-step_1",
-        "process-step_2",
-        "process-step_3"
-      ],
+      "block_order": ["process-step_1", "process-step_2"],
       "settings": {
         "color_scheme": "scheme-1",
         "left-image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_c25258bc-3f82-4d8a-bb33-ab972434db3d.jpg",

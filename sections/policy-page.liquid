@@ -16,36 +16,29 @@
   {% assign content = shop.terms_of_service.body %}
 {% endcase %}
 
-<div class="wrapper pt-40 pb-20">
-    <h1 class="text-2xl font-bold">{{ title }}</h1>
+<div class="collection-header">
+    <h1 class="h3 lg:col-span-2">{{ title }}</h1>
 </div>
 
-<div class="wrapper grid grid-cols-1 md:grid-cols-4 gap-10 bg-beige pb-20">
-    <div class="col-span-1 order-last md:order-first">
-        <nav>
-            <ul class="space-y-1 uppercase font-sans">
+<div class="wrapper flex flex-col lg:flex-row items-center justify-center bg-beige relative divide-y lg:divide-y-0 divide-lines pb-[160px]">
+    <div class="col-span-2 pb-8 lg:pb-0">
+        <div class="space-y-4 rich-text max-w-p-xl">{{ content }}</div>
+    </div>
+   <div class="lg:absolute lg:top-0 lg:left-4 w-full lg:w-auto">
+        <nav class='py-8 lg:py-0'>
+            <ul class="space-y-[7px] uppercase font-sans">
                 {% unless current_url == '/policies/privacy-policy' %}
-                    <li><a href="{{ shop.privacy_policy.url }}" class="opacity-50 hover:opacity-100 duration-500">Privacy Policy</a></li>
+                    <li class="flex opacity-50 hover:opacity-100 duration-500"><a href="{{ shop.privacy_policy.url }}" class="text-[13px] leading-none">Privacy Policy</a></li>
                 {% endunless %}
                 
                 {% unless current_url == '/policies/shipping-policy' %}
-                    <li><a href="{{ shop.shipping_policy.url }}" class="opacity-50 hover:opacity-100 duration-500">Shipping Policy</a></li>
+                    <li class="flex opacity-50 hover:opacity-100 duration-500"><a href="{{ shop.shipping_policy.url }}" class="text-[13px] leading-none">Shipping Policy</a></li>
                 {% endunless %}
-                
-                {% comment %}
-                {% unless current_url == '/policies/refund-policy' %}
-                    <li><a href="{{ shop.refund_policy.url }}" class="opacity-50 hover:opacity-100 duration-500">Refund Policy</a></li>
-                {% endunless %}
-                {% endcomment %}
                 
                 {% unless current_url == '/policies/terms-of-service' %}
-                    <li><a href="{{ shop.terms_of_service.url }}" class="opacity-50 hover:opacity-100 duration-500">Terms of Service</a></li>
+                    <li class="flex opacity-50 hover:opacity-100 duration-500"><a href="{{ shop.terms_of_service.url }}" class="text-[13px] leading-none">Terms of Service</a></li>
                 {% endunless %}
             </ul>
         </nav>
     </div>
-    <div class="col-span-2">
-        <div class="space-y-4">{{ content }}</div>
-    </div>
-
 </div>

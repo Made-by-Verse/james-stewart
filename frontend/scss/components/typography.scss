@@ -48,7 +48,7 @@ p {
 }
 
 .max-w-p-xl {
-  max-width: 550px;
+  max-width: 557px;
 }
 
 .richtext {
@@ -79,6 +79,6 @@ p {
   }
 
   p {
-    @apply leading-tight;
+    @apply leading-tight text-base;
   }
 }

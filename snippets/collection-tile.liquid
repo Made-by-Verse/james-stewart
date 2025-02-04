@@ -1,6 +1,6 @@
 <div class="collection-card relative group" {{ block.shopify_attributes }}>
   <a href="{{ collection.url }}" class="block space-y-4">
-    <div class="aspect-square overflow-hidden relative">
+    <div class="aspect-collection overflow-hidden relative">
       {% if collection.image %}
         {% render 'responsive-image' with
           image: collection.image,
@@ -26,7 +26,7 @@
     </div>
 
     <div class="text-center">
-      <h3 class="h4 uppercase text-center px-4">{{ collection.title }}</h3>
+      <h3 class="h4 uppercase text-center px-4 text-[17px]">{{ collection.title }}</h3>
     </div>
   </a>
 

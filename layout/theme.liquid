@@ -39,7 +39,7 @@
   {% render 'wsg-custom' %}
 </head>
 
-  <body class="font-serif">
+  <body class="font-serif text-dark">
     <a class="sr-only" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -119,7 +119,6 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const REDIRECT_URL = '/pages/dealer-account';
-        console.log('redirect url', REDIRECT_URL);
         // Function to add redirect input to a form
         function addRedirectToForm(form) {
           if (!form.querySelector('input[name="return_to"]')) {

@@ -19,7 +19,7 @@
   elsif padding_top == 'lg'
     assign padding_top = 'pt-12 lg:pt-24'
   elsif padding_top == 'xl'
-    assign padding_top = 'pt-24 lg:pt-48'
+    assign padding_top = 'pt-24 lg:pt-[160px]'
   endif
 
   if padding_bottom == 'none'
@@ -31,7 +31,7 @@
   elsif padding_bottom == 'lg'
     assign padding_bottom = 'pb-12 lg:pb-24'
   elsif padding_bottom == 'xl'
-    assign padding_bottom = 'pb-24 lg:pb-48'
+    assign padding_bottom = 'pb-24 lg:pb-[160px]'
   endif
 %}
 
@@ -45,9 +45,8 @@
             {%- if section.settings.collection.image -%}
               {% render 'responsive-image', image: section.settings.collection.image, width: 1000, height: 1000, image_class: 'object-cover absolute inset-0 w-full h-full', wrapper_class: 'relative aspect-landscape' %}
             {%- endif -%}
-
             {%- if section.settings.description != blank -%}
-              <div class="grid lg:grid-cols-4 space-y-4">
+              <div class="grid lg:grid-cols-4 space-y-6">
                 <div class="lg:col-span-3 max-w-sm lg:col-start-2">
                   {{ section.settings.description }}
                 </div>
@@ -63,7 +62,8 @@
           <div class="space-y-4 lg:space-y-8 lg:max-w-[340px] w-full">
             {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
               {% render 'product-card',
-                product: product
+                product: product,
+                class_names: 'feature-tile'
               %}
             {%- endfor -%}
           </div>
@@ -78,7 +78,8 @@
             {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
               <div class="swiper-slide">
                 {% render 'product-card',
-                  product: product
+                  product: product,
+                  class_names: 'feature-tile'
                 %}
               </div>
             {%- endfor -%}

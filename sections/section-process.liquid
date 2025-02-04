@@ -4,6 +4,11 @@
     --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
     --color-lines: {{ section.settings.color_scheme.settings.lines }};
   }
+  @media (min-width: 1024px) { /* lg breakpoint */
+    .process-wrapper {
+      height: calc({{ section.blocks.size }} * 100vh);
+    }
+  }
 {% endstyle %}
 
 {% liquid
@@ -37,90 +42,68 @@
 
 <div class='color-{{section.settings.color_scheme}} bg-primary text-contrast {{ padding_top }} {{ padding_bottom }}'>
   <div 
-    class="wrapper grid md:grid-cols-2 gap-8"
-    x-data="{ 
-      activeStep: 0,
-      updateHeight() {
-        if (window.innerWidth < 768) {
-          // On mobile, let content flow naturally
-          this.$refs.contentContainer.style.height = 'auto';
-        } else {
-          // Desktop behavior remains the same
-          const texts = this.$el.querySelectorAll('.process-text');
-          let maxHeight = 0;
-          texts.forEach(text => {
-            text.style.position = 'static';
-            text.style.opacity = '1';
-            maxHeight = Math.max(maxHeight, text.offsetHeight);
-            text.style.position = '';
-            text.style.opacity = '';
-          });
-          this.$refs.contentContainer.style.height = `${maxHeight}px`;
-        }
-      }
-    }"
-    x-init="updateHeight(); window.addEventListener('resize', () => updateHeight())"
+    class="wrapper grid md:grid-cols-2 gap-8 items-start process-wrapper"
+    x-data="process"
   >
-    <div class="flex items-start {% if section.settings.left-image %}max-w-lg{% endif %}">
-      <div class="sticky top-20 space-y-4 {% if section.settings.left-image %}flex flex-col items-end{% endif %} w-full">
-        {% if section.settings.left-image %}
-          {% render 'responsive-image' with
-            image: section.settings.left-image,
-            wrapper_class: "aspect-landscape w-full relative",
-            image_class: "absolute inset-0 object-cover w-full h-full",
-            size: '1000x1000',
-            width: 1000,
-            height: 1000
-          %}
-        {% endif %}
-        <div 
-          x-ref="contentContainer"
-          class="relative w-full {% if section.settings.left-image %}max-w-p{% endif %}"
-        >
-          {% for block in section.blocks %}
-            {% case block.type %}
-            {% when 'process-step' %}
-              {% if block.settings.step-text %}
-                <div 
-                  class="process-text md:absolute inset-0 transition-opacity duration-500 {% unless section.settings.left-image %}grid lg:grid-cols-4 gap-4 w-full{% endunless %} {% if section.settings.left-image %}space-y-4{% endif %}"
-                  :class="activeStep === {{ forloop.index }} ? 'opacity-100' : 'md:opacity-0'"
-                >
-                  {% render 'responsive-image' with
-                    image: block.settings.step-image,
-                    wrapper_class: "aspect-portrait w-full relative md:hidden",
-                    image_class: "absolute inset-0 object-cover w-full h-full",
-                    size: '1000x1000',
-                    width: 1000,
-                    height: 1000
-                  %}
-                  {% unless section.settings.left-image %}
-                    <h2 class="link !text-base">{{ block.settings.heading }}</h2>
-                  {% endunless %}
-                  <div class="{% unless section.settings.left-image %}lg:col-span-3 max-w-p{% endunless %}">
-                    {{ block.settings.step-text }}
+    <div class="sticky top-20 space-y-4 {% if section.settings.left-image %}flex flex-col items-end max-w-lg{% endif %} w-full ">
+      {% if section.settings.left-image %}
+        {% render 'responsive-image' with
+          image: section.settings.left-image,
+          wrapper_class: "aspect-landscape w-full relative",
+          image_class: "absolute inset-0 object-cover w-full h-full",
+          size: '1000x1000',
+          width: 1000,
+          height: 1000
+        %}
+      {% endif %}
+      <div 
+        x-ref="contentContainer"
+        class="relative w-full {% if section.settings.left-image %}max-w-p{% endif %}"
+      >
+        {% for block in section.blocks %}
+          {% case block.type %}
+          {% when 'process-step' %}
+            {% if block.settings.step-text %}
+              <div 
+                class="process-text md:absolute inset-0 transition-opacity duration-1000 {% unless section.settings.left-image %}grid lg:grid-cols-4 gap-4 w-full{% endunless %} {% if section.settings.left-image %}space-y-4 lg:space-y-0{% endif %}"
+                :class="activeStep === {{ forloop.index0 }} ? 'opacity-100' : 'md:opacity-0'"
+              >
+                {% render 'responsive-image' with
+                  image: block.settings.step-image,
+                  wrapper_class: "aspect-portrait w-full relative md:hidden",
+                  image_class: "absolute inset-0 object-cover w-full h-full",
+                  size: '1000x1000',
+                  width: 1000,
+                  height: 1000
+                %}
+                {% unless section.settings.left-image %}
+                  <h2 class="link !text-base">{{ block.settings.heading }}</h2>
+                {% endunless %}
+                <div class="{% unless section.settings.left-image %}lg:col-span-3 max-w-p{% endunless %} lg:pb-6">
+                  {{ block.settings.step-text }}
+                </div>
+                  <div class="flex gap-4 items-start">
+                    {% if block.settings.button_1_url %}
+                      <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-primary">{{ block.settings.button_1_text }}</a>
+                    {% endif %}
+                    {% if block.settings.button_2_url %}
+                      <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-primary">{{ block.settings.button_2_text }}</a>
+                    {% endif %}
                   </div>
-                    <div class="flex gap-4 items-start">
-                      {% if block.settings.button_1_url %}
-                        <a href="{{ block.settings.button_1_url }}" class="btn btn--outline-primary">{{ block.settings.button_1_text }}</a>
-                      {% endif %}
-                      {% if block.settings.button_2_url %}
-                        <a href="{{ block.settings.button_2_url }}" class="btn btn--outline-primary">{{ block.settings.button_2_text }}</a>
-                      {% endif %}
-                    </div>
-                  </div>
-                {% endif %}
-            {% endcase %}
-          {% endfor %}
-        </div>
+                </div>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
       </div>
     </div>
-    <div class="hidden md:block">
+    <div class="hidden md:block sticky top-20">
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'process-step' %}
             <div
-              x-intersect:enter.threshold.75="activeStep = {{ forloop.index }}"
-              class="scroll-mt-20"
+              x-cloak
+              :class="activeStep === {{ forloop.index0 }} ? 'opacity-100' : 'opacity-0'"
+              class="scroll-mt-20 transition-opacity duration-500 absolute inset-0 w-full h-full"
             >
               {% render 'responsive-image' with
                 image: block.settings.step-image,

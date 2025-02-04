@@ -12,15 +12,10 @@
           <div class="swiper-wrapper overflow-visible">
             {% for recommendation in recommendations.products %}
               <div class="swiper-slide">
-                {% render 'product-card',
-                  product: recommendation,
-                  media_aspect_ratio: section.settings.image_ratio,
-                  image_shape: section.settings.image_shape,
-                  show_secondary_image: section.settings.show_secondary_image,
-                  show_vendor: section.settings.show_vendor,
-                  show_rating: section.settings.show_rating,
-                  skip_styles: skip_card_product_styles
-                %}
+                 {% render 'product-card',
+                    product: recommendation,
+                    class_names: 'grid-tile'
+                  %}
               </div>
             {% endfor %}
           </div>

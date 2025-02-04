@@ -1,4 +1,4 @@
-<div class="group relative">
+<div class="group relative {{ class_names }}">
   <a href="{{ product.url | within: collection }}" class="block">
     {% if product.featured_image %}
       <div class="relative aspect-landscape overflow-hidden">
@@ -10,7 +10,7 @@
     {% else %}
       {{ 'product-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full object-cover bg-gray-100' }}
     {% endif %}
-    <div class="px-5 py-2.5 gap-4 flex justify-between items-center h4 uppercase">
+    <div class="tile-text-container px-5 gap-4 flex justify-between items-center h4 uppercase">
       <h3 class="flex-1">{{ product.title }}</h3>
       <span class="wsgColPrice leading-none">
         {% if product.price_varies %}

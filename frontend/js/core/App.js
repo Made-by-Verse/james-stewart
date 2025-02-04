@@ -6,6 +6,7 @@ import { HeaderManager } from "../components/HeaderManager";
 import { CarouselManager } from "../components/CarouselManager";
 import { RecommendationsManager } from "../components/RecommendationsManager";
 import { SCROLL_PREVENT } from "./constants";
+import Process from "../AlpineData/Process";
 
 export default class App {
   constructor() {
@@ -20,10 +21,12 @@ export default class App {
     window.Alpine = Alpine;
 
     // Initialize the store first
-    Alpine.store('cartState', {
+    Alpine.store("cartState", {
       items: [],
-      sub_total: 0
+      sub_total: 0,
     });
+
+    Process();
 
     Alpine.data("megaMenu", () => ({
       open: false,
@@ -39,65 +42,64 @@ export default class App {
 
       async getCart(openCart = false) {
         try {
-          console.log('Getting cart...');
           const response = await fetch(`${window.routes.cart_url}.js`);
           const cart = await response.json();
-          console.log('Cart data:', cart);
-          
+
           // Update store
-          Alpine.store('cartState').items = cart.items;
-          Alpine.store('cartState').sub_total = this.formatMoney(cart.total_price);
-          
+          Alpine.store("cartState").items = cart.items;
+          Alpine.store("cartState").sub_total = this.formatMoney(
+            cart.total_price
+          );
+
           // Update local state
           this.items = cart.items;
           this.sub_total = this.formatMoney(cart.total_price);
 
           if (openCart) {
-            window.dispatchEvent(new Event('open-cart-drawer'));
+            window.dispatchEvent(new Event("open-cart-drawer"));
           }
         } catch (error) {
-          console.error('Error fetching cart:', error);
+          console.error("Error fetching cart:", error);
         }
       },
 
       async addToCart(variantId, quantity = 1) {
         try {
-          console.log('Adding to cart:', variantId, quantity);
-          
           // Dispatch event to show loading state
-          window.dispatchEvent(new CustomEvent('cart:adding'));
-          
+          window.dispatchEvent(new CustomEvent("cart:adding"));
+
           const response = await fetch(`${window.routes.cart_add_url}.js`, {
-            method: 'POST',
+            method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              items: [{ id: variantId, quantity }]
+              items: [{ id: variantId, quantity }],
             }),
           });
 
-          if (!response.ok) throw new Error('Add to cart failed');
-          
+          if (!response.ok) throw new Error("Add to cart failed");
+
           // Immediately update the cart after successful add
           await this.getCart(true);
-          
+
           // Dispatch success event
-          window.dispatchEvent(new CustomEvent('cart:added'));
-          
+          window.dispatchEvent(new CustomEvent("cart:added"));
         } catch (error) {
-          console.error('Error adding to cart:', error);
+          console.error("Error adding to cart:", error);
           // Dispatch error event
-          window.dispatchEvent(new CustomEvent('cart:error', { 
-            detail: { message: error.message } 
-          }));
+          window.dispatchEvent(
+            new CustomEvent("cart:error", {
+              detail: { message: error.message },
+            })
+          );
         }
       },
 
       async removeFromCart(variantId) {
         try {
           const response = await fetch(`${window.routes.cart_change_url}.js`, {
-            method: "POST", 
+            method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
@@ -107,26 +109,28 @@ export default class App {
             }),
           });
 
-          if (!response.ok) throw new Error('Remove from cart failed');
-          
+          if (!response.ok) throw new Error("Remove from cart failed");
+
           const cart = await response.json();
-          
+
           // Update store
-          Alpine.store('cartState').items = cart.items;
-          Alpine.store('cartState').sub_total = this.formatMoney(cart.total_price);
-          
+          Alpine.store("cartState").items = cart.items;
+          Alpine.store("cartState").sub_total = this.formatMoney(
+            cart.total_price
+          );
+
           // Update local state
           this.items = cart.items;
           this.sub_total = this.formatMoney(cart.total_price);
         } catch (error) {
-          console.error('Error removing from cart:', error);
+          console.error("Error removing from cart:", error);
         }
       },
 
       async updateQuantity(variantId, quantity) {
         try {
           const response = await fetch(`${window.routes.cart_change_url}.js`, {
-            method: 'POST',
+            method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
@@ -136,19 +140,21 @@ export default class App {
             }),
           });
 
-          if (!response.ok) throw new Error('Update quantity failed');
-          
+          if (!response.ok) throw new Error("Update quantity failed");
+
           const cart = await response.json();
-          
+
           // Update store
-          Alpine.store('cartState').items = cart.items;
-          Alpine.store('cartState').sub_total = this.formatMoney(cart.total_price);
-          
+          Alpine.store("cartState").items = cart.items;
+          Alpine.store("cartState").sub_total = this.formatMoney(
+            cart.total_price
+          );
+
           // Update local state
           this.items = cart.items;
           this.sub_total = this.formatMoney(cart.total_price);
         } catch (error) {
-          console.error('Error updating quantity:', error);
+          console.error("Error updating quantity:", error);
         }
       },
 
@@ -159,7 +165,7 @@ export default class App {
           minimumFractionDigits: 0,
           maximumFractionDigits: 2,
         });
-      }
+      },
     }));
 
     Alpine.start();
@@ -168,7 +174,7 @@ export default class App {
   initializeLenis() {
     this.lenis = new Lenis({
       prevent: (node) => SCROLL_PREVENT.includes(node.id),
-    })
+    });
 
     function raf(time) {
       this.lenis?.raf(time);

@@ -1,5 +1,12 @@
 #js-header {
-  @apply bg-primary text-contrast duration-700 ease-in-out;
+  @apply bg-primary text-contrast;
+
+  transition: transform 0.3s ease-in-out, background-color 0.7s ease-in-out,
+    color 0.7s ease-in-out;
+
+  #logo {
+    transform: translateY(33vh) scale(1.8);
+  }
 
   .wrapper-inner {
     @apply border-b border-lines;
@@ -28,10 +35,6 @@
       @apply border-b-0;
     }
 
-    .home-page-logo {
-      @apply opacity-0;
-    }
-
     .hamburger {
       .line {
         @apply bg-primary;
@@ -41,13 +44,31 @@
 
   &.not-home {
     &.header--on-hero {
-    .wrapper-inner {
-      @apply border-white border-b;
+      .wrapper-inner {
+        @apply border-white border-b;
       }
+    }
+
+    #logo {
+      transform: translateY(0) scale(1);
     }
   }
 
   &.mega-menu-open {
     @apply bg-primary text-contrast duration-500;
+  }
+
+  &.header--hidden {
+    @apply transform -translate-y-full;
+  }
+}
+
+#filter-bar {
+  @apply top-16;
+
+  transition: top 0.3s ease-in-out;
+
+  &.header--hidden {
+    @apply top-0;
   }
 }

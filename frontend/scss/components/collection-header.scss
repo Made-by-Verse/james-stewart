@@ -1,0 +1,5 @@
+.collection-header {
+  @apply wrapper pb-12 grid lg:grid-cols-5 gap-4;
+
+  padding-top: calc(190px + var(--header-height));
+}

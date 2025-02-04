@@ -57,7 +57,6 @@ export class CarouselManager extends Base {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !this.swipers.has(entry.target.id)) {
-          console.log("Initializing carousel", entry.target.id);
           this.swipers.set(
             entry.target.id,
             new Swiper(

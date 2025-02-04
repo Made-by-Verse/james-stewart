@@ -59,7 +59,7 @@
         </span>
       </button>
       <div class="flex justify-center items-center">
-        <a href="{{ routes.root_url }}" class="{% if template == 'index' %}home-page-logo{% endif %}">
+        <a id="logo" href="{{ routes.root_url }}">
           {% render 'header-logo', menu: menu %}
         </a>
       </div>
@@ -188,6 +188,7 @@
     </div>
   </div>
 </header>
+
 
 {% schema %}
 {
