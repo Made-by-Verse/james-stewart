@@ -44,6 +44,7 @@
   <div 
     class="wrapper grid md:grid-cols-2 gap-8 items-start process-wrapper"
     x-data="process"
+    x-ref="processWrapper"
   >
     <div class="sticky top-20 space-y-4 {% if section.settings.left-image %}flex flex-col items-end max-w-lg{% endif %} w-full ">
       {% if section.settings.left-image %}
@@ -66,7 +67,7 @@
             {% if block.settings.step-text %}
               <div 
                 class="process-text md:absolute inset-0 transition-opacity duration-1000 {% unless section.settings.left-image %}grid lg:grid-cols-4 gap-4 w-full{% endunless %} {% if section.settings.left-image %}space-y-4 lg:space-y-0{% endif %}"
-                :class="activeStep === {{ forloop.index0 }} ? 'opacity-100' : 'md:opacity-0'"
+                :class="showImage({{ forloop.index0 }}) ? 'opacity-100' : 'md:opacity-0'"
               >
                 {% render 'responsive-image' with
                   image: block.settings.step-image,
@@ -96,14 +97,15 @@
         {% endfor %}
       </div>
     </div>
-    <div class="hidden md:block sticky top-20">
-      {% for block in section.blocks %}
-        {% case block.type %}
-          {% when 'process-step' %}
+    <div class="hidden md:flex w-full sticky top-20">
+      <div class="w-full relative aspect-portrait overflow-hidden">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'process-step' %}
             <div
               x-cloak
-              :class="activeStep === {{ forloop.index0 }} ? 'opacity-100' : 'opacity-0'"
-              class="scroll-mt-20 transition-opacity duration-500 absolute inset-0 w-full h-full"
+              :class="showImage({{ forloop.index0 }}) ? 'opacity-100' : 'opacity-0'"
+              class="scroll-mt-20 transition-opacity duration-1000 absolute inset-0 w-full h-full"
             >
               {% render 'responsive-image' with
                 image: block.settings.step-image,
@@ -114,8 +116,9 @@
                 height: 1000
               %}
             </div>
-        {% endcase %}
-      {% endfor %}
+          {% endcase %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
@@ -212,7 +215,6 @@
       ]
     }
   ],
-  "max_blocks": 2,
   "presets": [
     {
       "name": "Process",

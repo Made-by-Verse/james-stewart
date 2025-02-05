@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {},
+      "blocks": {
+        "wood-care-info": {
+          "type": "page_reference"
+        }
+      },
+      "block_order": ["wood-care-info"]
+    },
+    "section-image-banner-with-sticky-text": {
+      "type": "product-image-banner-with-sticky-text"
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related items",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": ["main", "section-image-banner-with-sticky-text", "related-products"]
+}

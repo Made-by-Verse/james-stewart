@@ -1,90 +1,79 @@
-// export class ProductForm {
-//   constructor() {}
+export class ProductForm {
+  constructor() {
+    this.productId = null;
+    this.currentVariantId = null;
+    this.stockInfoContainer = null;
+    this.productVariants = [];
+  }
 
-//   init() {
-//     this.forms = document.querySelectorAll('product-form');
-//     if (!this.forms.length) return;
-//     this.forms.forEach(form => {
-//       this.initializeForm(form);
-//     });
-//   }
+  init() {
+    this.productId =
+      document.querySelector("[data-product-id]").dataset.productId;
+    this.stockInfoContainer = document.querySelector("[data-variant-stock]");
+    this.currentVariantId = document.querySelector(
+      "[data-current-variant-id]"
+    ).dataset.currentVariantId;
 
-//   initializeForm(element) {
-//     this.element = element;
-//     this.form = element.querySelector('form');
-//     this.form?.addEventListener('submit', this.onSubmitHandler.bind(this));
-//     this.cartNotification = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
-//     this.submitButton = element.querySelector('[type="submit"]');
-//   }
+    if (this.stockInfoContainer) {
+      this.fetchProductVariants();
+      this.setupEventListeners();
+    }
+  }
 
-//   onSubmitHandler(evt) {
-//     console.log("submit");
-//     evt.preventDefault();
-//     if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
+  async fetchProductVariants() {
+    try {
+      const response = await axios.get(
+        `https://jsf-po-eta.gadget.app/product?id=${this.productId}`
+      );
+      this.productVariants = response.data.data;
+      this.renderStockInformation(this.findVariantByID(this.currentVariantId));
+    } catch (error) {
+      console.error("Error fetching product variants:", error);
+    }
+  }
 
-//     this.handleErrorMessage();
-//     this.submitButton.setAttribute('aria-disabled', true);
-//     this.submitButton.classList.add('loading');
+  findVariantByID(variantID) {
+    return this.productVariants.find((variant) =>
+      variant.id.includes(variantID)
+    );
+  }
 
-//     const config = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       }
-//     };
+  renderStockInformation(data) {
+    if (!data) {
+      console.error("No data provided");
+      return;
+    }
 
-//     const formData = new FormData(this.form);
-//     const jsonData = {
-//       items: [{
-//         id: formData.get('id'),
-//         quantity: parseInt(formData.get('quantity'), 10)
-//       }],
-//       sections: "cart-items,cart-icon-bubble"
-//     };
-    
-//     config.body = JSON.stringify(jsonData);
+    let content = "";
+    const stockText = data.inStock ? "IN STOCK" : "";
 
-//     fetch(`${window.routes.cart_add_url}.js`, config)
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('Network response was not ok');
-//         }
-//         return response.json();
-//       })
-//       .then((cart) => {
-//         window.dispatchEvent(new CustomEvent('cart:updated', {
-//           detail: { cart }
-//         }));
+    if (data.eta && data.eta.length > 0 && !data.inStock) {
+      const etaDate = new Date(data.eta[data.eta.length - 1]);
+      const currentDate = new Date();
 
-//         this.element.dispatchEvent(new CustomEvent('cart:added', {
-//           bubbles: true,
-//           detail: {
-//             response: cart
-//           }
-//         }));
+      if (!isNaN(etaDate.getTime()) && currentDate < etaDate) {
+        content = `<strong>ETA: ${this.formatDate(etaDate)}</strong>`;
+      }
+    }
 
-//         window.dispatchEvent(new CustomEvent('toggle-cart-drawer'));
-//       })
-//       .catch((error) => {
-//         console.error('Error:', error);
-//         this.handleErrorMessage(error?.message || window.cartStrings?.error || 'There was an error adding this item to the cart.');
-//       })
-//       .finally(() => {
-//         this.submitButton.classList.remove('loading');
-//         this.submitButton.removeAttribute('aria-disabled');
-//       });
-//   }
+    if (!content && stockText) {
+      content = `<strong>${stockText}</strong>`;
+    }
 
-//   handleErrorMessage(errorMessage = false) {
-//     this.errorMessageWrapper = this.errorMessageWrapper || this.element.querySelector('.product-form__error-message-wrapper');
-//     if (!this.errorMessageWrapper) return;
-    
-//     this.errorMessage = this.errorMessage || this.errorMessageWrapper.querySelector('.product-form__error-message');
+    this.stockInfoContainer.innerHTML = content;
+  }
 
-//     this.errorMessageWrapper.toggleAttribute('hidden', !errorMessage);
+  formatDate(date) {
+    return new Date(date).toLocaleDateString("en-US", {
+      month: "long",
+      day: "2-digit",
+      year: "numeric",
+    });
+  }
 
-//     if (errorMessage) {
-//       this.errorMessage.textContent = errorMessage;
-//     }
-//   }
-// } 
+  setupEventListeners() {
+    document.addEventListener("product:variant-change", (evt) => {
+      const selectedVariantValues = this.find;
+    });
+  }
+}

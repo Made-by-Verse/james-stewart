@@ -1,7 +1,7 @@
 export default function Process() {
   Alpine.data("process", () => ({
-    activeStep: null,
     totalSteps: 0,
+    currentScrollProgress: 0,
 
     init() {
       this.totalSteps = this.$el.querySelectorAll(".process-text").length;
@@ -28,11 +28,23 @@ export default function Process() {
     },
     updateScrollProgress() {
       const containerTop = this.$el.getBoundingClientRect().top;
-      const sectionHeight = this.$el.offsetHeight;
-      const stepHeight = sectionHeight / this.totalSteps;
+      this.currentScrollProgress = 0 - containerTop + window.innerHeight / 2;
+    },
+    showImage(index) {
+      const containerHeight = this.$refs.processWrapper.offsetHeight;
+      const stepHeight = containerHeight / this.totalSteps;
 
-      this.activeStep = Math.floor(
-        (window.innerHeight - containerTop) / stepHeight
+      if (index === 0) {
+        return this.currentScrollProgress < (index + 1) * stepHeight;
+      }
+
+      if (index === this.totalSteps - 1) {
+        return this.currentScrollProgress > index * stepHeight;
+      }
+
+      return (
+        this.currentScrollProgress > index * stepHeight &&
+        this.currentScrollProgress < (index + 1) * stepHeight
       );
     },
   }));
