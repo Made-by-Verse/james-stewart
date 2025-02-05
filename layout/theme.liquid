@@ -57,9 +57,9 @@
     
 
     {% sections 'footer-group' %}
-    {% if template contains 'product' %}
+    {% comment %} {% if template contains 'product' %}
       {% render 'product-drawers', product: product %}
-    {% endif %}
+    {% endif %} {% endcomment %}
 
     {% if template contains 'collection' %}
       {% render 'filter-drawer' %}

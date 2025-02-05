@@ -11,10 +11,19 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "care_info_7FWUMf": {
+          "type": "care-info",
+          "settings": {
+            "care-info-page": "wood-care"
+          }
+        }
+      },
+      "block_order": ["care_info_7FWUMf"]
     },
     "section-image-banner-with-sticky-text": {
-      "type": "product-image-banner-with-sticky-text",
+      "type": "product-image-banner-with-sticky-text"
     },
     "related-products": {
       "type": "related-products",

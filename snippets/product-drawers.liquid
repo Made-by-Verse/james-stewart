@@ -42,7 +42,7 @@
           {% render 'drawer-specifications', product: product %}
         </div>
         <div x-show="activeDrawer === 'product-care'">
-          {% render 'drawer-product-care', product: product %}
+          {% render 'drawer-product-care', blocks: blocks %}
         </div>
         <div x-show="activeDrawer === 'shipping'">
           {% render 'drawer-shipping', product: product %}

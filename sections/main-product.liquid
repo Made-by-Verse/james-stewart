@@ -135,6 +135,8 @@
       </section>
     </div>
 
+    {% render 'product-drawers', blocks: section.blocks %}
+
     {%- liquid
       if product.selected_or_first_available_variant.featured_media
         assign seo_media = product.selected_or_first_available_variant.featured_media
