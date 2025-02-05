@@ -23,7 +23,7 @@
       "wsg-registration-settings": {
         "type": "wsg-registration-settings",
         "settings": {
-          "page-title": "Trade Applictation",
+          "page-title": "Trade Application",
           "description": "<p>Enter your details below to apply for a trade account.</p>",
           "custom-html": ""
         }
