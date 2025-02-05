@@ -85,15 +85,17 @@
                   Specifications
                 </button>
               </li>
-              <li>
-                <button
-                  class="text-left uppercase"
-                  @click="$dispatch('toggle-drawer', { type: 'product-care' })"
-                  :aria-expanded="activeDrawer === 'product-care'"
-                >
-                  Product Care
-                </button>
-              </li>
+              {% if section.blocks.size > 0 %}
+                <li>
+                  <button
+                    class="text-left uppercase"
+                    @click="$dispatch('toggle-drawer', { type: 'product-care' })"
+                    :aria-expanded="activeDrawer === 'product-care'"
+                  >
+                    Product Care
+                  </button>
+                </li>
+              {% endif %}
               <li>
                 <button
                   class="text-left uppercase"
