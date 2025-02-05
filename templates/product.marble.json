@@ -12,12 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "care_info_gHwNzM": {
-          "type": "care-info",
-          "settings": {
-            "care-info-page": "leather-care"
-          }
-        },
         "care_info_7FWUMf": {
           "type": "care-info",
           "settings": {
@@ -26,14 +20,9 @@
         }
       },
       "block_order": [
-        "care_info_gHwNzM",
         "care_info_7FWUMf"
       ],
-      "settings": {
-        "enable_sticky_info": true,
-        "media_size": "large",
-        "hide_variants": false
-      }
+      "settings": {}
     },
     "section-image-banner-with-sticky-text": {
       "type": "product-image-banner-with-sticky-text",
