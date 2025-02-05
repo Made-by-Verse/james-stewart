@@ -11,16 +11,26 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {},
       "blocks": {
-        "wood-care-info": {
-          "type": "page_reference"
+        "care_info_7FWUMf": {
+          "type": "care-info",
+          "settings": {
+            "care-info-page": "wood-care"
+          }
         }
       },
-      "block_order": ["wood-care-info"]
+      "block_order": [
+        "care_info_7FWUMf"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "hide_variants": false
+      }
     },
     "section-image-banner-with-sticky-text": {
-      "type": "product-image-banner-with-sticky-text"
+      "type": "product-image-banner-with-sticky-text",
+      "settings": {}
     },
     "related-products": {
       "type": "related-products",
@@ -30,5 +40,9 @@
       }
     }
   },
-  "order": ["main", "section-image-banner-with-sticky-text", "related-products"]
+  "order": [
+    "main",
+    "section-image-banner-with-sticky-text",
+    "related-products"
+  ]
 }
