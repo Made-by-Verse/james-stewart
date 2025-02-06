@@ -50,7 +50,7 @@ export default function Cart() {
           }),
         });
 
-        if (!response.ok) throw new Error("Add to cart failed");
+        if (!response.ok) throw new Error(response.message);
 
         // Immediately update the cart after successful add
         await this.getCart(true);
