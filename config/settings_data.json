@@ -137,9 +137,7 @@
             }
           }
         },
-        "block_order": [
-          "mega_menu_RGyBW6"
-        ],
+        "block_order": ["mega_menu_RGyBW6"],
         "settings": {
           "menu_trade": "trade-menu",
           "menu_public": "public-menu",
@@ -221,7 +219,10 @@
       "social_tumblr_link": "",
       "social_snapchat_link": "",
       "social_youtube_link": "",
-      "social_vimeo_link": ""
+      "social_vimeo_link": "",
+      "menu_trade": "trade-menu",
+      "menu_public": "public-menu",
+      "menu_logged_out": "logged-out-menu"
     }
   }
 }

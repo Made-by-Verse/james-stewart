@@ -11,26 +11,6 @@
     "name": "t:settings_schema.colors.name",
     "settings": [
       {
-        "name": "Navigation Settings",
-        "settings": [
-          {
-            "type": "link_list",
-            "id": "global_menu_trade",
-            "label": "Global Trade Menu"
-          },
-          {
-            "type": "link_list",
-            "id": "global_menu_public",
-            "label": "Global Public Menu"
-          },
-          {
-            "type": "link_list",
-            "id": "global_menu_logged_out",
-            "label": "Global Logged Out Menu"
-          }
-        ]
-      },
-      {
         "type": "color_scheme_group",
         "id": "color_schemes",
         "definition": [
