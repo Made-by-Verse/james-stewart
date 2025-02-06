@@ -46,7 +46,6 @@
 
     {% section 'header' %}
 
-    
       <main id="MainContent" class="bg-primary" role="main" tabindex="-1">
         {% if request.path contains '/policies/' %}
           {% section 'policy-page' %}
@@ -54,8 +53,7 @@
           {{ content_for_layout }}
         {% endif %}
       </main>
-    
-
+  
     {% sections 'footer-group' %}
     {% comment %} {% if template contains 'product' %}
       {% render 'product-drawers', product: product %}
@@ -64,6 +62,9 @@
     {% if template contains 'collection' %}
       {% render 'filter-drawer' %}
     {% endif %}
+
+    {% render 'cart-drawer' %}
+    {% render 'mobile-menu' %}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

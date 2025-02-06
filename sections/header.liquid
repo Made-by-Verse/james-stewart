@@ -33,7 +33,7 @@
               
               {% if link.links.size > 0 %}
                 <div
-                  class="absolute left-0 right-0 top-16 bg-primary drop-shadow-lg"
+                  class="absolute left-0 right-0 top-16 bg-primary drop-shadow-lg z-[999]"
                   x-cloak
                   x-show="megaMenuOpen"
                   x-transition:enter="transition ease-in-out duration-700"
@@ -60,7 +60,7 @@
       </button>
       <div class="flex justify-center items-center">
         <a id="logo" href="{{ routes.root_url }}">
-          {% render 'header-logo', menu: menu %}
+          {% render 'header-logo'%}
         </a>
       </div>
       <div class="h-full flex items-center justify-end gap-4 lg:gap-6">
@@ -68,23 +68,23 @@
           {% if customer %}
             <li>
               <a 
-                href="/pages/dealer-account" 
-            class="link hidden lg:block"
-          >
-            Account
-          </a>
-        </li>
-        <li>
-          <button 
-            x-data
+                  href="/pages/dealer-account" 
+                class="link hidden lg:block"
+              >
+                Account
+              </a>
+          </li>
+          <li>
+            <button 
+              x-data
               @click="$dispatch('open-cart-drawer')"
-            class="link"
-            type="button"
-          >
-            <span class="hidden lg:block">Cart</span>
-            <span class="lg:hidden w-8 h-8 block">
-              {{ 'icon-cart.svg' | inline_asset_content }}
-            </span>
+              class="link"
+              type="button"
+            >
+              <span class="hidden lg:block">Cart</span>
+              <span class="w-8 h-8 block">
+                {{ 'icon-cart.svg' | inline_asset_content }}
+              </span>
             </button>
           </li>
         {% else %}
@@ -92,98 +92,11 @@
             <li>
               <a href="{{ link.url }}" class="link hidden lg:block">
                 {{ link.title }}
-            </a>
+              </a>
             </li>
           {%- endfor -%}
         {% endif %}
         </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="" x-data="{ menuOpen: false }" @toggle-menu-drawer.window="menuOpen = !menuOpen; $dispatch('toggle-lenis', { enabled: !menuOpen })" @keydown.escape.window="menuOpen = false; $dispatch('toggle-lenis', { enabled: true })">
-    <div
-      x-cloak
-      x-show="menuOpen"
-      class="drawer-backdrop"
-      @click="menuOpen = false; $dispatch('toggle-lenis', { enabled: true });" 
-      x-transition:enter-start="opacity-0" 
-      x-transition:enter-end="opacity-100" 
-      x-transition:leave-start="opacity-100" 
-      x-transition:leave-end="opacity-0"
-    ></div>
-
-    <div
-      x-cloak
-      x-show="menuOpen"
-      x-transition:enter="transform transition ease-in-out duration-500"
-      x-transition:enter-start="-translate-x-full"
-      x-transition:enter-end="translate-x-0"
-      x-transition:leave="transform transition ease-in-out duration-500"
-      x-transition:leave-start="translate-x-0"
-      x-transition:leave-end="-translate-x-full"
-      class="fixed left-0 top-0 h-full w-full max-w-[446px] bg-primary text-contrast shadow-lg"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div class="p-4 h-full">
-        <div class="flex justify-between items-center">
-          <h2 class="link">Menu</h2>
-          <button @click="$dispatch('toggle-menu-drawer')" class="">&times;</button>
-        </div>
-        <div class="h-full flex flex-col justify-between w-full">
-          {% render 'mobile-menu' %}
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Add the cart drawer markup -->
-  <div
-    x-data="{ open: false }"
-    @open-cart-drawer.window="
-      open = true;
-    "
-    @keydown.escape.window="
-      open = false;
-    "
-  >
-    <!-- Backdrop -->
-    <div 
-      x-show="open"
-      class="drawer-backdrop"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-      @click="
-        open = false;
-      "
-      x-cloak
-    ></div>
-
-    <!-- Drawer -->
-    <div
-      x-show="open"
-      x-cloak
-      x-transition:enter="transform transition ease-in-out duration-500"
-      x-transition:enter-start="translate-x-full"
-      x-transition:enter-end="translate-x-0"
-      x-transition:leave="transform transition ease-in-out duration-500"
-      x-transition:leave-start="translate-x-0"
-      x-transition:leave-end="translate-x-full"
-      class="fixed right-0 top-0 h-full max-w-[390px] lg:max-w-[446px] w-full bg-primary text-contrast shadow-lg"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div class="p-4 h-full flex flex-col">
-        <div class="flex justify-between items-center">
-          <h2 class="link">Cart</h2>
-          <button @click="open = false" class="">&times;</button>
-        </div>
-        <div class="mt-24 flex flex-col justify-between w-full flex-1 overflow-hidden">
-          {% render 'cart-drawer' %}
-        </div>
       </div>
     </div>
   </div>
@@ -194,23 +107,7 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu_trade",
-      "label": "Trade Menu"
-    },
-    {
-      "type": "link_list",
-      "id": "menu_public",
-      "label": "Public Menu"
-    },
-    {
-      "type": "link_list",
-      "id": "menu_logged_out",
-      "label": "Logged Out Menu"
-    }
-  ],
+  "settings": [],
   "blocks": [
     {
       "type": "mega_menu",

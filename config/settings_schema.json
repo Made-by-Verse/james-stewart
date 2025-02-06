@@ -11,6 +11,26 @@
     "name": "t:settings_schema.colors.name",
     "settings": [
       {
+        "name": "Navigation Settings",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "global_menu_trade",
+            "label": "Global Trade Menu"
+          },
+          {
+            "type": "link_list",
+            "id": "global_menu_public",
+            "label": "Global Public Menu"
+          },
+          {
+            "type": "link_list",
+            "id": "global_menu_logged_out",
+            "label": "Global Logged Out Menu"
+          }
+        ]
+      },
+      {
         "type": "color_scheme_group",
         "id": "color_schemes",
         "definition": [
@@ -118,11 +138,11 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Add swatch image files to your store's [files area](\/admin\/settings\/files). Make sure the file names match the names of your color variants, replacing spaces and special characters with hyphens. For example, a variant called Burly Wood would need a file named 'burly-wood.png'."
+        "content": "Add swatch image files to your store's [files area](/admin/settings/files). Make sure the file names match the names of your color variants, replacing spaces and special characters with hyphens. For example, a variant called Burly Wood would need a file named 'burly-wood.png'."
       },
       {
         "type": "paragraph",
-        "content": "[Learn more about color swatches.](https:\/\/documentation.fuelthemes.net\/kb\/how-do-i-set-up-product-variant-swatches\/)"
+        "content": "[Learn more about color swatches.](https://documentation.fuelthemes.net/kb/how-do-i-set-up-product-variant-swatches/)"
       },
       {
         "type": "textarea",
