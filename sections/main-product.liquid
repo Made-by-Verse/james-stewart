@@ -151,7 +151,7 @@
       {{ product | structured_data }}
     </script>
 
-{% comment %} <script>
+<script>
   window.addEventListener('DOMContentLoaded', (event) => {
     const shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}';
     const stockInfoContainer = document.querySelector('[data-variant-stock]');
@@ -218,7 +218,7 @@
       return productVariants.find((variant) => variant.id.includes(variantID));
     }
   });
-</script> {% endcomment %}
+</script> 
 
 
 {% schema %}

@@ -7,7 +7,6 @@ import { CarouselManager } from "../components/CarouselManager";
 import { RecommendationsManager } from "../components/RecommendationsManager";
 import { SCROLL_PREVENT } from "./constants";
 import { Cart, Process, MegaMenu } from "../AlpineData";
-import { ProductForm } from "../components/ProductForm";
 
 export default class App {
   constructor() {
@@ -47,7 +46,6 @@ export default class App {
     this.components.set("video", new VideoSection());
     this.components.set("carousels", new CarouselManager());
     this.components.set("recommendations", new RecommendationsManager());
-    this.components.set("productForm", new ProductForm());
 
     // Initialize all components
     for (const component of this.components.values()) {
