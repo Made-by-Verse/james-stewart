@@ -33,7 +33,7 @@
           {%- render 'loading-spinner' -%}
         </div>
       </button>
-      <p x-data="{message: ''}" x-show="message != ''" x-text='message' @cart:error="message = event.detail.message"></p>
+      <p x-data="{message: ''}" x-show="message != ''" x-text='message' @cart:error.window="message = event.detail.message"></p>
     </div>
   {%- endif -%}
 </div>
