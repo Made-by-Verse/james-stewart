@@ -18,7 +18,7 @@
         @cart:added.window="loading = false"
         @cart:error.window="loading = false"
         @click="addToCart(selectedVariant)"
-        :disabled="!selectedVariant || loading ||"
+        :disabled="!selectedVariant || loading"
       >
         <span 
           x-text="selectedVariant ? '{{ 'products.product.add_to_cart' | t }}' : '{{ 'products.product.select_option' | t }}'"
