@@ -50,7 +50,10 @@ export default function Cart() {
           }),
         });
 
-        console.log(response);
+        const responseBody = await response.json();
+        console.log("new");
+
+        console.log(responseBody);
 
         if (!response.ok) throw new Error(response.message);
 
