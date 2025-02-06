@@ -12,13 +12,13 @@
     <div x-data="cart">
       <button
         type="button"
-        class="btn btn--primary w-full relative"
+        class="btn btn--primary w-full relative buy-button"
         x-data="{ loading: false }"
         @cart:adding.window="loading = true"
         @cart:added.window="loading = false"
         @cart:error.window="loading = false"
         @click="addToCart(selectedVariant)"
-        :disabled="!selectedVariant || loading"
+        :disabled="!selectedVariant || loading ||"
       >
         <span 
           x-text="selectedVariant ? '{{ 'products.product.add_to_cart' | t }}' : '{{ 'products.product.select_option' | t }}'"
@@ -33,6 +33,7 @@
           {%- render 'loading-spinner' -%}
         </div>
       </button>
+      <p x-data="{message: ''}" x-show="message != ''" x-text='message' @cart:error="message = event.detail.message"></p>
     </div>
   {%- endif -%}
 </div>

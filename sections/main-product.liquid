@@ -157,6 +157,7 @@
     const stockInfoContainer = document.querySelector('[data-variant-stock]');
     const productId = '{{ product.id }}';
     let productVariants = [];
+    const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
     
     if (stockInfoContainer) {
       axios
@@ -188,6 +189,11 @@
 
         let content = '';
         const stockText = data.inStock === true ? 'IN STOCK' : '';
+
+        // Disable the buy button if out of stock
+        if (buyButton) {
+          buyButton.disabled = !data.inStock; // Disable if not in stock
+        }
 
         if (data.eta && data.eta.length > 0 && data.inStock === false) {
           const etaDate = new Date(data.eta[data.eta.length - 1]); // get the latest order
