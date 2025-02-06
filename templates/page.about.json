@@ -54,23 +54,10 @@
             "button_2_url": "",
             "button_2_text": ""
           }
-        },
-        "process_step_UpETM3": {
-          "type": "process-step",
-          "settings": {
-            "heading": "",
-            "step-image": "shopify://shop_images/Frame_1328.png",
-            "step-text": "<p>We’re deeply inspired by the original James Stewart, a Scots-Australian haberdasher, importer and furniture maker, and our great, great uncle.</p>",
-            "button_1_url": "",
-            "button_1_text": "",
-            "button_2_url": "",
-            "button_2_text": ""
-          }
         }
       },
       "block_order": [
-        "process_step_ridXEb",
-        "process_step_UpETM3"
+        "process_step_ridXEb"
       ],
       "settings": {
         "color_scheme": "",
