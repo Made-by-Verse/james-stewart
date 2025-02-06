@@ -1,7 +1,7 @@
 {% liquid 
-  assign menu_trade = linklists[section.settings.menu_trade].links
-  assign menu_public = linklists[section.settings.menu_public].links
-  assign menu_logged_out = linklists[section.settings.menu_logged_out].links
+  assign menu_trade = linklists[settings.menu_trade].links
+  assign menu_public = linklists[settings.menu_public].links
+  assign menu_logged_out = linklists[settings.menu_logged_out].links
 
   if customer
     assign menu = menu_trade
@@ -82,7 +82,7 @@
               type="button"
             >
               <span class="hidden lg:block">Cart</span>
-              <span class="w-8 h-8 block">
+              <span class="w-8 h-8 block lg:hidden">
                 {{ 'icon-cart.svg' | inline_asset_content }}
               </span>
             </button>
