@@ -152,5 +152,25 @@
         "info": "Follow the format: <Color>: <HEX Color>. Example: Purple: #7000AA. Each custom color must be on a new line."
       }
     ]
+  },
+  {
+    "name": "Menu Settings",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu_trade",
+        "label": "Trade Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_public",
+        "label": "Public Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_logged_out",
+        "label": "Logged Out Menu"
+      }
+    ]
   }
 ]
