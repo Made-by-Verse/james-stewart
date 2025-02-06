@@ -50,6 +50,8 @@ export default function Cart() {
           }),
         });
 
+        console.log(response);
+
         if (!response.ok) throw new Error(response.message);
 
         // Immediately update the cart after successful add
