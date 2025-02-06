@@ -51,11 +51,10 @@ export default function Cart() {
         });
 
         const responseBody = await response.json();
-        console.log("new");
 
         console.log(responseBody);
 
-        if (!response.ok) throw new Error(response.message);
+        if (!response.ok) throw new Error(responseBody.message);
 
         // Immediately update the cart after successful add
         await this.getCart(true);
