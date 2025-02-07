@@ -96,15 +96,17 @@
                   </button>
                 </li>
               {% endif %}
-              <li>
-                <button
-                  class="text-left uppercase"
-                  @click="$dispatch('toggle-drawer', { type: 'shipping' })"
-                  :aria-expanded="activeDrawer === 'shipping'"
-                >
-                  Shipping
-                </button>
-              </li>
+              {% if customer %}
+                <li>
+                  <button
+                    class="text-left uppercase"
+                    @click="$dispatch('toggle-drawer', { type: 'shipping' })"
+                    :aria-expanded="activeDrawer === 'shipping'"
+                  >
+                    Shipping
+                  </button>
+                </li>
+              {% endif %}
             </ul>
             <div class='col-span-2 space-y-2 text-[13px]'>
               {% if product.description != blank %}

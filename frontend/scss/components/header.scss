@@ -57,18 +57,10 @@
   &.mega-menu-open {
     @apply bg-primary text-contrast duration-500;
   }
-
-  &.header--hidden {
-    @apply transform -translate-y-full;
-  }
 }
 
 #filter-bar {
   @apply top-16;
 
   transition: top 0.3s ease-in-out;
-
-  &.header--hidden {
-    @apply top-0;
-  }
 }

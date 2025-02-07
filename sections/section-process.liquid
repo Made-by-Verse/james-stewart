@@ -4,11 +4,6 @@
     --color-contrast: {{ section.settings.color_scheme.settings.contrast }};
     --color-lines: {{ section.settings.color_scheme.settings.lines }};
   }
-  @media (min-width: 1024px) { /* lg breakpoint */
-    .process-wrapper {
-      height: calc({{ section.blocks.size }} * 100vh);
-    }
-  }
 {% endstyle %}
 
 {% liquid
@@ -97,28 +92,25 @@
         {% endfor %}
       </div>
     </div>
-    <div class="hidden md:flex w-full sticky top-20">
-      <div class="w-full relative aspect-portrait overflow-hidden">
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'process-step' %}
-            <div
-              x-cloak
-              :class="showImage({{ forloop.index0 }}) ? 'opacity-100' : 'opacity-0'"
-              class="scroll-mt-20 transition-opacity duration-1000 absolute inset-0 w-full h-full"
-            >
-              {% render 'responsive-image' with
-                image: block.settings.step-image,
-                wrapper_class: "aspect-portrait w-full relative",
-                image_class: "absolute inset-0 object-cover w-full h-full",
-                size: '1000x1000',
-                width: 1000,
-                height: 1000
-              %}
-            </div>
-          {% endcase %}
-        {% endfor %}
-      </div>
+    <div class="hidden space-y-4 md:block w-full relative overflow-hidden">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'process-step' %}
+          <div
+            x-cloak
+            class="scroll-mt-20"
+          >
+            {% render 'responsive-image' with
+              image: block.settings.step-image,
+              wrapper_class: "aspect-portrait w-full relative",
+              image_class: "absolute inset-0 object-cover w-full h-full",
+              size: '1000x1000',
+              width: 1000,
+              height: 1000
+            %}
+          </div>
+        {% endcase %}
+      {% endfor %}
     </div>
   </div>
 </div>
