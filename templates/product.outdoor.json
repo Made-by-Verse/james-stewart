@@ -12,21 +12,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "care_info_RGViem": {
-          "type": "care-info",
-          "settings": {
-            "care-info-page": "marble-care"
-          }
-        },
         "care_info_CqqCLM": {
           "type": "care-info",
           "settings": {
-            "care-info-page": "vacuum-regularly"
+            "care-info-page": "alboo-care"
           }
         }
       },
       "block_order": [
-        "care_info_RGViem",
         "care_info_CqqCLM"
       ],
       "settings": {
