@@ -31,7 +31,7 @@
       ],
       "settings": {
         "hero_image": "shopify://shop_images/James_Stewart_Styled_202130031_TobyScott.jpg",
-        "hero_content": "<p>Australian-designed furniture that reimagines the best kind of design, materials and making.</p>",
+        "hero_content": "",
         "hero_button_url": "shopify://collections/all",
         "hero_button_text": "Explore Catalogue",
         "color_scheme": "",
