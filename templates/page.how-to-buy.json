@@ -80,7 +80,7 @@
             "image": "shopify://shop_images/James_Stewart_LB_201973230_TobyScott.png",
             "button_1_link": "/pages/wholesale-registration-form",
             "button_1_text": "Apply for a trade account",
-            "button_2_link": "/pages/contact",
+            "button_2_link": "shopify://pages/ws-account-login",
             "button_2_text": "Login"
           }
         },
