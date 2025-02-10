@@ -76,7 +76,7 @@
           "type": "wholesale_cta",
           "settings": {
             "heading": "Trade customers",
-            "text": "<p>Designers, architects and specifiers can apply for an account to access trade pricing and full design support. Customisation is available, and our Brisbane showroom is open for client consultations.</p>",
+            "text": "<p>Designers, architects and specifiers can apply for an account to access trade pricing and full design support. Customisation and indent orders are available for projects. </p>",
             "image": "shopify://shop_images/James_Stewart_LB_201973230_TobyScott.png",
             "button_1_link": "/pages/wholesale-registration-form",
             "button_1_text": "Apply for a trade account",
@@ -88,7 +88,7 @@
           "type": "stockist_cta",
           "settings": {
             "heading": "Retail Customers",
-            "text": "<p>The James Stewart collection is represented by selected retailers across Australia. To find out where you can view samples and purchase our products, please complete the form below and we’ll email you our list of stockists. </p>",
+            "text": "<p>The James Stewart collection is represented by selected retailers across Australia. To find out where you can view samples and purchase our products, please complete the form below.</p>",
             "image": "shopify://shop_images/James_Stewart_LB_201973230_TobyScott_2.png",
             "drawer_button_text": "Find a retailer in your area"
           }
