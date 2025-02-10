@@ -17,17 +17,10 @@
           "settings": {
             "care-info-page": "marble-care"
           }
-        },
-        "care_info_CqqCLM": {
-          "type": "care-info",
-          "settings": {
-            "care-info-page": "vacuum-regularly"
-          }
         }
       },
       "block_order": [
-        "care_info_RGViem",
-        "care_info_CqqCLM"
+        "care_info_RGViem"
       ],
       "settings": {
         "enable_sticky_info": true,
