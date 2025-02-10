@@ -4,9 +4,9 @@
   assign menu_logged_out = linklists[settings.menu_logged_out].links
 
   if customer
-    assign menu = menu_trade
+    assign menu = menu_trade 
   else
-    assign menu = menu_public
+    assign menu = menu_public | concat: menu_logged_out
   endif
 %}
 
