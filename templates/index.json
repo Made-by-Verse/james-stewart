@@ -68,7 +68,7 @@
           "settings": {
             "heading": "",
             "step-image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png",
-            "step-text": "<p>Blending a new generation of design, materials, and making, alongside classic patterns and silhouettes, our collection reflects timeless quality.<br/></p>",
+            "step-text": "<p>Blending a new generation of design, materials and manufacturing alongside classic patterns and silhouettes, our collection is made for the discerning eye. </p>",
             "button_1_url": "shopify://pages/craft-innovation",
             "button_1_text": "Our Story",
             "button_2_url": "shopify://pages/how-to-buy",
@@ -137,7 +137,7 @@
       "type": "section-featured-collection",
       "settings": {
         "collection": "hand-tufted",
-        "description": "<p>James Stewart blends world-class leather production with modern Australian design to create furniture with an emphasis on craft and quality construction. Blending a new generation of design.</p>",
+        "description": "<p>Our furniture designers explore new materials, reimagine favourite silhouettes, and bring a high level of detail and craftsmanship to our collection. </p>",
         "products_to_show": 6,
         "color_scheme": "",
         "padding_top": "md",
@@ -187,34 +187,12 @@
           "settings": {
             "image": "shopify://shop_images/STYLE_7185-01_GOLDIE_VELVET_TOBYSCOTT_01_3.jpg"
           }
-        },
-        "slide_AxjfrU": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/COLOUR_FACTORYSHOTS_WORKGROUP_03.jpg"
-          }
-        },
-        "slide_RHLhrW": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/STYLED_T-03287-000_AGNES_01.jpg"
-          }
-        },
-        "slide_tUXMDP": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png"
-          }
         }
       },
       "block_order": [
         "slide_EhX7Cm",
         "slide_pPnGBp",
-        "slide_EyEkW6",
-        "slide_AxjfrU",
-        "slide_RHLhrW",
-        "slide_tUXMDP"
+        "slide_EyEkW6"
       ],
       "settings": {
         "heading": "How to buy",

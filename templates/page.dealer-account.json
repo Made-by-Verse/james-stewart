@@ -43,10 +43,10 @@
             "collection": "sofas"
           }
         },
-        "collection_block_3": {
+        "collection_block_5": {
           "type": "collection_block",
           "settings": {
-            "collection": "alboo-outdoor"
+            "collection": "executive-seating"
           }
         },
         "collection_block_4": {
@@ -55,19 +55,19 @@
             "collection": "living-room"
           }
         },
-        "collection_block_5": {
+        "collection_block_3": {
           "type": "collection_block",
           "settings": {
-            "collection": "executive-seating"
+            "collection": "alboo-outdoor"
           }
         }
       },
       "block_order": [
         "collection_block_1",
         "collection_block_2",
-        "collection_block_3",
+        "collection_block_5",
         "collection_block_4",
-        "collection_block_5"
+        "collection_block_3"
       ],
       "settings": {
         "all_collections_link_text": "Order Now",
