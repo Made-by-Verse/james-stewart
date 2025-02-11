@@ -115,8 +115,8 @@
             </div>
           </div>
           {% comment %} {% if customer %} {% endcomment %}
-            <div data-product-id="{{ product.id }}" data-variant-stock>
-              <span class="product-stock-info"></span>
+            <div>
+              <span class="product-stock-info" data-variant-stock></span>
             </div>
           {% comment %} {% endif %} {% endcomment %}
           <div>
@@ -139,19 +139,95 @@
       </section>
     </div>
 
-{% render 'product-drawers', blocks: section.blocks %}
+    {% render 'product-drawers', blocks: section.blocks %}
 
-{%- liquid
-  if product.selected_or_first_available_variant.featured_media
-    assign seo_media = product.selected_or_first_available_variant.featured_media
-  else
-    assign seo_media = product.featured_media
-  endif
--%}
+    {%- liquid
+      if product.selected_or_first_available_variant.featured_media
+        assign seo_media = product.selected_or_first_available_variant.featured_media
+      else
+        assign seo_media = product.featured_media
+      endif
+    -%}
 
-<script type="application/ld+json">
-  {{ product | structured_data }}
-</script>
+    <script type="application/ld+json">
+      {{ product | structured_data }}
+    </script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}';
+    const stockInfoContainer = document.querySelector('[data-variant-stock]');
+    const productId = '{{ product.id }}';
+    let productVariants = [];
+    const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
+    
+    if (stockInfoContainer) {
+      console.log('stockInfoContainer', stockInfoContainer);
+      fetch(`https://jsf-po-eta.gadget.app/product?id=${productId}`, {
+        method: 'GET',
+        mode: 'cors'
+      })
+      .then(response => response.json())
+      .then(data => {
+        productVariants = data.data;
+        
+        const selectedVariantValues = findVariantByID(shopifyCurrentVariantID);
+        renderStockInformation(selectedVariantValues);
+      })
+      .catch((error) => console.error('Error:', error));
+
+      function formatDate(date) {
+        return new Date(date).toLocaleDateString('en-US', {
+          month: 'long',
+          day: '2-digit',
+          year: 'numeric',
+        });
+      }
+
+      function renderStockInformation(data) {
+        if (!data) {
+          console.error('No data provided');
+          return;
+        }
+
+        let content = '';
+        const stockText = data.inStock === true ? 'IN STOCK' : '';
+
+        // Disable the buy button if out of stock
+        if (buyButton) {
+          buyButton.disabled = !data.inStock; // Disable if not in stock
+        }
+
+        if (data.eta && data.eta.length > 0 && data.inStock === false) {
+          const etaDate = new Date(data.eta[data.eta.length - 1]); // get the latest order
+          const currentDate = new Date();
+
+          if (isNaN(etaDate.getTime())) {
+            console.error('Invalid ETA date');
+          } else if (currentDate < etaDate) {
+            const formattedDate = formatDate(etaDate);
+            content = `<strong>ETA: ${formattedDate}</strong>`;
+          } // Implicitly handles if currentDate is not before etaDate by not setting etaText
+        }
+
+        if (!content && stockText) {
+          content = `<strong>${stockText}</strong>`;
+        }
+
+        stockInfoContainer.innerHTML = content;
+      }
+
+      document.addEventListener('product:variant-change', (evt) => {
+        const selectedVariantValues = findVariantByID(evt.detail.variant.id);
+        renderStockInformation(selectedVariantValues);
+      });
+    }
+
+    function findVariantByID(variantID) {
+      return productVariants.find((variant) => variant.id.includes(variantID));
+    }
+  });
+</script> 
 
 
 {% schema %}
