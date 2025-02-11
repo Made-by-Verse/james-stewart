@@ -15,19 +15,12 @@
         "image_block_M6HDqz": {
           "type": "image_block",
           "settings": {
-            "image": "shopify://shop_images/James_Stewart_Styled_202130031_TobyScott.jpg"
-          }
-        },
-        "image_block_G94jgb": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
+            "image": "shopify://shop_images/EXPANDED_7099-03_REDFORD3STR_VNR1303_BISQUE_WORKGROUP_01.png"
           }
         }
       },
       "block_order": [
-        "image_block_M6HDqz",
-        "image_block_G94jgb"
+        "image_block_M6HDqz"
       ],
       "settings": {
         "hero_image": "shopify://shop_images/James_Stewart_Styled_202130031_TobyScott.jpg",
