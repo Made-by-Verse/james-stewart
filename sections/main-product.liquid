@@ -51,7 +51,7 @@
           wrapper_class: 'lg:hidden w-full h-full relative aspect-landscape mb-4',
           image_class: 'w-full h-full object-cover absolute inset-0'
         %}
-        <div class="w-full flex-1 flex flex-col items-center justify-center">
+        <div class="w-full flex-1 flex flex-col items-center justify-center mb-4">
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
           <h1 class="h3 mb-8 text-center">
             {{ product.title | escape }}
@@ -162,6 +162,7 @@
     const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
     
     if (stockInfoContainer) {
+      console.log('stockInfoContainer', stockInfoContainer);
       axios
           .get(`https://jsf-po-eta.gadget.app/product?id=${productId}`,{
             mode: 'cors'
