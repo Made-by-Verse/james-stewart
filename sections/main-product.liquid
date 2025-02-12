@@ -37,12 +37,14 @@
       <section
         id="ProductInfo-{{ section.id }}"
         class='flex w-full lg:h-full flex-col items-center'
-        x-data="{ 
-          selectedVariant: {{ product.selected_or_first_available_variant.id | default: product.selected_variant.id | json }},
+        x-data="variantSelector"
+        x-init="() => {
+          selectedVariant = {{ product.variants[0].id }};
         }"
         @variant-change.window="
-          const { id } = $event.detail;
+          const { id, index } = $event.detail;
           selectedVariant = id;
+          variant_index = index;
         "
       >
         {% render 'responsive-image',
@@ -116,7 +118,10 @@
           </div>
           {% comment %} {% if customer %} {% endcomment %}
             <div>
-              <span class="product-stock-info" data-variant-stock></span>
+            {% comment %} {% for variant in product.variants %}
+              <span x-show="selectedVariant === {{ variant.id }}">{{ variant.metafields.custom.eta }}</span>
+            {% endfor %} {% endcomment %}
+            <span data-variant-stock></span>
             </div>
           {% comment %} {% endif %} {% endcomment %}
           <div>
@@ -153,6 +158,9 @@
       {{ product | structured_data }}
     </script>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
 <script>
   window.addEventListener('DOMContentLoaded', (event) => {
     const shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}';
@@ -162,19 +170,18 @@
     const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
     
     if (stockInfoContainer) {
-      console.log('stockInfoContainer', stockInfoContainer);
-      fetch(`https://jsf-po-eta.gadget.app/product?id=${productId}`, {
-        method: 'GET',
-        mode: 'cors'
-      })
-      .then(response => response.json())
-      .then(data => {
-        productVariants = data.data;
-        
-        const selectedVariantValues = findVariantByID(shopifyCurrentVariantID);
-        renderStockInformation(selectedVariantValues);
-      })
-      .catch((error) => console.error('Error:', error));
+      axios
+          .get(`https://jsf-po-eta.gadget.app/product?id=${productId}`,{
+            mode: 'cors'
+          })
+          .then(({ data }) => {
+            
+            productVariants = data.data;
+            
+            const selectedVariantValues = findVariantByID(shopifyCurrentVariantID);
+            renderStockInformation(selectedVariantValues);
+          })
+          .catch((error) => console.error('Error:', error));
 
       function formatDate(date) {
         return new Date(date).toLocaleDateString('en-US', {

@@ -49,32 +49,11 @@
             assign selected_style = 'background-color: ' | append: selected_color
           endif
         -%}
-        <!-- Debug output -->
-        <!-- Selected Value: {{ option.selected_value }} -->
-        <!-- Selected Color: {{ selected_color }} -->
-        <!-- Selected Style: {{ selected_style }} -->
-        
         <div x-data="{ 
-          open: false, 
+          open: false,
           selectedValue: '{{ option.selected_value }}', 
           selectedStyle: '{{ selected_style | escape_once }}',
         }">
-          {% comment %} <select
-            id="Option-{{ section.id }}-{{ forloop.index0 }}"
-            class="hidden"
-            name="options[{{ option.name }}]"
-            x-ref="variantSelect"
-          >
-            {%- for value in option.values -%}
-              <option
-                value="{{ value | escape }}"
-                {% if option.selected_value == value %}selected="selected"{% endif %}
-              >
-                {{ value }}
-              </option>
-            {%- endfor -%}
-          </select> {% endcomment %}
-
           <div class="w-full relative">
             <button 
               type="button"
