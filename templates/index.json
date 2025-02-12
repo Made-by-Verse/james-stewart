@@ -15,19 +15,12 @@
         "image_block_M6HDqz": {
           "type": "image_block",
           "settings": {
-            "image": "shopify://shop_images/James_Stewart_Styled_202130031_TobyScott.jpg"
-          }
-        },
-        "image_block_G94jgb": {
-          "type": "image_block",
-          "settings": {
-            "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
+            "image": "shopify://shop_images/EXPANDED_7099-03_REDFORD3STR_VNR1303_BISQUE_WORKGROUP_01.png"
           }
         }
       },
       "block_order": [
-        "image_block_M6HDqz",
-        "image_block_G94jgb"
+        "image_block_M6HDqz"
       ],
       "settings": {
         "hero_image": "shopify://shop_images/James_Stewart_Styled_202130031_TobyScott.jpg",
@@ -67,7 +60,7 @@
           "type": "process-step",
           "settings": {
             "heading": "",
-            "step-image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png",
+            "step-image": "shopify://shop_images/Mobile_-_Miss_P_Sofa_-_Angelina_Syrup.jpg",
             "step-text": "<p>Blending a new generation of design, materials and manufacturing alongside classic patterns and silhouettes, our collection is made for the discerning eye. </p>",
             "button_1_url": "shopify://pages/craft-innovation",
             "button_1_text": "Our Story",
@@ -151,7 +144,7 @@
         "richtext": "<p>Modular luxury born from the 1970's. The Redford Sofa draws inspiration from iconic designs and styling emanating from Italy and the United States in the 1970s. </p>",
         "button_text": "Explore",
         "button_link": "shopify://products/redford-3-seat-sofa",
-        "image": "shopify://shop_images/James-Stewart-LB-201973346_TobyScott-_1_-edited_3.png"
+        "image": "shopify://shop_images/EXPANDED_7099-03_REDFORD3STR_CMW1304_CORK_WORKGROUP_01.jpg"
       }
     },
     "video_qCGx76": {

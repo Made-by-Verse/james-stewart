@@ -15,7 +15,7 @@
         "image_block_cDNiMY": {
           "type": "image_block",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_612.png"
+            "image": "shopify://shop_images/MATERIALFOCUS_LEATHER_WORKGROUP_01.png"
           }
         }
       },
@@ -147,7 +147,7 @@
           "type": "process-step",
           "settings": {
             "heading": "Our History",
-            "step-image": "shopify://shop_images/Stewarts_Storefront_86083b57-351d-4578-9e56-0289caa1f1c0.png",
+            "step-image": "shopify://shop_images/STEWARTS_STOREFRONT_1954_WORKGROUP_01.jpg",
             "step-text": "<h3>The James Stewart brand was first established in Queensland in 1862 when our great, great uncle opened his first store in Rockhampton.</h3><p>With a passion for quality and craftsmanship, James Stewart embarked on a journey to create the first department store in Queensland. With an unwavering commitment to sourcing the finest materials– from delicate hand-spun silks from Japan to elegant bentwood furniture from<br/>Austria; James built a legacy that would span generations. </p><p>As his empire grew, James expanded his department stores to other townships across Queensland, providing employment for local artisans and craftspeople. His vision extended beyond retail, venturing into the manufacturing of home décor, including his own signature furniture ranges that embodied enduring quality and timeless design.</p><p>Today, this reborn furniture company carries forward the legacy of their ancestor, creating collectible pieces that are built to last, just as James Stewart himself would have envisioned.</p>",
             "button_1_url": "",
             "button_1_text": "",
@@ -182,18 +182,6 @@
     "section_vertical_carousel_84yyR4": {
       "type": "section-vertical-carousel",
       "blocks": {
-        "slide_EhX7Cm": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/James_Stewart_Arlie_Sofa_Gathering_Light_Photography_1.jpg"
-          }
-        },
-        "slide_pPnGBp": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/AUCKLAND_TEAMSHOOT_WORKGROUP_03.jpg"
-          }
-        },
         "slide_EyEkW6": {
           "type": "slide",
           "settings": {
@@ -211,22 +199,12 @@
           "settings": {
             "image": "shopify://shop_images/STYLED_T-03287-000_AGNES_01.jpg"
           }
-        },
-        "slide_tUXMDP": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Styled_-_Miss_P_-_Angelina_Syrup_4.png"
-          }
         }
       },
       "block_order": [
-        "slide_EhX7Cm",
-        "slide_pPnGBp",
         "slide_EyEkW6",
         "slide_AxjfrU",
-        "slide_RHLhrW",
-        "slide_tUXMDP"
+        "slide_RHLhrW"
       ],
       "settings": {
         "heading": "FIND OUT MORE",
