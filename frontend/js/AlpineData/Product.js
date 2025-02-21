@@ -6,7 +6,6 @@ export default function MegaMenu() {
     stockInfoContainer: document.querySelector("[data-variant-stock]"),
     productId: "",
     productVariants: [],
-    buyButton: document.querySelector(".buy-button"),
 
     getProductVariants() {
       axios
@@ -44,8 +43,8 @@ export default function MegaMenu() {
       const stockText = data.inStock === true ? "IN STOCK" : "";
 
       // Disable the buy button if out of stock
-      if (buyButton) {
-        buyButton.disabled = !data.inStock; // Disable if not in stock
+      if (this.$refs.buyButton) {
+        this.$refs.buyButton.disabled = !data.inStock; // Disable if not in stock
       }
 
       if (data.eta && data.eta.length > 0 && data.inStock === false) {
@@ -55,11 +54,8 @@ export default function MegaMenu() {
         if (isNaN(etaDate.getTime())) {
           console.error("Invalid ETA date");
         } else if (currentDate < etaDate) {
-          console.log(currentDate, etaDate);
-          const formattedDate = formatDate(etaDate);
-          console.log(formattedDate);
+          const formattedDate = this.formatDate(etaDate);
           content = `<strong>ETA: ${formattedDate}</strong>`;
-          console.log(content);
         } // Implicitly handles if currentDate is not before etaDate by not setting etaText
       }
 

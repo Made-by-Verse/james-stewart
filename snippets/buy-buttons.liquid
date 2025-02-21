@@ -14,6 +14,7 @@
         @cart:added.window="message = ''"></p>
       <button
         type="button"
+        x-ref="buyButton"
         class="btn btn--primary w-full relative buy-button"
         x-data="{ loading: false }"
         @cart:adding.window="loading = true"
