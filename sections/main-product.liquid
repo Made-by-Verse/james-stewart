@@ -166,9 +166,7 @@
             mode: 'cors'
           })
           .then(({ data }) => {
-            console.log(data);
             productVariants = data.data;
-            console.log(productVariants);
             const selectedVariantValues = findVariantByID(shopifyCurrentVariantID);
             renderStockInformation(selectedVariantValues);
           })
@@ -188,6 +186,8 @@
           return;
         }
 
+        console.log('we got data');
+
         let content = '';
         const stockText = data.inStock === true ? 'IN STOCK' : '';
 
@@ -197,6 +197,7 @@
         }
 
         if (data.eta && data.eta.length > 0 && data.inStock === false) {
+          console.log('we got eta');
           const etaDate = new Date(data.eta[data.eta.length - 1]); // get the latest order
           const currentDate = new Date();
 
@@ -210,6 +211,7 @@
 
         if (!content && stockText) {
           content = `<strong>${stockText}</strong>`;
+          console.log('we got stock text and content');
         }
 
         stockInfoContainer.innerHTML = content;
@@ -219,6 +221,7 @@
         const url = new URL(window.location.href);
         const variantId = url.searchParams.get('variant');
         const selectedVariantValues = findVariantByID(`gid://shopify/ProductVariant/${variantId}`);
+        console.log(selectedVariantValues);
         renderStockInformation(selectedVariantValues);
       });
     }
