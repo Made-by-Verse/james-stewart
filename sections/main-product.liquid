@@ -1,153 +1,148 @@
 <div
   class='wrapper pt-20 pb-[160px] grid lg:grid-cols-6 gap-4'
 >
-  {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-    <div class='lg:col-span-4 space-y-4'>
-      {% for media in product.media %}
-        {% assign modulo = forloop.index | modulo: 3 %}
-        
-        {% if modulo == 1 %}
+  <div class='lg:col-span-4 space-y-4'>
+    {% for media in product.media %}
+      {% assign modulo = forloop.index | modulo: 3 %}
+      
+      {% if modulo == 1 %}
+        {% render 'responsive-image',
+          image: media,
+          width: 1000,
+          wrapper_class: 'w-full hidden lg:block',
+          image_class: 'w-full h-full object-cover'
+        %}
+      {% elsif modulo == 2 %}
+        <div class="grid lg:grid-cols-3 gap-4">
           {% render 'responsive-image',
             image: media,
-            width: 1000,
-            wrapper_class: 'w-full hidden lg:block',
-            image_class: 'w-full h-full object-cover'
+            width: 500,
+            wrapper_class: 'w-full',
+            image_class: 'w-full object-contain'
           %}
-        {% elsif modulo == 2 %}
-          <div class="grid lg:grid-cols-3 gap-4">
+          {% if forloop.last != true %}
             {% render 'responsive-image',
-              image: media,
+              image: product.media[forloop.index],
               width: 500,
-              wrapper_class: 'w-full',
-              image_class: 'w-full object-contain'
+              wrapper_class: 'w-full lg:col-span-2',
+              image_class: 'w-full h-full object-contain'
             %}
-            {% if forloop.last != true %}
-              {% render 'responsive-image',
-                image: product.media[forloop.index],
-                width: 500,
-                wrapper_class: 'w-full lg:col-span-2',
-                image_class: 'w-full h-full object-contain'
-              %}
-            {% endif %}
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class='lg:col-span-2 h-product_details lg:sticky top-20 flex items-center justify-center w-full order-first lg:order-last'>
-      <section
-        id="ProductInfo-{{ section.id }}"
-        x-data="product"
-        @product:variant-change.window="updateStockInformation"
-        x-init="shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}'; productId = '{{ product.id }}'; getProductVariants()"
-        class='flex w-full lg:h-full flex-col items-center mb-4'
-      >
-        {% render 'responsive-image',
-          image: product.featured_image,
-          width: 1000,
-          wrapper_class: 'lg:hidden w-full h-full relative aspect-landscape mb-4',
-          image_class: 'w-full h-full object-cover absolute inset-0'
-        %}
-        <div class="w-full flex-1 flex flex-col items-center justify-center mb-4">
-          {%- assign product_form_id = 'product-form-' | append: section.id -%}
-          <h1 class="h3 mb-8 text-center">
-            {{ product.title | escape }}
-          </h1>
-          {% if product.metafields.custom.sofa_size != blank %}
-            <p
-              class="text-xs uppercase"
-              {{ block.shopify_attributes }}
-            >
-              {{- product.metafields.custom.sofa_size -}}
-            </p>
           {% endif %}
-          <div id="price-{{ section.id }}" role="status">
-            {%- render 'price',
-              product: product,
-              use_variant: true,
-              show_badges: true,
-              price_class: 'price--large'
-            -%}
-          </div>
         </div>
-        <div class="w-full h-[336px] flex flex-col justify-end">
-          <div class="flex-1 grid grid-cols-3 gap-4">
-            <ul class='font-sans space-y-[7px] leading-none text-sm mt-0.5' x-data="{ activeDrawer: null }">
-              <li>
-                <button
-                  class="text-left uppercase"
-                  @click="$dispatch('toggle-drawer', { type: 'specifications' })"
-                  :aria-expanded="activeDrawer === 'specifications'"
-                >
-                  Specifications
-                </button>
-              </li>
-              {% if section.blocks.size > 0 %}
-                <li>
-                  <button
-                    class="text-left uppercase"
-                    @click="$dispatch('toggle-drawer', { type: 'product-care' })"
-                    :aria-expanded="activeDrawer === 'product-care'"
-                  >
-                    Product Care
-                  </button>
-                </li>
-              {% endif %}
-              {% if customer %}
-                <li>
-                  <button
-                    class="text-left uppercase"
-                    @click="$dispatch('toggle-drawer', { type: 'shipping' })"
-                    :aria-expanded="activeDrawer === 'shipping'"
-                  >
-                    Shipping
-                  </button>
-                </li>
-              {% endif %}
-            </ul>
-            <div class='col-span-2 space-y-2 text-[13px]'>
-              {% if product.description != blank %}
-                {{ product.description }}
-              {% endif %}
-            </div>
-          </div>
-          {% comment %} {% if customer %} {% endcomment %}
-            <div>
-              <span x-text="stockInfo"></span>
-            </div>
-          {% comment %} {% endif %} {% endcomment %}
-          <div>
-            <div class="w-full">
-              {% if product.has_only_default_variant == false %}
-                {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
-              {% endif %}
-              {% if customer %}
-                {%- render 'buy-buttons',
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                -%}
-              {% else %}
-                <a href="/pages/how-to-buy" class="btn btn--outline-primary flex justify-center w-full">ENQUIRE</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </section>
+      {% endif %}
+    {% endfor %}
+  </div>
+<div class='lg:col-span-2 h-product_details lg:sticky top-20 flex items-center justify-center w-full order-first lg:order-last'>
+  <section
+    id="ProductInfo-{{ section.id }}"
+    x-data="product"
+    @product:variant-change.window="updateStockInformation"
+    x-init="shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}'; productId = '{{ product.id }}'; getProductVariants()"
+    class='flex w-full lg:h-full flex-col items-center mb-4'
+  >
+    {% render 'responsive-image',
+      image: product.featured_image,
+      width: 1000,
+      wrapper_class: 'lg:hidden w-full h-full relative aspect-landscape mb-4',
+      image_class: 'w-full h-full object-cover absolute inset-0'
+    %}
+    <div class="w-full flex-1 flex flex-col items-center justify-center mb-4">
+      {%- assign product_form_id = 'product-form-' | append: section.id -%}
+      <h1 class="h3 mb-8 text-center">
+        {{ product.title | escape }}
+      </h1>
+      {% if product.metafields.custom.sofa_size != blank %}
+        <p
+          class="text-xs uppercase"
+          {{ block.shopify_attributes }}
+        >
+          {{- product.metafields.custom.sofa_size -}}
+        </p>
+      {% endif %}
+      <div id="price-{{ section.id }}" role="status">
+        {%- render 'price',
+          product: product,
+          use_variant: true,
+          show_badges: true,
+          price_class: 'price--large'
+        -%}
+      </div>
     </div>
+    <div class="w-full h-[336px] flex flex-col justify-end">
+      <div class="flex-1 grid grid-cols-3 gap-4">
+        <ul class='font-sans space-y-[7px] leading-none text-sm mt-0.5' x-data="{ activeDrawer: null }">
+          <li>
+            <button
+              class="text-left uppercase"
+              @click="$dispatch('toggle-drawer', { type: 'specifications' })"
+              :aria-expanded="activeDrawer === 'specifications'"
+            >
+              Specifications
+            </button>
+          </li>
+          {% if section.blocks.size > 0 %}
+            <li>
+              <button
+                class="text-left uppercase"
+                @click="$dispatch('toggle-drawer', { type: 'product-care' })"
+                :aria-expanded="activeDrawer === 'product-care'"
+              >
+                Product Care
+              </button>
+            </li>
+          {% endif %}
+          {% if customer %}
+            <li>
+              <button
+                class="text-left uppercase"
+                @click="$dispatch('toggle-drawer', { type: 'shipping' })"
+                :aria-expanded="activeDrawer === 'shipping'"
+              >
+                Shipping
+              </button>
+            </li>
+          {% endif %}
+        </ul>
+        <div class='col-span-2 space-y-2 text-[13px]'>
+          {% if product.description != blank %}
+            {{ product.description }}
+          {% endif %}
+        </div>
+      </div>
+      {% if customer %}
+        <div>
+          <span x-text="stockInfo"></span>
+        </div>
+      {% endif %}
+      <div>
+        <div class="w-full">
+          {% if product.has_only_default_variant == false %}
+            {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
+          {% endif %}
+          {% if customer %}
+            {%- render 'buy-buttons', product: product -%}
+          {% else %}
+            <a href="/pages/how-to-buy" class="btn btn--outline-primary flex justify-center w-full">ENQUIRE</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-    {% render 'product-drawers', blocks: section.blocks %}
+{% render 'product-drawers', blocks: section.blocks %}
 
-    {%- liquid
-      if product.selected_or_first_available_variant.featured_media
-        assign seo_media = product.selected_or_first_available_variant.featured_media
-      else
-        assign seo_media = product.featured_media
-      endif
-    -%}
+{%- liquid
+  if product.selected_or_first_available_variant.featured_media
+    assign seo_media = product.selected_or_first_available_variant.featured_media
+  else
+    assign seo_media = product.featured_media
+  endif
+-%}
 
-    <script type="application/ld+json">
-      {{ product | structured_data }}
-    </script>
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
 
 
 {% schema %}

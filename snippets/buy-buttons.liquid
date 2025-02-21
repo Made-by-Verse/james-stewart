@@ -9,7 +9,7 @@
 {% endcomment %}
 <div class="w-full">
   {%- if product != blank -%}
-    <div x-data="cart">
+    <div>
       <p class='text-red-500 text-center mb-2 font-sans' x-data="{message: ''}" x-show="message != ''" x-text='message' @cart:error.window="message = event.detail.message" @cart:adding.window="message = ''"
         @cart:added.window="message = ''"></p>
       <button
@@ -20,13 +20,14 @@
         @cart:adding.window="loading = true"
         @cart:added.window="loading = false"
         @cart:error.window="loading = false"
-        @click="addToCart(selectedVariant)"
+        @click="$store.cart.addToCart({{ product.selected_or_first_available_variant.id }})"
         :disabled="loading"
         {% unless product.selected_variant %}
           disabled
         {% endunless %}
       >
         <span 
+          class="transition-opacity duration-500"
           :class="{ 'opacity-0': loading }"
         >
           {% unless product.selected_variant %}

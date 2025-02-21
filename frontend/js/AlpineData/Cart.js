@@ -1,10 +1,5 @@
 export default function Cart() {
-  Alpine.store("cartState", {
-    items: [],
-    sub_total: 0,
-  });
-
-  Alpine.data("cart", () => ({
+  Alpine.store("cart", {
     items: [],
     sub_total: 0,
 
@@ -140,5 +135,5 @@ export default function Cart() {
         maximumFractionDigits: 2,
       });
     },
-  }));
+  });
 }
