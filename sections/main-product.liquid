@@ -157,10 +157,8 @@
     let productVariants = [];
     const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
 
-    console.log(stockInfoContainer);
     
     if (stockInfoContainer) {
-      console.log('axios');
       axios
           .get(`https://jsf-po-eta--development.gadget.app/product?id=${productId}`,{
             mode: 'cors'

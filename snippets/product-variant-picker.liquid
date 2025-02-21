@@ -98,7 +98,7 @@
                 <button
                   type="button"
                   class="w-full p-2 text-left flex items-center hover:bg-contrast/10"
-                  @click="handleVariantChange('{{ section.id }}', '{{ value | escape }}')"
+                  @click="handleVariantChange('{{ section.id }}', '{{ value | escape }}'); $dispatch('product:variant-change')"
                   :aria-selected="selectedValue === '{{ value | escape }}'"
                 >
                   <span 
