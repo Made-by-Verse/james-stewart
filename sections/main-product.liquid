@@ -184,8 +184,6 @@
           return;
         }
 
-        console.log('we got data');
-
         let content = '';
         const stockText = data.inStock === true ? 'IN STOCK' : '';
 
@@ -195,32 +193,31 @@
         }
 
         if (data.eta && data.eta.length > 0 && data.inStock === false) {
-          console.log('we got eta');
           const etaDate = new Date(data.eta[data.eta.length - 1]); // get the latest order
           const currentDate = new Date();
 
           if (isNaN(etaDate.getTime())) {
             console.error('Invalid ETA date');
           } else if (currentDate < etaDate) {
+            console.log(currentDate, etaDate);
             const formattedDate = formatDate(etaDate);
+            console.log(formattedDate);
             content = `<strong>ETA: ${formattedDate}</strong>`;
+            console.log(content);
           } // Implicitly handles if currentDate is not before etaDate by not setting etaText
         }
 
         if (!content && stockText) {
           content = `<strong>${stockText}</strong>`;
-          console.log('we got stock text and content');
         }
 
         stockInfoContainer.innerHTML = content;
       }
 
       document.addEventListener('product:variant-change', (evt) => {
-        console.log('we got variant change');
         const url = new URL(window.location.href);
         const variantId = url.searchParams.get('variant');
         const selectedVariantValues = findVariantByID(`gid://shopify/ProductVariant/${variantId}`);
-        console.log(selectedVariantValues);
         renderStockInformation(selectedVariantValues);
       });
     }
