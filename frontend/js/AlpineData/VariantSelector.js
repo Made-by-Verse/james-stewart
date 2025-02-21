@@ -3,6 +3,8 @@ export default function VariantSelector() {
     open: false,
 
     async handleVariantChange(sectionId, value) {
+      dispatchEvent(new CustomEvent("product:variant-change"));
+
       this.open = false;
 
       // Find the variant that matches all selected options
