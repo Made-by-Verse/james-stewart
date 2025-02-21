@@ -9,7 +9,7 @@
       <div class="flex items-center gap-2">
         <button 
           class="quantity-btn minus" 
-          @click="updateQuantity(item.key, item.quantity - 1)"
+          @click="$store.cart.updateQuantity(item.key, item.quantity - 1)"
         >-</button>
         <span 
           class="quantity-display leading-none text-center" 
@@ -17,12 +17,12 @@
         ></span>
         <button 
           class="quantity-btn plus" 
-          @click="updateQuantity(item.key, item.quantity + 1)"
+          @click="$store.cart.updateQuantity(item.key, item.quantity + 1)"
         >+</button>
       </div>
       <button 
         class="uppercase text-sm opacity-70 hover:opacity-100 transition-opacity duration-500 font-sans" 
-        @click="removeFromCart(item.key)"
+        @click="$store.cart.removeFromCart(item.key)"
       >Remove</button>
     </div>
   </div>
