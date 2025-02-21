@@ -19,6 +19,8 @@ export default function MegaMenu() {
           }
         )
         .then(({ data }) => {
+          console.log(data);
+
           this.productVariants = data;
           const selectedVariantValues = this.findVariantByID(
             this.shopifyCurrentVariantID
