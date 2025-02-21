@@ -218,6 +218,7 @@
       }
 
       document.addEventListener('product:variant-change', (evt) => {
+        console.log('we got variant change');
         const url = new URL(window.location.href);
         const variantId = url.searchParams.get('variant');
         const selectedVariantValues = findVariantByID(`gid://shopify/ProductVariant/${variantId}`);
