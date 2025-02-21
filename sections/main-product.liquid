@@ -109,10 +109,7 @@
           </div>
           {% comment %} {% if customer %} {% endcomment %}
             <div>
-            {% comment %} {% for variant in product.variants %}
-              <span x-show="selectedVariant === {{ variant.id }}">{{ variant.metafields.custom.eta }}</span>
-            {% endfor %} {% endcomment %}
-            <span data-variant-stock></span>
+              <span data-variant-stock></span>
             </div>
           {% comment %} {% endif %} {% endcomment %}
           <div>
@@ -159,8 +156,11 @@
     const productId = '{{ product.id }}';
     let productVariants = [];
     const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
+
+    console.log(stockInfoContainer);
     
     if (stockInfoContainer) {
+      console.log('axios');
       axios
           .get(`https://jsf-po-eta--development.gadget.app/product?id=${productId}`,{
             mode: 'cors'

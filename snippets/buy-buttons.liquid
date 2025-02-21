@@ -20,13 +20,19 @@
         @cart:added.window="loading = false"
         @cart:error.window="loading = false"
         @click="addToCart(selectedVariant)"
-        :disabled="!selectedVariant || loading"
+        :disabled="loading"
+        {% unless product.selected_variant %}
+          disabled
+        {% endunless %}
       >
         <span 
-          x-text="selectedVariant ? '{{ 'products.product.add_to_cart' | t }}' : '{{ 'products.product.select_option' | t }}'"
           :class="{ 'opacity-0': loading }"
         >
-          {{ 'products.product.select_option' | t }}
+          {% unless product.selected_variant %}
+            {{ 'products.product.select_option' | t }}
+          {% else %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% endunless %}
         </span>
         <div 
           class="absolute inset-0 flex items-center justify-center"
