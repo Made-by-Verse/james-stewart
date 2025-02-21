@@ -12,13 +12,6 @@ export default function Cart() {
         const response = await fetch(`${window.routes.cart_url}.js`);
         const cart = await response.json();
 
-        // Update store
-        Alpine.store("cartState").items = cart.items;
-        Alpine.store("cartState").sub_total = this.formatMoney(
-          cart.total_price
-        );
-
-        // Update local state
         this.items = cart.items;
         this.sub_total = this.formatMoney(cart.total_price);
 
@@ -83,12 +76,6 @@ export default function Cart() {
         const cart = await response.json();
 
         // Update store
-        Alpine.store("cartState").items = cart.items;
-        Alpine.store("cartState").sub_total = this.formatMoney(
-          cart.total_price
-        );
-
-        // Update local state
         this.items = cart.items;
         this.sub_total = this.formatMoney(cart.total_price);
       } catch (error) {
