@@ -3,7 +3,7 @@
   <div class="flex flex-col justify-between w-full flex-grow">
     <div class="flex w-full justify-between">
       <h3 class="font-serif max-w-[150px] text-sm leading-none" x-text="item.title"></h3>
-      <p x-text="formatMoney(item.final_price)"></p>
+      <p x-text="$store.cart.formatMoney(item.final_price)"></p>
     </div>
     <div class='flex w-full justify-between'>
       <div class="flex items-center gap-2">
