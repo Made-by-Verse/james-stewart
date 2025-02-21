@@ -3,9 +3,9 @@ import axios from "axios";
 export default function MegaMenu() {
   Alpine.data("product", () => ({
     shopifyCurrentVariantID: "",
-    stockInfoContainer: document.querySelector("[data-variant-stock]"),
     productId: "",
     productVariants: [],
+    stockInfo: "",
 
     getProductVariants() {
       axios
@@ -55,16 +55,15 @@ export default function MegaMenu() {
           console.error("Invalid ETA date");
         } else if (currentDate < etaDate) {
           const formattedDate = this.formatDate(etaDate);
-          content = `<strong>ETA: ${formattedDate}</strong>`;
+          content = `ETA: ${formattedDate}`;
         } // Implicitly handles if currentDate is not before etaDate by not setting etaText
       }
 
       if (!content && stockText) {
-        content = `<strong>${stockText}</strong>`;
+        content = stockText;
       }
-      console.log(content);
 
-      this.stockInfoContainer.innerHTML = content;
+      this.stockInfo = content;
     },
 
     updateStockInformation() {
