@@ -38,7 +38,7 @@
         id="ProductInfo-{{ section.id }}"
         x-data="product"
         @product:variant-change.window="updateStockInformation"
-        x-init="shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}'; productId = '{{ product.id }}';"
+        x-init="shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}'; productId = '{{ product.id }}'; getProductVariants()"
         class='flex w-full lg:h-full flex-col items-center mb-4'
       >
         {% render 'responsive-image',
@@ -148,68 +148,6 @@
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    const shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}';
-    const stockInfoContainer = document.querySelector('[data-variant-stock]');
-    const productId = '{{ product.id }}';
-    let productVariants = [];
-    const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
-
- 
-
-    
-
-      function renderStockInformation(data) {
-        if (!data) {
-          console.error('No data provided');
-          return;
-        }
-
-        let content = '';
-        const stockText = data.inStock === true ? 'IN STOCK' : '';
-
-        // Disable the buy button if out of stock
-        if (buyButton) {
-          buyButton.disabled = !data.inStock; // Disable if not in stock
-        }
-
-        if (data.eta && data.eta.length > 0 && data.inStock === false) {
-          const etaDate = new Date(data.eta[data.eta.length - 1]); // get the latest order
-          const currentDate = new Date();
-
-          if (isNaN(etaDate.getTime())) {
-            console.error('Invalid ETA date');
-          } else if (currentDate < etaDate) {
-            console.log(currentDate, etaDate);
-            const formattedDate = formatDate(etaDate);
-            console.log(formattedDate);
-            content = `<strong>ETA: ${formattedDate}</strong>`;
-            console.log(content);
-          } // Implicitly handles if currentDate is not before etaDate by not setting etaText
-        }
-
-        if (!content && stockText) {
-          content = `<strong>${stockText}</strong>`;
-        }
-
-        stockInfoContainer.innerHTML = content;
-      }
-
-      document.addEventListener('product:variant-change', (evt) => {
-        
-      });
-    }
-
-    function findVariantByID(variantID) {
-      return productVariants.find((variant) => variant.id.includes(variantID));
-    }
-  });
-</script> 
 
 
 {% schema %}

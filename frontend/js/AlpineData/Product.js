@@ -8,11 +8,9 @@ export default function MegaMenu() {
     productVariants: [],
     buyButton: document.querySelector(".buy-button"),
 
-    init() {
-      this.getProductVariants();
-    },
-
     getProductVariants() {
+      console.log(this.productId);
+
       axios
         .get(
           `https://jsf-po-eta--development.gadget.app/product?id=${this.productId}`,
