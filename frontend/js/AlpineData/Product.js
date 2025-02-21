@@ -9,8 +9,6 @@ export default function MegaMenu() {
     buyButton: document.querySelector(".buy-button"),
 
     getProductVariants() {
-      console.log(this.productId);
-
       axios
         .get(
           `https://jsf-po-eta--development.gadget.app/product?id=${this.productId}`,
@@ -19,8 +17,6 @@ export default function MegaMenu() {
           }
         )
         .then(({ data }) => {
-          console.log(data.data);
-
           this.productVariants = data.data;
           const selectedVariantValues = this.findVariantByID(
             this.shopifyCurrentVariantID
@@ -84,7 +80,9 @@ export default function MegaMenu() {
     },
 
     findVariantByID(variantID) {
-      return productVariants.find((variant) => variant.id.includes(variantID));
+      return this.productVariants.find((variant) =>
+        variant.id.includes(variantID)
+      );
     },
   }));
 }
