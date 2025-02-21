@@ -49,11 +49,10 @@
             assign selected_style = 'background-color: ' | append: selected_color
           endif
         -%}
-        <div x-data="{ 
-          open: false,
-          selectedValue: '{{ option.selected_value }}', 
-          selectedStyle: '{{ selected_style | escape_once }}',
-        }">
+        <div x-data="variantSelector" x-init="
+          selectedValue = '{{ option.selected_value }}';
+          selectedStyle = '{{ selected_style | escape_once }}';
+        ">
           <div class="w-full relative">
             <button 
               type="button"
@@ -99,16 +98,7 @@
                 <button
                   type="button"
                   class="w-full p-2 text-left flex items-center hover:bg-contrast/10"
-                  @click="
-                    selectedValue = '{{ value | escape }}'; 
-                    selectedStyle = {% if bg_value %}'background-image: url({{ bg_value }})'{% else %}'background-color: {{ color_value }}'{% endif %};
-                    open = false;
-                    $dispatch('variant-change', { 
-                      index: {{ forloop.index0 }}, 
-                      value: '{{ value | escape }}',
-                      id: {{value.variant.id}}
-                    })
-                  "
+                  @click="handleVariantChange('{{ section.id }}', '{{ value | escape }}')"
                   :aria-selected="selectedValue === '{{ value | escape }}'"
                 >
                   <span 

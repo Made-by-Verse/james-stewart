@@ -13,18 +13,16 @@
   {% render 'price', product: product %}
 {% endcomment %}
 {%- liquid
-  if use_variant
-    assign target = product.selected_or_first_available_variant
-  elsif placeholder
-    assign target = null
+  if product.selected_variant
+    assign target = product.selected_variant
   else
     assign target = product
   endif
 
   assign compare_at_price = target.compare_at_price
   assign price = target.price
-  assign price_min = product.price_min | default: price
-  assign price_max = product.price_max | default: price
+  assign price_min = target.price_min | default: price
+  assign price_max = target.price_max | default: price
   assign available = target.available | default: false
   assign money_price = price | money
   assign money_price_min = price_min | money
@@ -37,11 +35,11 @@
       <span class="text-gray-500 line-through">{{ compare_at_price }}</span>
     {%- endif -%}
     <span class="wsgProdPrice uppercase">
-      {%- if product.price_varies -%}
+      {%- unless product.selected_variant -%}
         <span class="text-xs">from</span> {{ money_price_min }}
       {%- else -%}
         {{ money_price }}
-      {%- endif -%}
+      {%- endunless -%}
     </span>
   </div>
 {% endunless %}

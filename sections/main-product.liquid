@@ -37,15 +37,6 @@
       <section
         id="ProductInfo-{{ section.id }}"
         class='flex w-full lg:h-full flex-col items-center'
-        x-data="variantSelector"
-        x-init="() => {
-          selectedVariant = {{ product.variants[0].id }};
-        }"
-        @variant-change.window="
-          const { id, index } = $event.detail;
-          selectedVariant = id;
-          variant_index = index;
-        "
       >
         {% render 'responsive-image',
           image: product.featured_image,
