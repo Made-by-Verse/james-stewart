@@ -3,7 +3,7 @@ export default function VariantSelector() {
     open: false,
 
     async handleVariantChange(sectionId, value) {
-      dispatchEvent(new CustomEvent("product:variant-change"));
+      document.dispatchEvent(new CustomEvent("product:variant-change"));
 
       this.open = false;
 
