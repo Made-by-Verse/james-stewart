@@ -20,7 +20,7 @@ export default function VariantSelector() {
         history.replaceState({}, "", url);
 
         // Fetch and update the product template
-        fetch(url)
+        await fetch(url)
           .then((response) => {
             return response.text();
           })

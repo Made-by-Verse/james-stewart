@@ -61,11 +61,15 @@
               :aria-expanded="open"
             >
               <div class="flex items-center gap-2">
-                <span 
-                class="w-[28px] h-[13px] block" 
-                :style="selectedStyle || '{% if selected_style %}{{ selected_style | escape_once }}{% endif %}'"
-                ></span>
-                <span x-text="selectedValue"></span>
+                {% if product.selected_variant %}
+                  <span 
+                    class="w-[28px] h-[13px] block" 
+                    style="{% if selected_style %}{{ selected_style | escape_once }}{% endif %}"
+                  ></span>
+                  <span>{{ option.selected_value }}</span>
+                {% else %}
+                  <span>Select a colour</span>
+                {% endif %}
               </div>
               <span
                 class="w-3 block" 
