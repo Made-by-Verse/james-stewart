@@ -62,16 +62,19 @@ export default function MegaMenu() {
       if (!content && stockText) {
         content = `<strong>${stockText}</strong>`;
       }
+      console.log(content);
 
       this.stockInfoContainer.innerHTML = content;
     },
 
     updateStockInformation() {
+      console.log("updateStockInformation");
       const url = new URL(window.location.href);
       const variantId = url.searchParams.get("variant");
       const selectedVariantValues = this.findVariantByID(
         `gid://shopify/ProductVariant/${variantId}`
       );
+      console.log(selectedVariantValues);
       this.renderStockInformation(selectedVariantValues);
     },
 

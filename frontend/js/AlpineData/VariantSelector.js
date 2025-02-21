@@ -36,7 +36,6 @@ export default function VariantSelector() {
             currentProductInfo.innerHTML = newProductInfo.innerHTML;
 
             window.dispatchEvent(new CustomEvent("product:variant-change"));
-            console.log("variant change");
           });
       }
     },
