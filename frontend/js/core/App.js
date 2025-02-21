@@ -6,7 +6,13 @@ import { HeaderManager } from "../components/HeaderManager";
 import { CarouselManager } from "../components/CarouselManager";
 import { RecommendationsManager } from "../components/RecommendationsManager";
 import { SCROLL_PREVENT } from "./constants";
-import { Cart, Process, MegaMenu, VariantSelector } from "../AlpineData";
+import {
+  Cart,
+  Process,
+  MegaMenu,
+  VariantSelector,
+  Product,
+} from "../AlpineData";
 
 export default class App {
   constructor() {
@@ -24,6 +30,7 @@ export default class App {
     Cart();
     MegaMenu();
     VariantSelector();
+    Product();
     Alpine.start();
   }
 

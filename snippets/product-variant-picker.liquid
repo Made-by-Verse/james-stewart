@@ -49,10 +49,7 @@
             assign selected_style = 'background-color: ' | append: selected_color
           endif
         -%}
-        <div x-data="variantSelector" x-init="
-          selectedValue = '{{ option.selected_value }}';
-          selectedStyle = '{{ selected_style | escape_once }}';
-        ">
+        <div x-data="variantSelector">
           <div class="w-full relative">
             <button 
               type="button"
@@ -103,7 +100,6 @@
                   type="button"
                   class="w-full p-2 text-left flex items-center hover:bg-contrast/10"
                   @click="handleVariantChange('{{ section.id }}', '{{ value | escape }}')"
-                  :aria-selected="selectedValue === '{{ value | escape }}'"
                 >
                   <span 
                     class="w-[28px] h-[13px] mr-2" 

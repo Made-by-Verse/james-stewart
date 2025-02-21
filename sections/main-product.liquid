@@ -36,6 +36,9 @@
     <div class='lg:col-span-2 h-product_details lg:sticky top-20 flex items-center justify-center w-full order-first lg:order-last'>
       <section
         id="ProductInfo-{{ section.id }}"
+        x-data="product"
+        @product:variant-change.window="updateStockInformation"
+        x-init="shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}'; productId = '{{ product.id }}';"
         class='flex w-full lg:h-full flex-col items-center mb-4'
       >
         {% render 'responsive-image',
@@ -157,26 +160,9 @@
     let productVariants = [];
     const buyButton = document.querySelector('.buy-button'); // Assuming the buy button has a class of 'buy-button'
 
-    
-    if (stockInfoContainer) {
-      axios
-          .get(`https://jsf-po-eta--development.gadget.app/product?id=${productId}`,{
-            mode: 'cors'
-          })
-          .then(({ data }) => {
-            productVariants = data.data;
-            const selectedVariantValues = findVariantByID(shopifyCurrentVariantID);
-            renderStockInformation(selectedVariantValues);
-          })
-          .catch((error) => console.error('Error:', error));
+ 
 
-      function formatDate(date) {
-        return new Date(date).toLocaleDateString('en-US', {
-          month: 'long',
-          day: '2-digit',
-          year: 'numeric',
-        });
-      }
+    
 
       function renderStockInformation(data) {
         if (!data) {
@@ -215,10 +201,7 @@
       }
 
       document.addEventListener('product:variant-change', (evt) => {
-        const url = new URL(window.location.href);
-        const variantId = url.searchParams.get('variant');
-        const selectedVariantValues = findVariantByID(`gid://shopify/ProductVariant/${variantId}`);
-        renderStockInformation(selectedVariantValues);
+        
       });
     }
 
