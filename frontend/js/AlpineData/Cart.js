@@ -5,6 +5,7 @@ export default function Cart() {
 
     init() {
       this.getCart();
+      console.log(this.items);
     },
 
     async getCart(openCart = false) {
