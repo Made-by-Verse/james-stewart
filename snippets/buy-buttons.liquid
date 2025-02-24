@@ -31,9 +31,9 @@
           :class="{ 'opacity-0': loading }"
         >
           {% unless product.selected_variant %}
-            {{ 'products.product.select_option' | t }}
+            Select Option
           {% else %}
-            {{ 'products.product.add_to_cart' | t }}
+            Add to Cart
           {% endunless %}
         </span>
         <div 
