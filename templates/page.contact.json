@@ -23,6 +23,7 @@
         },
         "block_press_inquiries": {
           "type": "contact-info",
+          "disabled": true,
           "settings": {
             "title": "Agency — Rosa Brown Agency WA",
             "phone": "(08) 9388 1581",
@@ -32,6 +33,7 @@
         },
         "block_customer_service": {
           "type": "contact-info",
+          "disabled": true,
           "settings": {
             "title": "DL Agencies",
             "phone": "0455 688 881",
