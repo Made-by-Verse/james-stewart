@@ -1,4 +1,4 @@
-{% liquid 
+{% liquid
   assign menu_trade = linklists[settings.menu_trade].links
   assign menu_public = linklists[settings.menu_public].links
   assign menu_logged_out = linklists[settings.menu_logged_out].links
@@ -10,27 +10,27 @@
   endif
 %}
 
-
-<header 
-  id="js-header" 
+<header
+  id="js-header"
   x-data="{ anyMegaMenuOpen: false }"
   :class="anyMegaMenuOpen && 'mega-menu-open'"
   class="fixed w-full max-w-[100vw] z-50 h-16 font-sans {% unless template == 'index' %}not-home{% endunless %} header--not-scrolled  {% if template == 'product' %}header--product-page{% endif %} "
 >
   <div class="wrapper h-full">
-    <div class='grid grid-cols-3 gap-4 h-full border-b wrapper-inner'>
+    <div class="grid grid-cols-3 gap-4 h-full border-b wrapper-inner">
       <nav class="hidden lg:block h-full">
         <ul class="flex gap-6 h-full items-center">
           {%- for link in menu -%}
-            <li class="h-full flex items-center"
+            <li
+              class="h-full flex items-center"
               x-data="{ megaMenuOpen: false }"
               @mouseenter="megaMenuOpen = {% if link.links.size > 0 %}true; anyMegaMenuOpen = true{% else %}false{% endif %}"
               @mouseleave="megaMenuOpen = false; anyMegaMenuOpen = false"
             >
-              <a href="{{ link.url }}" class="link">
+              <a href="{{ link.url }}" class="link text-sm">
                 {{ link.title }}
               </a>
-              
+
               {% if link.links.size > 0 %}
                 <div
                   class="absolute left-0 right-0 top-16 bg-primary drop-shadow-lg z-[999]"
@@ -59,45 +59,44 @@
       </button>
       <div class="flex justify-center items-center">
         <a id="logo" href="{{ routes.root_url }}">
-          {% render 'header-logo'%}
+          {% render 'header-logo' %}
         </a>
       </div>
       <div class="h-full flex items-center justify-end gap-4 lg:gap-6">
-        <ul class="flex gap-4 lg:gap-6">
+        <ul class="flex gap-4 lg:gap-6 text-sm">
           {% if customer %}
             <li>
-              <a 
-                  href="/pages/dealer-account" 
+              <a
+                href="/pages/dealer-account"
                 class="link hidden lg:block"
               >
                 Account
               </a>
-          </li>
-          <li>
-            <button 
-              x-data
-              @click="$dispatch('open-cart-drawer')"
-              class="link"
-              type="button"
-            >
-              <span class="">Cart</span>
-            </button>
-          </li>
-        {% else %}
-          {%- for link in menu_logged_out -%}
-            <li>
-              <a href="{{ link.url }}" class="link hidden lg:block">
-                {{ link.title }}
-              </a>
             </li>
-          {%- endfor -%}
-        {% endif %}
+            <li>
+              <button
+                x-data
+                @click="$dispatch('open-cart-drawer')"
+                class="link"
+                type="button"
+              >
+                <span class="">Cart</span>
+              </button>
+            </li>
+          {% else %}
+            {%- for link in menu_logged_out -%}
+              <li>
+                <a href="{{ link.url }}" class="link hidden lg:block">
+                  {{ link.title }}
+                </a>
+              </li>
+            {%- endfor -%}
+          {% endif %}
         </ul>
       </div>
     </div>
   </div>
 </header>
-
 
 {% schema %}
 {
