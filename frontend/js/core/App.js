@@ -11,7 +11,6 @@ import {
   Process,
   MegaMenu,
   VariantSelector,
-  Product,
 } from "../AlpineData";
 
 export default class App {
@@ -30,7 +29,6 @@ export default class App {
     Cart();
     MegaMenu();
     VariantSelector();
-    Product();
     Alpine.start();
   }
 

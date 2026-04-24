@@ -28,62 +28,14 @@
         assign key_array = key_array | remove_first: ',' | strip_newlines | downcase | split: ','
         assign val_array = val_array | remove_first: ',' | split: ','
       -%}
-      <div class="w-full border-t border-contrast">
-        <label class="sr-only" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-          {{ option.name }}
-        </label>
-        {%- liquid
-          assign selected_color = option.selected_value | downcase | escape
-          assign selected_style = ''
-          
-          for custom_color in key_array
-            if custom_color == selected_color
-              assign selected_color = val_array[forloop.index0]
-            endif
-          endfor
-
-          if selected_color contains '.'
-            assign selected_bg = selected_color | file_url
-            assign selected_style = 'background-image: url(' | append: selected_bg | append: ')'
-          else
-            assign selected_style = 'background-color: ' | append: selected_color
-          endif
-        -%}
+      <div class="w-full py-4">
+        <span class="sr-only">{{ option.name }}</span>
         <div x-data="variantSelector">
-          <div class="w-full relative">
-            <button 
-              type="button"
-              class="w-full bg-transparent py-4 text-left flex items-center justify-between text-sm"
-              @click="open = !open"
-              :aria-expanded="open"
-            >
-              <div class="flex items-center gap-2">
-                {% if product.selected_variant %}
-                  <span 
-                    class="w-[28px] h-[13px] block" 
-                    style="{% if selected_style %}{{ selected_style | escape_once }}{% endif %}"
-                  ></span>
-                  <span>{{ option.selected_value }}</span>
-                {% else %}
-                  <span>Select a colour</span>
-                {% endif %}
-              </div>
-              <span
-                class="w-3 block" 
-              >
-                {{ 'icon-down-arrow.svg' | inline_asset_content }}
-              </span>
-            </button>
-            
-            <div 
-              class="absolute left-0 right-0 bottom-0 bg-primary drop-shadow-md border z-10"
-              x-show="open"
-              @click.outside="open = false"
-              x-transition
-            >
-              {%- for value in option.values -%}
+          <div class="flex flex-wrap  justify-center gap-2 w-full">
+            {%- for value in option.values -%}
               {%- liquid
                 assign color_value = value | downcase | escape
+                assign bg_value = ''
 
                 for custom_color in key_array
                   if custom_color == color_value
@@ -95,21 +47,30 @@
                   assign bg_value = color_value | file_url
                   assign color_value = 'var(--bg-body)'
                 endif
+
+                assign is_selected = false
+                if option.selected_value == value
+                  assign is_selected = true
+                endif
               -%}
-                <button
-                  type="button"
-                  class="w-full p-2 text-left flex items-center hover:bg-contrast/10"
-                  @click="handleVariantChange('{{ section.id }}', '{{ value | escape }}')"
-                >
-                  <span 
-                    class="w-[28px] h-[13px] mr-2" 
-                    style="{% if bg_value %}background-image: url({{ bg_value }}){% else %}background-color: {{ color_value }}{% endif %}"
-                  ></span>
-                  <span>{{ value }}</span>
-                </button>
-              {%- endfor -%}
-            </div>
+              <button
+                type="button"
+                class="w-6 h-6 border duration-500 border p-px {% if is_selected %}border-black{% else %}border-transparent hover:border-black/40{% endif %}"
+                aria-label="{{ value | escape }}"
+                aria-pressed="{% if is_selected %}true{% else %}false{% endif %}"
+                @click="handleVariantChange('{{ section.id }}', '{{ value | escape }}')"
+              >
+                <span
+                  class="block w-full h-full"
+                  style="{% if bg_value != '' %}background-image: url({{ bg_value }}); background-size: cover; background-position: center;{% else %}background-color: {{ color_value }};{% endif %}"
+                ></span>
+              </button>
+            {%- endfor -%}
           </div>
+          <p class="text-sm mt-2 text-center text-xs">
+            <span class="uppercase font-sans">{{ option.name }}:</span>
+            <span class="text-center">{{ option.selected_value }}</span>
+          </p>
         </div>
       </div>
     {%- endfor -%}

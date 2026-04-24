@@ -1,0 +1,45 @@
+{%- comment -%}
+  Renders stock status from jsf.* metafields.
+
+  Inputs:
+    product (required) — the product object.
+    variant (optional) — specific variant; defaults to product.selected_or_first_available_variant.
+
+  Single-variant products store metafields on the product; multi-variant on the variant.
+{%- endcomment -%}
+
+{%- liquid
+  assign _variant = variant | default: product.selected_or_first_available_variant
+
+  if product.has_only_default_variant
+    assign status = product.metafields.jsf.stock_status.value
+    assign eta = product.metafields.jsf.stock_eta.value
+    assign lead_time = product.metafields.jsf.lead_time.value
+  else
+    assign status = _variant.metafields.jsf.stock_status.value
+    assign eta = _variant.metafields.jsf.stock_eta.value
+    assign lead_time = _variant.metafields.jsf.lead_time.value
+  endif
+-%}
+
+<div class="text-sm py-4 border-t border-black/10">
+  {%- if status == 'in_stock' -%}
+    <span class="jsf-stock-status jsf-stock-status--in-stock uppercase">In Stock</span>
+  {%- elsif status == 'next_due' -%}
+    {%- if eta != blank and eta != 'ETA TBC' -%}
+      <div class="jsf-stock-status jsf-stock-status--next-due flex items-center gap-2 justify-between">
+        <span class="uppercase ">On Order</span> <span>ETA: {{ eta }}</span>
+      </div>
+    {%- else -%}
+      <span class="jsf-stock-status jsf-stock-status--next-due">Next Due</span>
+    {%- endif -%}
+  {%- elsif status == 'custom_order' -%}
+    {%- if lead_time != blank -%}
+      <div class="jsf-stock-status jsf-stock-status--custom-order flex items-center gap-2 justify-between">
+        <span class="uppercase">Custom Order</span> <span>Approx. lead time: {{ lead_time }}</span>
+      </div>
+    {%- else -%}
+      <span class="jsf-stock-status jsf-stock-status--custom-order uppercase">Custom Order</span>
+    {%- endif -%}
+  {%- endif -%}
+</div>
