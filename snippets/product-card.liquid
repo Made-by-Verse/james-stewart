@@ -1,24 +1,138 @@
-<div class="group relative {{ class_names }}">
-  <a href="{{ product.url | within: collection }}" class="block">
+{%- liquid
+  assign color_option = null
+  for opt in product.options_with_values
+    assign opt_name = opt.name | downcase
+    if opt_name == 'color' or opt_name == 'colour'
+      assign color_option = opt
+    endif
+  endfor
+
+  assign custom_colors = settings.color_swatches | newline_to_br | split: '<br />'
+  assign key_array = ''
+  assign val_array = ''
+  for color in custom_colors
+    assign key = color | split: ':' | first | rstrip
+    assign value = color | split: ':' | last | lstrip
+    assign key_array = key_array | append: ',' | append: key
+    assign val_array = val_array | append: ',' | append: value
+  endfor
+  assign key_array = key_array | remove_first: ',' | strip_newlines | downcase | split: ','
+  assign val_array = val_array | remove_first: ',' | split: ','
+-%}
+
+<div
+  x-data="{ activeVariantId: {{ product.selected_or_first_available_variant.id }} }"
+  class="group relative {{ class_names }}"
+>
+  <a
+    href="{{ product.url | within: collection }}"
+    :href="activeVariantId ? '{{ product.url | within: collection }}?variant=' + activeVariantId : '{{ product.url | within: collection }}'"
+    class="block"
+  >
     {% if product.featured_image %}
       <div class="relative aspect-landscape overflow-hidden">
-        {% render 'responsive-image', image: product.featured_image, width: 1200, height: 800, image_class: 'absolute inset-0 w-full h-full object-cover' %}
-        {% if product.images[1] %}
-          {% render 'responsive-image', image: product.images[1], width: 1200, height: 800, image_class: 'absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 group-hover:opacity-100' %}
-        {% endif %}
+        {% render 'responsive-image',
+          image: product.featured_image,
+          width: 1200,
+          height: 800,
+          image_class: 'absolute inset-0 w-full h-full object-cover'
+        %}
+        {% comment %}
+            This is the secondary image for the product. It is used to display a different image when the user hovers over the product.
+
+          {% if product.images[1] %}
+            {% render 'responsive-image',
+              image: product.images[1],
+              width: 1200,
+              height: 800,
+              image_class: 'absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 group-hover:opacity-100'
+            %}
+          {% endif %}
+        {% endcomment %}
+        {%- if color_option -%}
+          {%- for variant in product.variants -%}
+            {%- if variant.featured_image -%}
+              <img
+                src="{{ variant.featured_image | image_url: width: 1200 }}"
+                alt="{{ variant.featured_image.alt | escape }}"
+                loading="lazy"
+                width="1200"
+                height="800"
+                class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                :class="activeVariantId === {{ variant.id }} ? 'opacity-100' : 'opacity-0'"
+              >
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
       </div>
     {% else %}
       {{ 'product-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full object-cover bg-gray-100' }}
     {% endif %}
-    <div class="tile-text-container px-5 gap-4 flex justify-between items-center h4 uppercase">
-      <h3 class="flex-1">{{ product.title }}</h3>
-      <span class="wsgColPrice leading-none">
-        {% if product.price_varies %}
-          From {{ product.price_min | money_without_trailing_zeros }}
-        {% else %}
-          {{ product.price | money_without_trailing_zeros }}
-        {% endif %}
-      </span>
+    <div class="py-5 px-8 space-y-2">
+      <div class="flex justify-between items-center">
+        <h3 class="flex-1">{{ product.title }}</h3>
+        <span class="wsgColPrice leading-none">
+          {% if product.price_varies %}
+            From {{ product.price_min | money_without_trailing_zeros }}
+          {% else %}
+            {{ product.price | money_without_trailing_zeros }}
+          {% endif %}
+        </span>
+      </div>
+      <div>
+        <div class="flex justify-between items-center h-8">
+          {%- if color_option -%}
+            {%- assign filter_key = 'option' | append: color_option.position -%}
+            <div class="flex flex-wrap gap-2">
+              {%- for value in color_option.values -%}
+                {%- liquid
+                  assign color_value = value | downcase | escape
+                  assign bg_value = ''
+                  for custom_color in key_array
+                    if custom_color == color_value
+                      assign color_value = val_array[forloop.index0]
+                    endif
+                  endfor
+                  if color_value contains '.'
+                    assign bg_value = color_value | file_url
+                    assign color_value = 'var(--bg-body)'
+                  endif
+                  assign matched_variant = product.variants | where: filter_key, value | first
+                -%}
+                <button
+                  type="button"
+                  class="w-5 h-5 block cursor-pointer border p-px duration-500"
+                  :class="activeVariantId === {{ matched_variant.id | default: 'null' }} ? 'border-black' : 'border-transparent'"
+                  title="{{ value | escape }}"
+
+                  {% if matched_variant %}
+                    @mouseenter="activeVariantId = {{ matched_variant.id }}"
+                  {% endif %}
+                >
+                  <span
+                    class="block w-full h-full"
+                    style="{% if bg_value != '' %}background-image: url({{ bg_value }}); background-size: cover; background-position: center;{% else %}background-color: {{ color_value }};{% endif %}"
+                  ></span>
+                </button>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {%- if customer -%}
+            <div>
+              <div x-show="activeVariantId === null">
+                {% render 'jsf-stock-status', product: product, on_card: true %}
+              </div>
+              {%- if color_option -%}
+                {%- for variant in product.variants -%}
+                  <div x-show="activeVariantId === {{ variant.id }}" style="display:none">
+                    {% render 'jsf-stock-status', product: product, variant: variant, on_card: true %}
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
     </div>
   </a>
 </div>
