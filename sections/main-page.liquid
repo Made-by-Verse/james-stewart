@@ -1,0 +1,37 @@
+<div class="color-{{ section.settings.color_scheme }} bg-primary text-contrast pt-24 md:pt-32 lg:pt-48 pb-12">
+  <div class="wrapper">
+    <div class="grid sm:grid-cols-2 md:grid-cols-2 gap-4 mb-8 md:mb-12 lg:mb-24">
+      <h1 class="h3">
+        {{ page.title | escape }}
+      </h1>
+      <div>
+        {%- if page.content != blank -%}
+          <div class="rte prose space-y-4">
+            {{ page.content }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page"
+    }
+  ]
+}
+{% endschema %}
