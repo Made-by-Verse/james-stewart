@@ -6,18 +6,6 @@
       assign color_option = opt
     endif
   endfor
-
-  assign custom_colors = settings.color_swatches | newline_to_br | split: '<br />'
-  assign key_array = ''
-  assign val_array = ''
-  for color in custom_colors
-    assign key = color | split: ':' | first | rstrip
-    assign value = color | split: ':' | last | lstrip
-    assign key_array = key_array | append: ',' | append: key
-    assign val_array = val_array | append: ',' | append: value
-  endfor
-  assign key_array = key_array | remove_first: ',' | strip_newlines | downcase | split: ','
-  assign val_array = val_array | remove_first: ',' | split: ','
 -%}
 
 <div
@@ -86,16 +74,12 @@
             <div class="flex flex-wrap gap-1">
               {%- for value in color_option.values -%}
                 {%- liquid
-                  assign color_value = value | downcase | escape
-                  assign bg_value = ''
-                  for custom_color in key_array
-                    if custom_color == color_value
-                      assign color_value = val_array[forloop.index0]
-                    endif
-                  endfor
-                  if color_value contains '.'
-                    assign bg_value = color_value | file_url
-                    assign color_value = 'var(--bg-body)'
+                  assign bg_image = null
+                  assign bg_color = null
+                  if value.swatch.image
+                    assign bg_image = value.swatch.image | image_url: width: 100
+                  elsif value.swatch.color
+                    assign bg_color = 'rgb(' | append: value.swatch.color.rgb | append: ')'
                   endif
                   assign matched_variant = product.variants | where: filter_key, value | first
                 -%}
@@ -110,8 +94,8 @@
                   {% endif %}
                 >
                   <span
-                    class="block w-full h-full"
-                    style="{% if bg_value != '' %}background-image: url({{ bg_value }}); background-size: cover; background-position: center;{% else %}background-color: {{ color_value }};{% endif %}"
+                    class="block w-full h-full bg-black/10"
+                    style="{% if bg_image %}background-image: url({{ bg_image }}); background-size: cover; background-position: center;{% elsif bg_color %}background-color: {{ bg_color }};{% endif %}"
                   ></span>
                 </button>
               {%- endfor -%}
