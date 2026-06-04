@@ -69,38 +69,40 @@
       </div>
       <div>
         <div class="flex justify-between items-center h-8">
-          {%- if color_option -%}
-            {%- assign filter_key = 'option' | append: color_option.position -%}
-            <div class="flex flex-wrap gap-1">
-              {%- for value in color_option.values -%}
-                {%- liquid
-                  assign bg_image = null
-                  assign bg_color = null
-                  if value.swatch.image
-                    assign bg_image = value.swatch.image | image_url: width: 100
-                  elsif value.swatch.color
-                    assign bg_color = 'rgb(' | append: value.swatch.color.rgb | append: ')'
-                  endif
-                  assign matched_variant = product.variants | where: filter_key, value | first
-                -%}
-                <button
-                  type="button"
-                  class="w-5 h-5 block cursor-pointer border p-px duration-500"
-                  :class="activeVariantId === {{ matched_variant.id | default: 'null' }} ? 'border-black' : 'border-transparent'"
-                  title="{{ value | escape }}"
+          <div>
+            {%- if color_option -%}
+              {%- assign filter_key = 'option' | append: color_option.position -%}
+              <div class="flex flex-wrap gap-1">
+                {%- for value in color_option.values -%}
+                  {%- liquid
+                    assign bg_image = null
+                    assign bg_color = null
+                    if value.swatch.image
+                      assign bg_image = value.swatch.image | image_url: width: 100
+                    elsif value.swatch.color
+                      assign bg_color = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+                    endif
+                    assign matched_variant = product.variants | where: filter_key, value | first
+                  -%}
+                  <button
+                    type="button"
+                    class="w-5 h-5 block cursor-pointer border p-px duration-500"
+                    :class="activeVariantId === {{ matched_variant.id | default: 'null' }} ? 'border-black' : 'border-transparent'"
+                    title="{{ value | escape }}"
 
-                  {% if matched_variant %}
-                    @mouseenter="activeVariantId = {{ matched_variant.id }}"
-                  {% endif %}
-                >
-                  <span
-                    class="block w-full h-full bg-black/10"
-                    style="{% if bg_image %}background-image: url({{ bg_image }}); background-size: cover; background-position: center;{% elsif bg_color %}background-color: {{ bg_color }};{% endif %}"
-                  ></span>
-                </button>
-              {%- endfor -%}
-            </div>
-          {%- endif -%}
+                    {% if matched_variant %}
+                      @mouseenter="activeVariantId = {{ matched_variant.id }}"
+                    {% endif %}
+                  >
+                    <span
+                      class="block w-full h-full bg-black/10"
+                      style="{% if bg_image %}background-image: url({{ bg_image }}); background-size: cover; background-position: center;{% elsif bg_color %}background-color: {{ bg_color }};{% endif %}"
+                    ></span>
+                  </button>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
           {%- if customer -%}
             <div>
               {%- if color_option -%}
