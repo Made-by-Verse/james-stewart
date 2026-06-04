@@ -1,26 +1,18 @@
 {%- comment -%}
-  Renders stock status from jsf.* metafields.
+  Renders stock status from jsf.* metafields (always on the variant).
 
   Inputs:
     product (required) — the product object.
     variant (optional) — specific variant; defaults to product.selected_or_first_available_variant.
     on_card (optional) — when true, removes the top border and stacks rows vertically aligned right.
-
-  Single-variant products store metafields on the product; multi-variant on the variant.
 {%- endcomment -%}
 
 {%- liquid
   assign _variant = variant | default: product.selected_or_first_available_variant
 
-  if product.has_only_default_variant
-    assign status = product.metafields.jsf.stock_status.value
-    assign eta = product.metafields.jsf.stock_eta.value
-    assign lead_time = product.metafields.jsf.lead_time.value
-  else
-    assign status = _variant.metafields.jsf.stock_status.value
-    assign eta = _variant.metafields.jsf.stock_eta.value
-    assign lead_time = _variant.metafields.jsf.lead_time.value
-  endif
+  assign status = _variant.metafields.jsf.stock_status.value
+  assign eta = _variant.metafields.jsf.stock_eta.value
+  assign lead_time = _variant.metafields.jsf.lead_time.value
 
   if on_card
     assign wrapper_class = 'text-xs text-right'
