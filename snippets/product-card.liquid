@@ -103,15 +103,14 @@
           {%- endif -%}
           {%- if customer -%}
             <div>
-              <div x-show="activeVariantId === null">
-                {% render 'jsf-stock-status', product: product, on_card: true %}
-              </div>
               {%- if color_option -%}
                 {%- for variant in product.variants -%}
                   <div x-show="activeVariantId === {{ variant.id }}" style="display:none">
                     {% render 'jsf-stock-status', product: product, variant: variant, on_card: true %}
                   </div>
                 {%- endfor -%}
+              {%- else -%}
+                {% render 'jsf-stock-status', product: product, on_card: true %}
               {%- endif -%}
             </div>
           {%- endif -%}
