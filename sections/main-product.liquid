@@ -1,10 +1,39 @@
 <div
   class='wrapper pt-20 pb-[160px] grid lg:grid-cols-6 gap-4'
 >
-  <div class='lg:col-span-4 space-y-4'>
-    {% for media in product.media %}
+  <div id='ProductGallery-{{ section.id }}' class='lg:col-span-4 space-y-4'>
+    {%- liquid
+      assign featured_media = product.selected_or_first_available_variant.featured_media
+      if featured_media == blank
+        assign featured_media = product.featured_media
+      endif
+
+      assign variant_media_ids = ','
+      for v in product.variants
+        if v.featured_media
+          assign variant_media_ids = variant_media_ids | append: v.featured_media.id | append: ','
+        endif
+      endfor
+
+      if featured_media != blank
+        assign ordered_media = product.media | where: 'id', featured_media.id
+      else
+        assign ordered_media = product.media | where: 'id', 0
+      endif
+
+      for m in product.media
+        unless m.id == featured_media.id
+          assign id_token = ',' | append: m.id | append: ','
+          unless variant_media_ids contains id_token
+            assign rest = product.media | where: 'id', m.id
+            assign ordered_media = ordered_media | concat: rest
+          endunless
+        endunless
+      endfor
+    -%}
+    {% for media in ordered_media %}
       {% assign modulo = forloop.index | modulo: 3 %}
-      
+
       {% if modulo == 1 %}
         {% render 'responsive-image',
           image: media,
@@ -13,17 +42,17 @@
           image_class: 'w-full h-full object-cover'
         %}
       {% elsif modulo == 2 %}
-        <div class="grid lg:grid-cols-3 gap-4">
+        <div class="flex flex-col gap-4">
           {% render 'responsive-image',
             image: media,
-            width: 500,
+            width: 1000,
             wrapper_class: 'w-full',
             image_class: 'w-full object-contain'
           %}
           {% if forloop.last != true %}
             {% render 'responsive-image',
-              image: product.media[forloop.index],
-              width: 500,
+              image: ordered_media[forloop.index],
+              width: 1000,
               wrapper_class: 'w-full lg:col-span-2',
               image_class: 'w-full h-full object-contain'
             %}
@@ -35,9 +64,6 @@
 <div class='lg:col-span-2 h-product_details lg:sticky top-20 flex items-center justify-center w-full order-first lg:order-last'>
   <section
     id="ProductInfo-{{ section.id }}"
-    x-data="product"
-    @product:variant-change.window="updateStockInformation"
-    x-init="shopifyCurrentVariantID = '{{ product.selected_or_first_available_variant.id }}'; productId = '{{ product.id }}'; getProductVariants()"
     class='flex w-full lg:h-full flex-col items-center mb-4'
   >
     {% render 'responsive-image',
@@ -67,10 +93,19 @@
           price_class: 'price--large'
         -%}
       </div>
+      {% if product.has_only_default_variant == false %}
+        {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
+      {% endif %}
     </div>
-    <div class="w-full h-[336px] flex flex-col justify-end">
-      <div class="flex-1 grid grid-cols-3 gap-4">
-        <ul class='font-sans space-y-[7px] leading-none text-sm mt-0.5' x-data="{ activeDrawer: null }">
+    <div class="w-full  flex flex-col justify-end">
+      <div class="flex-1  gap-4">
+        
+        <div class='col-span-2 space-y-2 text-[13px]'>
+          {% if product.description != blank %}
+            {{ product.description }}
+          {% endif %}
+        </div>
+        <ul class='font-sans space-y-[7px] pt-4 pb-8 leading-none text-sm mt-0.5' x-data="{ activeDrawer: null }">
           <li>
             <button
               class="text-left uppercase"
@@ -80,45 +115,19 @@
               Specifications
             </button>
           </li>
-          {% if section.blocks.size > 0 %}
-            <li>
-              <button
-                class="text-left uppercase"
-                @click="$dispatch('toggle-drawer', { type: 'product-care' })"
-                :aria-expanded="activeDrawer === 'product-care'"
-              >
-                Product Care
-              </button>
-            </li>
-          {% endif %}
-          {% if customer %}
-            <li>
-              <button
-                class="text-left uppercase"
-                @click="$dispatch('toggle-drawer', { type: 'shipping' })"
-                :aria-expanded="activeDrawer === 'shipping'"
-              >
-                Shipping
-              </button>
-            </li>
-          {% endif %}
+         
+         
         </ul>
-        <div class='col-span-2 space-y-2 text-[13px]'>
-          {% if product.description != blank %}
-            {{ product.description }}
-          {% endif %}
-        </div>
       </div>
       {% if customer %}
         <div>
-          <span x-text="stockInfo"></span>
+          {% render 'jsf-stock-status', product: product %}
         </div>
+        
       {% endif %}
-      <div>
+      <div class="pb-2">
         <div class="w-full">
-          {% if product.has_only_default_variant == false %}
-            {% render 'product-variant-picker', product: product, product_form_id: product_form_id %}
-          {% endif %}
+          
           {% if customer %}
             {%- render 'buy-buttons', product: product -%}
           {% else %}

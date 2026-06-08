@@ -1,9 +1,6 @@
 export default function VariantSelector() {
   Alpine.data("variantSelector", () => ({
-    open: false,
-
     async handleVariantChange(sectionId, value) {
-      this.open = false;
 
       // Find the variant that matches all selected options
       const variants = JSON.parse(
@@ -27,6 +24,7 @@ export default function VariantSelector() {
           .then((html) => {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, "text/html");
+
             const newProductInfo = doc.getElementById(
               `ProductInfo-${sectionId}`
             );
@@ -34,6 +32,16 @@ export default function VariantSelector() {
               `ProductInfo-${sectionId}`
             );
             currentProductInfo.innerHTML = newProductInfo.innerHTML;
+
+            const newGallery = doc.getElementById(
+              `ProductGallery-${sectionId}`
+            );
+            const currentGallery = document.getElementById(
+              `ProductGallery-${sectionId}`
+            );
+            if (newGallery && currentGallery) {
+              currentGallery.innerHTML = newGallery.innerHTML;
+            }
 
             window.dispatchEvent(new CustomEvent("product:variant-change"));
           });

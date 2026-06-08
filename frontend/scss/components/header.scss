@@ -9,7 +9,7 @@
   }
 
   .wrapper-inner {
-    @apply border-b border-lines;
+    @apply border-b border-black/10;
   }
 
   .hamburger {
@@ -56,6 +56,10 @@
 
   &.mega-menu-open {
     @apply bg-primary text-contrast duration-500;
+
+    .wrapper-inner {
+      @apply border-b !border-black/10;
+    }
   }
 }
 

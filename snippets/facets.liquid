@@ -81,33 +81,12 @@
                         assign is_disabled = true
                       endif
 
-                      # Add color handling similar to variant picker
-                      assign color_value = value.label | downcase | escape
-                      assign custom_colors = settings.color_swatches | newline_to_br | split: '<br />'
-                      assign key_array = ''
-                      assign val_array = ''
-
-                      for color in custom_colors
-                        assign key = color | split: ':' | first | rstrip
-                        assign value_color = color | split: ':' | last | lstrip
-                        assign key_array = key_array | append: ',' | append: key
-                        assign val_array = val_array | append: ',' | append: value_color
-                      endfor
-
-                      assign key_array = key_array | remove_first: ',' | strip_newlines | downcase | split: ','
-                      assign val_array = val_array | remove_first: ',' | split: ','
-
-                      for custom_color in key_array
-                        if custom_color == color_value
-                          assign color_value = val_array[forloop.index0]
-                        endif
-                      endfor
-
-                      if color_value contains '.'
-                        assign bg_value = color_value | file_url
-                        assign style = 'background-image: url(' | append: bg_value | append: ')'
-                      else
-                        assign style = 'background-color: ' | append: color_value
+                      assign style = ''
+                      if value.swatch.image
+                        assign bg_image = value.swatch.image | image_url: width: 100
+                        assign style = 'background-image: url(' | append: bg_image | append: '); background-size: cover; background-position: center;'
+                      elsif value.swatch.color
+                        assign style = 'background-color: rgb(' | append: value.swatch.color.rgb | append: ');'
                       endif
                     %}
 
@@ -128,7 +107,7 @@
                               x-model="checked"
                               {% if is_disabled %}disabled{% endif %}
                             >
-                            <span class="w-full aspect-square block" style="{{ style }}"></span>
+                            <span class="w-full aspect-square block bg-black/10" style="{{ style }}"></span>
                           </div>
                           <span class="block">{{ value.label | escape }}</span>
                         </label>

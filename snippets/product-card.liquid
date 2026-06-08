@@ -1,24 +1,123 @@
-<div class="group relative {{ class_names }}">
-  <a href="{{ product.url | within: collection }}" class="block">
+{%- liquid
+  assign color_option = null
+  for opt in product.options_with_values
+    assign opt_name = opt.name | downcase
+    if opt_name == 'color' or opt_name == 'colour'
+      assign color_option = opt
+    endif
+  endfor
+-%}
+
+<div
+  x-data="{ activeVariantId: {{ product.selected_or_first_available_variant.id }} }"
+  class="group relative {{ class_names }}"
+>
+  <a
+    href="{{ product.url | within: collection }}"
+    :href="activeVariantId ? '{{ product.url | within: collection }}?variant=' + activeVariantId : '{{ product.url | within: collection }}'"
+    class="block"
+  >
     {% if product.featured_image %}
       <div class="relative aspect-landscape overflow-hidden">
-        {% render 'responsive-image', image: product.featured_image, width: 1200, height: 800, image_class: 'absolute inset-0 w-full h-full object-cover' %}
-        {% if product.images[1] %}
-          {% render 'responsive-image', image: product.images[1], width: 1200, height: 800, image_class: 'absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 group-hover:opacity-100' %}
-        {% endif %}
+        {% render 'responsive-image',
+          image: product.featured_image,
+          width: 1200,
+          height: 800,
+          image_class: 'absolute inset-0 w-full h-full object-cover'
+        %}
+        {% comment %}
+            This is the secondary image for the product. It is used to display a different image when the user hovers over the product.
+
+          {% if product.images[1] %}
+            {% render 'responsive-image',
+              image: product.images[1],
+              width: 1200,
+              height: 800,
+              image_class: 'absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 group-hover:opacity-100'
+            %}
+          {% endif %}
+        {% endcomment %}
+        {%- if color_option -%}
+          {%- for variant in product.variants -%}
+            {%- if variant.featured_image -%}
+              <img
+                src="{{ variant.featured_image | image_url: width: 1200 }}"
+                alt="{{ variant.featured_image.alt | escape }}"
+                loading="lazy"
+                width="1200"
+                height="800"
+                class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                :class="activeVariantId === {{ variant.id }} ? 'opacity-100' : 'opacity-0'"
+              >
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
       </div>
     {% else %}
       {{ 'product-1' | placeholder_svg_tag: 'absolute inset-0 w-full h-full object-cover bg-gray-100' }}
     {% endif %}
-    <div class="tile-text-container px-5 gap-4 flex justify-between items-center h4 uppercase">
-      <h3 class="flex-1">{{ product.title }}</h3>
-      <span class="wsgColPrice leading-none">
-        {% if product.price_varies %}
-          From {{ product.price_min | money_without_trailing_zeros }}
-        {% else %}
-          {{ product.price | money_without_trailing_zeros }}
-        {% endif %}
-      </span>
+    <div class="py-5 sm:px-8 space-y-2">
+      <div class="flex justify-between items-center text-sm sm:text-base">
+        <h3 class="flex-1">{{ product.title }}</h3>
+        <span class="wsgColPrice leading-none">
+          {% if product.price_varies %}
+            From {{ product.price_min | money_without_trailing_zeros }}
+          {% else %}
+            {{ product.price | money_without_trailing_zeros }}
+          {% endif %}
+        </span>
+      </div>
+      <div>
+        <div class="flex justify-between items-center h-8">
+          <div>
+            {%- if color_option -%}
+              {%- assign filter_key = 'option' | append: color_option.position -%}
+              <div class="flex flex-wrap gap-1">
+                {%- for value in color_option.values -%}
+                  {%- liquid
+                    assign bg_image = null
+                    assign bg_color = null
+                    if value.swatch.image
+                      assign bg_image = value.swatch.image | image_url: width: 100
+                    elsif value.swatch.color
+                      assign bg_color = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+                    endif
+                    assign matched_variant = product.variants | where: filter_key, value | first
+                  -%}
+                  <button
+                    type="button"
+                    class="w-5 h-5 block cursor-pointer border p-px duration-500"
+                    :class="activeVariantId === {{ matched_variant.id | default: 'null' }} ? 'border-black' : 'border-transparent'"
+                    title="{{ value | escape }}"
+
+                    {% if matched_variant %}
+                      @mouseenter="activeVariantId = {{ matched_variant.id }}"
+                    {% endif %}
+                  >
+                    <span
+                      class="block w-full h-full bg-black/10"
+                      style="{% if bg_image %}background-image: url({{ bg_image }}); background-size: cover; background-position: center;{% elsif bg_color %}background-color: {{ bg_color }};{% endif %}"
+                    ></span>
+                  </button>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+          {%- if customer -%}
+            <div>
+              {%- if color_option -%}
+                {%- for variant in product.variants -%}
+                  <div x-show="activeVariantId === {{ variant.id }}" style="display:none">
+                    {% render 'jsf-stock-status', product: product, variant: variant, on_card: true %}
+                  </div>
+                {%- endfor -%}
+              {%- else -%}
+                {% render 'jsf-stock-status', product: product, on_card: true %}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
     </div>
   </a>
 </div>
