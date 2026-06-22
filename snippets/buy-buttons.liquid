@@ -26,7 +26,7 @@
       <button
         type="button"
         x-ref="buyButton"
-        class="btn btn--primary w-full relative buy-button"
+        class="btn {% if is_available %}btn--primary{% else %}btn--outline-primary{% endif %} w-full relative buy-button"
         x-data="{ loading: false }"
         @cart:adding.window="loading = true"
         @cart:added.window="loading = false"
