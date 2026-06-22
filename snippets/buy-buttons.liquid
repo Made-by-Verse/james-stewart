@@ -9,7 +9,16 @@
 {% endcomment %}
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
-  assign is_available = current_variant.available
+  assign is_available = true
+  if current_variant.inventory_management == 'shopify' and current_variant.inventory_policy == 'deny' and current_variant.inventory_quantity <= 0
+    assign is_available = false
+  endif
+
+  if is_available
+    assign button_variant_class = 'btn--primary'
+  else
+    assign button_variant_class = 'btn--outline-primary'
+  endif
 -%}
 <div class="w-full">
   {%- if product != blank -%}
@@ -26,7 +35,7 @@
       <button
         type="button"
         x-ref="buyButton"
-        class="btn {% if is_available %}btn--primary{% else %}btn--outline-primary{% endif %} w-full relative buy-button"
+        class="btn {{ button_variant_class }} w-full relative buy-button"
         x-data="{ loading: false }"
         @cart:adding.window="loading = true"
         @cart:added.window="loading = false"
