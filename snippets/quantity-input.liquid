@@ -10,6 +10,18 @@
   {% render 'quantity-input' variant: variant %}
 {% endcomment %}
 
+{%- liquid
+  assign preorder_cap = variant.metafields.jsf.max_orderable_qty.value
+  assign rule_max = variant.quantity_rule.max
+  assign effective_max = nil
+  if preorder_cap != blank and rule_max != blank
+    assign effective_max = preorder_cap | at_most: rule_max
+  elsif preorder_cap != blank
+    assign effective_max = preorder_cap
+  elsif rule_max != blank
+    assign effective_max = rule_max
+  endif
+-%}
 <quantity-input class="quantity cart-quantity">
   <button class="quantity__button" name="minus" type="button">
     <span class="visually-hidden">
@@ -27,8 +39,8 @@
     data-cart-quantity="{{ cart | item_count_for_variant: variant.id }}"
     min="{{ min }}"
     data-min="{{ variant.quantity_rule.min }}"
-    {% if variant.quantity_rule.max != null %}
-      max="{{ variant.quantity_rule.max }}"
+    {% if effective_max != nil %}
+      max="{{ effective_max }}"
     {% endif %}
     step="{{ variant.quantity_rule.increment }}"
     {% # theme-check-enable %}

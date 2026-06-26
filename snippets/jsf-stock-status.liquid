@@ -13,6 +13,7 @@
   assign status = _variant.metafields.jsf.stock_status.value
   assign eta = _variant.metafields.jsf.stock_eta.value
   assign lead_time = _variant.metafields.jsf.lead_time.value
+  assign allow_preorder = product.metafields.jsf.allow_purchase_when_on_order.value
 
   if on_card
     assign wrapper_class = 'text-xs text-right'
@@ -21,8 +22,14 @@
     assign wrapper_class = 'text-sm py-4 border-t border-black/10'
     assign row_class = 'jsf-stock-status flex items-center gap-2 justify-between'
   endif
+
+  assign render_block = true
+  if allow_preorder and status == 'custom_order'
+    assign render_block = false
+  endif
 -%}
 
+{%- if render_block -%}
 <div class="{{ wrapper_class }}">
   {%- if status == 'in_stock' -%}
     <span class="jsf-stock-status jsf-stock-status--in-stock uppercase">In Stock</span>
@@ -44,3 +51,4 @@
     {%- endif -%}
   {%- endif -%}
 </div>
+{%- endif -%}

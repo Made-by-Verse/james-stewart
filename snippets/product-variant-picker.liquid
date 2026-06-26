@@ -34,7 +34,7 @@
               -%}
               <button
                 type="button"
-                class="w-6 h-6 border duration-500 border p-px {% if is_selected %}border-black{% else %}border-transparent hover:border-black/40{% endif %}"
+                class="w-10 h-10 border duration-500 border p-px {% if is_selected %}border-black{% else %}border-transparent hover:border-black/40{% endif %}"
                 aria-label="{{ value | escape }}"
                 aria-pressed="{% if is_selected %}true{% else %}false{% endif %}"
                 @click="handleVariantChange('{{ section.id }}', '{{ value | escape }}')"

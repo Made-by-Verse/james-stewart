@@ -7,6 +7,19 @@
   Usage:
   {% render 'buy-buttons', product: product, selectedVariant: selectedVariant %}
 {% endcomment %}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign is_available = true
+  if current_variant.inventory_management == 'shopify' and current_variant.inventory_policy == 'deny' and current_variant.inventory_quantity <= 0
+    assign is_available = false
+  endif
+
+  if is_available
+    assign button_variant_class = 'btn--primary'
+  else
+    assign button_variant_class = 'btn--outline-primary'
+  endif
+-%}
 <div class="w-full">
   {%- if product != blank -%}
     <div>
@@ -22,22 +35,26 @@
       <button
         type="button"
         x-ref="buyButton"
-        class="btn btn--primary w-full relative buy-button"
+        class="btn {{ button_variant_class }} w-full relative buy-button"
         x-data="{ loading: false }"
         @cart:adding.window="loading = true"
         @cart:added.window="loading = false"
         @cart:error.window="loading = false"
-        @click="$store.cart.addToCart({{ product.selected_or_first_available_variant.id }})"
-        :disabled="loading"
-        {% unless product.selected_variant %}
+        {% if is_available %}
+          @click="$store.cart.addToCart({{ current_variant.id }})"
+          :disabled="loading"
+          {% unless product.selected_variant %}
+            disabled
+          {% endunless %}
+        {% else %}
           disabled
-        {% endunless %}
+        {% endif %}
       >
         <span
           class="transition-opacity duration-500"
           :class="{ 'opacity-0': loading }"
         >
-          Add to Cart
+          {% if is_available %}Add to Cart{% else %}Out of Stock{% endif %}
         </span>
         <div
           class="absolute inset-0 flex items-center justify-center"
