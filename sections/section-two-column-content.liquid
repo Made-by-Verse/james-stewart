@@ -42,13 +42,7 @@
         {% when 'image_block' %}
           {% if block.settings.image %}
             <div class="relative overflow-hidden bg-white {% if block.settings.aspect_ratio == 'portrait' %}aspect-portrait{% elsif block.settings.aspect_ratio == 'landscape' %}aspect-landscape{% else %}aspect-square{% endif %}">
-              {% render 'responsive-image' with
-              image: block.settings.image,
-              wrapper_class: "",
-              image_class: "absolute inset-0 object-cover w-full h-full",
-              size: '1000x1000',
-              width: 1000,
-              height: 1000, %}
+              {% render 'responsive-image' with image, image: block.settings.image, wrapper_class: "", image_class: "absolute inset-0 object-cover w-full h-full", size: '1000x1000', width: 1000, height: 1000 %}
             </div>
           {% endif %}
         {% when 'text_between' %}
@@ -81,9 +75,9 @@
             </div>
           </div>
         {% when 'stockist_cta' %}
-          {% render 'stockist-cta' with block: block %}
+          {% render 'stockist-cta' with block, block: block %}
         {% when 'wholesale_cta' %}
-          {% render 'wholesale-cta' with block: block %}
+          {% render 'wholesale-cta' with block, block: block %}
       {% endcase %}
     {% endfor %}
   </div>
@@ -292,3 +286,28 @@
   "max_blocks": 2
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'responsive-image' with
+                  image: block.settings.image,
+                  wrapper_class: "",
+                  image_class: "absolute inset-0 object-cover w-full h-full",
+                  size: '1000x1000',
+                  width: 1000,
+                  height: 1000, %}
+  to: '{% render ''responsive-image'' with image, image: block.settings.image, wrapper_class:
+    "", image_class: "absolute inset-0 object-cover w-full h-full", size: ''1000x1000'',
+    width: 1000, height: 1000 %}'
+  position: 1715..1911
+- from: "{% render 'stockist-cta' with block: block %}"
+  to: "{% render 'stockist-cta' with block, block: block %}"
+  position: 3483..3535
+- from: "{% render 'wholesale-cta' with block: block %}"
+  to: "{% render 'wholesale-cta' with block, block: block %}"
+  position: 3581..3634
+{% endcomment %}

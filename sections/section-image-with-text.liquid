@@ -46,14 +46,7 @@
       <h2 class="h2 transition-opacity duration-2500 ease-in-out" x-data="{ shown: false }" x-intersect:enter="shown = true" x-intersect:leave="shown = false" :class="shown ? 'opacity-100' : 'opacity-0'">{{ section.settings.title }}</h2>
     {% endif %}
     {% if section.settings.image %}
-      {% render 'responsive-image' with
-        image: section.settings.image,
-        wrapper_class: "relative w-full image-with-text__image",
-        image_class: "object-cover absolute inset-0 w-full h-full",
-        size: '1000x1000',
-        width: 1000,
-        height: 1000
-      %}
+      {% render 'responsive-image' with image, image: section.settings.image, wrapper_class: "relative w-full image-with-text__image", image_class: "object-cover absolute inset-0 w-full h-full", size: '1000x1000', width: 1000, height: 1000 %}
     {% endif %}
     {% if section.settings.text %}
       <div class="richtext max-w-p-lg">{{ section.settings.text }}</div>
@@ -180,3 +173,23 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'responsive-image' with
+            image: section.settings.image,
+            wrapper_class: "relative w-full image-with-text__image",
+            image_class: "object-cover absolute inset-0 w-full h-full",
+            size: '1000x1000',
+            width: 1000,
+            height: 1000
+          %}
+  to: '{% render ''responsive-image'' with image, image: section.settings.image, wrapper_class:
+    "relative w-full image-with-text__image", image_class: "object-cover absolute
+    inset-0 w-full h-full", size: ''1000x1000'', width: 1000, height: 1000 %}'
+  position: 1894..2130
+{% endcomment %}
