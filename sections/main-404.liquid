@@ -20,11 +20,7 @@
       {% for block in section.blocks %}
         <a href="{{ block.settings.url }}" class='group'>
           {% if block.settings.image != blank %}
-            {% render 'responsive-image' with
-              image: block.settings.image,
-              wrapper_class: 'aspect-landscape w-full relative mb-4',
-              image_class: 'group-hover:scale-105 transition-transform duration-500 object-cover absolute inset-0 w-full h-full'
-            %}
+            {% render 'responsive-image' with image, image: block.settings.image, wrapper_class: 'aspect-landscape w-full relative mb-4', image_class: 'group-hover:scale-105 transition-transform duration-500 object-cover absolute inset-0 w-full h-full' %}
           {% endif %}
           <h3 class='h4 text-center'>{{ block.settings.label }}</h3>
         </a>
@@ -93,4 +89,20 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'responsive-image' with
+                  image: block.settings.image,
+                  wrapper_class: 'aspect-landscape w-full relative mb-4',
+                  image_class: 'group-hover:scale-105 transition-transform duration-500 object-cover absolute inset-0 w-full h-full'
+                %}
+  to: "{% render 'responsive-image' with image, image: block.settings.image, wrapper_class:
+    'aspect-landscape w-full relative mb-4', image_class: 'group-hover:scale-105 transition-transform
+    duration-500 object-cover absolute inset-0 w-full h-full' %}"
+  position: 919..1162
+{%- endcomment -%}
